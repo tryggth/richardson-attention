@@ -54,7 +54,7 @@ class Phase5RGRichardsonController:
     """
     Runtime inference controller implementing Surgical Dual-State Symmetric
     Boltzmann Extrapolation, Query-Slice Gating, Iso-Potential Cubic Plateaus,
-    and Depth-Progressive Renormalization Group (RG) Relays.
+    SWA Tail Decoy Shielding, and Depth-Progressive Renormalization Group (RG) Relays.
     """
     def __init__(self, text_cfg, layers, calib_horizon: float = 1400.0, q_chunk_size: int = 2048):
         self.mode = "dual_cubic_plateau"
@@ -63,6 +63,7 @@ class Phase5RGRichardsonController:
         self.query_slice_only = True
         self.query_window_len = 64
         self.plateau_power = 3.0
+        self.swa_shield_beta = 0.0
         self.calib_horizon = calib_horizon
         self.q_chunk_size = q_chunk_size
         self.target_heads = {}      # Dict[(layer_idx, head_idx) -> calibrated_kappa]
@@ -103,6 +104,7 @@ class Phase5RGRichardsonController:
         bsz, num_heads, q_len, _ = query.shape
         k_len = key_states.shape[-2]
         layer_idx = getattr(module, "layer_idx", -1)
+        layer_type = getattr(module, "layer_type_str", "full_attention")
         layer_has_targets = any((layer_idx, h) in self.target_heads for h in range(num_heads))
 
         attn_output = torch.empty(
@@ -129,6 +131,27 @@ class Phase5RGRichardsonController:
             active_in_chunk = True
             if self.query_slice_only and not self.capture_stats:
                 active_in_chunk = (q_end > max(0, q_len - self.query_window_len))
+
+            # Optional SWA Tail Decoy Shield on sliding_attention layers
+            if (
+                not self.capture_stats
+                and layer_type == "sliding_attention"
+                and self.swa_shield_beta > 0.0
+                and k_len > 512
+                and active_in_chunk
+            ):
+                logits_fp32 = attn_weights.float()
+                del attn_weights
+                global_act_start = max(q_start, q_len - self.query_window_len)
+                local_start = global_act_start - q_start
+                dist, _ = build_causal_distance_and_positions(global_act_start, q_end, q_len, k_len, query.device)
+                swa_damp = ((dist - 48.0).clamp(min=0.0, max=464.0) / 464.0) * self.swa_shield_beta
+                logits_fp32[:, :, local_start:, :] -= swa_damp.unsqueeze(0).unsqueeze(0)
+                attn_probs = nn.functional.softmax(logits_fp32, dim=-1)
+                del logits_fp32, dist, swa_damp
+                attn_output[:, :, q_start:q_end, :] = torch.matmul(attn_probs.to(value_states.dtype), value_states)
+                del attn_probs
+                continue
 
             if not self.capture_stats and (self.mode == "baseline" or not layer_has_targets or not active_in_chunk):
                 logits_fp32 = attn_weights.float()
@@ -220,11 +243,18 @@ def attach_richardson_attention(
     beta: float = 3.5,
     eta: float = 0.75,
     query_window_len: int = 64,
-    rg_schedule: bool = False,
+    rg_schedule: bool | str = False,
+    uniform_c: float = 0.54,
+    swa_shield_beta: float = 0.0,
 ):
     """
     One-line attachment helper: runs the zero-shot Stage 1 Precision-Matrix Brain Scan,
     isolates the Global Logic Quorum, and attaches the Richardson Attention hook.
+
+    Args:
+        rg_schedule: False for uniform_c, "3hop" for [0.52, 0.68, 0.85], or "5hop" / True
+            for the 7-step 5-Hop RG schedule [0.38, 0.44, 0.52, 0.64, 0.74, 0.85, 0.90].
+        swa_shield_beta: Optional damping (e.g. 2.5) for 48 < d <= 512 inside SWA layers.
     """
     device = next(model.parameters()).device
     text_cfg, layers = get_text_config_and_layers(model)
@@ -264,7 +294,13 @@ def attach_richardson_attention(
     global_layers = sorted(by_layer.keys())
     controller.target_heads = build_quorum_head_map(by_layer, heads_per_layer=heads_per_layer, calib_horizon=calib_horizon)
 
-    if rg_schedule and len(global_layers) >= 3:
+    if (rg_schedule is True or rg_schedule == "5hop") and len(global_layers) >= 3:
+        schedule_7 = [0.38, 0.44, 0.52, 0.64, 0.74, 0.85, 0.90]
+        controller.layer_horizons = {}
+        for i, l_idx in enumerate(global_layers):
+            step_idx = min(i, len(schedule_7) - 1)
+            controller.layer_horizons[l_idx] = schedule_7[step_idx]
+    elif rg_schedule == "3hop" and len(global_layers) >= 3:
         n_g = len(global_layers)
         controller.layer_horizons = {}
         for i, l_idx in enumerate(global_layers):
@@ -275,11 +311,12 @@ def attach_richardson_attention(
             else:
                 controller.layer_horizons[l_idx] = 0.85
     else:
-        controller.layer_horizons = {l_idx: 0.54 for l_idx in global_layers}
+        controller.layer_horizons = {l_idx: uniform_c for l_idx in global_layers}
 
     controller.mode = mode
     controller.beta = beta
     controller.eta = eta
     controller.query_window_len = query_window_len
     controller.query_slice_only = True
+    controller.swa_shield_beta = swa_shield_beta
     return controller

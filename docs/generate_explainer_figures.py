@@ -293,9 +293,108 @@ def make_fig4_phase5_benchmark():
     plt.close()
 
 
+def make_fig5_phase6_5hop_and_telemetry():
+    """Fig 5: Phase 6 1-to-5 Hop Scaling Curve & Per-Layer Zone A Cascade + Vertical Fiber-Bundle Telemetry."""
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(11.8, 4.5), gridspec_kw={"width_ratios": [1.15, 1.25]})
+
+    # Panel A: 1-to-5 Hop Scaling Curve at 9,912 Tokens
+    hops = np.array([1, 2, 3, 4, 5])
+    hop_labels = ["1-Hop\n(Zone A)", "2-Hop\n(B→A)", "3-Hop\n(C→B→A)", "4-Hop\n(D→C→B→A)", "5-Hop\n(E→D→C→B→A)"]
+
+    y_base   = [99.9980, 99.9500, 98.5963, 98.5469, 2.2398]
+    y_cubic  = [99.9959, 99.7493, 94.2017, 94.2199, 61.0232]
+    y_swa    = [99.9957, 99.7219, 88.2036, 88.6373, 76.6630]
+    y_rg     = [99.9903, 99.8223, 94.7053, 91.1823, 93.8942]
+    y_vert   = [0.7038,  1.6448,  5.5270,  3.1286,  1.6177]
+
+    ax1.plot(hops, y_rg, "-o", color="#1f77b4", linewidth=2.6, markersize=7, zorder=6,
+             label="Stepped RG (Q28, c=[.38..90]) — 93.89% at 5-Hop (41.9x)")
+    ax1.plot(hops, y_swa, "-s", color="#2ca02c", linewidth=2.2, markersize=6.5, zorder=5,
+             label="2D Cubic Q14 + SWA Shield (sw=2.5) — 76.66% (+15.64%)")
+    ax1.plot(hops, y_cubic, "--^", color="#ff7f0e", linewidth=2.0, markersize=6, zorder=4,
+             label="Horiz-Only Cubic (Q14, c=0.40) — 61.02%")
+    ax1.plot(hops, y_base, "-.d", color="#7f7f7f", linewidth=2.0, markersize=6, zorder=3,
+             label="Unmodified Baseline — Collapses to 2.24% at 5-Hop")
+    ax1.plot(hops, y_vert, ":x", color="#d62728", linewidth=1.8, markersize=6, zorder=2,
+             label="Naive Euclidean Highway (gv=0.25, Fiber-Bundle Mismatch)")
+
+    ax1.annotate("93.89%\n(#1 WIN)", (5, 93.8942), xytext=(4.15, 81.5),
+                 fontsize=8.0, fontweight="bold", color="#0b3c61",
+                 arrowprops=dict(arrowstyle="->", color="#0b3c61", lw=0.9))
+    ax1.annotate("76.66%\n(+15.6% SWA)", (5, 76.6630), xytext=(4.12, 65.5),
+                 fontsize=7.8, fontweight="bold", color="#1b611b",
+                 arrowprops=dict(arrowstyle="->", color="#1b611b", lw=0.9))
+    ax1.annotate("2.24% (#2 FAIL)\nDecoy=95.24%", (5, 2.2398), xytext=(3.60, 14.0),
+                 fontsize=7.8, fontweight="bold", color="#555555",
+                 arrowprops=dict(arrowstyle="->", color="#555555", lw=0.9))
+
+    ax1.set_xticks(hops)
+    ax1.set_xticklabels(hop_labels, fontsize=8.0)
+    ax1.set_ylim(-5, 108)
+    ax1.set_xlim(0.8, 5.25)
+    ax1.set_ylabel("Target Genesis Code (79421) Probability (%)")
+    ax1.set_title("A. 1-to-5 Hop Scaling Curve on Gemma-4-E4B-it (9,912 Tokens)")
+    ax1.legend(loc="lower left", bbox_to_anchor=(0.01, 0.27), fontsize=7.2, frameon=True)
+    ax1.grid(True, linestyle="--", alpha=0.35)
+
+    # Panel B: Per-Layer 5-Hop Zone A Attention Cascade & 6-Gap Vertical Retention Cosine
+    g_layers = ["L5", "L11", "L17", "L23", "L29", "L35", "L41"]
+    gx = np.arange(len(g_layers))
+    w = 0.34
+
+    zone_a_base = [1.06, 1.32, 2.13, 3.19, 2.75, 2.52, 0.77]
+    zone_a_rg   = [1.15, 2.06, 3.97, 8.23, 4.87, 45.33, 17.86]
+
+    bars_base = ax2.bar(gx - w/2, zone_a_base, w, color="#adb5bd", edgecolor="black", linewidth=0.6,
+                        label="Baseline 5-Hop Zone A Attention (%)")
+    bars_rg   = ax2.bar(gx + w/2, zone_a_rg, w, color="#1f77b4", edgecolor="black", linewidth=0.6,
+                        label="Stepped RG (Q28) 5-Hop Zone A Attention (%)")
+
+    ax2.text(gx[5] + w/2, 45.33 + 1.5, "45.33%\n(18x Boost)", ha="center", fontsize=7.8, fontweight="bold", color="#0b3c61")
+    ax2.text(gx[6] + w/2, 17.86 + 1.5, "17.86%\n(23x Boost)", ha="center", fontsize=7.6, fontweight="bold", color="#0b3c61")
+
+    # Highlight L23 -> L29 Basis-Rotation Phase Boundary
+    ax2.axvspan(2.65, 3.65, color="#ff7f0e", alpha=0.14, label="L23→L29 Basis-Rotation Phase Boundary (||u_L23||=292.2)")
+
+    # Secondary axis: 6-gap vertical retention cosine cos(u_{l_k}, \Delta h_{SWA}) plotted at gap midpoints
+    ax2_twin = ax2.twinx()
+    gap_midpoints = np.array([0.5, 1.5, 2.5, 3.5, 4.5, 5.5])
+    cos_ret_base = [0.0168, 0.4414, -0.0033, 0.0211, 0.4756, -0.2271]
+    cos_ret_rg   = [0.0123, 0.4020, -0.0007, 0.0115, 0.5152, 0.0976]
+
+    ax2_twin.plot(gap_midpoints, cos_ret_base, "--d", color="#d62728", linewidth=1.6, markersize=5.5,
+                  label="Baseline Vertical Cosine  cos(u_l, Δh_SWA)")
+    ax2_twin.plot(gap_midpoints, cos_ret_rg, "-o", color="#2ca02c", linewidth=1.8, markersize=5.5,
+                  label="Stepped RG Vertical Cosine  cos(u_l, Δh_SWA)")
+    ax2_twin.axhline(0.0, color="#666666", linestyle=":", linewidth=0.9)
+    ax2_twin.set_ylim(-0.45, 0.85)
+    ax2_twin.set_ylabel("5-Layer SWA Retention Cosine  cos(u_l, Δh_SWA)", color="#1b611b", fontsize=9)
+    ax2_twin.tick_params(axis="y", labelcolor="#1b611b")
+
+    ax2.set_xticks(gx)
+    ax2.set_xticklabels(g_layers)
+    ax2.set_ylim(0, 56)
+    ax2.set_xlabel("Global Attention Layer Index in Gemma-4-E4B-it")
+    ax2.set_ylabel("5-Hop Zone A (VAULT-LAZARUS) Attention (%)")
+    ax2.set_title("B. 5-Hop Zone A Cascade & SWA Fiber-Bundle Rotation")
+
+    # Combine legends from ax2 and ax2_twin
+    lines1, labels1 = ax2.get_legend_handles_labels()
+    lines2, labels2 = ax2_twin.get_legend_handles_labels()
+    ax2.legend(lines1 + lines2, labels1 + labels2, loc="upper left", fontsize=7.0, frameon=True)
+    ax2.grid(axis="y", linestyle="--", alpha=0.35)
+
+    plt.tight_layout()
+    plt.savefig(f"{OUT_DIR}/fig5_phase6_5hop_and_telemetry.pdf", bbox_inches="tight")
+    plt.savefig(f"{OUT_DIR}/fig5_phase6_5hop_and_telemetry.png", dpi=300, bbox_inches="tight")
+    plt.close()
+
+
 if __name__ == "__main__":
     make_fig1_homunculus()
     make_fig2_potentials_and_dual_state()
     make_fig3_write_read_and_rg()
     make_fig4_phase5_benchmark()
-    print(f"Successfully generated all 4 vector PDF and 300-DPI PNG figures in {OUT_DIR}!")
+    make_fig5_phase6_5hop_and_telemetry()
+    print(f"Successfully generated all 5 vector PDF and 300-DPI PNG figures in {OUT_DIR}!")
+

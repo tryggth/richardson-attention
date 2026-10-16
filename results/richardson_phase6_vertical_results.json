@@ -1,0 +1,5877 @@
+{
+  "model_id": "google/gemma-4-E4B-it",
+  "context_tokens": 9912,
+  "zone_token_spans": {
+    "A": [
+      92,
+      114
+    ],
+    "B": [
+      1451,
+      1472
+    ],
+    "C": [
+      2838,
+      2859
+    ],
+    "D": [
+      4192,
+      4210
+    ],
+    "E": [
+      5527,
+      5545
+    ]
+  },
+  "global_layers": [
+    5,
+    11,
+    17,
+    23,
+    29,
+    35,
+    41
+  ],
+  "evaluations": [
+    {
+      "configuration": "1. Baseline (Unmodified)",
+      "hop_task": "1-Hop",
+      "fluency_ppl": 10.6041,
+      "target_prob_pct": 99.998,
+      "decoy_omega_prob_pct": 0.0,
+      "recency_trap_prob_pct": 0.0001,
+      "vault_rank": 1,
+      "top1_vault_token": "7",
+      "vault_probability_distribution": {
+        "SUBVAULT-PRIME (79421)": 99.998,
+        "SUBVAULT-OMEGA (63819)": 0.0,
+        "SUBVAULT-ALPHA (49281)": 0.0001,
+        "SUBVAULT-HELIOS (54712)": 0.0001,
+        "SUBVAULT-HYPERION (83914)": 0.0004,
+        "SUBVAULT-NYX (37192)": 0.0004,
+        "SUBVAULT-VULCAN (28491)": 0.0001,
+        "SUBVAULT-ZEPHYR (91824)": 0.0001
+      },
+      "logit_lens_trajectory": {
+        "L5": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L11": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0007
+        },
+        "L17": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L23": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L29": {
+          "target_79421_pct": 0.0015,
+          "decoy_63819_pct": 0.0
+        },
+        "L35": {
+          "target_79421_pct": 99.9995,
+          "decoy_63819_pct": 0.0
+        },
+        "L41": {
+          "target_79421_pct": 100.0,
+          "decoy_63819_pct": 0.0
+        }
+      },
+      "vertical_gap_telemetry": {
+        "L5->L11": {
+          "global_attn_u_norm": 71.0484,
+          "swa_5layer_drift_norm": 154.6344,
+          "drift_to_signal_ratio": 2.1765,
+          "rms_norm_inflation": 0.9448,
+          "cosine_retention": 0.0231
+        },
+        "L11->L17": {
+          "global_attn_u_norm": 53.9421,
+          "swa_5layer_drift_norm": 136.6624,
+          "drift_to_signal_ratio": 2.5335,
+          "rms_norm_inflation": 0.9167,
+          "cosine_retention": 0.4238
+        },
+        "L17->L23": {
+          "global_attn_u_norm": 65.9393,
+          "swa_5layer_drift_norm": 106.4417,
+          "drift_to_signal_ratio": 1.6142,
+          "rms_norm_inflation": 0.5826,
+          "cosine_retention": -0.0123
+        },
+        "L23->L29": {
+          "global_attn_u_norm": 283.6362,
+          "swa_5layer_drift_norm": 140.9179,
+          "drift_to_signal_ratio": 0.4968,
+          "rms_norm_inflation": 1.2771,
+          "cosine_retention": 0.0056
+        },
+        "L29->L35": {
+          "global_attn_u_norm": 51.8719,
+          "swa_5layer_drift_norm": 56.0131,
+          "drift_to_signal_ratio": 1.0798,
+          "rms_norm_inflation": 1.0269,
+          "cosine_retention": 0.5715
+        },
+        "L35->L41": {
+          "global_attn_u_norm": 31.5822,
+          "swa_5layer_drift_norm": 54.32,
+          "drift_to_signal_ratio": 1.72,
+          "rms_norm_inflation": 0.7877,
+          "cosine_retention": 0.3361
+        }
+      },
+      "per_layer_zone_attn_pct": {
+        "L5": {
+          "A": 0.3631,
+          "B": 0.0674,
+          "C": 0.1149,
+          "D": 0.0921,
+          "E": 0.0397
+        },
+        "L11": {
+          "A": 0.8664,
+          "B": 0.0551,
+          "C": 0.0137,
+          "D": 0.0069,
+          "E": 0.0043
+        },
+        "L17": {
+          "A": 11.6018,
+          "B": 0.2001,
+          "C": 0.0024,
+          "D": 0.0071,
+          "E": 0.0003
+        },
+        "L23": {
+          "A": 8.1473,
+          "B": 0.2515,
+          "C": 0.0694,
+          "D": 0.0268,
+          "E": 0.0106
+        },
+        "L29": {
+          "A": 32.4824,
+          "B": 0.9544,
+          "C": 0.0972,
+          "D": 0.0697,
+          "E": 0.0039
+        },
+        "L35": {
+          "A": 81.1525,
+          "B": 0.2379,
+          "C": 0.056,
+          "D": 0.0158,
+          "E": 0.0006
+        },
+        "L41": {
+          "A": 40.4585,
+          "B": 0.5779,
+          "C": 0.1209,
+          "D": 0.1566,
+          "E": 0.0021
+        }
+      },
+      "elapsed_sec": 7.81
+    },
+    {
+      "configuration": "1. Baseline (Unmodified)",
+      "hop_task": "2-Hop",
+      "fluency_ppl": 10.6041,
+      "target_prob_pct": 99.95,
+      "decoy_omega_prob_pct": 0.0005,
+      "recency_trap_prob_pct": 0.0003,
+      "vault_rank": 1,
+      "top1_vault_token": "7",
+      "vault_probability_distribution": {
+        "SUBVAULT-PRIME (79421)": 99.95,
+        "SUBVAULT-OMEGA (63819)": 0.0005,
+        "SUBVAULT-ALPHA (49281)": 0.0075,
+        "SUBVAULT-HELIOS (54712)": 0.0024,
+        "SUBVAULT-HYPERION (83914)": 0.0085,
+        "SUBVAULT-NYX (37192)": 0.0296,
+        "SUBVAULT-VULCAN (28491)": 0.0007,
+        "SUBVAULT-ZEPHYR (91824)": 0.0003
+      },
+      "logit_lens_trajectory": {
+        "L5": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L11": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0002
+        },
+        "L17": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L23": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L29": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L35": {
+          "target_79421_pct": 99.9982,
+          "decoy_63819_pct": 0.0
+        },
+        "L41": {
+          "target_79421_pct": 100.0,
+          "decoy_63819_pct": 0.0
+        }
+      },
+      "vertical_gap_telemetry": {
+        "L5->L11": {
+          "global_attn_u_norm": 70.2726,
+          "swa_5layer_drift_norm": 154.5806,
+          "drift_to_signal_ratio": 2.1997,
+          "rms_norm_inflation": 0.9284,
+          "cosine_retention": 0.0166
+        },
+        "L11->L17": {
+          "global_attn_u_norm": 54.3067,
+          "swa_5layer_drift_norm": 135.0432,
+          "drift_to_signal_ratio": 2.4867,
+          "rms_norm_inflation": 0.9077,
+          "cosine_retention": 0.4228
+        },
+        "L17->L23": {
+          "global_attn_u_norm": 67.6117,
+          "swa_5layer_drift_norm": 105.8617,
+          "drift_to_signal_ratio": 1.5657,
+          "rms_norm_inflation": 0.5751,
+          "cosine_retention": -0.0132
+        },
+        "L23->L29": {
+          "global_attn_u_norm": 281.7102,
+          "swa_5layer_drift_norm": 140.3077,
+          "drift_to_signal_ratio": 0.4981,
+          "rms_norm_inflation": 1.272,
+          "cosine_retention": 0.0032
+        },
+        "L29->L35": {
+          "global_attn_u_norm": 53.4442,
+          "swa_5layer_drift_norm": 61.5636,
+          "drift_to_signal_ratio": 1.1519,
+          "rms_norm_inflation": 1.0738,
+          "cosine_retention": 0.4839
+        },
+        "L35->L41": {
+          "global_attn_u_norm": 31.6121,
+          "swa_5layer_drift_norm": 52.4119,
+          "drift_to_signal_ratio": 1.658,
+          "rms_norm_inflation": 0.8419,
+          "cosine_retention": -0.0442
+        }
+      },
+      "per_layer_zone_attn_pct": {
+        "L5": {
+          "A": 0.2854,
+          "B": 0.025,
+          "C": 0.0733,
+          "D": 0.036,
+          "E": 0.0117
+        },
+        "L11": {
+          "A": 0.6902,
+          "B": 0.0562,
+          "C": 0.023,
+          "D": 0.0094,
+          "E": 0.0039
+        },
+        "L17": {
+          "A": 9.0547,
+          "B": 1.5367,
+          "C": 0.0288,
+          "D": 0.015,
+          "E": 0.0004
+        },
+        "L23": {
+          "A": 9.3757,
+          "B": 1.0105,
+          "C": 0.1477,
+          "D": 0.0102,
+          "E": 0.0038
+        },
+        "L29": {
+          "A": 4.2713,
+          "B": 18.8519,
+          "C": 0.8627,
+          "D": 0.1918,
+          "E": 0.0119
+        },
+        "L35": {
+          "A": 60.2889,
+          "B": 0.4043,
+          "C": 0.0303,
+          "D": 0.0261,
+          "E": 0.0005
+        },
+        "L41": {
+          "A": 34.5746,
+          "B": 0.617,
+          "C": 0.0419,
+          "D": 0.0642,
+          "E": 0.001
+        }
+      },
+      "elapsed_sec": 8.86
+    },
+    {
+      "configuration": "1. Baseline (Unmodified)",
+      "hop_task": "3-Hop",
+      "fluency_ppl": 10.6041,
+      "target_prob_pct": 98.5963,
+      "decoy_omega_prob_pct": 0.0122,
+      "recency_trap_prob_pct": 0.0084,
+      "vault_rank": 1,
+      "top1_vault_token": "7",
+      "vault_probability_distribution": {
+        "SUBVAULT-PRIME (79421)": 98.5963,
+        "SUBVAULT-OMEGA (63819)": 0.0122,
+        "SUBVAULT-ALPHA (49281)": 0.1154,
+        "SUBVAULT-HELIOS (54712)": 0.0138,
+        "SUBVAULT-HYPERION (83914)": 0.1154,
+        "SUBVAULT-NYX (37192)": 1.0953,
+        "SUBVAULT-VULCAN (28491)": 0.0375,
+        "SUBVAULT-ZEPHYR (91824)": 0.0031
+      },
+      "logit_lens_trajectory": {
+        "L5": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L11": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0004
+        },
+        "L17": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L23": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L29": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L35": {
+          "target_79421_pct": 99.9905,
+          "decoy_63819_pct": 0.0
+        },
+        "L41": {
+          "target_79421_pct": 100.0,
+          "decoy_63819_pct": 0.0
+        }
+      },
+      "vertical_gap_telemetry": {
+        "L5->L11": {
+          "global_attn_u_norm": 69.953,
+          "swa_5layer_drift_norm": 154.2107,
+          "drift_to_signal_ratio": 2.2045,
+          "rms_norm_inflation": 0.9248,
+          "cosine_retention": 0.0176
+        },
+        "L11->L17": {
+          "global_attn_u_norm": 54.4868,
+          "swa_5layer_drift_norm": 133.9098,
+          "drift_to_signal_ratio": 2.4577,
+          "rms_norm_inflation": 0.9147,
+          "cosine_retention": 0.4314
+        },
+        "L17->L23": {
+          "global_attn_u_norm": 68.6261,
+          "swa_5layer_drift_norm": 107.2033,
+          "drift_to_signal_ratio": 1.5621,
+          "rms_norm_inflation": 0.569,
+          "cosine_retention": -0.0098
+        },
+        "L23->L29": {
+          "global_attn_u_norm": 279.0964,
+          "swa_5layer_drift_norm": 139.2007,
+          "drift_to_signal_ratio": 0.4988,
+          "rms_norm_inflation": 1.2996,
+          "cosine_retention": 0.0167
+        },
+        "L29->L35": {
+          "global_attn_u_norm": 50.0479,
+          "swa_5layer_drift_norm": 59.6936,
+          "drift_to_signal_ratio": 1.1927,
+          "rms_norm_inflation": 1.0712,
+          "cosine_retention": 0.5162
+        },
+        "L35->L41": {
+          "global_attn_u_norm": 31.6348,
+          "swa_5layer_drift_norm": 49.4211,
+          "drift_to_signal_ratio": 1.5622,
+          "rms_norm_inflation": 0.8117,
+          "cosine_retention": -0.0987
+        }
+      },
+      "per_layer_zone_attn_pct": {
+        "L5": {
+          "A": 0.2917,
+          "B": 0.0208,
+          "C": 0.0465,
+          "D": 0.0256,
+          "E": 0.0132
+        },
+        "L11": {
+          "A": 0.5576,
+          "B": 0.0409,
+          "C": 0.0224,
+          "D": 0.0067,
+          "E": 0.0065
+        },
+        "L17": {
+          "A": 10.1891,
+          "B": 1.0467,
+          "C": 0.2043,
+          "D": 0.0427,
+          "E": 0.001
+        },
+        "L23": {
+          "A": 10.9956,
+          "B": 2.048,
+          "C": 2.8695,
+          "D": 0.1024,
+          "E": 0.011
+        },
+        "L29": {
+          "A": 4.3276,
+          "B": 12.6318,
+          "C": 5.8104,
+          "D": 0.9813,
+          "E": 0.0481
+        },
+        "L35": {
+          "A": 59.2985,
+          "B": 1.6158,
+          "C": 0.3664,
+          "D": 0.0466,
+          "E": 0.0025
+        },
+        "L41": {
+          "A": 29.8437,
+          "B": 2.2753,
+          "C": 0.4628,
+          "D": 0.1006,
+          "E": 0.0013
+        }
+      },
+      "elapsed_sec": 7.88
+    },
+    {
+      "configuration": "1. Baseline (Unmodified)",
+      "hop_task": "4-Hop",
+      "fluency_ppl": 10.6041,
+      "target_prob_pct": 98.5469,
+      "decoy_omega_prob_pct": 0.0156,
+      "recency_trap_prob_pct": 0.0095,
+      "vault_rank": 1,
+      "top1_vault_token": "7",
+      "vault_probability_distribution": {
+        "SUBVAULT-PRIME (79421)": 98.5469,
+        "SUBVAULT-OMEGA (63819)": 0.0156,
+        "SUBVAULT-ALPHA (49281)": 0.2156,
+        "SUBVAULT-HELIOS (54712)": 0.0177,
+        "SUBVAULT-HYPERION (83914)": 0.1308,
+        "SUBVAULT-NYX (37192)": 0.9661,
+        "SUBVAULT-VULCAN (28491)": 0.0899,
+        "SUBVAULT-ZEPHYR (91824)": 0.0057
+      },
+      "logit_lens_trajectory": {
+        "L5": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L11": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0005
+        },
+        "L17": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L23": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L29": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L35": {
+          "target_79421_pct": 99.9893,
+          "decoy_63819_pct": 0.0
+        },
+        "L41": {
+          "target_79421_pct": 100.0,
+          "decoy_63819_pct": 0.0
+        }
+      },
+      "vertical_gap_telemetry": {
+        "L5->L11": {
+          "global_attn_u_norm": 70.1044,
+          "swa_5layer_drift_norm": 153.7147,
+          "drift_to_signal_ratio": 2.1927,
+          "rms_norm_inflation": 0.9333,
+          "cosine_retention": 0.0177
+        },
+        "L11->L17": {
+          "global_attn_u_norm": 54.7634,
+          "swa_5layer_drift_norm": 133.4377,
+          "drift_to_signal_ratio": 2.4366,
+          "rms_norm_inflation": 0.9072,
+          "cosine_retention": 0.4293
+        },
+        "L17->L23": {
+          "global_attn_u_norm": 68.4479,
+          "swa_5layer_drift_norm": 106.9204,
+          "drift_to_signal_ratio": 1.5621,
+          "rms_norm_inflation": 0.5665,
+          "cosine_retention": -0.0021
+        },
+        "L23->L29": {
+          "global_attn_u_norm": 287.4747,
+          "swa_5layer_drift_norm": 141.5551,
+          "drift_to_signal_ratio": 0.4924,
+          "rms_norm_inflation": 1.2827,
+          "cosine_retention": 0.0158
+        },
+        "L29->L35": {
+          "global_attn_u_norm": 49.7479,
+          "swa_5layer_drift_norm": 57.6543,
+          "drift_to_signal_ratio": 1.1589,
+          "rms_norm_inflation": 1.0299,
+          "cosine_retention": 0.5151
+        },
+        "L35->L41": {
+          "global_attn_u_norm": 31.6006,
+          "swa_5layer_drift_norm": 48.9734,
+          "drift_to_signal_ratio": 1.5498,
+          "rms_norm_inflation": 0.7957,
+          "cosine_retention": -0.0397
+        }
+      },
+      "per_layer_zone_attn_pct": {
+        "L5": {
+          "A": 0.3528,
+          "B": 0.0204,
+          "C": 0.0461,
+          "D": 0.0238,
+          "E": 0.0127
+        },
+        "L11": {
+          "A": 0.5737,
+          "B": 0.0377,
+          "C": 0.0205,
+          "D": 0.0051,
+          "E": 0.0051
+        },
+        "L17": {
+          "A": 8.5329,
+          "B": 1.1206,
+          "C": 0.2676,
+          "D": 0.1482,
+          "E": 0.0041
+        },
+        "L23": {
+          "A": 10.3053,
+          "B": 1.0374,
+          "C": 0.97,
+          "D": 0.156,
+          "E": 0.0485
+        },
+        "L29": {
+          "A": 3.2927,
+          "B": 7.37,
+          "C": 3.4761,
+          "D": 2.3218,
+          "E": 0.2468
+        },
+        "L35": {
+          "A": 58.2448,
+          "B": 2.3663,
+          "C": 0.5335,
+          "D": 0.0521,
+          "E": 0.0027
+        },
+        "L41": {
+          "A": 27.5467,
+          "B": 2.6997,
+          "C": 0.5294,
+          "D": 0.1252,
+          "E": 0.0015
+        }
+      },
+      "elapsed_sec": 8.9
+    },
+    {
+      "configuration": "1. Baseline (Unmodified)",
+      "hop_task": "5-Hop",
+      "fluency_ppl": 10.6041,
+      "target_prob_pct": 2.2398,
+      "decoy_omega_prob_pct": 95.2373,
+      "recency_trap_prob_pct": 0.0171,
+      "vault_rank": 2,
+      "top1_vault_token": "6",
+      "vault_probability_distribution": {
+        "SUBVAULT-PRIME (79421)": 2.2398,
+        "SUBVAULT-OMEGA (63819)": 95.2373,
+        "SUBVAULT-ALPHA (49281)": 0.0527,
+        "SUBVAULT-HELIOS (54712)": 0.0104,
+        "SUBVAULT-HYPERION (83914)": 0.0171,
+        "SUBVAULT-NYX (37192)": 0.1622,
+        "SUBVAULT-VULCAN (28491)": 2.2398,
+        "SUBVAULT-ZEPHYR (91824)": 0.0104
+      },
+      "logit_lens_trajectory": {
+        "L5": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L11": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0003
+        },
+        "L17": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L23": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L29": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L35": {
+          "target_79421_pct": 0.2413,
+          "decoy_63819_pct": 97.3443
+        },
+        "L41": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 100.0
+        }
+      },
+      "vertical_gap_telemetry": {
+        "L5->L11": {
+          "global_attn_u_norm": 70.104,
+          "swa_5layer_drift_norm": 152.9776,
+          "drift_to_signal_ratio": 2.1822,
+          "rms_norm_inflation": 0.9223,
+          "cosine_retention": 0.0168
+        },
+        "L11->L17": {
+          "global_attn_u_norm": 54.4358,
+          "swa_5layer_drift_norm": 132.2846,
+          "drift_to_signal_ratio": 2.4301,
+          "rms_norm_inflation": 0.9135,
+          "cosine_retention": 0.4414
+        },
+        "L17->L23": {
+          "global_attn_u_norm": 68.9421,
+          "swa_5layer_drift_norm": 107.7889,
+          "drift_to_signal_ratio": 1.5635,
+          "rms_norm_inflation": 0.5561,
+          "cosine_retention": -0.0033
+        },
+        "L23->L29": {
+          "global_attn_u_norm": 292.1564,
+          "swa_5layer_drift_norm": 142.2655,
+          "drift_to_signal_ratio": 0.4869,
+          "rms_norm_inflation": 1.2801,
+          "cosine_retention": 0.0211
+        },
+        "L29->L35": {
+          "global_attn_u_norm": 51.6488,
+          "swa_5layer_drift_norm": 61.6346,
+          "drift_to_signal_ratio": 1.1933,
+          "rms_norm_inflation": 1.0689,
+          "cosine_retention": 0.4756
+        },
+        "L35->L41": {
+          "global_attn_u_norm": 31.6983,
+          "swa_5layer_drift_norm": 49.541,
+          "drift_to_signal_ratio": 1.5629,
+          "rms_norm_inflation": 0.7898,
+          "cosine_retention": -0.2271
+        }
+      },
+      "per_layer_zone_attn_pct": {
+        "L5": {
+          "A": 0.2913,
+          "B": 0.031,
+          "C": 0.0444,
+          "D": 0.0349,
+          "E": 0.0157
+        },
+        "L11": {
+          "A": 0.6621,
+          "B": 0.0425,
+          "C": 0.0159,
+          "D": 0.0067,
+          "E": 0.0082
+        },
+        "L17": {
+          "A": 4.7782,
+          "B": 1.103,
+          "C": 0.1214,
+          "D": 0.1548,
+          "E": 0.0503
+        },
+        "L23": {
+          "A": 7.6041,
+          "B": 0.1882,
+          "C": 0.075,
+          "D": 0.0287,
+          "E": 0.1312
+        },
+        "L29": {
+          "A": 3.054,
+          "B": 0.3806,
+          "C": 0.2943,
+          "D": 0.5176,
+          "E": 11.9851
+        },
+        "L35": {
+          "A": 16.5772,
+          "B": 0.2848,
+          "C": 0.2209,
+          "D": 0.1511,
+          "E": 0.1091
+        },
+        "L41": {
+          "A": 19.9809,
+          "B": 0.2826,
+          "C": 0.1285,
+          "D": 0.0715,
+          "E": 0.0407
+        }
+      },
+      "elapsed_sec": 7.72
+    },
+    {
+      "configuration": "2. Horiz-Only Sparse (Q7, c=0.40, b=3.5)",
+      "hop_task": "1-Hop",
+      "fluency_ppl": 10.6446,
+      "target_prob_pct": 99.9974,
+      "decoy_omega_prob_pct": 0.0001,
+      "recency_trap_prob_pct": 0.0002,
+      "vault_rank": 1,
+      "top1_vault_token": "7",
+      "vault_probability_distribution": {
+        "SUBVAULT-PRIME (79421)": 99.9974,
+        "SUBVAULT-OMEGA (63819)": 0.0001,
+        "SUBVAULT-ALPHA (49281)": 0.0002,
+        "SUBVAULT-HELIOS (54712)": 0.0001,
+        "SUBVAULT-HYPERION (83914)": 0.0007,
+        "SUBVAULT-NYX (37192)": 0.0004,
+        "SUBVAULT-VULCAN (28491)": 0.0002,
+        "SUBVAULT-ZEPHYR (91824)": 0.0002
+      },
+      "logit_lens_trajectory": {
+        "L5": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L11": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0007
+        },
+        "L17": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L23": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L29": {
+          "target_79421_pct": 0.0016,
+          "decoy_63819_pct": 0.0
+        },
+        "L35": {
+          "target_79421_pct": 99.9997,
+          "decoy_63819_pct": 0.0
+        },
+        "L41": {
+          "target_79421_pct": 100.0,
+          "decoy_63819_pct": 0.0
+        }
+      },
+      "vertical_gap_telemetry": {
+        "L5->L11": {
+          "global_attn_u_norm": 70.5219,
+          "swa_5layer_drift_norm": 154.0045,
+          "drift_to_signal_ratio": 2.1838,
+          "rms_norm_inflation": 0.9402,
+          "cosine_retention": 0.0246
+        },
+        "L11->L17": {
+          "global_attn_u_norm": 53.2105,
+          "swa_5layer_drift_norm": 135.2737,
+          "drift_to_signal_ratio": 2.5422,
+          "rms_norm_inflation": 0.9461,
+          "cosine_retention": 0.4299
+        },
+        "L17->L23": {
+          "global_attn_u_norm": 64.9465,
+          "swa_5layer_drift_norm": 108.6693,
+          "drift_to_signal_ratio": 1.6732,
+          "rms_norm_inflation": 0.6047,
+          "cosine_retention": -0.0065
+        },
+        "L23->L29": {
+          "global_attn_u_norm": 278.5864,
+          "swa_5layer_drift_norm": 141.3064,
+          "drift_to_signal_ratio": 0.5072,
+          "rms_norm_inflation": 1.272,
+          "cosine_retention": 0.0028
+        },
+        "L29->L35": {
+          "global_attn_u_norm": 51.3666,
+          "swa_5layer_drift_norm": 55.231,
+          "drift_to_signal_ratio": 1.0752,
+          "rms_norm_inflation": 1.0282,
+          "cosine_retention": 0.5671
+        },
+        "L35->L41": {
+          "global_attn_u_norm": 31.5725,
+          "swa_5layer_drift_norm": 53.8319,
+          "drift_to_signal_ratio": 1.705,
+          "rms_norm_inflation": 0.7853,
+          "cosine_retention": 0.3297
+        }
+      },
+      "per_layer_zone_attn_pct": {
+        "L5": {
+          "A": 0.7892,
+          "B": 0.1801,
+          "C": 0.3305,
+          "D": 0.2501,
+          "E": 0.0706
+        },
+        "L11": {
+          "A": 1.0015,
+          "B": 0.1149,
+          "C": 0.0403,
+          "D": 0.0237,
+          "E": 0.0133
+        },
+        "L17": {
+          "A": 9.0242,
+          "B": 0.4247,
+          "C": 0.0065,
+          "D": 0.0258,
+          "E": 0.0013
+        },
+        "L23": {
+          "A": 12.8391,
+          "B": 0.8582,
+          "C": 0.188,
+          "D": 0.0293,
+          "E": 0.0082
+        },
+        "L29": {
+          "A": 5.2258,
+          "B": 0.2336,
+          "C": 0.0352,
+          "D": 0.1015,
+          "E": 0.0068
+        },
+        "L35": {
+          "A": 91.9498,
+          "B": 0.0892,
+          "C": 0.0193,
+          "D": 0.0156,
+          "E": 0.0002
+        },
+        "L41": {
+          "A": 40.0385,
+          "B": 0.6895,
+          "C": 0.167,
+          "D": 0.2161,
+          "E": 0.0023
+        }
+      },
+      "elapsed_sec": 7.94
+    },
+    {
+      "configuration": "2. Horiz-Only Sparse (Q7, c=0.40, b=3.5)",
+      "hop_task": "2-Hop",
+      "fluency_ppl": 10.6446,
+      "target_prob_pct": 99.8979,
+      "decoy_omega_prob_pct": 0.0009,
+      "recency_trap_prob_pct": 0.0007,
+      "vault_rank": 1,
+      "top1_vault_token": "7",
+      "vault_probability_distribution": {
+        "SUBVAULT-PRIME (79421)": 99.8979,
+        "SUBVAULT-OMEGA (63819)": 0.0009,
+        "SUBVAULT-ALPHA (49281)": 0.0179,
+        "SUBVAULT-HELIOS (54712)": 0.0035,
+        "SUBVAULT-HYPERION (83914)": 0.014,
+        "SUBVAULT-NYX (37192)": 0.0626,
+        "SUBVAULT-VULCAN (28491)": 0.0015,
+        "SUBVAULT-ZEPHYR (91824)": 0.0005
+      },
+      "logit_lens_trajectory": {
+        "L5": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L11": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0003
+        },
+        "L17": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L23": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L29": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L35": {
+          "target_79421_pct": 99.9981,
+          "decoy_63819_pct": 0.0
+        },
+        "L41": {
+          "target_79421_pct": 100.0,
+          "decoy_63819_pct": 0.0
+        }
+      },
+      "vertical_gap_telemetry": {
+        "L5->L11": {
+          "global_attn_u_norm": 69.6847,
+          "swa_5layer_drift_norm": 154.9735,
+          "drift_to_signal_ratio": 2.2239,
+          "rms_norm_inflation": 0.9348,
+          "cosine_retention": 0.0116
+        },
+        "L11->L17": {
+          "global_attn_u_norm": 53.3508,
+          "swa_5layer_drift_norm": 134.3149,
+          "drift_to_signal_ratio": 2.5176,
+          "rms_norm_inflation": 0.9213,
+          "cosine_retention": 0.4201
+        },
+        "L17->L23": {
+          "global_attn_u_norm": 65.5204,
+          "swa_5layer_drift_norm": 106.2174,
+          "drift_to_signal_ratio": 1.6211,
+          "rms_norm_inflation": 0.6101,
+          "cosine_retention": -0.0002
+        },
+        "L23->L29": {
+          "global_attn_u_norm": 282.6417,
+          "swa_5layer_drift_norm": 139.8512,
+          "drift_to_signal_ratio": 0.4948,
+          "rms_norm_inflation": 1.2696,
+          "cosine_retention": 0.0052
+        },
+        "L29->L35": {
+          "global_attn_u_norm": 52.8968,
+          "swa_5layer_drift_norm": 61.4241,
+          "drift_to_signal_ratio": 1.1612,
+          "rms_norm_inflation": 1.0833,
+          "cosine_retention": 0.5019
+        },
+        "L35->L41": {
+          "global_attn_u_norm": 31.6164,
+          "swa_5layer_drift_norm": 52.5774,
+          "drift_to_signal_ratio": 1.663,
+          "rms_norm_inflation": 0.8265,
+          "cosine_retention": -0.0467
+        }
+      },
+      "per_layer_zone_attn_pct": {
+        "L5": {
+          "A": 1.2517,
+          "B": 0.1212,
+          "C": 0.4418,
+          "D": 0.1703,
+          "E": 0.0438
+        },
+        "L11": {
+          "A": 1.5224,
+          "B": 0.1403,
+          "C": 0.0602,
+          "D": 0.0288,
+          "E": 0.0119
+        },
+        "L17": {
+          "A": 8.4765,
+          "B": 1.0493,
+          "C": 0.0364,
+          "D": 0.0254,
+          "E": 0.0008
+        },
+        "L23": {
+          "A": 8.4378,
+          "B": 4.1015,
+          "C": 0.663,
+          "D": 0.0218,
+          "E": 0.0052
+        },
+        "L29": {
+          "A": 6.3734,
+          "B": 0.2004,
+          "C": 0.0513,
+          "D": 0.274,
+          "E": 0.016
+        },
+        "L35": {
+          "A": 72.8305,
+          "B": 0.1602,
+          "C": 0.0104,
+          "D": 0.019,
+          "E": 0.0001
+        },
+        "L41": {
+          "A": 36.9099,
+          "B": 1.1973,
+          "C": 0.0991,
+          "D": 0.1299,
+          "E": 0.001
+        }
+      },
+      "elapsed_sec": 9.02
+    },
+    {
+      "configuration": "2. Horiz-Only Sparse (Q7, c=0.40, b=3.5)",
+      "hop_task": "3-Hop",
+      "fluency_ppl": 10.6446,
+      "target_prob_pct": 97.4385,
+      "decoy_omega_prob_pct": 0.0255,
+      "recency_trap_prob_pct": 0.0225,
+      "vault_rank": 1,
+      "top1_vault_token": "7",
+      "vault_probability_distribution": {
+        "SUBVAULT-PRIME (79421)": 97.4385,
+        "SUBVAULT-OMEGA (63819)": 0.0255,
+        "SUBVAULT-ALPHA (49281)": 0.2415,
+        "SUBVAULT-HELIOS (54712)": 0.0225,
+        "SUBVAULT-HYPERION (83914)": 0.3514,
+        "SUBVAULT-NYX (37192)": 1.7846,
+        "SUBVAULT-VULCAN (28491)": 0.1007,
+        "SUBVAULT-ZEPHYR (91824)": 0.0094
+      },
+      "logit_lens_trajectory": {
+        "L5": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L11": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0005
+        },
+        "L17": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L23": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L29": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L35": {
+          "target_79421_pct": 99.9947,
+          "decoy_63819_pct": 0.0
+        },
+        "L41": {
+          "target_79421_pct": 100.0,
+          "decoy_63819_pct": 0.0
+        }
+      },
+      "vertical_gap_telemetry": {
+        "L5->L11": {
+          "global_attn_u_norm": 69.3901,
+          "swa_5layer_drift_norm": 154.5619,
+          "drift_to_signal_ratio": 2.2274,
+          "rms_norm_inflation": 0.9311,
+          "cosine_retention": 0.0152
+        },
+        "L11->L17": {
+          "global_attn_u_norm": 53.3599,
+          "swa_5layer_drift_norm": 132.6727,
+          "drift_to_signal_ratio": 2.4864,
+          "rms_norm_inflation": 0.9187,
+          "cosine_retention": 0.4293
+        },
+        "L17->L23": {
+          "global_attn_u_norm": 65.7336,
+          "swa_5layer_drift_norm": 105.9457,
+          "drift_to_signal_ratio": 1.6117,
+          "rms_norm_inflation": 0.6038,
+          "cosine_retention": -0.0006
+        },
+        "L23->L29": {
+          "global_attn_u_norm": 280.0377,
+          "swa_5layer_drift_norm": 138.051,
+          "drift_to_signal_ratio": 0.493,
+          "rms_norm_inflation": 1.3234,
+          "cosine_retention": 0.0206
+        },
+        "L29->L35": {
+          "global_attn_u_norm": 49.3295,
+          "swa_5layer_drift_norm": 59.4801,
+          "drift_to_signal_ratio": 1.2058,
+          "rms_norm_inflation": 1.0675,
+          "cosine_retention": 0.5369
+        },
+        "L35->L41": {
+          "global_attn_u_norm": 31.6089,
+          "swa_5layer_drift_norm": 51.0728,
+          "drift_to_signal_ratio": 1.6158,
+          "rms_norm_inflation": 0.7792,
+          "cosine_retention": -0.0345
+        }
+      },
+      "per_layer_zone_attn_pct": {
+        "L5": {
+          "A": 1.4158,
+          "B": 0.0905,
+          "C": 0.2536,
+          "D": 0.0998,
+          "E": 0.0635
+        },
+        "L11": {
+          "A": 1.0869,
+          "B": 0.0829,
+          "C": 0.0486,
+          "D": 0.014,
+          "E": 0.0185
+        },
+        "L17": {
+          "A": 9.428,
+          "B": 0.9473,
+          "C": 0.1614,
+          "D": 0.0986,
+          "E": 0.0015
+        },
+        "L23": {
+          "A": 7.8852,
+          "B": 2.6681,
+          "C": 3.8524,
+          "D": 0.2909,
+          "E": 0.023
+        },
+        "L29": {
+          "A": 7.265,
+          "B": 0.2016,
+          "C": 0.0677,
+          "D": 0.3734,
+          "E": 0.0279
+        },
+        "L35": {
+          "A": 65.3419,
+          "B": 0.8101,
+          "C": 0.5328,
+          "D": 0.0589,
+          "E": 0.0013
+        },
+        "L41": {
+          "A": 24.6792,
+          "B": 3.7419,
+          "C": 1.5739,
+          "D": 0.2621,
+          "E": 0.0033
+        }
+      },
+      "elapsed_sec": 8.01
+    },
+    {
+      "configuration": "2. Horiz-Only Sparse (Q7, c=0.40, b=3.5)",
+      "hop_task": "4-Hop",
+      "fluency_ppl": 10.6446,
+      "target_prob_pct": 97.7262,
+      "decoy_omega_prob_pct": 0.0694,
+      "recency_trap_prob_pct": 0.0175,
+      "vault_rank": 1,
+      "top1_vault_token": "7",
+      "vault_probability_distribution": {
+        "SUBVAULT-PRIME (79421)": 97.7262,
+        "SUBVAULT-OMEGA (63819)": 0.0694,
+        "SUBVAULT-ALPHA (49281)": 0.1887,
+        "SUBVAULT-HELIOS (54712)": 0.0225,
+        "SUBVAULT-HYPERION (83914)": 0.2745,
+        "SUBVAULT-NYX (37192)": 1.2302,
+        "SUBVAULT-VULCAN (28491)": 0.4526,
+        "SUBVAULT-ZEPHYR (91824)": 0.0155
+      },
+      "logit_lens_trajectory": {
+        "L5": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L11": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0006
+        },
+        "L17": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L23": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L29": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L35": {
+          "target_79421_pct": 99.9972,
+          "decoy_63819_pct": 0.0
+        },
+        "L41": {
+          "target_79421_pct": 100.0,
+          "decoy_63819_pct": 0.0
+        }
+      },
+      "vertical_gap_telemetry": {
+        "L5->L11": {
+          "global_attn_u_norm": 69.3881,
+          "swa_5layer_drift_norm": 153.4821,
+          "drift_to_signal_ratio": 2.2119,
+          "rms_norm_inflation": 0.9402,
+          "cosine_retention": 0.0152
+        },
+        "L11->L17": {
+          "global_attn_u_norm": 53.6101,
+          "swa_5layer_drift_norm": 132.4022,
+          "drift_to_signal_ratio": 2.4697,
+          "rms_norm_inflation": 0.9216,
+          "cosine_retention": 0.4342
+        },
+        "L17->L23": {
+          "global_attn_u_norm": 64.8568,
+          "swa_5layer_drift_norm": 105.8595,
+          "drift_to_signal_ratio": 1.6322,
+          "rms_norm_inflation": 0.6019,
+          "cosine_retention": 0.0058
+        },
+        "L23->L29": {
+          "global_attn_u_norm": 280.9723,
+          "swa_5layer_drift_norm": 139.6062,
+          "drift_to_signal_ratio": 0.4969,
+          "rms_norm_inflation": 1.3179,
+          "cosine_retention": 0.0166
+        },
+        "L29->L35": {
+          "global_attn_u_norm": 48.9315,
+          "swa_5layer_drift_norm": 56.9837,
+          "drift_to_signal_ratio": 1.1646,
+          "rms_norm_inflation": 1.0108,
+          "cosine_retention": 0.5394
+        },
+        "L35->L41": {
+          "global_attn_u_norm": 31.5959,
+          "swa_5layer_drift_norm": 49.2347,
+          "drift_to_signal_ratio": 1.5583,
+          "rms_norm_inflation": 0.7751,
+          "cosine_retention": 0.0039
+        }
+      },
+      "per_layer_zone_attn_pct": {
+        "L5": {
+          "A": 1.6741,
+          "B": 0.0774,
+          "C": 0.2289,
+          "D": 0.0768,
+          "E": 0.0539
+        },
+        "L11": {
+          "A": 1.0708,
+          "B": 0.0755,
+          "C": 0.0488,
+          "D": 0.0119,
+          "E": 0.0167
+        },
+        "L17": {
+          "A": 9.0092,
+          "B": 1.0135,
+          "C": 0.2028,
+          "D": 0.147,
+          "E": 0.0042
+        },
+        "L23": {
+          "A": 8.3542,
+          "B": 1.2858,
+          "C": 1.3226,
+          "D": 0.3379,
+          "E": 0.079
+        },
+        "L29": {
+          "A": 6.0395,
+          "B": 0.2672,
+          "C": 0.0978,
+          "D": 0.5211,
+          "E": 0.0436
+        },
+        "L35": {
+          "A": 65.3345,
+          "B": 1.7438,
+          "C": 1.064,
+          "D": 0.0688,
+          "E": 0.0014
+        },
+        "L41": {
+          "A": 22.8881,
+          "B": 4.5772,
+          "C": 1.8141,
+          "D": 0.2428,
+          "E": 0.0034
+        }
+      },
+      "elapsed_sec": 9.07
+    },
+    {
+      "configuration": "2. Horiz-Only Sparse (Q7, c=0.40, b=3.5)",
+      "hop_task": "5-Hop",
+      "fluency_ppl": 10.6446,
+      "target_prob_pct": 65.4702,
+      "decoy_omega_prob_pct": 16.5535,
+      "recency_trap_prob_pct": 0.2676,
+      "vault_rank": 1,
+      "top1_vault_token": "7",
+      "vault_probability_distribution": {
+        "SUBVAULT-PRIME (79421)": 65.4702,
+        "SUBVAULT-OMEGA (63819)": 16.5535,
+        "SUBVAULT-ALPHA (49281)": 0.4411,
+        "SUBVAULT-HELIOS (54712)": 0.1432,
+        "SUBVAULT-HYPERION (83914)": 0.1264,
+        "SUBVAULT-NYX (37192)": 2.2403,
+        "SUBVAULT-VULCAN (28491)": 14.6084,
+        "SUBVAULT-ZEPHYR (91824)": 0.0527
+      },
+      "logit_lens_trajectory": {
+        "L5": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L11": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0005
+        },
+        "L17": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L23": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L29": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L35": {
+          "target_79421_pct": 12.0363,
+          "decoy_63819_pct": 0.0263
+        },
+        "L41": {
+          "target_79421_pct": 99.4357,
+          "decoy_63819_pct": 0.3165
+        }
+      },
+      "vertical_gap_telemetry": {
+        "L5->L11": {
+          "global_attn_u_norm": 69.5197,
+          "swa_5layer_drift_norm": 154.0047,
+          "drift_to_signal_ratio": 2.2153,
+          "rms_norm_inflation": 0.9294,
+          "cosine_retention": 0.0139
+        },
+        "L11->L17": {
+          "global_attn_u_norm": 53.4712,
+          "swa_5layer_drift_norm": 130.9158,
+          "drift_to_signal_ratio": 2.4483,
+          "rms_norm_inflation": 0.9102,
+          "cosine_retention": 0.4406
+        },
+        "L17->L23": {
+          "global_attn_u_norm": 66.715,
+          "swa_5layer_drift_norm": 105.9645,
+          "drift_to_signal_ratio": 1.5883,
+          "rms_norm_inflation": 0.6144,
+          "cosine_retention": -0.0009
+        },
+        "L23->L29": {
+          "global_attn_u_norm": 281.9795,
+          "swa_5layer_drift_norm": 140.1502,
+          "drift_to_signal_ratio": 0.497,
+          "rms_norm_inflation": 1.3178,
+          "cosine_retention": 0.0202
+        },
+        "L29->L35": {
+          "global_attn_u_norm": 52.3981,
+          "swa_5layer_drift_norm": 65.5931,
+          "drift_to_signal_ratio": 1.2518,
+          "rms_norm_inflation": 1.1258,
+          "cosine_retention": 0.4053
+        },
+        "L35->L41": {
+          "global_attn_u_norm": 31.8251,
+          "swa_5layer_drift_norm": 51.4629,
+          "drift_to_signal_ratio": 1.6171,
+          "rms_norm_inflation": 0.7611,
+          "cosine_retention": -0.3115
+        }
+      },
+      "per_layer_zone_attn_pct": {
+        "L5": {
+          "A": 1.4841,
+          "B": 0.148,
+          "C": 0.2429,
+          "D": 0.1187,
+          "E": 0.0767
+        },
+        "L11": {
+          "A": 1.6257,
+          "B": 0.1079,
+          "C": 0.0374,
+          "D": 0.0172,
+          "E": 0.0261
+        },
+        "L17": {
+          "A": 5.2798,
+          "B": 1.1344,
+          "C": 0.0938,
+          "D": 0.2639,
+          "E": 0.0768
+        },
+        "L23": {
+          "A": 6.2091,
+          "B": 0.5529,
+          "C": 0.1813,
+          "D": 0.0661,
+          "E": 0.1796
+        },
+        "L29": {
+          "A": 6.2199,
+          "B": 0.2123,
+          "C": 0.1216,
+          "D": 0.9264,
+          "E": 0.0458
+        },
+        "L35": {
+          "A": 25.2366,
+          "B": 0.3591,
+          "C": 0.2399,
+          "D": 0.2952,
+          "E": 0.0491
+        },
+        "L41": {
+          "A": 18.6458,
+          "B": 0.7705,
+          "C": 0.3037,
+          "D": 0.117,
+          "E": 0.036
+        }
+      },
+      "elapsed_sec": 7.87
+    },
+    {
+      "configuration": "3. Horiz-Only Cubic (Q14, c=0.40, b=3.5)",
+      "hop_task": "1-Hop",
+      "fluency_ppl": 10.6071,
+      "target_prob_pct": 99.9959,
+      "decoy_omega_prob_pct": 0.0001,
+      "recency_trap_prob_pct": 0.0004,
+      "vault_rank": 1,
+      "top1_vault_token": "7",
+      "vault_probability_distribution": {
+        "SUBVAULT-PRIME (79421)": 99.9959,
+        "SUBVAULT-OMEGA (63819)": 0.0001,
+        "SUBVAULT-ALPHA (49281)": 0.0003,
+        "SUBVAULT-HELIOS (54712)": 0.0002,
+        "SUBVAULT-HYPERION (83914)": 0.0013,
+        "SUBVAULT-NYX (37192)": 0.0008,
+        "SUBVAULT-VULCAN (28491)": 0.0003,
+        "SUBVAULT-ZEPHYR (91824)": 0.0003
+      },
+      "logit_lens_trajectory": {
+        "L5": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L11": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0002
+        },
+        "L17": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L23": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L29": {
+          "target_79421_pct": 0.0009,
+          "decoy_63819_pct": 0.0
+        },
+        "L35": {
+          "target_79421_pct": 99.9996,
+          "decoy_63819_pct": 0.0
+        },
+        "L41": {
+          "target_79421_pct": 100.0,
+          "decoy_63819_pct": 0.0
+        }
+      },
+      "vertical_gap_telemetry": {
+        "L5->L11": {
+          "global_attn_u_norm": 70.3292,
+          "swa_5layer_drift_norm": 153.7334,
+          "drift_to_signal_ratio": 2.1859,
+          "rms_norm_inflation": 0.938,
+          "cosine_retention": 0.0256
+        },
+        "L11->L17": {
+          "global_attn_u_norm": 51.9703,
+          "swa_5layer_drift_norm": 135.2847,
+          "drift_to_signal_ratio": 2.6031,
+          "rms_norm_inflation": 0.9509,
+          "cosine_retention": 0.4188
+        },
+        "L17->L23": {
+          "global_attn_u_norm": 67.2813,
+          "swa_5layer_drift_norm": 110.2148,
+          "drift_to_signal_ratio": 1.6381,
+          "rms_norm_inflation": 0.6061,
+          "cosine_retention": -0.0037
+        },
+        "L23->L29": {
+          "global_attn_u_norm": 281.2017,
+          "swa_5layer_drift_norm": 142.8668,
+          "drift_to_signal_ratio": 0.5081,
+          "rms_norm_inflation": 1.2804,
+          "cosine_retention": -0.0064
+        },
+        "L29->L35": {
+          "global_attn_u_norm": 51.6453,
+          "swa_5layer_drift_norm": 54.5923,
+          "drift_to_signal_ratio": 1.0571,
+          "rms_norm_inflation": 1.0254,
+          "cosine_retention": 0.5725
+        },
+        "L35->L41": {
+          "global_attn_u_norm": 31.5341,
+          "swa_5layer_drift_norm": 51.7931,
+          "drift_to_signal_ratio": 1.6424,
+          "rms_norm_inflation": 0.8149,
+          "cosine_retention": 0.2431
+        }
+      },
+      "per_layer_zone_attn_pct": {
+        "L5": {
+          "A": 1.1847,
+          "B": 0.187,
+          "C": 0.2959,
+          "D": 0.2519,
+          "E": 0.1448
+        },
+        "L11": {
+          "A": 2.2163,
+          "B": 0.1246,
+          "C": 0.0316,
+          "D": 0.0155,
+          "E": 0.0087
+        },
+        "L17": {
+          "A": 4.3283,
+          "B": 0.42,
+          "C": 0.0064,
+          "D": 0.033,
+          "E": 0.0025
+        },
+        "L23": {
+          "A": 9.0725,
+          "B": 0.4886,
+          "C": 0.0797,
+          "D": 0.0277,
+          "E": 0.0112
+        },
+        "L29": {
+          "A": 34.1041,
+          "B": 0.7435,
+          "C": 0.0675,
+          "D": 0.0511,
+          "E": 0.0036
+        },
+        "L35": {
+          "A": 85.5179,
+          "B": 0.1494,
+          "C": 0.036,
+          "D": 0.0116,
+          "E": 0.0005
+        },
+        "L41": {
+          "A": 46.1375,
+          "B": 0.5133,
+          "C": 0.118,
+          "D": 0.1577,
+          "E": 0.0018
+        }
+      },
+      "elapsed_sec": 8.01
+    },
+    {
+      "configuration": "3. Horiz-Only Cubic (Q14, c=0.40, b=3.5)",
+      "hop_task": "2-Hop",
+      "fluency_ppl": 10.6071,
+      "target_prob_pct": 99.7493,
+      "decoy_omega_prob_pct": 0.0024,
+      "recency_trap_prob_pct": 0.0027,
+      "vault_rank": 1,
+      "top1_vault_token": "7",
+      "vault_probability_distribution": {
+        "SUBVAULT-PRIME (79421)": 99.7493,
+        "SUBVAULT-OMEGA (63819)": 0.0024,
+        "SUBVAULT-ALPHA (49281)": 0.0335,
+        "SUBVAULT-HELIOS (54712)": 0.0066,
+        "SUBVAULT-HYPERION (83914)": 0.0295,
+        "SUBVAULT-NYX (37192)": 0.1699,
+        "SUBVAULT-VULCAN (28491)": 0.0035,
+        "SUBVAULT-ZEPHYR (91824)": 0.0013
+      },
+      "logit_lens_trajectory": {
+        "L5": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L11": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0001
+        },
+        "L17": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L23": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L29": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L35": {
+          "target_79421_pct": 99.9933,
+          "decoy_63819_pct": 0.0
+        },
+        "L41": {
+          "target_79421_pct": 100.0,
+          "decoy_63819_pct": 0.0
+        }
+      },
+      "vertical_gap_telemetry": {
+        "L5->L11": {
+          "global_attn_u_norm": 69.3764,
+          "swa_5layer_drift_norm": 153.9923,
+          "drift_to_signal_ratio": 2.2197,
+          "rms_norm_inflation": 0.9342,
+          "cosine_retention": 0.0117
+        },
+        "L11->L17": {
+          "global_attn_u_norm": 51.8871,
+          "swa_5layer_drift_norm": 133.0438,
+          "drift_to_signal_ratio": 2.5641,
+          "rms_norm_inflation": 0.932,
+          "cosine_retention": 0.4115
+        },
+        "L17->L23": {
+          "global_attn_u_norm": 66.3356,
+          "swa_5layer_drift_norm": 108.6377,
+          "drift_to_signal_ratio": 1.6377,
+          "rms_norm_inflation": 0.6114,
+          "cosine_retention": 0.0069
+        },
+        "L23->L29": {
+          "global_attn_u_norm": 284.5479,
+          "swa_5layer_drift_norm": 141.45,
+          "drift_to_signal_ratio": 0.4971,
+          "rms_norm_inflation": 1.2684,
+          "cosine_retention": -0.002
+        },
+        "L29->L35": {
+          "global_attn_u_norm": 51.9669,
+          "swa_5layer_drift_norm": 61.2739,
+          "drift_to_signal_ratio": 1.1791,
+          "rms_norm_inflation": 1.0902,
+          "cosine_retention": 0.5319
+        },
+        "L35->L41": {
+          "global_attn_u_norm": 31.646,
+          "swa_5layer_drift_norm": 52.0835,
+          "drift_to_signal_ratio": 1.6458,
+          "rms_norm_inflation": 0.8207,
+          "cosine_retention": -0.0794
+        }
+      },
+      "per_layer_zone_attn_pct": {
+        "L5": {
+          "A": 1.4619,
+          "B": 0.1217,
+          "C": 0.3094,
+          "D": 0.1775,
+          "E": 0.0639
+        },
+        "L11": {
+          "A": 1.7864,
+          "B": 0.1207,
+          "C": 0.0428,
+          "D": 0.0179,
+          "E": 0.0073
+        },
+        "L17": {
+          "A": 4.8759,
+          "B": 0.6112,
+          "C": 0.0216,
+          "D": 0.0372,
+          "E": 0.0029
+        },
+        "L23": {
+          "A": 9.2379,
+          "B": 1.0212,
+          "C": 0.2859,
+          "D": 0.051,
+          "E": 0.0128
+        },
+        "L29": {
+          "A": 4.9528,
+          "B": 12.9443,
+          "C": 0.5239,
+          "D": 0.119,
+          "E": 0.0057
+        },
+        "L35": {
+          "A": 59.9095,
+          "B": 0.4186,
+          "C": 0.0241,
+          "D": 0.0184,
+          "E": 0.0003
+        },
+        "L41": {
+          "A": 33.4536,
+          "B": 0.7029,
+          "C": 0.0409,
+          "D": 0.0695,
+          "E": 0.0004
+        }
+      },
+      "elapsed_sec": 9.17
+    },
+    {
+      "configuration": "3. Horiz-Only Cubic (Q14, c=0.40, b=3.5)",
+      "hop_task": "3-Hop",
+      "fluency_ppl": 10.6071,
+      "target_prob_pct": 94.2017,
+      "decoy_omega_prob_pct": 0.0973,
+      "recency_trap_prob_pct": 0.0758,
+      "vault_rank": 1,
+      "top1_vault_token": "7",
+      "vault_probability_distribution": {
+        "SUBVAULT-PRIME (79421)": 94.2017,
+        "SUBVAULT-OMEGA (63819)": 0.0973,
+        "SUBVAULT-ALPHA (49281)": 0.4943,
+        "SUBVAULT-HELIOS (54712)": 0.0973,
+        "SUBVAULT-HYPERION (83914)": 0.5601,
+        "SUBVAULT-NYX (37192)": 4.1389,
+        "SUBVAULT-VULCAN (28491)": 0.2646,
+        "SUBVAULT-ZEPHYR (91824)": 0.059
+      },
+      "logit_lens_trajectory": {
+        "L5": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L11": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0001
+        },
+        "L17": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L23": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L29": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L35": {
+          "target_79421_pct": 99.9974,
+          "decoy_63819_pct": 0.0
+        },
+        "L41": {
+          "target_79421_pct": 100.0,
+          "decoy_63819_pct": 0.0
+        }
+      },
+      "vertical_gap_telemetry": {
+        "L5->L11": {
+          "global_attn_u_norm": 69.2454,
+          "swa_5layer_drift_norm": 153.3302,
+          "drift_to_signal_ratio": 2.2143,
+          "rms_norm_inflation": 0.919,
+          "cosine_retention": 0.0152
+        },
+        "L11->L17": {
+          "global_attn_u_norm": 51.8319,
+          "swa_5layer_drift_norm": 131.9102,
+          "drift_to_signal_ratio": 2.545,
+          "rms_norm_inflation": 0.9245,
+          "cosine_retention": 0.4153
+        },
+        "L17->L23": {
+          "global_attn_u_norm": 66.5353,
+          "swa_5layer_drift_norm": 108.9144,
+          "drift_to_signal_ratio": 1.6369,
+          "rms_norm_inflation": 0.6239,
+          "cosine_retention": 0.0052
+        },
+        "L23->L29": {
+          "global_attn_u_norm": 280.9167,
+          "swa_5layer_drift_norm": 138.9682,
+          "drift_to_signal_ratio": 0.4947,
+          "rms_norm_inflation": 1.3132,
+          "cosine_retention": 0.0161
+        },
+        "L29->L35": {
+          "global_attn_u_norm": 48.5792,
+          "swa_5layer_drift_norm": 58.7642,
+          "drift_to_signal_ratio": 1.2097,
+          "rms_norm_inflation": 1.0761,
+          "cosine_retention": 0.5832
+        },
+        "L35->L41": {
+          "global_attn_u_norm": 31.5935,
+          "swa_5layer_drift_norm": 52.6491,
+          "drift_to_signal_ratio": 1.6665,
+          "rms_norm_inflation": 0.7473,
+          "cosine_retention": 0.0518
+        }
+      },
+      "per_layer_zone_attn_pct": {
+        "L5": {
+          "A": 1.4309,
+          "B": 0.1093,
+          "C": 0.2097,
+          "D": 0.1423,
+          "E": 0.0655
+        },
+        "L11": {
+          "A": 1.5037,
+          "B": 0.0899,
+          "C": 0.0412,
+          "D": 0.0119,
+          "E": 0.0117
+        },
+        "L17": {
+          "A": 5.6288,
+          "B": 0.5416,
+          "C": 0.0811,
+          "D": 0.1073,
+          "E": 0.0063
+        },
+        "L23": {
+          "A": 8.2619,
+          "B": 0.5835,
+          "C": 0.4938,
+          "D": 0.1431,
+          "E": 0.0295
+        },
+        "L29": {
+          "A": 4.3559,
+          "B": 5.4028,
+          "C": 5.6115,
+          "D": 1.0105,
+          "E": 0.0236
+        },
+        "L35": {
+          "A": 48.9107,
+          "B": 1.0355,
+          "C": 0.4949,
+          "D": 0.0733,
+          "E": 0.0047
+        },
+        "L41": {
+          "A": 21.2964,
+          "B": 1.7211,
+          "C": 0.7199,
+          "D": 0.2618,
+          "E": 0.002
+        }
+      },
+      "elapsed_sec": 8.09
+    },
+    {
+      "configuration": "3. Horiz-Only Cubic (Q14, c=0.40, b=3.5)",
+      "hop_task": "4-Hop",
+      "fluency_ppl": 10.6071,
+      "target_prob_pct": 94.2199,
+      "decoy_omega_prob_pct": 0.3398,
+      "recency_trap_prob_pct": 0.0591,
+      "vault_rank": 1,
+      "top1_vault_token": "7",
+      "vault_probability_distribution": {
+        "SUBVAULT-PRIME (79421)": 94.2199,
+        "SUBVAULT-OMEGA (63819)": 0.3398,
+        "SUBVAULT-ALPHA (49281)": 0.1417,
+        "SUBVAULT-HELIOS (54712)": 0.0406,
+        "SUBVAULT-HYPERION (83914)": 0.3398,
+        "SUBVAULT-NYX (37192)": 1.9555,
+        "SUBVAULT-VULCAN (28491)": 2.8452,
+        "SUBVAULT-ZEPHYR (91824)": 0.0521
+      },
+      "logit_lens_trajectory": {
+        "L5": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L11": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0002
+        },
+        "L17": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L23": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L29": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L35": {
+          "target_79421_pct": 99.9988,
+          "decoy_63819_pct": 0.0
+        },
+        "L41": {
+          "target_79421_pct": 100.0,
+          "decoy_63819_pct": 0.0
+        }
+      },
+      "vertical_gap_telemetry": {
+        "L5->L11": {
+          "global_attn_u_norm": 69.0731,
+          "swa_5layer_drift_norm": 153.1088,
+          "drift_to_signal_ratio": 2.2166,
+          "rms_norm_inflation": 0.9394,
+          "cosine_retention": 0.0153
+        },
+        "L11->L17": {
+          "global_attn_u_norm": 52.0535,
+          "swa_5layer_drift_norm": 130.9485,
+          "drift_to_signal_ratio": 2.5157,
+          "rms_norm_inflation": 0.9154,
+          "cosine_retention": 0.4255
+        },
+        "L17->L23": {
+          "global_attn_u_norm": 65.1969,
+          "swa_5layer_drift_norm": 107.9901,
+          "drift_to_signal_ratio": 1.6564,
+          "rms_norm_inflation": 0.6213,
+          "cosine_retention": 0.0083
+        },
+        "L23->L29": {
+          "global_attn_u_norm": 276.5754,
+          "swa_5layer_drift_norm": 138.7799,
+          "drift_to_signal_ratio": 0.5018,
+          "rms_norm_inflation": 1.3073,
+          "cosine_retention": 0.012
+        },
+        "L29->L35": {
+          "global_attn_u_norm": 47.92,
+          "swa_5layer_drift_norm": 56.0187,
+          "drift_to_signal_ratio": 1.169,
+          "rms_norm_inflation": 1.0309,
+          "cosine_retention": 0.576
+        },
+        "L35->L41": {
+          "global_attn_u_norm": 31.5724,
+          "swa_5layer_drift_norm": 50.6329,
+          "drift_to_signal_ratio": 1.6037,
+          "rms_norm_inflation": 0.7477,
+          "cosine_retention": 0.0707
+        }
+      },
+      "per_layer_zone_attn_pct": {
+        "L5": {
+          "A": 1.6242,
+          "B": 0.1054,
+          "C": 0.2059,
+          "D": 0.131,
+          "E": 0.062
+        },
+        "L11": {
+          "A": 1.5398,
+          "B": 0.0885,
+          "C": 0.0406,
+          "D": 0.0099,
+          "E": 0.0105
+        },
+        "L17": {
+          "A": 5.6742,
+          "B": 0.5024,
+          "C": 0.0952,
+          "D": 0.1344,
+          "E": 0.008
+        },
+        "L23": {
+          "A": 8.9658,
+          "B": 0.398,
+          "C": 0.2917,
+          "D": 0.1351,
+          "E": 0.044
+        },
+        "L29": {
+          "A": 6.6353,
+          "B": 1.8937,
+          "C": 1.5301,
+          "D": 1.7503,
+          "E": 0.1335
+        },
+        "L35": {
+          "A": 49.3219,
+          "B": 0.754,
+          "C": 0.3267,
+          "D": 0.0625,
+          "E": 0.0045
+        },
+        "L41": {
+          "A": 19.833,
+          "B": 1.3355,
+          "C": 0.452,
+          "D": 0.2145,
+          "E": 0.0024
+        }
+      },
+      "elapsed_sec": 9.2
+    },
+    {
+      "configuration": "3. Horiz-Only Cubic (Q14, c=0.40, b=3.5)",
+      "hop_task": "5-Hop",
+      "fluency_ppl": 10.6071,
+      "target_prob_pct": 61.0232,
+      "decoy_omega_prob_pct": 13.6161,
+      "recency_trap_prob_pct": 0.4659,
+      "vault_rank": 1,
+      "top1_vault_token": "7",
+      "vault_probability_distribution": {
+        "SUBVAULT-PRIME (79421)": 61.0232,
+        "SUBVAULT-OMEGA (63819)": 13.6161,
+        "SUBVAULT-ALPHA (49281)": 0.8704,
+        "SUBVAULT-HELIOS (54712)": 0.3202,
+        "SUBVAULT-HYPERION (83914)": 0.2826,
+        "SUBVAULT-NYX (37192)": 3.4427,
+        "SUBVAULT-VULCAN (28491)": 19.8113,
+        "SUBVAULT-ZEPHYR (91824)": 0.081
+      },
+      "logit_lens_trajectory": {
+        "L5": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L11": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0001
+        },
+        "L17": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L23": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L29": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L35": {
+          "target_79421_pct": 5.4853,
+          "decoy_63819_pct": 0.0154
+        },
+        "L41": {
+          "target_79421_pct": 98.4944,
+          "decoy_63819_pct": 0.4025
+        }
+      },
+      "vertical_gap_telemetry": {
+        "L5->L11": {
+          "global_attn_u_norm": 69.1219,
+          "swa_5layer_drift_norm": 153.0438,
+          "drift_to_signal_ratio": 2.2141,
+          "rms_norm_inflation": 0.9208,
+          "cosine_retention": 0.0127
+        },
+        "L11->L17": {
+          "global_attn_u_norm": 52.0958,
+          "swa_5layer_drift_norm": 130.1612,
+          "drift_to_signal_ratio": 2.4985,
+          "rms_norm_inflation": 0.9185,
+          "cosine_retention": 0.4269
+        },
+        "L17->L23": {
+          "global_attn_u_norm": 66.2851,
+          "swa_5layer_drift_norm": 108.1374,
+          "drift_to_signal_ratio": 1.6314,
+          "rms_norm_inflation": 0.6295,
+          "cosine_retention": 0.0025
+        },
+        "L23->L29": {
+          "global_attn_u_norm": 278.3651,
+          "swa_5layer_drift_norm": 140.781,
+          "drift_to_signal_ratio": 0.5057,
+          "rms_norm_inflation": 1.321,
+          "cosine_retention": 0.0161
+        },
+        "L29->L35": {
+          "global_attn_u_norm": 53.8245,
+          "swa_5layer_drift_norm": 68.7262,
+          "drift_to_signal_ratio": 1.2769,
+          "rms_norm_inflation": 1.1729,
+          "cosine_retention": 0.3778
+        },
+        "L35->L41": {
+          "global_attn_u_norm": 31.8377,
+          "swa_5layer_drift_norm": 52.1409,
+          "drift_to_signal_ratio": 1.6377,
+          "rms_norm_inflation": 0.7626,
+          "cosine_retention": -0.3138
+        }
+      },
+      "per_layer_zone_attn_pct": {
+        "L5": {
+          "A": 1.3879,
+          "B": 0.1548,
+          "C": 0.2001,
+          "D": 0.2054,
+          "E": 0.0768
+        },
+        "L11": {
+          "A": 1.5294,
+          "B": 0.0909,
+          "C": 0.0294,
+          "D": 0.0124,
+          "E": 0.0161
+        },
+        "L17": {
+          "A": 4.2289,
+          "B": 0.8927,
+          "C": 0.0649,
+          "D": 0.2155,
+          "E": 0.083
+        },
+        "L23": {
+          "A": 6.9594,
+          "B": 0.2568,
+          "C": 0.1311,
+          "D": 0.0699,
+          "E": 0.0643
+        },
+        "L29": {
+          "A": 2.9987,
+          "B": 0.1451,
+          "C": 0.0964,
+          "D": 0.9119,
+          "E": 24.4842
+        },
+        "L35": {
+          "A": 21.9907,
+          "B": 0.6021,
+          "C": 0.4107,
+          "D": 0.3559,
+          "E": 0.0637
+        },
+        "L41": {
+          "A": 18.8628,
+          "B": 0.5267,
+          "C": 0.1812,
+          "D": 0.1092,
+          "E": 0.014
+        }
+      },
+      "elapsed_sec": 7.88
+    },
+    {
+      "configuration": "4. Horiz-Only Stepped RG (Q28, RG, b=3.5)",
+      "hop_task": "1-Hop",
+      "fluency_ppl": 10.621,
+      "target_prob_pct": 99.9903,
+      "decoy_omega_prob_pct": 0.0002,
+      "recency_trap_prob_pct": 0.0008,
+      "vault_rank": 1,
+      "top1_vault_token": "7",
+      "vault_probability_distribution": {
+        "SUBVAULT-PRIME (79421)": 99.9903,
+        "SUBVAULT-OMEGA (63819)": 0.0002,
+        "SUBVAULT-ALPHA (49281)": 0.0008,
+        "SUBVAULT-HELIOS (54712)": 0.0004,
+        "SUBVAULT-HYPERION (83914)": 0.0028,
+        "SUBVAULT-NYX (37192)": 0.0028,
+        "SUBVAULT-VULCAN (28491)": 0.0006,
+        "SUBVAULT-ZEPHYR (91824)": 0.0003
+      },
+      "logit_lens_trajectory": {
+        "L5": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L11": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0008
+        },
+        "L17": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L23": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L29": {
+          "target_79421_pct": 0.0007,
+          "decoy_63819_pct": 0.0
+        },
+        "L35": {
+          "target_79421_pct": 99.9998,
+          "decoy_63819_pct": 0.0
+        },
+        "L41": {
+          "target_79421_pct": 100.0,
+          "decoy_63819_pct": 0.0
+        }
+      },
+      "vertical_gap_telemetry": {
+        "L5->L11": {
+          "global_attn_u_norm": 70.9753,
+          "swa_5layer_drift_norm": 153.7502,
+          "drift_to_signal_ratio": 2.1662,
+          "rms_norm_inflation": 0.9348,
+          "cosine_retention": 0.0199
+        },
+        "L11->L17": {
+          "global_attn_u_norm": 50.793,
+          "swa_5layer_drift_norm": 134.0551,
+          "drift_to_signal_ratio": 2.6392,
+          "rms_norm_inflation": 0.9343,
+          "cosine_retention": 0.3973
+        },
+        "L17->L23": {
+          "global_attn_u_norm": 66.4824,
+          "swa_5layer_drift_norm": 109.4961,
+          "drift_to_signal_ratio": 1.647,
+          "rms_norm_inflation": 0.6095,
+          "cosine_retention": 0.0073
+        },
+        "L23->L29": {
+          "global_attn_u_norm": 285.1161,
+          "swa_5layer_drift_norm": 144.4016,
+          "drift_to_signal_ratio": 0.5065,
+          "rms_norm_inflation": 1.2729,
+          "cosine_retention": -0.0015
+        },
+        "L29->L35": {
+          "global_attn_u_norm": 49.9978,
+          "swa_5layer_drift_norm": 54.1588,
+          "drift_to_signal_ratio": 1.0832,
+          "rms_norm_inflation": 1.0273,
+          "cosine_retention": 0.5849
+        },
+        "L35->L41": {
+          "global_attn_u_norm": 31.5529,
+          "swa_5layer_drift_norm": 51.3626,
+          "drift_to_signal_ratio": 1.6278,
+          "rms_norm_inflation": 0.8453,
+          "cosine_retention": 0.1327
+        }
+      },
+      "per_layer_zone_attn_pct": {
+        "L5": {
+          "A": 1.0261,
+          "B": 0.1749,
+          "C": 0.2414,
+          "D": 0.1863,
+          "E": 0.1031
+        },
+        "L11": {
+          "A": 2.7216,
+          "B": 0.5752,
+          "C": 0.1193,
+          "D": 0.0359,
+          "E": 0.0259
+        },
+        "L17": {
+          "A": 5.0861,
+          "B": 0.8877,
+          "C": 0.0156,
+          "D": 0.0706,
+          "E": 0.0002
+        },
+        "L23": {
+          "A": 9.8716,
+          "B": 0.464,
+          "C": 0.0578,
+          "D": 0.0014,
+          "E": 0.0
+        },
+        "L29": {
+          "A": 25.898,
+          "B": 1.8132,
+          "C": 0.0332,
+          "D": 0.0,
+          "E": 0.0
+        },
+        "L35": {
+          "A": 77.8197,
+          "B": 0.198,
+          "C": 0.0,
+          "D": 0.0,
+          "E": 0.0
+        },
+        "L41": {
+          "A": 37.4025,
+          "B": 0.2125,
+          "C": 0.0005,
+          "D": 0.0,
+          "E": 0.0
+        }
+      },
+      "elapsed_sec": 8.01
+    },
+    {
+      "configuration": "4. Horiz-Only Stepped RG (Q28, RG, b=3.5)",
+      "hop_task": "2-Hop",
+      "fluency_ppl": 10.621,
+      "target_prob_pct": 99.8223,
+      "decoy_omega_prob_pct": 0.001,
+      "recency_trap_prob_pct": 0.0013,
+      "vault_rank": 1,
+      "top1_vault_token": "7",
+      "vault_probability_distribution": {
+        "SUBVAULT-PRIME (79421)": 99.8223,
+        "SUBVAULT-OMEGA (63819)": 0.001,
+        "SUBVAULT-ALPHA (49281)": 0.0296,
+        "SUBVAULT-HELIOS (54712)": 0.0051,
+        "SUBVAULT-HYPERION (83914)": 0.0203,
+        "SUBVAULT-NYX (37192)": 0.1169,
+        "SUBVAULT-VULCAN (28491)": 0.0021,
+        "SUBVAULT-ZEPHYR (91824)": 0.0004
+      },
+      "logit_lens_trajectory": {
+        "L5": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L11": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0005
+        },
+        "L17": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L23": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L29": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L35": {
+          "target_79421_pct": 99.9936,
+          "decoy_63819_pct": 0.0
+        },
+        "L41": {
+          "target_79421_pct": 100.0,
+          "decoy_63819_pct": 0.0
+        }
+      },
+      "vertical_gap_telemetry": {
+        "L5->L11": {
+          "global_attn_u_norm": 70.6538,
+          "swa_5layer_drift_norm": 153.7814,
+          "drift_to_signal_ratio": 2.1765,
+          "rms_norm_inflation": 0.9188,
+          "cosine_retention": 0.01
+        },
+        "L11->L17": {
+          "global_attn_u_norm": 50.7629,
+          "swa_5layer_drift_norm": 132.7836,
+          "drift_to_signal_ratio": 2.6158,
+          "rms_norm_inflation": 0.934,
+          "cosine_retention": 0.3932
+        },
+        "L17->L23": {
+          "global_attn_u_norm": 67.521,
+          "swa_5layer_drift_norm": 109.8977,
+          "drift_to_signal_ratio": 1.6276,
+          "rms_norm_inflation": 0.6099,
+          "cosine_retention": 0.0079
+        },
+        "L23->L29": {
+          "global_attn_u_norm": 290.1719,
+          "swa_5layer_drift_norm": 142.3172,
+          "drift_to_signal_ratio": 0.4905,
+          "rms_norm_inflation": 1.2801,
+          "cosine_retention": 0.0022
+        },
+        "L29->L35": {
+          "global_attn_u_norm": 50.8529,
+          "swa_5layer_drift_norm": 60.2161,
+          "drift_to_signal_ratio": 1.1841,
+          "rms_norm_inflation": 1.0783,
+          "cosine_retention": 0.521
+        },
+        "L35->L41": {
+          "global_attn_u_norm": 31.6609,
+          "swa_5layer_drift_norm": 52.0442,
+          "drift_to_signal_ratio": 1.6438,
+          "rms_norm_inflation": 0.8296,
+          "cosine_retention": -0.1084
+        }
+      },
+      "per_layer_zone_attn_pct": {
+        "L5": {
+          "A": 1.7075,
+          "B": 0.11,
+          "C": 0.2362,
+          "D": 0.1303,
+          "E": 0.0401
+        },
+        "L11": {
+          "A": 3.1151,
+          "B": 0.7197,
+          "C": 0.099,
+          "D": 0.0312,
+          "E": 0.0275
+        },
+        "L17": {
+          "A": 5.2406,
+          "B": 1.4826,
+          "C": 0.064,
+          "D": 0.1094,
+          "E": 0.0003
+        },
+        "L23": {
+          "A": 10.9422,
+          "B": 0.8775,
+          "C": 0.1678,
+          "D": 0.0023,
+          "E": 0.0
+        },
+        "L29": {
+          "A": 4.032,
+          "B": 15.5415,
+          "C": 0.2619,
+          "D": 0.0,
+          "E": 0.0
+        },
+        "L35": {
+          "A": 50.8567,
+          "B": 0.3069,
+          "C": 0.0,
+          "D": 0.0,
+          "E": 0.0
+        },
+        "L41": {
+          "A": 27.7615,
+          "B": 0.2498,
+          "C": 0.0002,
+          "D": 0.0,
+          "E": 0.0
+        }
+      },
+      "elapsed_sec": 9.12
+    },
+    {
+      "configuration": "4. Horiz-Only Stepped RG (Q28, RG, b=3.5)",
+      "hop_task": "3-Hop",
+      "fluency_ppl": 10.621,
+      "target_prob_pct": 94.7053,
+      "decoy_omega_prob_pct": 0.0979,
+      "recency_trap_prob_pct": 0.0762,
+      "vault_rank": 1,
+      "top1_vault_token": "7",
+      "vault_probability_distribution": {
+        "SUBVAULT-PRIME (79421)": 94.7053,
+        "SUBVAULT-OMEGA (63819)": 0.0979,
+        "SUBVAULT-ALPHA (49281)": 0.5631,
+        "SUBVAULT-HELIOS (54712)": 0.1109,
+        "SUBVAULT-HYPERION (83914)": 1.1922,
+        "SUBVAULT-NYX (37192)": 2.8599,
+        "SUBVAULT-VULCAN (28491)": 0.3416,
+        "SUBVAULT-ZEPHYR (91824)": 0.0408
+      },
+      "logit_lens_trajectory": {
+        "L5": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L11": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0014
+        },
+        "L17": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L23": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L29": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L35": {
+          "target_79421_pct": 99.9962,
+          "decoy_63819_pct": 0.0
+        },
+        "L41": {
+          "target_79421_pct": 100.0,
+          "decoy_63819_pct": 0.0
+        }
+      },
+      "vertical_gap_telemetry": {
+        "L5->L11": {
+          "global_attn_u_norm": 70.0558,
+          "swa_5layer_drift_norm": 153.4252,
+          "drift_to_signal_ratio": 2.19,
+          "rms_norm_inflation": 0.9159,
+          "cosine_retention": 0.0143
+        },
+        "L11->L17": {
+          "global_attn_u_norm": 50.607,
+          "swa_5layer_drift_norm": 131.2567,
+          "drift_to_signal_ratio": 2.5936,
+          "rms_norm_inflation": 0.9277,
+          "cosine_retention": 0.3949
+        },
+        "L17->L23": {
+          "global_attn_u_norm": 67.2203,
+          "swa_5layer_drift_norm": 110.215,
+          "drift_to_signal_ratio": 1.6396,
+          "rms_norm_inflation": 0.6172,
+          "cosine_retention": 0.0042
+        },
+        "L23->L29": {
+          "global_attn_u_norm": 281.8658,
+          "swa_5layer_drift_norm": 139.5034,
+          "drift_to_signal_ratio": 0.4949,
+          "rms_norm_inflation": 1.291,
+          "cosine_retention": 0.014
+        },
+        "L29->L35": {
+          "global_attn_u_norm": 45.8008,
+          "swa_5layer_drift_norm": 58.6548,
+          "drift_to_signal_ratio": 1.2806,
+          "rms_norm_inflation": 1.0777,
+          "cosine_retention": 0.561
+        },
+        "L35->L41": {
+          "global_attn_u_norm": 31.6206,
+          "swa_5layer_drift_norm": 52.15,
+          "drift_to_signal_ratio": 1.6492,
+          "rms_norm_inflation": 0.7459,
+          "cosine_retention": -0.002
+        }
+      },
+      "per_layer_zone_attn_pct": {
+        "L5": {
+          "A": 1.3329,
+          "B": 0.0775,
+          "C": 0.1851,
+          "D": 0.0888,
+          "E": 0.0446
+        },
+        "L11": {
+          "A": 2.1734,
+          "B": 0.5474,
+          "C": 0.0989,
+          "D": 0.0321,
+          "E": 0.0308
+        },
+        "L17": {
+          "A": 5.1142,
+          "B": 1.1441,
+          "C": 0.1945,
+          "D": 0.3119,
+          "E": 0.0007
+        },
+        "L23": {
+          "A": 9.2583,
+          "B": 0.3364,
+          "C": 0.2323,
+          "D": 0.0054,
+          "E": 0.0
+        },
+        "L29": {
+          "A": 4.0988,
+          "B": 6.1063,
+          "C": 3.4366,
+          "D": 0.0,
+          "E": 0.0
+        },
+        "L35": {
+          "A": 38.3572,
+          "B": 0.57,
+          "C": 0.0,
+          "D": 0.0,
+          "E": 0.0
+        },
+        "L41": {
+          "A": 18.8001,
+          "B": 0.4142,
+          "C": 0.0006,
+          "D": 0.0,
+          "E": 0.0
+        }
+      },
+      "elapsed_sec": 8.05
+    },
+    {
+      "configuration": "4. Horiz-Only Stepped RG (Q28, RG, b=3.5)",
+      "hop_task": "4-Hop",
+      "fluency_ppl": 10.621,
+      "target_prob_pct": 91.1823,
+      "decoy_omega_prob_pct": 0.3726,
+      "recency_trap_prob_pct": 0.1068,
+      "vault_rank": 1,
+      "top1_vault_token": "7",
+      "vault_probability_distribution": {
+        "SUBVAULT-PRIME (79421)": 91.1823,
+        "SUBVAULT-OMEGA (63819)": 0.3726,
+        "SUBVAULT-ALPHA (49281)": 0.3726,
+        "SUBVAULT-HELIOS (54712)": 0.0831,
+        "SUBVAULT-HYPERION (83914)": 1.4738,
+        "SUBVAULT-NYX (37192)": 2.7535,
+        "SUBVAULT-VULCAN (28491)": 3.5355,
+        "SUBVAULT-ZEPHYR (91824)": 0.1068
+      },
+      "logit_lens_trajectory": {
+        "L5": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L11": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0011
+        },
+        "L17": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L23": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L29": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L35": {
+          "target_79421_pct": 99.9985,
+          "decoy_63819_pct": 0.0
+        },
+        "L41": {
+          "target_79421_pct": 99.9999,
+          "decoy_63819_pct": 0.0
+        }
+      },
+      "vertical_gap_telemetry": {
+        "L5->L11": {
+          "global_attn_u_norm": 69.8611,
+          "swa_5layer_drift_norm": 152.9942,
+          "drift_to_signal_ratio": 2.19,
+          "rms_norm_inflation": 0.9173,
+          "cosine_retention": 0.0147
+        },
+        "L11->L17": {
+          "global_attn_u_norm": 50.6843,
+          "swa_5layer_drift_norm": 130.492,
+          "drift_to_signal_ratio": 2.5746,
+          "rms_norm_inflation": 0.9274,
+          "cosine_retention": 0.4043
+        },
+        "L17->L23": {
+          "global_attn_u_norm": 66.4625,
+          "swa_5layer_drift_norm": 109.6897,
+          "drift_to_signal_ratio": 1.6504,
+          "rms_norm_inflation": 0.6135,
+          "cosine_retention": 0.0074
+        },
+        "L23->L29": {
+          "global_attn_u_norm": 279.5314,
+          "swa_5layer_drift_norm": 139.564,
+          "drift_to_signal_ratio": 0.4993,
+          "rms_norm_inflation": 1.2811,
+          "cosine_retention": 0.0097
+        },
+        "L29->L35": {
+          "global_attn_u_norm": 44.8557,
+          "swa_5layer_drift_norm": 54.8655,
+          "drift_to_signal_ratio": 1.2232,
+          "rms_norm_inflation": 1.0218,
+          "cosine_retention": 0.5695
+        },
+        "L35->L41": {
+          "global_attn_u_norm": 31.5623,
+          "swa_5layer_drift_norm": 52.6366,
+          "drift_to_signal_ratio": 1.6677,
+          "rms_norm_inflation": 0.7151,
+          "cosine_retention": 0.1658
+        }
+      },
+      "per_layer_zone_attn_pct": {
+        "L5": {
+          "A": 1.4116,
+          "B": 0.0769,
+          "C": 0.1921,
+          "D": 0.0851,
+          "E": 0.0459
+        },
+        "L11": {
+          "A": 2.2102,
+          "B": 0.558,
+          "C": 0.0966,
+          "D": 0.0292,
+          "E": 0.0283
+        },
+        "L17": {
+          "A": 5.3718,
+          "B": 1.1368,
+          "C": 0.2435,
+          "D": 0.298,
+          "E": 0.0009
+        },
+        "L23": {
+          "A": 8.8529,
+          "B": 0.2733,
+          "C": 0.1686,
+          "D": 0.0054,
+          "E": 0.0
+        },
+        "L29": {
+          "A": 4.836,
+          "B": 3.4871,
+          "C": 1.263,
+          "D": 0.0,
+          "E": 0.0
+        },
+        "L35": {
+          "A": 36.8305,
+          "B": 0.5835,
+          "C": 0.0001,
+          "D": 0.0,
+          "E": 0.0
+        },
+        "L41": {
+          "A": 15.8331,
+          "B": 0.4195,
+          "C": 0.0008,
+          "D": 0.0,
+          "E": 0.0
+        }
+      },
+      "elapsed_sec": 9.11
+    },
+    {
+      "configuration": "4. Horiz-Only Stepped RG (Q28, RG, b=3.5)",
+      "hop_task": "5-Hop",
+      "fluency_ppl": 10.621,
+      "target_prob_pct": 93.8942,
+      "decoy_omega_prob_pct": 0.9205,
+      "recency_trap_prob_pct": 0.0667,
+      "vault_rank": 1,
+      "top1_vault_token": "7",
+      "vault_probability_distribution": {
+        "SUBVAULT-PRIME (79421)": 93.8942,
+        "SUBVAULT-OMEGA (63819)": 0.9205,
+        "SUBVAULT-ALPHA (49281)": 0.3386,
+        "SUBVAULT-HELIOS (54712)": 0.16,
+        "SUBVAULT-HYPERION (83914)": 0.8123,
+        "SUBVAULT-NYX (37192)": 2.2082,
+        "SUBVAULT-VULCAN (28491)": 1.5177,
+        "SUBVAULT-ZEPHYR (91824)": 0.0756
+      },
+      "logit_lens_trajectory": {
+        "L5": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L11": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0012
+        },
+        "L17": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L23": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L29": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L35": {
+          "target_79421_pct": 99.9964,
+          "decoy_63819_pct": 0.0
+        },
+        "L41": {
+          "target_79421_pct": 100.0,
+          "decoy_63819_pct": 0.0
+        }
+      },
+      "vertical_gap_telemetry": {
+        "L5->L11": {
+          "global_attn_u_norm": 69.9317,
+          "swa_5layer_drift_norm": 152.5149,
+          "drift_to_signal_ratio": 2.1809,
+          "rms_norm_inflation": 0.9105,
+          "cosine_retention": 0.0123
+        },
+        "L11->L17": {
+          "global_attn_u_norm": 50.7421,
+          "swa_5layer_drift_norm": 129.8216,
+          "drift_to_signal_ratio": 2.5585,
+          "rms_norm_inflation": 0.9145,
+          "cosine_retention": 0.402
+        },
+        "L17->L23": {
+          "global_attn_u_norm": 67.9736,
+          "swa_5layer_drift_norm": 109.595,
+          "drift_to_signal_ratio": 1.6123,
+          "rms_norm_inflation": 0.6199,
+          "cosine_retention": -0.0007
+        },
+        "L23->L29": {
+          "global_attn_u_norm": 277.4185,
+          "swa_5layer_drift_norm": 140.6326,
+          "drift_to_signal_ratio": 0.5069,
+          "rms_norm_inflation": 1.2904,
+          "cosine_retention": 0.0115
+        },
+        "L29->L35": {
+          "global_attn_u_norm": 47.3135,
+          "swa_5layer_drift_norm": 54.8866,
+          "drift_to_signal_ratio": 1.1601,
+          "rms_norm_inflation": 1.0252,
+          "cosine_retention": 0.5152
+        },
+        "L35->L41": {
+          "global_attn_u_norm": 31.5531,
+          "swa_5layer_drift_norm": 49.8976,
+          "drift_to_signal_ratio": 1.5814,
+          "rms_norm_inflation": 0.7614,
+          "cosine_retention": 0.0976
+        }
+      },
+      "per_layer_zone_attn_pct": {
+        "L5": {
+          "A": 1.1479,
+          "B": 0.1048,
+          "C": 0.1482,
+          "D": 0.1333,
+          "E": 0.0502
+        },
+        "L11": {
+          "A": 2.0596,
+          "B": 0.4704,
+          "C": 0.08,
+          "D": 0.0315,
+          "E": 0.0322
+        },
+        "L17": {
+          "A": 3.9739,
+          "B": 1.2243,
+          "C": 0.1162,
+          "D": 0.4439,
+          "E": 0.0091
+        },
+        "L23": {
+          "A": 8.2321,
+          "B": 0.1551,
+          "C": 0.101,
+          "D": 0.0029,
+          "E": 0.0
+        },
+        "L29": {
+          "A": 4.8689,
+          "B": 0.8682,
+          "C": 2.7748,
+          "D": 0.0,
+          "E": 0.0
+        },
+        "L35": {
+          "A": 45.3304,
+          "B": 0.4504,
+          "C": 0.0,
+          "D": 0.0,
+          "E": 0.0
+        },
+        "L41": {
+          "A": 17.8606,
+          "B": 0.284,
+          "C": 0.0006,
+          "D": 0.0,
+          "E": 0.0
+        }
+      },
+      "elapsed_sec": 7.87
+    },
+    {
+      "configuration": "5. 2D Vert-Highway on Sparse Q7 (gv=0.30)",
+      "hop_task": "1-Hop",
+      "fluency_ppl": 10.6446,
+      "target_prob_pct": 0.1876,
+      "decoy_omega_prob_pct": 0.0446,
+      "recency_trap_prob_pct": 66.7964,
+      "vault_rank": 5,
+      "top1_vault_token": "3",
+      "vault_probability_distribution": {
+        "SUBVAULT-PRIME (79421)": 0.1876,
+        "SUBVAULT-OMEGA (63819)": 0.0446,
+        "SUBVAULT-ALPHA (49281)": 0.1004,
+        "SUBVAULT-HELIOS (54712)": 0.2409,
+        "SUBVAULT-HYPERION (83914)": 0.012,
+        "SUBVAULT-NYX (37192)": 2.59,
+        "SUBVAULT-VULCAN (28491)": 1.2234,
+        "SUBVAULT-ZEPHYR (91824)": 0.2126
+      },
+      "logit_lens_trajectory": {
+        "L5": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L11": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0025
+        },
+        "L17": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L23": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L29": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L35": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L41": {
+          "target_79421_pct": 0.0016,
+          "decoy_63819_pct": 0.0002
+        }
+      },
+      "vertical_gap_telemetry": {
+        "L5->L11": {
+          "global_attn_u_norm": 70.5219,
+          "swa_5layer_drift_norm": 154.0045,
+          "drift_to_signal_ratio": 2.1838,
+          "rms_norm_inflation": 0.9402,
+          "cosine_retention": 0.0246
+        },
+        "L11->L17": {
+          "global_attn_u_norm": 56.9923,
+          "swa_5layer_drift_norm": 135.7677,
+          "drift_to_signal_ratio": 2.3822,
+          "rms_norm_inflation": 0.9146,
+          "cosine_retention": 0.438
+        },
+        "L17->L23": {
+          "global_attn_u_norm": 61.3532,
+          "swa_5layer_drift_norm": 109.0191,
+          "drift_to_signal_ratio": 1.7769,
+          "rms_norm_inflation": 0.6186,
+          "cosine_retention": -0.0158
+        },
+        "L23->L29": {
+          "global_attn_u_norm": 283.1735,
+          "swa_5layer_drift_norm": 149.539,
+          "drift_to_signal_ratio": 0.5281,
+          "rms_norm_inflation": 1.1703,
+          "cosine_retention": 0.0174
+        },
+        "L29->L35": {
+          "global_attn_u_norm": 55.2693,
+          "swa_5layer_drift_norm": 83.9241,
+          "drift_to_signal_ratio": 1.5185,
+          "rms_norm_inflation": 1.3298,
+          "cosine_retention": 0.549
+        },
+        "L35->L41": {
+          "global_attn_u_norm": 32.0559,
+          "swa_5layer_drift_norm": 74.0698,
+          "drift_to_signal_ratio": 2.3106,
+          "rms_norm_inflation": 0.8078,
+          "cosine_retention": 0.5442
+        }
+      },
+      "per_layer_zone_attn_pct": {
+        "L5": {
+          "A": 0.7892,
+          "B": 0.1801,
+          "C": 0.3305,
+          "D": 0.2501,
+          "E": 0.0706
+        },
+        "L11": {
+          "A": 0.3703,
+          "B": 0.6698,
+          "C": 0.3345,
+          "D": 0.0805,
+          "E": 0.083
+        },
+        "L17": {
+          "A": 4.0638,
+          "B": 0.3494,
+          "C": 0.0113,
+          "D": 0.053,
+          "E": 0.0007
+        },
+        "L23": {
+          "A": 0.4544,
+          "B": 0.9452,
+          "C": 0.4294,
+          "D": 0.0343,
+          "E": 1.402
+        },
+        "L29": {
+          "A": 2.1427,
+          "B": 0.5386,
+          "C": 0.3306,
+          "D": 0.1267,
+          "E": 0.064
+        },
+        "L35": {
+          "A": 2.7669,
+          "B": 0.148,
+          "C": 0.1191,
+          "D": 0.3584,
+          "E": 0.2502
+        },
+        "L41": {
+          "A": 0.4135,
+          "B": 0.0507,
+          "C": 0.0604,
+          "D": 0.2296,
+          "E": 0.2386
+        }
+      },
+      "elapsed_sec": 8.0
+    },
+    {
+      "configuration": "5. 2D Vert-Highway on Sparse Q7 (gv=0.30)",
+      "hop_task": "2-Hop",
+      "fluency_ppl": 10.6446,
+      "target_prob_pct": 0.1605,
+      "decoy_omega_prob_pct": 0.1103,
+      "recency_trap_prob_pct": 73.3733,
+      "vault_rank": 6,
+      "top1_vault_token": "3",
+      "vault_probability_distribution": {
+        "SUBVAULT-PRIME (79421)": 0.1605,
+        "SUBVAULT-OMEGA (63819)": 0.1103,
+        "SUBVAULT-ALPHA (49281)": 0.2335,
+        "SUBVAULT-HELIOS (54712)": 0.6348,
+        "SUBVAULT-HYPERION (83914)": 0.0149,
+        "SUBVAULT-NYX (37192)": 7.7335,
+        "SUBVAULT-VULCAN (28491)": 0.9236,
+        "SUBVAULT-ZEPHYR (91824)": 0.2335
+      },
+      "logit_lens_trajectory": {
+        "L5": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L11": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0008
+        },
+        "L17": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L23": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L29": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L35": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L41": {
+          "target_79421_pct": 0.0018,
+          "decoy_63819_pct": 0.0011
+        }
+      },
+      "vertical_gap_telemetry": {
+        "L5->L11": {
+          "global_attn_u_norm": 69.6847,
+          "swa_5layer_drift_norm": 154.9735,
+          "drift_to_signal_ratio": 2.2239,
+          "rms_norm_inflation": 0.9348,
+          "cosine_retention": 0.0116
+        },
+        "L11->L17": {
+          "global_attn_u_norm": 56.82,
+          "swa_5layer_drift_norm": 135.0271,
+          "drift_to_signal_ratio": 2.3764,
+          "rms_norm_inflation": 0.8847,
+          "cosine_retention": 0.4228
+        },
+        "L17->L23": {
+          "global_attn_u_norm": 62.1996,
+          "swa_5layer_drift_norm": 106.842,
+          "drift_to_signal_ratio": 1.7177,
+          "rms_norm_inflation": 0.6269,
+          "cosine_retention": -0.0139
+        },
+        "L23->L29": {
+          "global_attn_u_norm": 297.5338,
+          "swa_5layer_drift_norm": 149.4877,
+          "drift_to_signal_ratio": 0.5024,
+          "rms_norm_inflation": 1.1775,
+          "cosine_retention": 0.0187
+        },
+        "L29->L35": {
+          "global_attn_u_norm": 56.0456,
+          "swa_5layer_drift_norm": 87.2558,
+          "drift_to_signal_ratio": 1.5569,
+          "rms_norm_inflation": 1.3342,
+          "cosine_retention": 0.5517
+        },
+        "L35->L41": {
+          "global_attn_u_norm": 32.0966,
+          "swa_5layer_drift_norm": 75.9476,
+          "drift_to_signal_ratio": 2.3662,
+          "rms_norm_inflation": 0.8331,
+          "cosine_retention": 0.5696
+        }
+      },
+      "per_layer_zone_attn_pct": {
+        "L5": {
+          "A": 1.2517,
+          "B": 0.1212,
+          "C": 0.4418,
+          "D": 0.1703,
+          "E": 0.0438
+        },
+        "L11": {
+          "A": 0.5285,
+          "B": 0.7036,
+          "C": 0.2749,
+          "D": 0.0477,
+          "E": 0.0444
+        },
+        "L17": {
+          "A": 4.5238,
+          "B": 0.1253,
+          "C": 0.0068,
+          "D": 0.0312,
+          "E": 0.0003
+        },
+        "L23": {
+          "A": 0.3344,
+          "B": 0.4684,
+          "C": 0.3168,
+          "D": 0.042,
+          "E": 0.7059
+        },
+        "L29": {
+          "A": 2.4091,
+          "B": 0.6767,
+          "C": 0.3733,
+          "D": 0.1394,
+          "E": 0.0777
+        },
+        "L35": {
+          "A": 2.106,
+          "B": 0.0754,
+          "C": 0.1049,
+          "D": 0.3827,
+          "E": 0.2519
+        },
+        "L41": {
+          "A": 0.3492,
+          "B": 0.0315,
+          "C": 0.0559,
+          "D": 0.1571,
+          "E": 0.2699
+        }
+      },
+      "elapsed_sec": 9.13
+    },
+    {
+      "configuration": "5. 2D Vert-Highway on Sparse Q7 (gv=0.30)",
+      "hop_task": "3-Hop",
+      "fluency_ppl": 10.6446,
+      "target_prob_pct": 0.247,
+      "decoy_omega_prob_pct": 0.1698,
+      "recency_trap_prob_pct": 77.6203,
+      "vault_rank": 5,
+      "top1_vault_token": "3",
+      "vault_probability_distribution": {
+        "SUBVAULT-PRIME (79421)": 0.247,
+        "SUBVAULT-OMEGA (63819)": 0.1698,
+        "SUBVAULT-ALPHA (49281)": 0.218,
+        "SUBVAULT-HELIOS (54712)": 0.4615,
+        "SUBVAULT-HYPERION (83914)": 0.026,
+        "SUBVAULT-NYX (37192)": 2.3439,
+        "SUBVAULT-VULCAN (28491)": 1.1072,
+        "SUBVAULT-ZEPHYR (91824)": 0.3172
+      },
+      "logit_lens_trajectory": {
+        "L5": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L11": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0014
+        },
+        "L17": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L23": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L29": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L35": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L41": {
+          "target_79421_pct": 0.0026,
+          "decoy_63819_pct": 0.0016
+        }
+      },
+      "vertical_gap_telemetry": {
+        "L5->L11": {
+          "global_attn_u_norm": 69.3901,
+          "swa_5layer_drift_norm": 154.5619,
+          "drift_to_signal_ratio": 2.2274,
+          "rms_norm_inflation": 0.9311,
+          "cosine_retention": 0.0152
+        },
+        "L11->L17": {
+          "global_attn_u_norm": 57.329,
+          "swa_5layer_drift_norm": 135.1603,
+          "drift_to_signal_ratio": 2.3576,
+          "rms_norm_inflation": 0.8855,
+          "cosine_retention": 0.4252
+        },
+        "L17->L23": {
+          "global_attn_u_norm": 62.6127,
+          "swa_5layer_drift_norm": 106.496,
+          "drift_to_signal_ratio": 1.7009,
+          "rms_norm_inflation": 0.6339,
+          "cosine_retention": -0.0117
+        },
+        "L23->L29": {
+          "global_attn_u_norm": 292.7718,
+          "swa_5layer_drift_norm": 146.9131,
+          "drift_to_signal_ratio": 0.5018,
+          "rms_norm_inflation": 1.1515,
+          "cosine_retention": 0.0226
+        },
+        "L29->L35": {
+          "global_attn_u_norm": 55.8962,
+          "swa_5layer_drift_norm": 87.8903,
+          "drift_to_signal_ratio": 1.5724,
+          "rms_norm_inflation": 1.3456,
+          "cosine_retention": 0.5512
+        },
+        "L35->L41": {
+          "global_attn_u_norm": 32.059,
+          "swa_5layer_drift_norm": 75.9922,
+          "drift_to_signal_ratio": 2.3704,
+          "rms_norm_inflation": 0.8516,
+          "cosine_retention": 0.5605
+        }
+      },
+      "per_layer_zone_attn_pct": {
+        "L5": {
+          "A": 1.4158,
+          "B": 0.0905,
+          "C": 0.2536,
+          "D": 0.0998,
+          "E": 0.0635
+        },
+        "L11": {
+          "A": 0.6237,
+          "B": 0.4015,
+          "C": 0.1374,
+          "D": 0.0118,
+          "E": 0.0405
+        },
+        "L17": {
+          "A": 3.7451,
+          "B": 0.1159,
+          "C": 0.0093,
+          "D": 0.04,
+          "E": 0.0003
+        },
+        "L23": {
+          "A": 0.2338,
+          "B": 0.5823,
+          "C": 0.4193,
+          "D": 0.0539,
+          "E": 0.7296
+        },
+        "L29": {
+          "A": 2.6012,
+          "B": 0.6943,
+          "C": 0.3188,
+          "D": 0.1443,
+          "E": 0.0634
+        },
+        "L35": {
+          "A": 1.9807,
+          "B": 0.0933,
+          "C": 0.0963,
+          "D": 0.3724,
+          "E": 0.2749
+        },
+        "L41": {
+          "A": 0.2664,
+          "B": 0.0268,
+          "C": 0.0496,
+          "D": 0.1589,
+          "E": 0.297
+        }
+      },
+      "elapsed_sec": 8.08
+    },
+    {
+      "configuration": "5. 2D Vert-Highway on Sparse Q7 (gv=0.30)",
+      "hop_task": "4-Hop",
+      "fluency_ppl": 10.6446,
+      "target_prob_pct": 0.1262,
+      "decoy_omega_prob_pct": 0.0766,
+      "recency_trap_prob_pct": 65.3981,
+      "vault_rank": 5,
+      "top1_vault_token": "3",
+      "vault_probability_distribution": {
+        "SUBVAULT-PRIME (79421)": 0.1262,
+        "SUBVAULT-OMEGA (63819)": 0.0766,
+        "SUBVAULT-ALPHA (49281)": 0.1262,
+        "SUBVAULT-HELIOS (54712)": 0.2081,
+        "SUBVAULT-HYPERION (83914)": 0.0219,
+        "SUBVAULT-NYX (37192)": 1.9749,
+        "SUBVAULT-VULCAN (28491)": 0.8232,
+        "SUBVAULT-ZEPHYR (91824)": 0.1837
+      },
+      "logit_lens_trajectory": {
+        "L5": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L11": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0014
+        },
+        "L17": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L23": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L29": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L35": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L41": {
+          "target_79421_pct": 0.0012,
+          "decoy_63819_pct": 0.0006
+        }
+      },
+      "vertical_gap_telemetry": {
+        "L5->L11": {
+          "global_attn_u_norm": 69.3881,
+          "swa_5layer_drift_norm": 153.4821,
+          "drift_to_signal_ratio": 2.2119,
+          "rms_norm_inflation": 0.9402,
+          "cosine_retention": 0.0152
+        },
+        "L11->L17": {
+          "global_attn_u_norm": 57.3144,
+          "swa_5layer_drift_norm": 135.1766,
+          "drift_to_signal_ratio": 2.3585,
+          "rms_norm_inflation": 0.8806,
+          "cosine_retention": 0.4266
+        },
+        "L17->L23": {
+          "global_attn_u_norm": 62.5721,
+          "swa_5layer_drift_norm": 106.3264,
+          "drift_to_signal_ratio": 1.6993,
+          "rms_norm_inflation": 0.636,
+          "cosine_retention": -0.0094
+        },
+        "L23->L29": {
+          "global_attn_u_norm": 290.1372,
+          "swa_5layer_drift_norm": 147.5967,
+          "drift_to_signal_ratio": 0.5087,
+          "rms_norm_inflation": 1.1665,
+          "cosine_retention": 0.0206
+        },
+        "L29->L35": {
+          "global_attn_u_norm": 55.9274,
+          "swa_5layer_drift_norm": 88.4157,
+          "drift_to_signal_ratio": 1.5809,
+          "rms_norm_inflation": 1.3547,
+          "cosine_retention": 0.5564
+        },
+        "L35->L41": {
+          "global_attn_u_norm": 32.0632,
+          "swa_5layer_drift_norm": 75.9333,
+          "drift_to_signal_ratio": 2.3682,
+          "rms_norm_inflation": 0.8406,
+          "cosine_retention": 0.5624
+        }
+      },
+      "per_layer_zone_attn_pct": {
+        "L5": {
+          "A": 1.6741,
+          "B": 0.0774,
+          "C": 0.2289,
+          "D": 0.0768,
+          "E": 0.0539
+        },
+        "L11": {
+          "A": 0.5967,
+          "B": 0.4327,
+          "C": 0.1711,
+          "D": 0.0124,
+          "E": 0.0378
+        },
+        "L17": {
+          "A": 4.2998,
+          "B": 0.1086,
+          "C": 0.0081,
+          "D": 0.0357,
+          "E": 0.0004
+        },
+        "L23": {
+          "A": 0.3181,
+          "B": 0.3805,
+          "C": 0.2975,
+          "D": 0.0562,
+          "E": 0.8858
+        },
+        "L29": {
+          "A": 2.4884,
+          "B": 0.768,
+          "C": 0.332,
+          "D": 0.1274,
+          "E": 0.0724
+        },
+        "L35": {
+          "A": 2.2953,
+          "B": 0.102,
+          "C": 0.0991,
+          "D": 0.3643,
+          "E": 0.1952
+        },
+        "L41": {
+          "A": 0.2552,
+          "B": 0.0263,
+          "C": 0.0546,
+          "D": 0.1862,
+          "E": 0.2037
+        }
+      },
+      "elapsed_sec": 9.15
+    },
+    {
+      "configuration": "5. 2D Vert-Highway on Sparse Q7 (gv=0.30)",
+      "hop_task": "5-Hop",
+      "fluency_ppl": 10.6446,
+      "target_prob_pct": 0.1462,
+      "decoy_omega_prob_pct": 0.1005,
+      "recency_trap_prob_pct": 35.7738,
+      "vault_rank": 6,
+      "top1_vault_token": "3",
+      "vault_probability_distribution": {
+        "SUBVAULT-PRIME (79421)": 0.1462,
+        "SUBVAULT-OMEGA (63819)": 0.1005,
+        "SUBVAULT-ALPHA (49281)": 0.1657,
+        "SUBVAULT-HELIOS (54712)": 0.3095,
+        "SUBVAULT-HYPERION (83914)": 0.037,
+        "SUBVAULT-NYX (37192)": 2.5914,
+        "SUBVAULT-VULCAN (28491)": 1.3871,
+        "SUBVAULT-ZEPHYR (91824)": 0.2731
+      },
+      "logit_lens_trajectory": {
+        "L5": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L11": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0014
+        },
+        "L17": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L23": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L29": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L35": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L41": {
+          "target_79421_pct": 0.0014,
+          "decoy_63819_pct": 0.0007
+        }
+      },
+      "vertical_gap_telemetry": {
+        "L5->L11": {
+          "global_attn_u_norm": 69.5197,
+          "swa_5layer_drift_norm": 154.0047,
+          "drift_to_signal_ratio": 2.2153,
+          "rms_norm_inflation": 0.9294,
+          "cosine_retention": 0.0139
+        },
+        "L11->L17": {
+          "global_attn_u_norm": 57.4685,
+          "swa_5layer_drift_norm": 133.6577,
+          "drift_to_signal_ratio": 2.3258,
+          "rms_norm_inflation": 0.8779,
+          "cosine_retention": 0.4323
+        },
+        "L17->L23": {
+          "global_attn_u_norm": 62.2681,
+          "swa_5layer_drift_norm": 105.4743,
+          "drift_to_signal_ratio": 1.6939,
+          "rms_norm_inflation": 0.6368,
+          "cosine_retention": -0.0165
+        },
+        "L23->L29": {
+          "global_attn_u_norm": 291.9292,
+          "swa_5layer_drift_norm": 147.8828,
+          "drift_to_signal_ratio": 0.5066,
+          "rms_norm_inflation": 1.1681,
+          "cosine_retention": 0.0208
+        },
+        "L29->L35": {
+          "global_attn_u_norm": 55.7337,
+          "swa_5layer_drift_norm": 89.7709,
+          "drift_to_signal_ratio": 1.6107,
+          "rms_norm_inflation": 1.3639,
+          "cosine_retention": 0.5537
+        },
+        "L35->L41": {
+          "global_attn_u_norm": 32.0664,
+          "swa_5layer_drift_norm": 76.3442,
+          "drift_to_signal_ratio": 2.3808,
+          "rms_norm_inflation": 0.8364,
+          "cosine_retention": 0.562
+        }
+      },
+      "per_layer_zone_attn_pct": {
+        "L5": {
+          "A": 1.4841,
+          "B": 0.148,
+          "C": 0.2429,
+          "D": 0.1187,
+          "E": 0.0767
+        },
+        "L11": {
+          "A": 0.7092,
+          "B": 0.8622,
+          "C": 0.1504,
+          "D": 0.0156,
+          "E": 0.0701
+        },
+        "L17": {
+          "A": 3.6601,
+          "B": 0.1073,
+          "C": 0.0063,
+          "D": 0.0336,
+          "E": 0.0008
+        },
+        "L23": {
+          "A": 0.2871,
+          "B": 0.3572,
+          "C": 0.2772,
+          "D": 0.0425,
+          "E": 0.8613
+        },
+        "L29": {
+          "A": 2.7654,
+          "B": 0.5503,
+          "C": 0.3095,
+          "D": 0.1232,
+          "E": 0.0643
+        },
+        "L35": {
+          "A": 2.7766,
+          "B": 0.079,
+          "C": 0.0956,
+          "D": 0.2757,
+          "E": 0.2363
+        },
+        "L41": {
+          "A": 0.2961,
+          "B": 0.0249,
+          "C": 0.044,
+          "D": 0.1338,
+          "E": 0.3318
+        }
+      },
+      "elapsed_sec": 7.88
+    },
+    {
+      "configuration": "6. 2D Vert-Highway on Cubic Q14 (gv=0.25)",
+      "hop_task": "1-Hop",
+      "fluency_ppl": 10.6071,
+      "target_prob_pct": 0.7014,
+      "decoy_omega_prob_pct": 0.0146,
+      "recency_trap_prob_pct": 23.2281,
+      "vault_rank": 3,
+      "top1_vault_token": "2",
+      "vault_probability_distribution": {
+        "SUBVAULT-PRIME (79421)": 0.7014,
+        "SUBVAULT-OMEGA (63819)": 0.0146,
+        "SUBVAULT-ALPHA (49281)": 0.0308,
+        "SUBVAULT-HELIOS (54712)": 0.0396,
+        "SUBVAULT-HYPERION (83914)": 0.0349,
+        "SUBVAULT-NYX (37192)": 1.4849,
+        "SUBVAULT-VULCAN (28491)": 2.4482,
+        "SUBVAULT-ZEPHYR (91824)": 0.2924
+      },
+      "logit_lens_trajectory": {
+        "L5": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L11": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0025
+        },
+        "L17": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L23": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L29": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L35": {
+          "target_79421_pct": 0.0001,
+          "decoy_63819_pct": 0.0
+        },
+        "L41": {
+          "target_79421_pct": 0.0008,
+          "decoy_63819_pct": 0.0
+        }
+      },
+      "vertical_gap_telemetry": {
+        "L5->L11": {
+          "global_attn_u_norm": 70.3292,
+          "swa_5layer_drift_norm": 153.7334,
+          "drift_to_signal_ratio": 2.1859,
+          "rms_norm_inflation": 0.938,
+          "cosine_retention": 0.0256
+        },
+        "L11->L17": {
+          "global_attn_u_norm": 55.8618,
+          "swa_5layer_drift_norm": 136.4801,
+          "drift_to_signal_ratio": 2.4432,
+          "rms_norm_inflation": 0.9271,
+          "cosine_retention": 0.423
+        },
+        "L17->L23": {
+          "global_attn_u_norm": 61.7482,
+          "swa_5layer_drift_norm": 110.4448,
+          "drift_to_signal_ratio": 1.7886,
+          "rms_norm_inflation": 0.6029,
+          "cosine_retention": -0.0028
+        },
+        "L23->L29": {
+          "global_attn_u_norm": 263.4177,
+          "swa_5layer_drift_norm": 146.5113,
+          "drift_to_signal_ratio": 0.5562,
+          "rms_norm_inflation": 1.2093,
+          "cosine_retention": 0.0162
+        },
+        "L29->L35": {
+          "global_attn_u_norm": 54.547,
+          "swa_5layer_drift_norm": 76.4174,
+          "drift_to_signal_ratio": 1.4009,
+          "rms_norm_inflation": 1.2979,
+          "cosine_retention": 0.5299
+        },
+        "L35->L41": {
+          "global_attn_u_norm": 32.1196,
+          "swa_5layer_drift_norm": 71.3549,
+          "drift_to_signal_ratio": 2.2215,
+          "rms_norm_inflation": 0.7282,
+          "cosine_retention": 0.5707
+        }
+      },
+      "per_layer_zone_attn_pct": {
+        "L5": {
+          "A": 1.1847,
+          "B": 0.187,
+          "C": 0.2959,
+          "D": 0.2519,
+          "E": 0.1448
+        },
+        "L11": {
+          "A": 0.2551,
+          "B": 0.3844,
+          "C": 0.1409,
+          "D": 0.0401,
+          "E": 0.0372
+        },
+        "L17": {
+          "A": 3.0278,
+          "B": 0.2868,
+          "C": 0.0112,
+          "D": 0.0294,
+          "E": 0.0006
+        },
+        "L23": {
+          "A": 1.1247,
+          "B": 1.1875,
+          "C": 0.3363,
+          "D": 0.0408,
+          "E": 0.7177
+        },
+        "L29": {
+          "A": 5.2851,
+          "B": 0.4723,
+          "C": 0.3253,
+          "D": 0.1421,
+          "E": 0.0488
+        },
+        "L35": {
+          "A": 2.8819,
+          "B": 0.0552,
+          "C": 0.1059,
+          "D": 0.8279,
+          "E": 0.0629
+        },
+        "L41": {
+          "A": 0.2827,
+          "B": 0.0133,
+          "C": 0.0615,
+          "D": 0.2055,
+          "E": 0.0725
+        }
+      },
+      "elapsed_sec": 8.01
+    },
+    {
+      "configuration": "6. 2D Vert-Highway on Cubic Q14 (gv=0.25)",
+      "hop_task": "2-Hop",
+      "fluency_ppl": 10.6071,
+      "target_prob_pct": 1.6357,
+      "decoy_omega_prob_pct": 0.0814,
+      "recency_trap_prob_pct": 47.8027,
+      "vault_rank": 2,
+      "top1_vault_token": "2",
+      "vault_probability_distribution": {
+        "SUBVAULT-PRIME (79421)": 1.6357,
+        "SUBVAULT-OMEGA (63819)": 0.0814,
+        "SUBVAULT-ALPHA (49281)": 0.1521,
+        "SUBVAULT-HELIOS (54712)": 0.1954,
+        "SUBVAULT-HYPERION (83914)": 0.0436,
+        "SUBVAULT-NYX (37192)": 1.6357,
+        "SUBVAULT-VULCAN (28491)": 5.7092,
+        "SUBVAULT-ZEPHYR (91824)": 0.4136
+      },
+      "logit_lens_trajectory": {
+        "L5": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L11": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0015
+        },
+        "L17": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L23": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L29": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L35": {
+          "target_79421_pct": 0.0001,
+          "decoy_63819_pct": 0.0
+        },
+        "L41": {
+          "target_79421_pct": 0.0208,
+          "decoy_63819_pct": 0.0001
+        }
+      },
+      "vertical_gap_telemetry": {
+        "L5->L11": {
+          "global_attn_u_norm": 69.3764,
+          "swa_5layer_drift_norm": 153.9923,
+          "drift_to_signal_ratio": 2.2197,
+          "rms_norm_inflation": 0.9342,
+          "cosine_retention": 0.0117
+        },
+        "L11->L17": {
+          "global_attn_u_norm": 55.8133,
+          "swa_5layer_drift_norm": 134.6092,
+          "drift_to_signal_ratio": 2.4118,
+          "rms_norm_inflation": 0.9061,
+          "cosine_retention": 0.415
+        },
+        "L17->L23": {
+          "global_attn_u_norm": 62.555,
+          "swa_5layer_drift_norm": 108.8429,
+          "drift_to_signal_ratio": 1.74,
+          "rms_norm_inflation": 0.6048,
+          "cosine_retention": 0.0084
+        },
+        "L23->L29": {
+          "global_attn_u_norm": 261.9763,
+          "swa_5layer_drift_norm": 143.2347,
+          "drift_to_signal_ratio": 0.5467,
+          "rms_norm_inflation": 1.1955,
+          "cosine_retention": 0.0236
+        },
+        "L29->L35": {
+          "global_attn_u_norm": 54.4035,
+          "swa_5layer_drift_norm": 75.4026,
+          "drift_to_signal_ratio": 1.386,
+          "rms_norm_inflation": 1.2727,
+          "cosine_retention": 0.496
+        },
+        "L35->L41": {
+          "global_attn_u_norm": 32.055,
+          "swa_5layer_drift_norm": 67.1472,
+          "drift_to_signal_ratio": 2.0948,
+          "rms_norm_inflation": 0.762,
+          "cosine_retention": 0.5569
+        }
+      },
+      "per_layer_zone_attn_pct": {
+        "L5": {
+          "A": 1.4619,
+          "B": 0.1217,
+          "C": 0.3094,
+          "D": 0.1775,
+          "E": 0.0639
+        },
+        "L11": {
+          "A": 0.3194,
+          "B": 0.3985,
+          "C": 0.1248,
+          "D": 0.0232,
+          "E": 0.0252
+        },
+        "L17": {
+          "A": 3.416,
+          "B": 0.1327,
+          "C": 0.0148,
+          "D": 0.0319,
+          "E": 0.0006
+        },
+        "L23": {
+          "A": 0.8366,
+          "B": 0.5847,
+          "C": 0.3164,
+          "D": 0.0468,
+          "E": 0.4493
+        },
+        "L29": {
+          "A": 6.2066,
+          "B": 0.471,
+          "C": 0.4107,
+          "D": 0.1577,
+          "E": 0.0455
+        },
+        "L35": {
+          "A": 1.4854,
+          "B": 0.0426,
+          "C": 0.1051,
+          "D": 0.6233,
+          "E": 0.0681
+        },
+        "L41": {
+          "A": 0.2599,
+          "B": 0.0153,
+          "C": 0.0709,
+          "D": 0.2005,
+          "E": 0.1014
+        }
+      },
+      "elapsed_sec": 9.14
+    },
+    {
+      "configuration": "6. 2D Vert-Highway on Cubic Q14 (gv=0.25)",
+      "hop_task": "3-Hop",
+      "fluency_ppl": 10.6071,
+      "target_prob_pct": 5.5317,
+      "decoy_omega_prob_pct": 0.5145,
+      "recency_trap_prob_pct": 40.8739,
+      "vault_rank": 2,
+      "top1_vault_token": "2",
+      "vault_probability_distribution": {
+        "SUBVAULT-PRIME (79421)": 5.5317,
+        "SUBVAULT-OMEGA (63819)": 0.5145,
+        "SUBVAULT-ALPHA (49281)": 0.6607,
+        "SUBVAULT-HELIOS (54712)": 0.4007,
+        "SUBVAULT-HYPERION (83914)": 0.243,
+        "SUBVAULT-NYX (37192)": 1.7959,
+        "SUBVAULT-VULCAN (28491)": 8.0486,
+        "SUBVAULT-ZEPHYR (91824)": 0.9613
+      },
+      "logit_lens_trajectory": {
+        "L5": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L11": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0029
+        },
+        "L17": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L23": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L29": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L35": {
+          "target_79421_pct": 0.0009,
+          "decoy_63819_pct": 0.0
+        },
+        "L41": {
+          "target_79421_pct": 0.4794,
+          "decoy_63819_pct": 0.0037
+        }
+      },
+      "vertical_gap_telemetry": {
+        "L5->L11": {
+          "global_attn_u_norm": 69.2454,
+          "swa_5layer_drift_norm": 153.3302,
+          "drift_to_signal_ratio": 2.2143,
+          "rms_norm_inflation": 0.919,
+          "cosine_retention": 0.0152
+        },
+        "L11->L17": {
+          "global_attn_u_norm": 56.3626,
+          "swa_5layer_drift_norm": 134.4915,
+          "drift_to_signal_ratio": 2.3862,
+          "rms_norm_inflation": 0.9011,
+          "cosine_retention": 0.4168
+        },
+        "L17->L23": {
+          "global_attn_u_norm": 62.8744,
+          "swa_5layer_drift_norm": 108.2967,
+          "drift_to_signal_ratio": 1.7224,
+          "rms_norm_inflation": 0.617,
+          "cosine_retention": 0.0085
+        },
+        "L23->L29": {
+          "global_attn_u_norm": 257.0382,
+          "swa_5layer_drift_norm": 142.5769,
+          "drift_to_signal_ratio": 0.5547,
+          "rms_norm_inflation": 1.1863,
+          "cosine_retention": 0.0267
+        },
+        "L29->L35": {
+          "global_attn_u_norm": 54.3742,
+          "swa_5layer_drift_norm": 75.2136,
+          "drift_to_signal_ratio": 1.3833,
+          "rms_norm_inflation": 1.2709,
+          "cosine_retention": 0.5001
+        },
+        "L35->L41": {
+          "global_attn_u_norm": 32.0192,
+          "swa_5layer_drift_norm": 65.7548,
+          "drift_to_signal_ratio": 2.0536,
+          "rms_norm_inflation": 0.7721,
+          "cosine_retention": 0.535
+        }
+      },
+      "per_layer_zone_attn_pct": {
+        "L5": {
+          "A": 1.4309,
+          "B": 0.1093,
+          "C": 0.2097,
+          "D": 0.1423,
+          "E": 0.0655
+        },
+        "L11": {
+          "A": 0.349,
+          "B": 0.2689,
+          "C": 0.0616,
+          "D": 0.0078,
+          "E": 0.0259
+        },
+        "L17": {
+          "A": 2.4758,
+          "B": 0.1102,
+          "C": 0.0189,
+          "D": 0.039,
+          "E": 0.0008
+        },
+        "L23": {
+          "A": 0.5341,
+          "B": 0.5366,
+          "C": 0.2904,
+          "D": 0.0502,
+          "E": 0.4397
+        },
+        "L29": {
+          "A": 4.4427,
+          "B": 0.4395,
+          "C": 0.4138,
+          "D": 0.2805,
+          "E": 0.0758
+        },
+        "L35": {
+          "A": 1.4002,
+          "B": 0.0363,
+          "C": 0.0926,
+          "D": 0.6777,
+          "E": 0.0913
+        },
+        "L41": {
+          "A": 0.206,
+          "B": 0.0108,
+          "C": 0.0602,
+          "D": 0.1812,
+          "E": 0.1109
+        }
+      },
+      "elapsed_sec": 8.07
+    },
+    {
+      "configuration": "6. 2D Vert-Highway on Cubic Q14 (gv=0.25)",
+      "hop_task": "4-Hop",
+      "fluency_ppl": 10.6071,
+      "target_prob_pct": 3.1314,
+      "decoy_omega_prob_pct": 0.2913,
+      "recency_trap_prob_pct": 38.1479,
+      "vault_rank": 2,
+      "top1_vault_token": "2",
+      "vault_probability_distribution": {
+        "SUBVAULT-PRIME (79421)": 3.1314,
+        "SUBVAULT-OMEGA (63819)": 0.2913,
+        "SUBVAULT-ALPHA (49281)": 0.4238,
+        "SUBVAULT-HELIOS (54712)": 0.2002,
+        "SUBVAULT-HYPERION (83914)": 0.0946,
+        "SUBVAULT-NYX (37192)": 1.3053,
+        "SUBVAULT-VULCAN (28491)": 6.6291,
+        "SUBVAULT-ZEPHYR (91824)": 0.6987
+      },
+      "logit_lens_trajectory": {
+        "L5": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L11": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0041
+        },
+        "L17": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L23": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L29": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L35": {
+          "target_79421_pct": 0.0004,
+          "decoy_63819_pct": 0.0
+        },
+        "L41": {
+          "target_79421_pct": 0.1101,
+          "decoy_63819_pct": 0.0018
+        }
+      },
+      "vertical_gap_telemetry": {
+        "L5->L11": {
+          "global_attn_u_norm": 69.0731,
+          "swa_5layer_drift_norm": 153.1088,
+          "drift_to_signal_ratio": 2.2166,
+          "rms_norm_inflation": 0.9394,
+          "cosine_retention": 0.0153
+        },
+        "L11->L17": {
+          "global_attn_u_norm": 56.3385,
+          "swa_5layer_drift_norm": 135.1247,
+          "drift_to_signal_ratio": 2.3984,
+          "rms_norm_inflation": 0.8984,
+          "cosine_retention": 0.4191
+        },
+        "L17->L23": {
+          "global_attn_u_norm": 63.3425,
+          "swa_5layer_drift_norm": 108.7557,
+          "drift_to_signal_ratio": 1.7169,
+          "rms_norm_inflation": 0.6112,
+          "cosine_retention": 0.0115
+        },
+        "L23->L29": {
+          "global_attn_u_norm": 257.4879,
+          "swa_5layer_drift_norm": 143.3799,
+          "drift_to_signal_ratio": 0.5568,
+          "rms_norm_inflation": 1.2038,
+          "cosine_retention": 0.0226
+        },
+        "L29->L35": {
+          "global_attn_u_norm": 54.1899,
+          "swa_5layer_drift_norm": 75.7369,
+          "drift_to_signal_ratio": 1.3976,
+          "rms_norm_inflation": 1.2728,
+          "cosine_retention": 0.4926
+        },
+        "L35->L41": {
+          "global_attn_u_norm": 32.0125,
+          "swa_5layer_drift_norm": 66.1577,
+          "drift_to_signal_ratio": 2.0666,
+          "rms_norm_inflation": 0.7667,
+          "cosine_retention": 0.51
+        }
+      },
+      "per_layer_zone_attn_pct": {
+        "L5": {
+          "A": 1.6242,
+          "B": 0.1054,
+          "C": 0.2059,
+          "D": 0.131,
+          "E": 0.062
+        },
+        "L11": {
+          "A": 0.3366,
+          "B": 0.2796,
+          "C": 0.0748,
+          "D": 0.0075,
+          "E": 0.0237
+        },
+        "L17": {
+          "A": 2.9624,
+          "B": 0.098,
+          "C": 0.0151,
+          "D": 0.0335,
+          "E": 0.0009
+        },
+        "L23": {
+          "A": 0.7576,
+          "B": 0.504,
+          "C": 0.2704,
+          "D": 0.0491,
+          "E": 0.6758
+        },
+        "L29": {
+          "A": 4.4398,
+          "B": 0.2852,
+          "C": 0.2146,
+          "D": 0.1631,
+          "E": 0.077
+        },
+        "L35": {
+          "A": 1.2153,
+          "B": 0.0258,
+          "C": 0.0492,
+          "D": 0.3705,
+          "E": 0.1022
+        },
+        "L41": {
+          "A": 0.1801,
+          "B": 0.0092,
+          "C": 0.0381,
+          "D": 0.133,
+          "E": 0.1532
+        }
+      },
+      "elapsed_sec": 9.14
+    },
+    {
+      "configuration": "6. 2D Vert-Highway on Cubic Q14 (gv=0.25)",
+      "hop_task": "5-Hop",
+      "fluency_ppl": 10.6071,
+      "target_prob_pct": 1.6197,
+      "decoy_omega_prob_pct": 0.1707,
+      "recency_trap_prob_pct": 41.7714,
+      "vault_rank": 2,
+      "top1_vault_token": "2",
+      "vault_probability_distribution": {
+        "SUBVAULT-PRIME (79421)": 1.6197,
+        "SUBVAULT-OMEGA (63819)": 0.1707,
+        "SUBVAULT-ALPHA (49281)": 0.5958,
+        "SUBVAULT-HELIOS (54712)": 0.1507,
+        "SUBVAULT-HYPERION (83914)": 0.0806,
+        "SUBVAULT-NYX (37192)": 1.1132,
+        "SUBVAULT-VULCAN (28491)": 6.4059,
+        "SUBVAULT-ZEPHYR (91824)": 0.6752
+      },
+      "logit_lens_trajectory": {
+        "L5": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L11": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0039
+        },
+        "L17": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L23": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L29": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L35": {
+          "target_79421_pct": 0.0001,
+          "decoy_63819_pct": 0.0
+        },
+        "L41": {
+          "target_79421_pct": 0.0267,
+          "decoy_63819_pct": 0.0006
+        }
+      },
+      "vertical_gap_telemetry": {
+        "L5->L11": {
+          "global_attn_u_norm": 69.1219,
+          "swa_5layer_drift_norm": 153.0438,
+          "drift_to_signal_ratio": 2.2141,
+          "rms_norm_inflation": 0.9208,
+          "cosine_retention": 0.0127
+        },
+        "L11->L17": {
+          "global_attn_u_norm": 56.6318,
+          "swa_5layer_drift_norm": 133.8923,
+          "drift_to_signal_ratio": 2.3643,
+          "rms_norm_inflation": 0.8844,
+          "cosine_retention": 0.4209
+        },
+        "L17->L23": {
+          "global_attn_u_norm": 62.6446,
+          "swa_5layer_drift_norm": 107.1251,
+          "drift_to_signal_ratio": 1.71,
+          "rms_norm_inflation": 0.6169,
+          "cosine_retention": 0.0017
+        },
+        "L23->L29": {
+          "global_attn_u_norm": 257.171,
+          "swa_5layer_drift_norm": 144.3911,
+          "drift_to_signal_ratio": 0.5615,
+          "rms_norm_inflation": 1.1962,
+          "cosine_retention": 0.0241
+        },
+        "L29->L35": {
+          "global_attn_u_norm": 54.0243,
+          "swa_5layer_drift_norm": 76.4753,
+          "drift_to_signal_ratio": 1.4156,
+          "rms_norm_inflation": 1.281,
+          "cosine_retention": 0.4855
+        },
+        "L35->L41": {
+          "global_attn_u_norm": 32.0132,
+          "swa_5layer_drift_norm": 66.057,
+          "drift_to_signal_ratio": 2.0634,
+          "rms_norm_inflation": 0.7671,
+          "cosine_retention": 0.5284
+        }
+      },
+      "per_layer_zone_attn_pct": {
+        "L5": {
+          "A": 1.3879,
+          "B": 0.1548,
+          "C": 0.2001,
+          "D": 0.2054,
+          "E": 0.0768
+        },
+        "L11": {
+          "A": 0.3962,
+          "B": 0.4585,
+          "C": 0.0716,
+          "D": 0.0098,
+          "E": 0.0411
+        },
+        "L17": {
+          "A": 2.5231,
+          "B": 0.1286,
+          "C": 0.0151,
+          "D": 0.0371,
+          "E": 0.0014
+        },
+        "L23": {
+          "A": 0.5989,
+          "B": 0.4417,
+          "C": 0.2617,
+          "D": 0.0391,
+          "E": 0.47
+        },
+        "L29": {
+          "A": 4.703,
+          "B": 0.2182,
+          "C": 0.1771,
+          "D": 0.1297,
+          "E": 0.075
+        },
+        "L35": {
+          "A": 1.1249,
+          "B": 0.0188,
+          "C": 0.0511,
+          "D": 0.3442,
+          "E": 0.1102
+        },
+        "L41": {
+          "A": 0.204,
+          "B": 0.0082,
+          "C": 0.0406,
+          "D": 0.1274,
+          "E": 0.1951
+        }
+      },
+      "elapsed_sec": 7.87
+    },
+    {
+      "configuration": "7. 2D Cubic Q14 + SWA Decoy Shield (sw=2.5)",
+      "hop_task": "1-Hop",
+      "fluency_ppl": 10.6071,
+      "target_prob_pct": 99.9969,
+      "decoy_omega_prob_pct": 0.0001,
+      "recency_trap_prob_pct": 0.0003,
+      "vault_rank": 1,
+      "top1_vault_token": "7",
+      "vault_probability_distribution": {
+        "SUBVAULT-PRIME (79421)": 99.9969,
+        "SUBVAULT-OMEGA (63819)": 0.0001,
+        "SUBVAULT-ALPHA (49281)": 0.0002,
+        "SUBVAULT-HELIOS (54712)": 0.0001,
+        "SUBVAULT-HYPERION (83914)": 0.0009,
+        "SUBVAULT-NYX (37192)": 0.0005,
+        "SUBVAULT-VULCAN (28491)": 0.0002,
+        "SUBVAULT-ZEPHYR (91824)": 0.0003
+      },
+      "logit_lens_trajectory": {
+        "L5": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L11": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0002
+        },
+        "L17": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L23": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L29": {
+          "target_79421_pct": 0.0016,
+          "decoy_63819_pct": 0.0
+        },
+        "L35": {
+          "target_79421_pct": 99.9994,
+          "decoy_63819_pct": 0.0
+        },
+        "L41": {
+          "target_79421_pct": 100.0,
+          "decoy_63819_pct": 0.0
+        }
+      },
+      "vertical_gap_telemetry": {
+        "L5->L11": {
+          "global_attn_u_norm": 70.4508,
+          "swa_5layer_drift_norm": 153.4889,
+          "drift_to_signal_ratio": 2.1787,
+          "rms_norm_inflation": 0.9482,
+          "cosine_retention": 0.025
+        },
+        "L11->L17": {
+          "global_attn_u_norm": 51.9029,
+          "swa_5layer_drift_norm": 134.6397,
+          "drift_to_signal_ratio": 2.5941,
+          "rms_norm_inflation": 0.9531,
+          "cosine_retention": 0.4229
+        },
+        "L17->L23": {
+          "global_attn_u_norm": 67.9801,
+          "swa_5layer_drift_norm": 110.5774,
+          "drift_to_signal_ratio": 1.6266,
+          "rms_norm_inflation": 0.6028,
+          "cosine_retention": -0.0019
+        },
+        "L23->L29": {
+          "global_attn_u_norm": 276.3598,
+          "swa_5layer_drift_norm": 142.8107,
+          "drift_to_signal_ratio": 0.5168,
+          "rms_norm_inflation": 1.273,
+          "cosine_retention": -0.006
+        },
+        "L29->L35": {
+          "global_attn_u_norm": 51.0452,
+          "swa_5layer_drift_norm": 53.9663,
+          "drift_to_signal_ratio": 1.0572,
+          "rms_norm_inflation": 1.0323,
+          "cosine_retention": 0.5804
+        },
+        "L35->L41": {
+          "global_attn_u_norm": 31.5449,
+          "swa_5layer_drift_norm": 52.8342,
+          "drift_to_signal_ratio": 1.6749,
+          "rms_norm_inflation": 0.8106,
+          "cosine_retention": 0.2671
+        }
+      },
+      "per_layer_zone_attn_pct": {
+        "L5": {
+          "A": 1.2302,
+          "B": 0.1989,
+          "C": 0.3201,
+          "D": 0.2577,
+          "E": 0.1464
+        },
+        "L11": {
+          "A": 2.1081,
+          "B": 0.1112,
+          "C": 0.0288,
+          "D": 0.0143,
+          "E": 0.0081
+        },
+        "L17": {
+          "A": 4.0966,
+          "B": 0.3534,
+          "C": 0.0049,
+          "D": 0.03,
+          "E": 0.0021
+        },
+        "L23": {
+          "A": 8.4323,
+          "B": 0.4631,
+          "C": 0.0917,
+          "D": 0.0325,
+          "E": 0.0103
+        },
+        "L29": {
+          "A": 37.3787,
+          "B": 0.5638,
+          "C": 0.0664,
+          "D": 0.0498,
+          "E": 0.0035
+        },
+        "L35": {
+          "A": 86.5087,
+          "B": 0.1803,
+          "C": 0.0473,
+          "D": 0.0138,
+          "E": 0.0005
+        },
+        "L41": {
+          "A": 49.6181,
+          "B": 0.4823,
+          "C": 0.1215,
+          "D": 0.1639,
+          "E": 0.0014
+        }
+      },
+      "elapsed_sec": 8.0
+    },
+    {
+      "configuration": "7. 2D Cubic Q14 + SWA Decoy Shield (sw=2.5)",
+      "hop_task": "2-Hop",
+      "fluency_ppl": 10.6071,
+      "target_prob_pct": 99.7198,
+      "decoy_omega_prob_pct": 0.0021,
+      "recency_trap_prob_pct": 0.0021,
+      "vault_rank": 1,
+      "top1_vault_token": "7",
+      "vault_probability_distribution": {
+        "SUBVAULT-PRIME (79421)": 99.7198,
+        "SUBVAULT-OMEGA (63819)": 0.0021,
+        "SUBVAULT-ALPHA (49281)": 0.023,
+        "SUBVAULT-HELIOS (54712)": 0.0066,
+        "SUBVAULT-HYPERION (83914)": 0.023,
+        "SUBVAULT-NYX (37192)": 0.2181,
+        "SUBVAULT-VULCAN (28491)": 0.0027,
+        "SUBVAULT-ZEPHYR (91824)": 0.0011
+      },
+      "logit_lens_trajectory": {
+        "L5": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L11": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0001
+        },
+        "L17": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L23": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L29": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L35": {
+          "target_79421_pct": 99.9935,
+          "decoy_63819_pct": 0.0
+        },
+        "L41": {
+          "target_79421_pct": 100.0,
+          "decoy_63819_pct": 0.0
+        }
+      },
+      "vertical_gap_telemetry": {
+        "L5->L11": {
+          "global_attn_u_norm": 70.014,
+          "swa_5layer_drift_norm": 153.6464,
+          "drift_to_signal_ratio": 2.1945,
+          "rms_norm_inflation": 0.9235,
+          "cosine_retention": 0.0128
+        },
+        "L11->L17": {
+          "global_attn_u_norm": 51.8844,
+          "swa_5layer_drift_norm": 132.9209,
+          "drift_to_signal_ratio": 2.5619,
+          "rms_norm_inflation": 0.9218,
+          "cosine_retention": 0.4097
+        },
+        "L17->L23": {
+          "global_attn_u_norm": 66.6079,
+          "swa_5layer_drift_norm": 108.4642,
+          "drift_to_signal_ratio": 1.6284,
+          "rms_norm_inflation": 0.61,
+          "cosine_retention": 0.0094
+        },
+        "L23->L29": {
+          "global_attn_u_norm": 279.8487,
+          "swa_5layer_drift_norm": 141.5683,
+          "drift_to_signal_ratio": 0.5059,
+          "rms_norm_inflation": 1.2697,
+          "cosine_retention": -0.0015
+        },
+        "L29->L35": {
+          "global_attn_u_norm": 50.5922,
+          "swa_5layer_drift_norm": 59.9602,
+          "drift_to_signal_ratio": 1.1852,
+          "rms_norm_inflation": 1.0831,
+          "cosine_retention": 0.5841
+        },
+        "L35->L41": {
+          "global_attn_u_norm": 31.6221,
+          "swa_5layer_drift_norm": 53.5718,
+          "drift_to_signal_ratio": 1.6941,
+          "rms_norm_inflation": 0.8036,
+          "cosine_retention": -0.042
+        }
+      },
+      "per_layer_zone_attn_pct": {
+        "L5": {
+          "A": 1.4994,
+          "B": 0.1249,
+          "C": 0.3128,
+          "D": 0.1776,
+          "E": 0.063
+        },
+        "L11": {
+          "A": 1.8204,
+          "B": 0.1039,
+          "C": 0.0383,
+          "D": 0.0152,
+          "E": 0.007
+        },
+        "L17": {
+          "A": 4.7277,
+          "B": 0.6231,
+          "C": 0.0209,
+          "D": 0.0389,
+          "E": 0.0027
+        },
+        "L23": {
+          "A": 9.8695,
+          "B": 0.7079,
+          "C": 0.2337,
+          "D": 0.0451,
+          "E": 0.0104
+        },
+        "L29": {
+          "A": 4.5289,
+          "B": 13.29,
+          "C": 0.5416,
+          "D": 0.1263,
+          "E": 0.0062
+        },
+        "L35": {
+          "A": 56.3515,
+          "B": 0.3621,
+          "C": 0.015,
+          "D": 0.0126,
+          "E": 0.0002
+        },
+        "L41": {
+          "A": 32.8563,
+          "B": 0.7785,
+          "C": 0.037,
+          "D": 0.056,
+          "E": 0.0003
+        }
+      },
+      "elapsed_sec": 9.13
+    },
+    {
+      "configuration": "7. 2D Cubic Q14 + SWA Decoy Shield (sw=2.5)",
+      "hop_task": "3-Hop",
+      "fluency_ppl": 10.6071,
+      "target_prob_pct": 88.197,
+      "decoy_omega_prob_pct": 0.1326,
+      "recency_trap_prob_pct": 0.1033,
+      "vault_rank": 1,
+      "top1_vault_token": "7",
+      "vault_probability_distribution": {
+        "SUBVAULT-PRIME (79421)": 88.197,
+        "SUBVAULT-OMEGA (63819)": 0.1326,
+        "SUBVAULT-ALPHA (49281)": 0.4084,
+        "SUBVAULT-HELIOS (54712)": 0.1326,
+        "SUBVAULT-HYPERION (83914)": 0.7631,
+        "SUBVAULT-NYX (37192)": 9.2959,
+        "SUBVAULT-VULCAN (28491)": 0.8647,
+        "SUBVAULT-ZEPHYR (91824)": 0.0911
+      },
+      "logit_lens_trajectory": {
+        "L5": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L11": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0002
+        },
+        "L17": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L23": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L29": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L35": {
+          "target_79421_pct": 99.9771,
+          "decoy_63819_pct": 0.0
+        },
+        "L41": {
+          "target_79421_pct": 99.9996,
+          "decoy_63819_pct": 0.0
+        }
+      },
+      "vertical_gap_telemetry": {
+        "L5->L11": {
+          "global_attn_u_norm": 69.7175,
+          "swa_5layer_drift_norm": 152.974,
+          "drift_to_signal_ratio": 2.1942,
+          "rms_norm_inflation": 0.9229,
+          "cosine_retention": 0.0153
+        },
+        "L11->L17": {
+          "global_attn_u_norm": 51.6453,
+          "swa_5layer_drift_norm": 131.2169,
+          "drift_to_signal_ratio": 2.5407,
+          "rms_norm_inflation": 0.9121,
+          "cosine_retention": 0.4152
+        },
+        "L17->L23": {
+          "global_attn_u_norm": 67.5006,
+          "swa_5layer_drift_norm": 108.7478,
+          "drift_to_signal_ratio": 1.6111,
+          "rms_norm_inflation": 0.6175,
+          "cosine_retention": 0.0062
+        },
+        "L23->L29": {
+          "global_attn_u_norm": 276.7055,
+          "swa_5layer_drift_norm": 139.3626,
+          "drift_to_signal_ratio": 0.5036,
+          "rms_norm_inflation": 1.3209,
+          "cosine_retention": 0.0194
+        },
+        "L29->L35": {
+          "global_attn_u_norm": 47.8105,
+          "swa_5layer_drift_norm": 58.9409,
+          "drift_to_signal_ratio": 1.2328,
+          "rms_norm_inflation": 1.0682,
+          "cosine_retention": 0.5983
+        },
+        "L35->L41": {
+          "global_attn_u_norm": 31.6037,
+          "swa_5layer_drift_norm": 52.6051,
+          "drift_to_signal_ratio": 1.6645,
+          "rms_norm_inflation": 0.7413,
+          "cosine_retention": 0.0678
+        }
+      },
+      "per_layer_zone_attn_pct": {
+        "L5": {
+          "A": 1.5279,
+          "B": 0.112,
+          "C": 0.2101,
+          "D": 0.1465,
+          "E": 0.0684
+        },
+        "L11": {
+          "A": 1.5584,
+          "B": 0.0765,
+          "C": 0.0363,
+          "D": 0.0104,
+          "E": 0.0111
+        },
+        "L17": {
+          "A": 5.5813,
+          "B": 0.6027,
+          "C": 0.083,
+          "D": 0.1372,
+          "E": 0.0073
+        },
+        "L23": {
+          "A": 8.4124,
+          "B": 0.4457,
+          "C": 0.4002,
+          "D": 0.1228,
+          "E": 0.0272
+        },
+        "L29": {
+          "A": 3.9869,
+          "B": 3.5512,
+          "C": 6.2008,
+          "D": 1.6873,
+          "E": 0.0334
+        },
+        "L35": {
+          "A": 44.4726,
+          "B": 0.6445,
+          "C": 0.4379,
+          "D": 0.0954,
+          "E": 0.0094
+        },
+        "L41": {
+          "A": 21.5951,
+          "B": 1.3334,
+          "C": 0.8944,
+          "D": 0.3361,
+          "E": 0.0029
+        }
+      },
+      "elapsed_sec": 8.08
+    },
+    {
+      "configuration": "7. 2D Cubic Q14 + SWA Decoy Shield (sw=2.5)",
+      "hop_task": "4-Hop",
+      "fluency_ppl": 10.6071,
+      "target_prob_pct": 88.6384,
+      "decoy_omega_prob_pct": 0.5972,
+      "recency_trap_prob_pct": 0.0916,
+      "vault_rank": 1,
+      "top1_vault_token": "7",
+      "vault_probability_distribution": {
+        "SUBVAULT-PRIME (79421)": 88.6384,
+        "SUBVAULT-OMEGA (63819)": 0.5972,
+        "SUBVAULT-ALPHA (49281)": 0.2197,
+        "SUBVAULT-HELIOS (54712)": 0.0916,
+        "SUBVAULT-HYPERION (83914)": 0.7669,
+        "SUBVAULT-NYX (37192)": 4.413,
+        "SUBVAULT-VULCAN (28491)": 5.0006,
+        "SUBVAULT-ZEPHYR (91824)": 0.1711
+      },
+      "logit_lens_trajectory": {
+        "L5": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L11": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0002
+        },
+        "L17": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L23": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L29": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L35": {
+          "target_79421_pct": 99.9853,
+          "decoy_63819_pct": 0.0
+        },
+        "L41": {
+          "target_79421_pct": 99.9999,
+          "decoy_63819_pct": 0.0
+        }
+      },
+      "vertical_gap_telemetry": {
+        "L5->L11": {
+          "global_attn_u_norm": 69.598,
+          "swa_5layer_drift_norm": 152.8333,
+          "drift_to_signal_ratio": 2.1959,
+          "rms_norm_inflation": 0.9205,
+          "cosine_retention": 0.016
+        },
+        "L11->L17": {
+          "global_attn_u_norm": 52.0215,
+          "swa_5layer_drift_norm": 130.6239,
+          "drift_to_signal_ratio": 2.511,
+          "rms_norm_inflation": 0.9144,
+          "cosine_retention": 0.4222
+        },
+        "L17->L23": {
+          "global_attn_u_norm": 65.4759,
+          "swa_5layer_drift_norm": 107.5386,
+          "drift_to_signal_ratio": 1.6424,
+          "rms_norm_inflation": 0.6162,
+          "cosine_retention": 0.0087
+        },
+        "L23->L29": {
+          "global_attn_u_norm": 273.3932,
+          "swa_5layer_drift_norm": 139.4529,
+          "drift_to_signal_ratio": 0.5101,
+          "rms_norm_inflation": 1.3086,
+          "cosine_retention": 0.0112
+        },
+        "L29->L35": {
+          "global_attn_u_norm": 46.0426,
+          "swa_5layer_drift_norm": 57.1818,
+          "drift_to_signal_ratio": 1.2419,
+          "rms_norm_inflation": 1.0351,
+          "cosine_retention": 0.6127
+        },
+        "L35->L41": {
+          "global_attn_u_norm": 31.5903,
+          "swa_5layer_drift_norm": 50.4836,
+          "drift_to_signal_ratio": 1.5981,
+          "rms_norm_inflation": 0.7396,
+          "cosine_retention": 0.0814
+        }
+      },
+      "per_layer_zone_attn_pct": {
+        "L5": {
+          "A": 1.7151,
+          "B": 0.1098,
+          "C": 0.2068,
+          "D": 0.1329,
+          "E": 0.0624
+        },
+        "L11": {
+          "A": 1.552,
+          "B": 0.0802,
+          "C": 0.0369,
+          "D": 0.0087,
+          "E": 0.01
+        },
+        "L17": {
+          "A": 6.0532,
+          "B": 0.5445,
+          "C": 0.1025,
+          "D": 0.1569,
+          "E": 0.0076
+        },
+        "L23": {
+          "A": 9.0144,
+          "B": 0.2924,
+          "C": 0.1961,
+          "D": 0.0749,
+          "E": 0.0268
+        },
+        "L29": {
+          "A": 5.0886,
+          "B": 1.9703,
+          "C": 2.2431,
+          "D": 3.6487,
+          "E": 0.1548
+        },
+        "L35": {
+          "A": 39.3503,
+          "B": 0.4824,
+          "C": 0.2348,
+          "D": 0.0456,
+          "E": 0.0026
+        },
+        "L41": {
+          "A": 21.4705,
+          "B": 1.0169,
+          "C": 0.4258,
+          "D": 0.1593,
+          "E": 0.0009
+        }
+      },
+      "elapsed_sec": 9.14
+    },
+    {
+      "configuration": "7. 2D Cubic Q14 + SWA Decoy Shield (sw=2.5)",
+      "hop_task": "5-Hop",
+      "fluency_ppl": 10.6071,
+      "target_prob_pct": 76.6634,
+      "decoy_omega_prob_pct": 5.5535,
+      "recency_trap_prob_pct": 0.3133,
+      "vault_rank": 1,
+      "top1_vault_token": "7",
+      "vault_probability_distribution": {
+        "SUBVAULT-PRIME (79421)": 76.6634,
+        "SUBVAULT-OMEGA (63819)": 5.5535,
+        "SUBVAULT-ALPHA (49281)": 0.5166,
+        "SUBVAULT-HELIOS (54712)": 0.2765,
+        "SUBVAULT-HYPERION (83914)": 0.2765,
+        "SUBVAULT-NYX (37192)": 2.9726,
+        "SUBVAULT-VULCAN (28491)": 13.3221,
+        "SUBVAULT-ZEPHYR (91824)": 0.0544
+      },
+      "logit_lens_trajectory": {
+        "L5": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L11": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0001
+        },
+        "L17": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L23": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L29": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L35": {
+          "target_79421_pct": 57.2356,
+          "decoy_63819_pct": 0.0043
+        },
+        "L41": {
+          "target_79421_pct": 99.9239,
+          "decoy_63819_pct": 0.0045
+        }
+      },
+      "vertical_gap_telemetry": {
+        "L5->L11": {
+          "global_attn_u_norm": 69.8064,
+          "swa_5layer_drift_norm": 153.1031,
+          "drift_to_signal_ratio": 2.1933,
+          "rms_norm_inflation": 0.9139,
+          "cosine_retention": 0.0135
+        },
+        "L11->L17": {
+          "global_attn_u_norm": 51.9756,
+          "swa_5layer_drift_norm": 130.3327,
+          "drift_to_signal_ratio": 2.5076,
+          "rms_norm_inflation": 0.9073,
+          "cosine_retention": 0.4217
+        },
+        "L17->L23": {
+          "global_attn_u_norm": 67.2018,
+          "swa_5layer_drift_norm": 107.4839,
+          "drift_to_signal_ratio": 1.5994,
+          "rms_norm_inflation": 0.6246,
+          "cosine_retention": 0.0041
+        },
+        "L23->L29": {
+          "global_attn_u_norm": 274.2892,
+          "swa_5layer_drift_norm": 141.301,
+          "drift_to_signal_ratio": 0.5152,
+          "rms_norm_inflation": 1.3394,
+          "cosine_retention": 0.0195
+        },
+        "L29->L35": {
+          "global_attn_u_norm": 52.7086,
+          "swa_5layer_drift_norm": 65.8701,
+          "drift_to_signal_ratio": 1.2497,
+          "rms_norm_inflation": 1.131,
+          "cosine_retention": 0.3902
+        },
+        "L35->L41": {
+          "global_attn_u_norm": 31.7937,
+          "swa_5layer_drift_norm": 51.9985,
+          "drift_to_signal_ratio": 1.6355,
+          "rms_norm_inflation": 0.7584,
+          "cosine_retention": -0.2526
+        }
+      },
+      "per_layer_zone_attn_pct": {
+        "L5": {
+          "A": 1.5197,
+          "B": 0.1677,
+          "C": 0.2174,
+          "D": 0.2127,
+          "E": 0.0819
+        },
+        "L11": {
+          "A": 1.5397,
+          "B": 0.0782,
+          "C": 0.0261,
+          "D": 0.0107,
+          "E": 0.0141
+        },
+        "L17": {
+          "A": 4.3557,
+          "B": 0.9702,
+          "C": 0.059,
+          "D": 0.2044,
+          "E": 0.0668
+        },
+        "L23": {
+          "A": 7.5799,
+          "B": 0.1911,
+          "C": 0.1304,
+          "D": 0.0576,
+          "E": 0.0384
+        },
+        "L29": {
+          "A": 2.8486,
+          "B": 0.1248,
+          "C": 0.1055,
+          "D": 1.1681,
+          "E": 22.6442
+        },
+        "L35": {
+          "A": 26.3744,
+          "B": 0.4887,
+          "C": 0.3239,
+          "D": 0.2764,
+          "E": 0.0431
+        },
+        "L41": {
+          "A": 20.2252,
+          "B": 0.6129,
+          "C": 0.274,
+          "D": 0.1516,
+          "E": 0.0216
+        }
+      },
+      "elapsed_sec": 7.87
+    },
+    {
+      "configuration": "8. Full 2D Superconducting (Q14 + gv=0.25 + sw=2.5)",
+      "hop_task": "1-Hop",
+      "fluency_ppl": 10.6071,
+      "target_prob_pct": 0.9211,
+      "decoy_omega_prob_pct": 0.0405,
+      "recency_trap_prob_pct": 20.9649,
+      "vault_rank": 3,
+      "top1_vault_token": "2",
+      "vault_probability_distribution": {
+        "SUBVAULT-PRIME (79421)": 0.9211,
+        "SUBVAULT-OMEGA (63819)": 0.0405,
+        "SUBVAULT-ALPHA (49281)": 0.0405,
+        "SUBVAULT-HELIOS (54712)": 0.0405,
+        "SUBVAULT-HYPERION (83914)": 0.0589,
+        "SUBVAULT-NYX (37192)": 1.0438,
+        "SUBVAULT-VULCAN (28491)": 3.2151,
+        "SUBVAULT-ZEPHYR (91824)": 0.384
+      },
+      "logit_lens_trajectory": {
+        "L5": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L11": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0027
+        },
+        "L17": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L23": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L29": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L35": {
+          "target_79421_pct": 0.0002,
+          "decoy_63819_pct": 0.0
+        },
+        "L41": {
+          "target_79421_pct": 0.0016,
+          "decoy_63819_pct": 0.0
+        }
+      },
+      "vertical_gap_telemetry": {
+        "L5->L11": {
+          "global_attn_u_norm": 70.4508,
+          "swa_5layer_drift_norm": 153.4889,
+          "drift_to_signal_ratio": 2.1787,
+          "rms_norm_inflation": 0.9482,
+          "cosine_retention": 0.025
+        },
+        "L11->L17": {
+          "global_attn_u_norm": 55.8661,
+          "swa_5layer_drift_norm": 136.0843,
+          "drift_to_signal_ratio": 2.4359,
+          "rms_norm_inflation": 0.9248,
+          "cosine_retention": 0.4234
+        },
+        "L17->L23": {
+          "global_attn_u_norm": 61.6732,
+          "swa_5layer_drift_norm": 110.0476,
+          "drift_to_signal_ratio": 1.7844,
+          "rms_norm_inflation": 0.6039,
+          "cosine_retention": -0.0018
+        },
+        "L23->L29": {
+          "global_attn_u_norm": 260.1803,
+          "swa_5layer_drift_norm": 147.0685,
+          "drift_to_signal_ratio": 0.5653,
+          "rms_norm_inflation": 1.2181,
+          "cosine_retention": 0.016
+        },
+        "L29->L35": {
+          "global_attn_u_norm": 54.6022,
+          "swa_5layer_drift_norm": 78.448,
+          "drift_to_signal_ratio": 1.4367,
+          "rms_norm_inflation": 1.3206,
+          "cosine_retention": 0.5337
+        },
+        "L35->L41": {
+          "global_attn_u_norm": 32.0733,
+          "swa_5layer_drift_norm": 71.7945,
+          "drift_to_signal_ratio": 2.2385,
+          "rms_norm_inflation": 0.7248,
+          "cosine_retention": 0.5785
+        }
+      },
+      "per_layer_zone_attn_pct": {
+        "L5": {
+          "A": 1.2302,
+          "B": 0.1989,
+          "C": 0.3201,
+          "D": 0.2577,
+          "E": 0.1464
+        },
+        "L11": {
+          "A": 0.2425,
+          "B": 0.4003,
+          "C": 0.1434,
+          "D": 0.0403,
+          "E": 0.0354
+        },
+        "L17": {
+          "A": 2.7203,
+          "B": 0.2093,
+          "C": 0.0077,
+          "D": 0.0265,
+          "E": 0.0005
+        },
+        "L23": {
+          "A": 1.0424,
+          "B": 1.2104,
+          "C": 0.3492,
+          "D": 0.0416,
+          "E": 0.7917
+        },
+        "L29": {
+          "A": 5.3907,
+          "B": 0.495,
+          "C": 0.3388,
+          "D": 0.1806,
+          "E": 0.0519
+        },
+        "L35": {
+          "A": 2.5766,
+          "B": 0.0497,
+          "C": 0.1036,
+          "D": 1.0819,
+          "E": 0.0646
+        },
+        "L41": {
+          "A": 0.2465,
+          "B": 0.0105,
+          "C": 0.0694,
+          "D": 0.257,
+          "E": 0.0899
+        }
+      },
+      "elapsed_sec": 8.0
+    },
+    {
+      "configuration": "8. Full 2D Superconducting (Q14 + gv=0.25 + sw=2.5)",
+      "hop_task": "2-Hop",
+      "fluency_ppl": 10.6071,
+      "target_prob_pct": 2.3672,
+      "decoy_omega_prob_pct": 0.1715,
+      "recency_trap_prob_pct": 47.5462,
+      "vault_rank": 2,
+      "top1_vault_token": "2",
+      "vault_probability_distribution": {
+        "SUBVAULT-PRIME (79421)": 2.3672,
+        "SUBVAULT-OMEGA (63819)": 0.1715,
+        "SUBVAULT-ALPHA (49281)": 0.1513,
+        "SUBVAULT-HELIOS (54712)": 0.3204,
+        "SUBVAULT-HYPERION (83914)": 0.104,
+        "SUBVAULT-NYX (37192)": 0.9868,
+        "SUBVAULT-VULCAN (28491)": 5.6786,
+        "SUBVAULT-ZEPHYR (91824)": 0.5985
+      },
+      "logit_lens_trajectory": {
+        "L5": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L11": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0011
+        },
+        "L17": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L23": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L29": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L35": {
+          "target_79421_pct": 0.0001,
+          "decoy_63819_pct": 0.0
+        },
+        "L41": {
+          "target_79421_pct": 0.0578,
+          "decoy_63819_pct": 0.0007
+        }
+      },
+      "vertical_gap_telemetry": {
+        "L5->L11": {
+          "global_attn_u_norm": 70.014,
+          "swa_5layer_drift_norm": 153.6464,
+          "drift_to_signal_ratio": 2.1945,
+          "rms_norm_inflation": 0.9235,
+          "cosine_retention": 0.0128
+        },
+        "L11->L17": {
+          "global_attn_u_norm": 55.6819,
+          "swa_5layer_drift_norm": 134.6667,
+          "drift_to_signal_ratio": 2.4185,
+          "rms_norm_inflation": 0.9067,
+          "cosine_retention": 0.4079
+        },
+        "L17->L23": {
+          "global_attn_u_norm": 62.4822,
+          "swa_5layer_drift_norm": 108.1536,
+          "drift_to_signal_ratio": 1.731,
+          "rms_norm_inflation": 0.6081,
+          "cosine_retention": 0.0092
+        },
+        "L23->L29": {
+          "global_attn_u_norm": 258.6016,
+          "swa_5layer_drift_norm": 144.3436,
+          "drift_to_signal_ratio": 0.5582,
+          "rms_norm_inflation": 1.2164,
+          "cosine_retention": 0.0222
+        },
+        "L29->L35": {
+          "global_attn_u_norm": 54.4237,
+          "swa_5layer_drift_norm": 79.2684,
+          "drift_to_signal_ratio": 1.4565,
+          "rms_norm_inflation": 1.32,
+          "cosine_retention": 0.5037
+        },
+        "L35->L41": {
+          "global_attn_u_norm": 32.0554,
+          "swa_5layer_drift_norm": 70.1293,
+          "drift_to_signal_ratio": 2.1878,
+          "rms_norm_inflation": 0.7393,
+          "cosine_retention": 0.5733
+        }
+      },
+      "per_layer_zone_attn_pct": {
+        "L5": {
+          "A": 1.4994,
+          "B": 0.1249,
+          "C": 0.3128,
+          "D": 0.1776,
+          "E": 0.063
+        },
+        "L11": {
+          "A": 0.3238,
+          "B": 0.4363,
+          "C": 0.1258,
+          "D": 0.0221,
+          "E": 0.0255
+        },
+        "L17": {
+          "A": 3.294,
+          "B": 0.1314,
+          "C": 0.0139,
+          "D": 0.0348,
+          "E": 0.0006
+        },
+        "L23": {
+          "A": 0.7945,
+          "B": 0.5555,
+          "C": 0.2985,
+          "D": 0.0433,
+          "E": 0.4835
+        },
+        "L29": {
+          "A": 6.2784,
+          "B": 0.4634,
+          "C": 0.414,
+          "D": 0.204,
+          "E": 0.0477
+        },
+        "L35": {
+          "A": 1.5102,
+          "B": 0.0346,
+          "C": 0.1051,
+          "D": 0.7822,
+          "E": 0.0585
+        },
+        "L41": {
+          "A": 0.2242,
+          "B": 0.0108,
+          "C": 0.0843,
+          "D": 0.2372,
+          "E": 0.099
+        }
+      },
+      "elapsed_sec": 9.12
+    },
+    {
+      "configuration": "8. Full 2D Superconducting (Q14 + gv=0.25 + sw=2.5)",
+      "hop_task": "3-Hop",
+      "fluency_ppl": 10.6071,
+      "target_prob_pct": 7.336,
+      "decoy_omega_prob_pct": 0.9928,
+      "recency_trap_prob_pct": 47.8366,
+      "vault_rank": 2,
+      "top1_vault_token": "2",
+      "vault_probability_distribution": {
+        "SUBVAULT-PRIME (79421)": 7.336,
+        "SUBVAULT-OMEGA (63819)": 0.9928,
+        "SUBVAULT-ALPHA (49281)": 0.7732,
+        "SUBVAULT-HELIOS (54712)": 0.8762,
+        "SUBVAULT-HYPERION (83914)": 0.5314,
+        "SUBVAULT-NYX (37192)": 1.8548,
+        "SUBVAULT-VULCAN (28491)": 9.4196,
+        "SUBVAULT-ZEPHYR (91824)": 1.2748
+      },
+      "logit_lens_trajectory": {
+        "L5": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L11": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0023
+        },
+        "L17": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L23": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L29": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L35": {
+          "target_79421_pct": 0.0011,
+          "decoy_63819_pct": 0.0
+        },
+        "L41": {
+          "target_79421_pct": 1.0779,
+          "decoy_63819_pct": 0.0197
+        }
+      },
+      "vertical_gap_telemetry": {
+        "L5->L11": {
+          "global_attn_u_norm": 69.7175,
+          "swa_5layer_drift_norm": 152.974,
+          "drift_to_signal_ratio": 2.1942,
+          "rms_norm_inflation": 0.9229,
+          "cosine_retention": 0.0153
+        },
+        "L11->L17": {
+          "global_attn_u_norm": 55.9344,
+          "swa_5layer_drift_norm": 134.4965,
+          "drift_to_signal_ratio": 2.4045,
+          "rms_norm_inflation": 0.8885,
+          "cosine_retention": 0.4096
+        },
+        "L17->L23": {
+          "global_attn_u_norm": 62.6305,
+          "swa_5layer_drift_norm": 107.5221,
+          "drift_to_signal_ratio": 1.7168,
+          "rms_norm_inflation": 0.6251,
+          "cosine_retention": 0.0096
+        },
+        "L23->L29": {
+          "global_attn_u_norm": 254.0883,
+          "swa_5layer_drift_norm": 143.3962,
+          "drift_to_signal_ratio": 0.5644,
+          "rms_norm_inflation": 1.1989,
+          "cosine_retention": 0.0246
+        },
+        "L29->L35": {
+          "global_attn_u_norm": 54.4629,
+          "swa_5layer_drift_norm": 77.1272,
+          "drift_to_signal_ratio": 1.4161,
+          "rms_norm_inflation": 1.2956,
+          "cosine_retention": 0.5156
+        },
+        "L35->L41": {
+          "global_attn_u_norm": 32.0448,
+          "swa_5layer_drift_norm": 67.1161,
+          "drift_to_signal_ratio": 2.0944,
+          "rms_norm_inflation": 0.7612,
+          "cosine_retention": 0.5568
+        }
+      },
+      "per_layer_zone_attn_pct": {
+        "L5": {
+          "A": 1.5279,
+          "B": 0.112,
+          "C": 0.2101,
+          "D": 0.1465,
+          "E": 0.0684
+        },
+        "L11": {
+          "A": 0.3624,
+          "B": 0.297,
+          "C": 0.0628,
+          "D": 0.0075,
+          "E": 0.0258
+        },
+        "L17": {
+          "A": 2.2369,
+          "B": 0.1129,
+          "C": 0.0177,
+          "D": 0.0419,
+          "E": 0.0008
+        },
+        "L23": {
+          "A": 0.486,
+          "B": 0.5407,
+          "C": 0.2741,
+          "D": 0.0428,
+          "E": 0.4496
+        },
+        "L29": {
+          "A": 4.2655,
+          "B": 0.5402,
+          "C": 0.5299,
+          "D": 0.4308,
+          "E": 0.0882
+        },
+        "L35": {
+          "A": 1.6181,
+          "B": 0.0313,
+          "C": 0.0968,
+          "D": 0.8883,
+          "E": 0.0834
+        },
+        "L41": {
+          "A": 0.2097,
+          "B": 0.0085,
+          "C": 0.0736,
+          "D": 0.2081,
+          "E": 0.1102
+        }
+      },
+      "elapsed_sec": 8.06
+    },
+    {
+      "configuration": "8. Full 2D Superconducting (Q14 + gv=0.25 + sw=2.5)",
+      "hop_task": "4-Hop",
+      "fluency_ppl": 10.6071,
+      "target_prob_pct": 4.35,
+      "decoy_omega_prob_pct": 0.7559,
+      "recency_trap_prob_pct": 41.2716,
+      "vault_rank": 2,
+      "top1_vault_token": "2",
+      "vault_probability_distribution": {
+        "SUBVAULT-PRIME (79421)": 4.35,
+        "SUBVAULT-OMEGA (63819)": 0.7559,
+        "SUBVAULT-ALPHA (49281)": 0.5887,
+        "SUBVAULT-HELIOS (54712)": 0.5195,
+        "SUBVAULT-HYPERION (83914)": 0.3571,
+        "SUBVAULT-NYX (37192)": 1.4122,
+        "SUBVAULT-VULCAN (28491)": 8.1269,
+        "SUBVAULT-ZEPHYR (91824)": 1.2463
+      },
+      "logit_lens_trajectory": {
+        "L5": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L11": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.003
+        },
+        "L17": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L23": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L29": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L35": {
+          "target_79421_pct": 0.0004,
+          "decoy_63819_pct": 0.0
+        },
+        "L41": {
+          "target_79421_pct": 0.2751,
+          "decoy_63819_pct": 0.0094
+        }
+      },
+      "vertical_gap_telemetry": {
+        "L5->L11": {
+          "global_attn_u_norm": 69.598,
+          "swa_5layer_drift_norm": 152.8333,
+          "drift_to_signal_ratio": 2.1959,
+          "rms_norm_inflation": 0.9205,
+          "cosine_retention": 0.016
+        },
+        "L11->L17": {
+          "global_attn_u_norm": 56.1984,
+          "swa_5layer_drift_norm": 133.8997,
+          "drift_to_signal_ratio": 2.3826,
+          "rms_norm_inflation": 0.8928,
+          "cosine_retention": 0.4177
+        },
+        "L17->L23": {
+          "global_attn_u_norm": 62.7452,
+          "swa_5layer_drift_norm": 107.6347,
+          "drift_to_signal_ratio": 1.7154,
+          "rms_norm_inflation": 0.6161,
+          "cosine_retention": 0.0131
+        },
+        "L23->L29": {
+          "global_attn_u_norm": 254.9313,
+          "swa_5layer_drift_norm": 144.3963,
+          "drift_to_signal_ratio": 0.5664,
+          "rms_norm_inflation": 1.218,
+          "cosine_retention": 0.0207
+        },
+        "L29->L35": {
+          "global_attn_u_norm": 54.2001,
+          "swa_5layer_drift_norm": 77.9828,
+          "drift_to_signal_ratio": 1.4388,
+          "rms_norm_inflation": 1.3032,
+          "cosine_retention": 0.5047
+        },
+        "L35->L41": {
+          "global_attn_u_norm": 32.0306,
+          "swa_5layer_drift_norm": 67.8727,
+          "drift_to_signal_ratio": 2.119,
+          "rms_norm_inflation": 0.7503,
+          "cosine_retention": 0.5392
+        }
+      },
+      "per_layer_zone_attn_pct": {
+        "L5": {
+          "A": 1.7151,
+          "B": 0.1098,
+          "C": 0.2068,
+          "D": 0.1329,
+          "E": 0.0624
+        },
+        "L11": {
+          "A": 0.3392,
+          "B": 0.3112,
+          "C": 0.076,
+          "D": 0.0072,
+          "E": 0.0232
+        },
+        "L17": {
+          "A": 2.8591,
+          "B": 0.0938,
+          "C": 0.0135,
+          "D": 0.0365,
+          "E": 0.0008
+        },
+        "L23": {
+          "A": 0.7282,
+          "B": 0.4929,
+          "C": 0.2571,
+          "D": 0.0419,
+          "E": 0.6571
+        },
+        "L29": {
+          "A": 4.0724,
+          "B": 0.288,
+          "C": 0.2194,
+          "D": 0.2037,
+          "E": 0.0829
+        },
+        "L35": {
+          "A": 1.5404,
+          "B": 0.0218,
+          "C": 0.0472,
+          "D": 0.4205,
+          "E": 0.0758
+        },
+        "L41": {
+          "A": 0.1988,
+          "B": 0.007,
+          "C": 0.0463,
+          "D": 0.1593,
+          "E": 0.1179
+        }
+      },
+      "elapsed_sec": 9.12
+    },
+    {
+      "configuration": "8. Full 2D Superconducting (Q14 + gv=0.25 + sw=2.5)",
+      "hop_task": "5-Hop",
+      "fluency_ppl": 10.6071,
+      "target_prob_pct": 1.8243,
+      "decoy_omega_prob_pct": 0.2798,
+      "recency_trap_prob_pct": 41.5202,
+      "vault_rank": 2,
+      "top1_vault_token": "2",
+      "vault_probability_distribution": {
+        "SUBVAULT-PRIME (79421)": 1.8243,
+        "SUBVAULT-OMEGA (63819)": 0.2798,
+        "SUBVAULT-ALPHA (49281)": 0.5227,
+        "SUBVAULT-HELIOS (54712)": 0.3592,
+        "SUBVAULT-HYPERION (83914)": 0.1697,
+        "SUBVAULT-NYX (37192)": 0.9765,
+        "SUBVAULT-VULCAN (28491)": 6.3673,
+        "SUBVAULT-ZEPHYR (91824)": 0.8617
+      },
+      "logit_lens_trajectory": {
+        "L5": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L11": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0025
+        },
+        "L17": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L23": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L29": {
+          "target_79421_pct": 0.0,
+          "decoy_63819_pct": 0.0
+        },
+        "L35": {
+          "target_79421_pct": 0.0001,
+          "decoy_63819_pct": 0.0
+        },
+        "L41": {
+          "target_79421_pct": 0.0342,
+          "decoy_63819_pct": 0.0013
+        }
+      },
+      "vertical_gap_telemetry": {
+        "L5->L11": {
+          "global_attn_u_norm": 69.8064,
+          "swa_5layer_drift_norm": 153.1031,
+          "drift_to_signal_ratio": 2.1933,
+          "rms_norm_inflation": 0.9139,
+          "cosine_retention": 0.0135
+        },
+        "L11->L17": {
+          "global_attn_u_norm": 56.5282,
+          "swa_5layer_drift_norm": 134.0127,
+          "drift_to_signal_ratio": 2.3707,
+          "rms_norm_inflation": 0.8852,
+          "cosine_retention": 0.4191
+        },
+        "L17->L23": {
+          "global_attn_u_norm": 62.5661,
+          "swa_5layer_drift_norm": 106.4528,
+          "drift_to_signal_ratio": 1.7014,
+          "rms_norm_inflation": 0.6182,
+          "cosine_retention": 0.0022
+        },
+        "L23->L29": {
+          "global_attn_u_norm": 254.7249,
+          "swa_5layer_drift_norm": 145.5992,
+          "drift_to_signal_ratio": 0.5716,
+          "rms_norm_inflation": 1.2173,
+          "cosine_retention": 0.0224
+        },
+        "L29->L35": {
+          "global_attn_u_norm": 54.0336,
+          "swa_5layer_drift_norm": 80.0793,
+          "drift_to_signal_ratio": 1.482,
+          "rms_norm_inflation": 1.3267,
+          "cosine_retention": 0.4953
+        },
+        "L35->L41": {
+          "global_attn_u_norm": 32.0231,
+          "swa_5layer_drift_norm": 68.6785,
+          "drift_to_signal_ratio": 2.1447,
+          "rms_norm_inflation": 0.7501,
+          "cosine_retention": 0.5553
+        }
+      },
+      "per_layer_zone_attn_pct": {
+        "L5": {
+          "A": 1.5197,
+          "B": 0.1677,
+          "C": 0.2174,
+          "D": 0.2127,
+          "E": 0.0819
+        },
+        "L11": {
+          "A": 0.4078,
+          "B": 0.5032,
+          "C": 0.0723,
+          "D": 0.0091,
+          "E": 0.0391
+        },
+        "L17": {
+          "A": 2.3579,
+          "B": 0.1262,
+          "C": 0.0143,
+          "D": 0.0369,
+          "E": 0.0012
+        },
+        "L23": {
+          "A": 0.5699,
+          "B": 0.4703,
+          "C": 0.2815,
+          "D": 0.0365,
+          "E": 0.4294
+        },
+        "L29": {
+          "A": 4.4794,
+          "B": 0.2314,
+          "C": 0.191,
+          "D": 0.1664,
+          "E": 0.0771
+        },
+        "L35": {
+          "A": 1.5458,
+          "B": 0.0173,
+          "C": 0.0507,
+          "D": 0.435,
+          "E": 0.0735
+        },
+        "L41": {
+          "A": 0.2333,
+          "B": 0.0065,
+          "C": 0.0498,
+          "D": 0.1487,
+          "E": 0.1487
+        }
+      },
+      "elapsed_sec": 7.86
+    }
+  ]
+}

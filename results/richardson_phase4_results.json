@@ -1,0 +1,582 @@
+{
+  "model_id": "google/gemma-4-E4B-it",
+  "context_tokens": 8270,
+  "zone_a_span": [
+    88,
+    111
+  ],
+  "zone_b_span": [
+    1728,
+    1749
+  ],
+  "zone_c_span": [
+    3327,
+    3345
+  ],
+  "relay1_heads": [
+    [
+      5,
+      0
+    ],
+    [
+      11,
+      3
+    ],
+    [
+      17,
+      4
+    ],
+    [
+      23,
+      2
+    ],
+    [
+      29,
+      3
+    ],
+    [
+      35,
+      6
+    ],
+    [
+      41,
+      4
+    ]
+  ],
+  "quorum28_heads": [
+    [
+      5,
+      0
+    ],
+    [
+      5,
+      6
+    ],
+    [
+      5,
+      3
+    ],
+    [
+      5,
+      5
+    ],
+    [
+      11,
+      3
+    ],
+    [
+      11,
+      5
+    ],
+    [
+      11,
+      4
+    ],
+    [
+      11,
+      1
+    ],
+    [
+      17,
+      4
+    ],
+    [
+      17,
+      3
+    ],
+    [
+      17,
+      5
+    ],
+    [
+      17,
+      7
+    ],
+    [
+      23,
+      2
+    ],
+    [
+      23,
+      3
+    ],
+    [
+      23,
+      5
+    ],
+    [
+      23,
+      1
+    ],
+    [
+      29,
+      3
+    ],
+    [
+      29,
+      4
+    ],
+    [
+      29,
+      5
+    ],
+    [
+      29,
+      6
+    ],
+    [
+      35,
+      6
+    ],
+    [
+      35,
+      1
+    ],
+    [
+      35,
+      0
+    ],
+    [
+      35,
+      7
+    ],
+    [
+      41,
+      4
+    ],
+    [
+      41,
+      5
+    ],
+    [
+      41,
+      7
+    ],
+    [
+      41,
+      6
+    ]
+  ],
+  "evaluations": [
+    {
+      "configuration": "1. Baseline (Unmodified)",
+      "hop_task": "1-Hop",
+      "fluency_ppl": 10.6041,
+      "target_prob_pct": 99.9965,
+      "decoy_omega_prob_pct": 0.0001,
+      "wrong_vault_sum_pct": 0.0026,
+      "recency_trap_prob_pct": 0.0004,
+      "vault_rank": 1,
+      "top1_vault_token": "7",
+      "zone_a_attn_pct": 20.543,
+      "zone_b_attn_pct": 0.9934,
+      "zone_c_attn_pct": 0.1755,
+      "elapsed_sec": 6.38
+    },
+    {
+      "configuration": "1. Baseline (Unmodified)",
+      "hop_task": "2-Hop",
+      "fluency_ppl": 10.6041,
+      "target_prob_pct": 99.8178,
+      "decoy_omega_prob_pct": 0.0075,
+      "wrong_vault_sum_pct": 0.1752,
+      "recency_trap_prob_pct": 0.0058,
+      "vault_rank": 1,
+      "top1_vault_token": "7",
+      "zone_a_attn_pct": 19.4251,
+      "zone_b_attn_pct": 1.3603,
+      "zone_c_attn_pct": 0.1983,
+      "elapsed_sec": 5.77
+    },
+    {
+      "configuration": "1. Baseline (Unmodified)",
+      "hop_task": "3-Hop (Clean-6d)",
+      "fluency_ppl": 10.6041,
+      "target_prob_pct": 0.038,
+      "decoy_omega_prob_pct": 99.9221,
+      "wrong_vault_sum_pct": 99.9609,
+      "recency_trap_prob_pct": 0.0005,
+      "vault_rank": 2,
+      "top1_vault_token": "6",
+      "zone_a_attn_pct": 3.6777,
+      "zone_b_attn_pct": 0.5734,
+      "zone_c_attn_pct": 0.2131,
+      "elapsed_sec": 5.86
+    },
+    {
+      "configuration": "1. Baseline (Unmodified)",
+      "hop_task": "3-Hop (Heavy-16d)",
+      "fluency_ppl": 10.6041,
+      "target_prob_pct": 0.1032,
+      "decoy_omega_prob_pct": 99.826,
+      "wrong_vault_sum_pct": 99.8926,
+      "recency_trap_prob_pct": 0.0024,
+      "vault_rank": 2,
+      "top1_vault_token": "6",
+      "zone_a_attn_pct": 3.5991,
+      "zone_b_attn_pct": 0.6416,
+      "zone_c_attn_pct": 0.2543,
+      "elapsed_sec": 5.79
+    },
+    {
+      "configuration": "2. Phase-3 Ref (Global-Log, 7-Head, b=2.5)",
+      "hop_task": "1-Hop",
+      "fluency_ppl": 10.2243,
+      "target_prob_pct": 99.9942,
+      "decoy_omega_prob_pct": 0.0002,
+      "wrong_vault_sum_pct": 0.0045,
+      "recency_trap_prob_pct": 0.0006,
+      "vault_rank": 1,
+      "top1_vault_token": "7",
+      "zone_a_attn_pct": 20.2129,
+      "zone_b_attn_pct": 0.5589,
+      "zone_c_attn_pct": 0.149,
+      "elapsed_sec": 6.51
+    },
+    {
+      "configuration": "2. Phase-3 Ref (Global-Log, 7-Head, b=2.5)",
+      "hop_task": "2-Hop",
+      "fluency_ppl": 10.2243,
+      "target_prob_pct": 90.9804,
+      "decoy_omega_prob_pct": 0.0392,
+      "wrong_vault_sum_pct": 8.9372,
+      "recency_trap_prob_pct": 0.0732,
+      "vault_rank": 1,
+      "top1_vault_token": "7",
+      "zone_a_attn_pct": 15.543,
+      "zone_b_attn_pct": 1.2925,
+      "zone_c_attn_pct": 0.2647,
+      "elapsed_sec": 5.89
+    },
+    {
+      "configuration": "2. Phase-3 Ref (Global-Log, 7-Head, b=2.5)",
+      "hop_task": "3-Hop (Clean-6d)",
+      "fluency_ppl": 10.2243,
+      "target_prob_pct": 0.3167,
+      "decoy_omega_prob_pct": 99.505,
+      "wrong_vault_sum_pct": 99.6747,
+      "recency_trap_prob_pct": 0.0058,
+      "vault_rank": 2,
+      "top1_vault_token": "6",
+      "zone_a_attn_pct": 5.7813,
+      "zone_b_attn_pct": 0.3991,
+      "zone_c_attn_pct": 0.2348,
+      "elapsed_sec": 5.98
+    },
+    {
+      "configuration": "2. Phase-3 Ref (Global-Log, 7-Head, b=2.5)",
+      "hop_task": "3-Hop (Heavy-16d)",
+      "fluency_ppl": 10.2243,
+      "target_prob_pct": 0.0803,
+      "decoy_omega_prob_pct": 99.8458,
+      "wrong_vault_sum_pct": 99.9135,
+      "recency_trap_prob_pct": 0.004,
+      "vault_rank": 2,
+      "top1_vault_token": "6",
+      "zone_a_attn_pct": 4.2449,
+      "zone_b_attn_pct": 0.4441,
+      "zone_c_attn_pct": 0.2821,
+      "elapsed_sec": 5.91
+    },
+    {
+      "configuration": "3. [TODO-1+5] Row-Log (7-Head, b=2.5)",
+      "hop_task": "1-Hop",
+      "fluency_ppl": 10.5988,
+      "target_prob_pct": 99.9948,
+      "decoy_omega_prob_pct": 0.0001,
+      "wrong_vault_sum_pct": 0.0039,
+      "recency_trap_prob_pct": 0.0006,
+      "vault_rank": 1,
+      "top1_vault_token": "7",
+      "zone_a_attn_pct": 21.1587,
+      "zone_b_attn_pct": 0.5026,
+      "zone_c_attn_pct": 0.2098,
+      "elapsed_sec": 6.61
+    },
+    {
+      "configuration": "3. [TODO-1+5] Row-Log (7-Head, b=2.5)",
+      "hop_task": "2-Hop",
+      "fluency_ppl": 10.5988,
+      "target_prob_pct": 63.769,
+      "decoy_omega_prob_pct": 0.0959,
+      "wrong_vault_sum_pct": 36.035,
+      "recency_trap_prob_pct": 0.1791,
+      "vault_rank": 1,
+      "top1_vault_token": "7",
+      "zone_a_attn_pct": 11.4858,
+      "zone_b_attn_pct": 1.346,
+      "zone_c_attn_pct": 0.5153,
+      "elapsed_sec": 5.96
+    },
+    {
+      "configuration": "3. [TODO-1+5] Row-Log (7-Head, b=2.5)",
+      "hop_task": "3-Hop (Clean-6d)",
+      "fluency_ppl": 10.5988,
+      "target_prob_pct": 0.0487,
+      "decoy_omega_prob_pct": 99.858,
+      "wrong_vault_sum_pct": 99.946,
+      "recency_trap_prob_pct": 0.0035,
+      "vault_rank": 2,
+      "top1_vault_token": "6",
+      "zone_a_attn_pct": 5.2277,
+      "zone_b_attn_pct": 0.2797,
+      "zone_c_attn_pct": 0.1569,
+      "elapsed_sec": 6.04
+    },
+    {
+      "configuration": "3. [TODO-1+5] Row-Log (7-Head, b=2.5)",
+      "hop_task": "3-Hop (Heavy-16d)",
+      "fluency_ppl": 10.5988,
+      "target_prob_pct": 0.014,
+      "decoy_omega_prob_pct": 99.9444,
+      "wrong_vault_sum_pct": 99.9814,
+      "recency_trap_prob_pct": 0.0028,
+      "vault_rank": 2,
+      "top1_vault_token": "6",
+      "zone_a_attn_pct": 3.9193,
+      "zone_b_attn_pct": 0.3848,
+      "zone_c_attn_pct": 0.277,
+      "elapsed_sec": 5.97
+    },
+    {
+      "configuration": "4. [TODO-1+3] Row-Log (Quorum-28, b=3.0)",
+      "hop_task": "1-Hop",
+      "fluency_ppl": 10.727,
+      "target_prob_pct": 99.9628,
+      "decoy_omega_prob_pct": 0.0003,
+      "wrong_vault_sum_pct": 0.0338,
+      "recency_trap_prob_pct": 0.0024,
+      "vault_rank": 1,
+      "top1_vault_token": "7",
+      "zone_a_attn_pct": 16.492,
+      "zone_b_attn_pct": 0.6319,
+      "zone_c_attn_pct": 0.087,
+      "elapsed_sec": 6.8
+    },
+    {
+      "configuration": "4. [TODO-1+3] Row-Log (Quorum-28, b=3.0)",
+      "hop_task": "2-Hop",
+      "fluency_ppl": 10.727,
+      "target_prob_pct": 6.2531,
+      "decoy_omega_prob_pct": 1.2313,
+      "wrong_vault_sum_pct": 93.3156,
+      "recency_trap_prob_pct": 0.3997,
+      "vault_rank": 2,
+      "top1_vault_token": "5",
+      "zone_a_attn_pct": 5.6153,
+      "zone_b_attn_pct": 0.9845,
+      "zone_c_attn_pct": 0.4359,
+      "elapsed_sec": 6.15
+    },
+    {
+      "configuration": "4. [TODO-1+3] Row-Log (Quorum-28, b=3.0)",
+      "hop_task": "3-Hop (Clean-6d)",
+      "fluency_ppl": 10.727,
+      "target_prob_pct": 0.5834,
+      "decoy_omega_prob_pct": 98.1077,
+      "wrong_vault_sum_pct": 99.3383,
+      "recency_trap_prob_pct": 0.0697,
+      "vault_rank": 2,
+      "top1_vault_token": "6",
+      "zone_a_attn_pct": 5.5193,
+      "zone_b_attn_pct": 0.2554,
+      "zone_c_attn_pct": 0.1455,
+      "elapsed_sec": 6.24
+    },
+    {
+      "configuration": "4. [TODO-1+3] Row-Log (Quorum-28, b=3.0)",
+      "hop_task": "3-Hop (Heavy-16d)",
+      "fluency_ppl": 10.727,
+      "target_prob_pct": 3.2154,
+      "decoy_omega_prob_pct": 93.968,
+      "wrong_vault_sum_pct": 96.6554,
+      "recency_trap_prob_pct": 0.11,
+      "vault_rank": 2,
+      "top1_vault_token": "6",
+      "zone_a_attn_pct": 6.0247,
+      "zone_b_attn_pct": 0.3108,
+      "zone_c_attn_pct": 0.2029,
+      "elapsed_sec": 6.16
+    },
+    {
+      "configuration": "5. [TODO-1+2+3] Dual-Rich (Quorum-28, b=3.0)",
+      "hop_task": "1-Hop",
+      "fluency_ppl": 10.8693,
+      "target_prob_pct": 99.7809,
+      "decoy_omega_prob_pct": 0.0008,
+      "wrong_vault_sum_pct": 0.2117,
+      "recency_trap_prob_pct": 0.0058,
+      "vault_rank": 1,
+      "top1_vault_token": "7",
+      "zone_a_attn_pct": 13.3236,
+      "zone_b_attn_pct": 0.4148,
+      "zone_c_attn_pct": 0.0959,
+      "elapsed_sec": 7.43
+    },
+    {
+      "configuration": "5. [TODO-1+2+3] Dual-Rich (Quorum-28, b=3.0)",
+      "hop_task": "2-Hop",
+      "fluency_ppl": 10.8693,
+      "target_prob_pct": 0.8672,
+      "decoy_omega_prob_pct": 6.4078,
+      "wrong_vault_sum_pct": 98.3924,
+      "recency_trap_prob_pct": 0.6754,
+      "vault_rank": 7,
+      "top1_vault_token": "2",
+      "zone_a_attn_pct": 4.8248,
+      "zone_b_attn_pct": 0.7683,
+      "zone_c_attn_pct": 0.4283,
+      "elapsed_sec": 6.78
+    },
+    {
+      "configuration": "5. [TODO-1+2+3] Dual-Rich (Quorum-28, b=3.0)",
+      "hop_task": "3-Hop (Clean-6d)",
+      "fluency_ppl": 10.8693,
+      "target_prob_pct": 1.3596,
+      "decoy_omega_prob_pct": 95.317,
+      "wrong_vault_sum_pct": 98.4281,
+      "recency_trap_prob_pct": 0.184,
+      "vault_rank": 3,
+      "top1_vault_token": "6",
+      "zone_a_attn_pct": 6.125,
+      "zone_b_attn_pct": 0.2376,
+      "zone_c_attn_pct": 0.1329,
+      "elapsed_sec": 6.88
+    },
+    {
+      "configuration": "5. [TODO-1+2+3] Dual-Rich (Quorum-28, b=3.0)",
+      "hop_task": "3-Hop (Heavy-16d)",
+      "fluency_ppl": 10.8693,
+      "target_prob_pct": 9.8069,
+      "decoy_omega_prob_pct": 72.4637,
+      "wrong_vault_sum_pct": 89.7417,
+      "recency_trap_prob_pct": 0.3803,
+      "vault_rank": 3,
+      "top1_vault_token": "6",
+      "zone_a_attn_pct": 6.8397,
+      "zone_b_attn_pct": 0.2765,
+      "zone_c_attn_pct": 0.1794,
+      "elapsed_sec": 6.79
+    },
+    {
+      "configuration": "6. [ALL TODOs 1-5] Full Relay (Quorum-28+Sharp, b=3.5)",
+      "hop_task": "1-Hop",
+      "fluency_ppl": 10.7074,
+      "target_prob_pct": 99.7842,
+      "decoy_omega_prob_pct": 0.0002,
+      "wrong_vault_sum_pct": 0.2126,
+      "recency_trap_prob_pct": 0.0024,
+      "vault_rank": 1,
+      "top1_vault_token": "7",
+      "zone_a_attn_pct": 16.1894,
+      "zone_b_attn_pct": 0.2321,
+      "zone_c_attn_pct": 0.0838,
+      "elapsed_sec": 7.75
+    },
+    {
+      "configuration": "6. [ALL TODOs 1-5] Full Relay (Quorum-28+Sharp, b=3.5)",
+      "hop_task": "2-Hop",
+      "fluency_ppl": 10.7074,
+      "target_prob_pct": 0.3458,
+      "decoy_omega_prob_pct": 16.6634,
+      "wrong_vault_sum_pct": 99.0144,
+      "recency_trap_prob_pct": 0.5702,
+      "vault_rank": 7,
+      "top1_vault_token": "2",
+      "zone_a_attn_pct": 5.1377,
+      "zone_b_attn_pct": 0.6366,
+      "zone_c_attn_pct": 0.7156,
+      "elapsed_sec": 7.08
+    },
+    {
+      "configuration": "6. [ALL TODOs 1-5] Full Relay (Quorum-28+Sharp, b=3.5)",
+      "hop_task": "3-Hop (Clean-6d)",
+      "fluency_ppl": 10.7074,
+      "target_prob_pct": 1.0651,
+      "decoy_omega_prob_pct": 95.8773,
+      "wrong_vault_sum_pct": 98.6581,
+      "recency_trap_prob_pct": 0.2377,
+      "vault_rank": 3,
+      "top1_vault_token": "6",
+      "zone_a_attn_pct": 6.9923,
+      "zone_b_attn_pct": 0.1746,
+      "zone_c_attn_pct": 0.0925,
+      "elapsed_sec": 7.18
+    },
+    {
+      "configuration": "6. [ALL TODOs 1-5] Full Relay (Quorum-28+Sharp, b=3.5)",
+      "hop_task": "3-Hop (Heavy-16d)",
+      "fluency_ppl": 10.7074,
+      "target_prob_pct": 2.1692,
+      "decoy_omega_prob_pct": 92.2377,
+      "wrong_vault_sum_pct": 97.5045,
+      "recency_trap_prob_pct": 0.2591,
+      "vault_rank": 2,
+      "top1_vault_token": "6",
+      "zone_a_attn_pct": 6.9882,
+      "zone_b_attn_pct": 0.2136,
+      "zone_c_attn_pct": 0.239,
+      "elapsed_sec": 7.08
+    },
+    {
+      "configuration": "7. [ALL TODOs 1-5] Deep Quorum-42 (b=3.5)",
+      "hop_task": "1-Hop",
+      "fluency_ppl": 10.738,
+      "target_prob_pct": 99.2936,
+      "decoy_omega_prob_pct": 0.0013,
+      "wrong_vault_sum_pct": 0.6837,
+      "recency_trap_prob_pct": 0.0084,
+      "vault_rank": 1,
+      "top1_vault_token": "7",
+      "zone_a_attn_pct": 13.8713,
+      "zone_b_attn_pct": 0.2234,
+      "zone_c_attn_pct": 0.0906,
+      "elapsed_sec": 8.23
+    },
+    {
+      "configuration": "7. [ALL TODOs 1-5] Deep Quorum-42 (b=3.5)",
+      "hop_task": "2-Hop",
+      "fluency_ppl": 10.738,
+      "target_prob_pct": 0.1557,
+      "decoy_omega_prob_pct": 5.1562,
+      "wrong_vault_sum_pct": 99.4293,
+      "recency_trap_prob_pct": 0.2909,
+      "vault_rank": 7,
+      "top1_vault_token": "2",
+      "zone_a_attn_pct": 4.4071,
+      "zone_b_attn_pct": 0.4239,
+      "zone_c_attn_pct": 0.8877,
+      "elapsed_sec": 7.58
+    },
+    {
+      "configuration": "7. [ALL TODOs 1-5] Deep Quorum-42 (b=3.5)",
+      "hop_task": "3-Hop (Clean-6d)",
+      "fluency_ppl": 10.738,
+      "target_prob_pct": 0.1305,
+      "decoy_omega_prob_pct": 98.3687,
+      "wrong_vault_sum_pct": 99.7238,
+      "recency_trap_prob_pct": 0.1016,
+      "vault_rank": 5,
+      "top1_vault_token": "6",
+      "zone_a_attn_pct": 5.6573,
+      "zone_b_attn_pct": 0.3467,
+      "zone_c_attn_pct": 0.1469,
+      "elapsed_sec": 7.69
+    },
+    {
+      "configuration": "7. [ALL TODOs 1-5] Deep Quorum-42 (b=3.5)",
+      "hop_task": "3-Hop (Heavy-16d)",
+      "fluency_ppl": 10.738,
+      "target_prob_pct": 0.1005,
+      "decoy_omega_prob_pct": 97.2617,
+      "wrong_vault_sum_pct": 98.9275,
+      "recency_trap_prob_pct": 0.8415,
+      "vault_rank": 5,
+      "top1_vault_token": "6",
+      "zone_a_attn_pct": 4.9758,
+      "zone_b_attn_pct": 0.3531,
+      "zone_c_attn_pct": 0.2829,
+      "elapsed_sec": 7.59
+    }
+  ]
+}

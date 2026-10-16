@@ -1,0 +1,27 @@
+# Private USPTO Patent Filing Documents (NEVER COMMIT)
+private_ip_filing/
+USPTO_*
+PTO_SB_15A*
+patent_fig*
+*Receipt*.pdf
+*Receipt*.mhtml
+Screenshot*.png
+
+# LaTeX build artifacts
+*.aux
+*.log
+*.out
+*.toc
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+
+# Python & OS caches
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+dist/
+build/
+.DS_Store

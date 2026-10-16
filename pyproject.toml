@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "richardson-attention"
+version = "0.1.0"
+description = "Superconducting Attention: Zero-Shot Multi-Hop Context Extrapolation & Renormalization Relays for Hybrid Transformers"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{ name = "James F. Walters" }]
+dependencies = [
+    "torch>=2.2.0",
+    "transformers>=5.5.0",
+    "accelerate>=0.30.0",
+    "numpy>=1.24.0",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["richardson_attention*"]

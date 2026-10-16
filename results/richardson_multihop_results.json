@@ -1,0 +1,294 @@
+{
+  "model_id": "google/gemma-4-E4B-it",
+  "context_tokens": 7981,
+  "zone_a_indices": [
+    88,
+    89,
+    90,
+    91,
+    92,
+    93,
+    94,
+    95,
+    96,
+    97,
+    98,
+    99,
+    100,
+    101,
+    102,
+    103,
+    104,
+    105,
+    106,
+    107,
+    108,
+    109,
+    110,
+    111
+  ],
+  "zone_b_indices": [
+    1728,
+    1729,
+    1730,
+    1731,
+    1732,
+    1733,
+    1734,
+    1735,
+    1736,
+    1737,
+    1738,
+    1739,
+    1740,
+    1741,
+    1742,
+    1743,
+    1744,
+    1745,
+    1746,
+    1747,
+    1748,
+    1749
+  ],
+  "zone_c_indices": [
+    3221,
+    3222,
+    3223,
+    3224,
+    3225,
+    3226,
+    3227,
+    3228,
+    3229,
+    3230,
+    3231,
+    3232,
+    3233,
+    3234,
+    3235,
+    3236,
+    3237,
+    3238,
+    3239
+  ],
+  "top5_heads": [
+    [
+      41,
+      4
+    ],
+    [
+      41,
+      5
+    ],
+    [
+      35,
+      1
+    ],
+    [
+      35,
+      0
+    ],
+    [
+      35,
+      7
+    ]
+  ],
+  "relay7_heads": [
+    [
+      5,
+      4
+    ],
+    [
+      11,
+      5
+    ],
+    [
+      17,
+      7
+    ],
+    [
+      23,
+      1
+    ],
+    [
+      29,
+      4
+    ],
+    [
+      35,
+      1
+    ],
+    [
+      41,
+      4
+    ]
+  ],
+  "evaluations": [
+    {
+      "configuration": "1. Baseline (Unmodified)",
+      "hop": "1-Hop",
+      "target_prob_pct": 99.9968,
+      "wrong_vault_prob_pct": 0.0017,
+      "recency_trap_prob_pct": 0.0003,
+      "zone_a_attn_pct": 38.9147,
+      "zone_b_attn_pct": 1.5261,
+      "zone_c_attn_pct": 0.2957,
+      "elapsed_sec": 5.45
+    },
+    {
+      "configuration": "1. Baseline (Unmodified)",
+      "hop": "2-Hop",
+      "target_prob_pct": 99.8558,
+      "wrong_vault_prob_pct": 0.1397,
+      "recency_trap_prob_pct": 0.0035,
+      "zone_a_attn_pct": 37.5194,
+      "zone_b_attn_pct": 2.4277,
+      "zone_c_attn_pct": 0.2708,
+      "elapsed_sec": 6.19
+    },
+    {
+      "configuration": "1. Baseline (Unmodified)",
+      "hop": "3-Hop",
+      "target_prob_pct": 0.2799,
+      "wrong_vault_prob_pct": 99.7145,
+      "recency_trap_prob_pct": 0.0027,
+      "zone_a_attn_pct": 12.8251,
+      "zone_b_attn_pct": 0.8014,
+      "zone_c_attn_pct": 0.1281,
+      "elapsed_sec": 6.12
+    },
+    {
+      "configuration": "2. Post-Softmax Rich (Top-5, b=2.0)",
+      "hop": "1-Hop",
+      "target_prob_pct": 99.997,
+      "wrong_vault_prob_pct": 0.0016,
+      "recency_trap_prob_pct": 0.0003,
+      "zone_a_attn_pct": 42.5916,
+      "zone_b_attn_pct": 1.5722,
+      "zone_c_attn_pct": 0.2818,
+      "elapsed_sec": 5.52
+    },
+    {
+      "configuration": "2. Post-Softmax Rich (Top-5, b=2.0)",
+      "hop": "2-Hop",
+      "target_prob_pct": 99.8475,
+      "wrong_vault_prob_pct": 0.1485,
+      "recency_trap_prob_pct": 0.0031,
+      "zone_a_attn_pct": 40.8747,
+      "zone_b_attn_pct": 2.3531,
+      "zone_c_attn_pct": 0.1383,
+      "elapsed_sec": 6.26
+    },
+    {
+      "configuration": "2. Post-Softmax Rich (Top-5, b=2.0)",
+      "hop": "3-Hop",
+      "target_prob_pct": 0.2799,
+      "wrong_vault_prob_pct": 99.7157,
+      "recency_trap_prob_pct": 0.0021,
+      "zone_a_attn_pct": 13.9849,
+      "zone_b_attn_pct": 0.7883,
+      "zone_c_attn_pct": 0.0788,
+      "elapsed_sec": 6.28
+    },
+    {
+      "configuration": "3. Pre-Softmax Linear (Top-5, b=3.0)",
+      "hop": "1-Hop",
+      "target_prob_pct": 99.9968,
+      "wrong_vault_prob_pct": 0.0019,
+      "recency_trap_prob_pct": 0.0003,
+      "zone_a_attn_pct": 50.8851,
+      "zone_b_attn_pct": 0.4939,
+      "zone_c_attn_pct": 0.0292,
+      "elapsed_sec": 5.46
+    },
+    {
+      "configuration": "3. Pre-Softmax Linear (Top-5, b=3.0)",
+      "hop": "2-Hop",
+      "target_prob_pct": 99.8282,
+      "wrong_vault_prob_pct": 0.1682,
+      "recency_trap_prob_pct": 0.0027,
+      "zone_a_attn_pct": 46.9161,
+      "zone_b_attn_pct": 0.811,
+      "zone_c_attn_pct": 0.0215,
+      "elapsed_sec": 6.22
+    },
+    {
+      "configuration": "3. Pre-Softmax Linear (Top-5, b=3.0)",
+      "hop": "3-Hop",
+      "target_prob_pct": 0.317,
+      "wrong_vault_prob_pct": 99.6785,
+      "recency_trap_prob_pct": 0.0021,
+      "zone_a_attn_pct": 16.1089,
+      "zone_b_attn_pct": 0.2518,
+      "zone_c_attn_pct": 0.0106,
+      "elapsed_sec": 6.22
+    },
+    {
+      "configuration": "4. Pre-Softmax Linear (7-Layer Relay, b=3.0)",
+      "hop": "1-Hop",
+      "target_prob_pct": 99.9966,
+      "wrong_vault_prob_pct": 0.0022,
+      "recency_trap_prob_pct": 0.0003,
+      "zone_a_attn_pct": 27.2067,
+      "zone_b_attn_pct": 0.6345,
+      "zone_c_attn_pct": 0.0159,
+      "elapsed_sec": 5.52
+    },
+    {
+      "configuration": "4. Pre-Softmax Linear (7-Layer Relay, b=3.0)",
+      "hop": "2-Hop",
+      "target_prob_pct": 99.7888,
+      "wrong_vault_prob_pct": 0.2054,
+      "recency_trap_prob_pct": 0.0045,
+      "zone_a_attn_pct": 21.0789,
+      "zone_b_attn_pct": 2.7855,
+      "zone_c_attn_pct": 0.0214,
+      "elapsed_sec": 6.29
+    },
+    {
+      "configuration": "4. Pre-Softmax Linear (7-Layer Relay, b=3.0)",
+      "hop": "3-Hop",
+      "target_prob_pct": 0.5214,
+      "wrong_vault_prob_pct": 99.4664,
+      "recency_trap_prob_pct": 0.0045,
+      "zone_a_attn_pct": 8.7361,
+      "zone_b_attn_pct": 1.1406,
+      "zone_c_attn_pct": 0.1492,
+      "elapsed_sec": 6.31
+    },
+    {
+      "configuration": "5. Pre-Softmax Log (7-Layer Relay, b=2.5)",
+      "hop": "1-Hop",
+      "target_prob_pct": 99.9981,
+      "wrong_vault_prob_pct": 0.001,
+      "recency_trap_prob_pct": 0.0001,
+      "zone_a_attn_pct": 28.4894,
+      "zone_b_attn_pct": 0.5361,
+      "zone_c_attn_pct": 0.0789,
+      "elapsed_sec": 5.58
+    },
+    {
+      "configuration": "5. Pre-Softmax Log (7-Layer Relay, b=2.5)",
+      "hop": "2-Hop",
+      "target_prob_pct": 99.7269,
+      "wrong_vault_prob_pct": 0.2659,
+      "recency_trap_prob_pct": 0.0058,
+      "zone_a_attn_pct": 19.4962,
+      "zone_b_attn_pct": 3.4972,
+      "zone_c_attn_pct": 0.1608,
+      "elapsed_sec": 6.36
+    },
+    {
+      "configuration": "5. Pre-Softmax Log (7-Layer Relay, b=2.5)",
+      "hop": "3-Hop",
+      "target_prob_pct": 1.4049,
+      "wrong_vault_prob_pct": 98.5837,
+      "recency_trap_prob_pct": 0.0051,
+      "zone_a_attn_pct": 9.0117,
+      "zone_b_attn_pct": 1.5898,
+      "zone_c_attn_pct": 0.8791,
+      "elapsed_sec": 6.38
+    }
+  ]
+}

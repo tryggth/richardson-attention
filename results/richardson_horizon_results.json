@@ -1,0 +1,532 @@
+{
+  "timestamp": "2026-10-16T00:56:34Z",
+  "models_tested": [
+    "google/gemma-4-E2B-it",
+    "google/gemma-4-E4B-it"
+  ],
+  "target_context_lengths": [
+    4096,
+    8192,
+    12288
+  ],
+  "runs": {
+    "google/gemma-4-E2B-it": {
+      "model_id": "google/gemma-4-E2B-it",
+      "selected_global_logic_heads": [
+        {
+          "layer": 29,
+          "head": 7,
+          "mass": 0.001662,
+          "agency": 94.4773
+        },
+        {
+          "layer": 9,
+          "head": 0,
+          "mass": 0.001667,
+          "agency": 79.3497
+        },
+        {
+          "layer": 29,
+          "head": 0,
+          "mass": 0.00167,
+          "agency": 101.6103
+        },
+        {
+          "layer": 34,
+          "head": 6,
+          "mass": 0.001677,
+          "agency": 308.721
+        },
+        {
+          "layer": 29,
+          "head": 3,
+          "mass": 0.001689,
+          "agency": 69.8601
+        }
+      ],
+      "length_sweeps": {
+        "4045": [
+          {
+            "configuration": "1. Baseline (Unmodified)",
+            "mode": "baseline",
+            "beta": 0.0,
+            "fluency_ppl": 120.2875,
+            "target_prob_pct": 99.9999,
+            "recency_trap_prob_pct": 0.0001,
+            "neighbor_confusion_prob_pct": 0.0,
+            "logic_head_needle_attn_pct": 30.5377,
+            "logic_head_neighbor_attn_pct": 2.38751,
+            "elapsed_sec": 0.97
+          },
+          {
+            "configuration": "2. Post-Softmax Richardson (beta=1.5)",
+            "mode": "post_softmax_richardson",
+            "beta": 1.5,
+            "fluency_ppl": 120.9295,
+            "target_prob_pct": 99.9999,
+            "recency_trap_prob_pct": 0.0001,
+            "neighbor_confusion_prob_pct": 0.0,
+            "logic_head_needle_attn_pct": 34.03016,
+            "logic_head_neighbor_attn_pct": 2.5,
+            "elapsed_sec": 0.88
+          },
+          {
+            "configuration": "3. Post-Softmax Richardson (beta=3.0)",
+            "mode": "post_softmax_richardson",
+            "beta": 3.0,
+            "fluency_ppl": 119.7671,
+            "target_prob_pct": 99.9999,
+            "recency_trap_prob_pct": 0.0001,
+            "neighbor_confusion_prob_pct": 0.0,
+            "logic_head_needle_attn_pct": 33.3065,
+            "logic_head_neighbor_attn_pct": 2.51927,
+            "elapsed_sec": 0.88
+          },
+          {
+            "configuration": "4. Pre-Softmax Linear (beta=1.5)",
+            "mode": "pre_softmax_linear",
+            "beta": 1.5,
+            "fluency_ppl": 119.9665,
+            "target_prob_pct": 99.9999,
+            "recency_trap_prob_pct": 0.0001,
+            "neighbor_confusion_prob_pct": 0.0,
+            "logic_head_needle_attn_pct": 35.95885,
+            "logic_head_neighbor_attn_pct": 2.6909,
+            "elapsed_sec": 0.87
+          },
+          {
+            "configuration": "5. Pre-Softmax Linear (beta=3.0)",
+            "mode": "pre_softmax_linear",
+            "beta": 3.0,
+            "fluency_ppl": 121.0875,
+            "target_prob_pct": 99.9999,
+            "recency_trap_prob_pct": 0.0001,
+            "neighbor_confusion_prob_pct": 0.0,
+            "logic_head_needle_attn_pct": 37.99772,
+            "logic_head_neighbor_attn_pct": 2.823,
+            "elapsed_sec": 0.87
+          },
+          {
+            "configuration": "6. Pre-Softmax Log-Dist (beta=2.5)",
+            "mode": "pre_softmax_log",
+            "beta": 2.5,
+            "fluency_ppl": 96.6975,
+            "target_prob_pct": 99.9999,
+            "recency_trap_prob_pct": 0.0,
+            "neighbor_confusion_prob_pct": 0.0,
+            "logic_head_needle_attn_pct": 34.18909,
+            "logic_head_neighbor_attn_pct": 2.64947,
+            "elapsed_sec": 0.87
+          }
+        ],
+        "8011": [
+          {
+            "configuration": "1. Baseline (Unmodified)",
+            "mode": "baseline",
+            "beta": 0.0,
+            "fluency_ppl": 120.2875,
+            "target_prob_pct": 99.9997,
+            "recency_trap_prob_pct": 0.0002,
+            "neighbor_confusion_prob_pct": 0.0001,
+            "logic_head_needle_attn_pct": 31.61154,
+            "logic_head_neighbor_attn_pct": 2.52136,
+            "elapsed_sec": 1.74
+          },
+          {
+            "configuration": "2. Post-Softmax Richardson (beta=1.5)",
+            "mode": "post_softmax_richardson",
+            "beta": 1.5,
+            "fluency_ppl": 120.9295,
+            "target_prob_pct": 99.9996,
+            "recency_trap_prob_pct": 0.0002,
+            "neighbor_confusion_prob_pct": 0.0001,
+            "logic_head_needle_attn_pct": 34.47055,
+            "logic_head_neighbor_attn_pct": 2.63824,
+            "elapsed_sec": 1.79
+          },
+          {
+            "configuration": "3. Post-Softmax Richardson (beta=3.0)",
+            "mode": "post_softmax_richardson",
+            "beta": 3.0,
+            "fluency_ppl": 119.7671,
+            "target_prob_pct": 99.9997,
+            "recency_trap_prob_pct": 0.0001,
+            "neighbor_confusion_prob_pct": 0.0,
+            "logic_head_needle_attn_pct": 34.52724,
+            "logic_head_neighbor_attn_pct": 2.66469,
+            "elapsed_sec": 1.78
+          },
+          {
+            "configuration": "4. Pre-Softmax Linear (beta=1.5)",
+            "mode": "pre_softmax_linear",
+            "beta": 1.5,
+            "fluency_ppl": 119.9665,
+            "target_prob_pct": 99.9998,
+            "recency_trap_prob_pct": 0.0001,
+            "neighbor_confusion_prob_pct": 0.0,
+            "logic_head_needle_attn_pct": 35.68595,
+            "logic_head_neighbor_attn_pct": 2.74426,
+            "elapsed_sec": 1.76
+          },
+          {
+            "configuration": "5. Pre-Softmax Linear (beta=3.0)",
+            "mode": "pre_softmax_linear",
+            "beta": 3.0,
+            "fluency_ppl": 121.0875,
+            "target_prob_pct": 99.9998,
+            "recency_trap_prob_pct": 0.0001,
+            "neighbor_confusion_prob_pct": 0.0,
+            "logic_head_needle_attn_pct": 36.40476,
+            "logic_head_neighbor_attn_pct": 2.88276,
+            "elapsed_sec": 1.76
+          },
+          {
+            "configuration": "6. Pre-Softmax Log-Dist (beta=2.5)",
+            "mode": "pre_softmax_log",
+            "beta": 2.5,
+            "fluency_ppl": 96.6975,
+            "target_prob_pct": 99.9998,
+            "recency_trap_prob_pct": 0.0001,
+            "neighbor_confusion_prob_pct": 0.0,
+            "logic_head_needle_attn_pct": 34.53587,
+            "logic_head_neighbor_attn_pct": 2.73734,
+            "elapsed_sec": 1.77
+          }
+        ],
+        "11975": [
+          {
+            "configuration": "1. Baseline (Unmodified)",
+            "mode": "baseline",
+            "beta": 0.0,
+            "fluency_ppl": 120.2875,
+            "target_prob_pct": 99.9996,
+            "recency_trap_prob_pct": 0.0002,
+            "neighbor_confusion_prob_pct": 0.0001,
+            "logic_head_needle_attn_pct": 31.50272,
+            "logic_head_neighbor_attn_pct": 2.6845,
+            "elapsed_sec": 2.79
+          },
+          {
+            "configuration": "2. Post-Softmax Richardson (beta=1.5)",
+            "mode": "post_softmax_richardson",
+            "beta": 1.5,
+            "fluency_ppl": 120.9295,
+            "target_prob_pct": 99.9996,
+            "recency_trap_prob_pct": 0.0002,
+            "neighbor_confusion_prob_pct": 0.0001,
+            "logic_head_needle_attn_pct": 34.42847,
+            "logic_head_neighbor_attn_pct": 2.81411,
+            "elapsed_sec": 2.9
+          },
+          {
+            "configuration": "3. Post-Softmax Richardson (beta=3.0)",
+            "mode": "post_softmax_richardson",
+            "beta": 3.0,
+            "fluency_ppl": 119.7671,
+            "target_prob_pct": 99.9997,
+            "recency_trap_prob_pct": 0.0001,
+            "neighbor_confusion_prob_pct": 0.0001,
+            "logic_head_needle_attn_pct": 34.44468,
+            "logic_head_neighbor_attn_pct": 2.81898,
+            "elapsed_sec": 2.91
+          },
+          {
+            "configuration": "4. Pre-Softmax Linear (beta=1.5)",
+            "mode": "pre_softmax_linear",
+            "beta": 1.5,
+            "fluency_ppl": 119.9665,
+            "target_prob_pct": 99.9997,
+            "recency_trap_prob_pct": 0.0001,
+            "neighbor_confusion_prob_pct": 0.0,
+            "logic_head_needle_attn_pct": 35.35793,
+            "logic_head_neighbor_attn_pct": 2.8872,
+            "elapsed_sec": 2.84
+          },
+          {
+            "configuration": "5. Pre-Softmax Linear (beta=3.0)",
+            "mode": "pre_softmax_linear",
+            "beta": 3.0,
+            "fluency_ppl": 121.0875,
+            "target_prob_pct": 99.9997,
+            "recency_trap_prob_pct": 0.0002,
+            "neighbor_confusion_prob_pct": 0.0,
+            "logic_head_needle_attn_pct": 36.66644,
+            "logic_head_neighbor_attn_pct": 2.97243,
+            "elapsed_sec": 2.86
+          },
+          {
+            "configuration": "6. Pre-Softmax Log-Dist (beta=2.5)",
+            "mode": "pre_softmax_log",
+            "beta": 2.5,
+            "fluency_ppl": 96.6975,
+            "target_prob_pct": 99.9998,
+            "recency_trap_prob_pct": 0.0001,
+            "neighbor_confusion_prob_pct": 0.0,
+            "logic_head_needle_attn_pct": 34.77382,
+            "logic_head_neighbor_attn_pct": 2.95561,
+            "elapsed_sec": 2.86
+          }
+        ]
+      }
+    },
+    "google/gemma-4-E4B-it": {
+      "model_id": "google/gemma-4-E4B-it",
+      "selected_global_logic_heads": [
+        {
+          "layer": 41,
+          "head": 4,
+          "mass": 0.001605,
+          "agency": 134.8671
+        },
+        {
+          "layer": 41,
+          "head": 5,
+          "mass": 0.001621,
+          "agency": 124.0511
+        },
+        {
+          "layer": 35,
+          "head": 1,
+          "mass": 0.001661,
+          "agency": 57.0883
+        },
+        {
+          "layer": 41,
+          "head": 7,
+          "mass": 0.001662,
+          "agency": 168.3535
+        },
+        {
+          "layer": 35,
+          "head": 7,
+          "mass": 0.001695,
+          "agency": 46.3242
+        }
+      ],
+      "length_sweeps": {
+        "4045": [
+          {
+            "configuration": "1. Baseline (Unmodified)",
+            "mode": "baseline",
+            "beta": 0.0,
+            "fluency_ppl": 10.6041,
+            "target_prob_pct": 99.9949,
+            "recency_trap_prob_pct": 0.0001,
+            "neighbor_confusion_prob_pct": 0.0004,
+            "logic_head_needle_attn_pct": 24.60497,
+            "logic_head_neighbor_attn_pct": 2.13919,
+            "elapsed_sec": 1.43
+          },
+          {
+            "configuration": "2. Post-Softmax Richardson (beta=1.5)",
+            "mode": "post_softmax_richardson",
+            "beta": 1.5,
+            "fluency_ppl": 10.7283,
+            "target_prob_pct": 99.9965,
+            "recency_trap_prob_pct": 0.0001,
+            "neighbor_confusion_prob_pct": 0.0003,
+            "logic_head_needle_attn_pct": 30.03986,
+            "logic_head_neighbor_attn_pct": 3.10248,
+            "elapsed_sec": 1.43
+          },
+          {
+            "configuration": "3. Post-Softmax Richardson (beta=3.0)",
+            "mode": "post_softmax_richardson",
+            "beta": 3.0,
+            "fluency_ppl": 10.6418,
+            "target_prob_pct": 99.9965,
+            "recency_trap_prob_pct": 0.0001,
+            "neighbor_confusion_prob_pct": 0.0003,
+            "logic_head_needle_attn_pct": 29.23129,
+            "logic_head_neighbor_attn_pct": 3.00724,
+            "elapsed_sec": 1.43
+          },
+          {
+            "configuration": "4. Pre-Softmax Linear (beta=1.5)",
+            "mode": "pre_softmax_linear",
+            "beta": 1.5,
+            "fluency_ppl": 10.6964,
+            "target_prob_pct": 99.9967,
+            "recency_trap_prob_pct": 0.0001,
+            "neighbor_confusion_prob_pct": 0.0003,
+            "logic_head_needle_attn_pct": 35.00324,
+            "logic_head_neighbor_attn_pct": 3.82749,
+            "elapsed_sec": 1.43
+          },
+          {
+            "configuration": "5. Pre-Softmax Linear (beta=3.0)",
+            "mode": "pre_softmax_linear",
+            "beta": 3.0,
+            "fluency_ppl": 10.6471,
+            "target_prob_pct": 99.9964,
+            "recency_trap_prob_pct": 0.0001,
+            "neighbor_confusion_prob_pct": 0.0002,
+            "logic_head_needle_attn_pct": 39.59275,
+            "logic_head_neighbor_attn_pct": 4.42985,
+            "elapsed_sec": 1.43
+          },
+          {
+            "configuration": "6. Pre-Softmax Log-Dist (beta=2.5)",
+            "mode": "pre_softmax_log",
+            "beta": 2.5,
+            "fluency_ppl": 11.0713,
+            "target_prob_pct": 99.9967,
+            "recency_trap_prob_pct": 0.0001,
+            "neighbor_confusion_prob_pct": 0.0003,
+            "logic_head_needle_attn_pct": 30.90341,
+            "logic_head_neighbor_attn_pct": 3.23936,
+            "elapsed_sec": 1.43
+          }
+        ],
+        "8011": [
+          {
+            "configuration": "1. Baseline (Unmodified)",
+            "mode": "baseline",
+            "beta": 0.0,
+            "fluency_ppl": 10.6041,
+            "target_prob_pct": 99.9938,
+            "recency_trap_prob_pct": 0.0001,
+            "neighbor_confusion_prob_pct": 0.0006,
+            "logic_head_needle_attn_pct": 23.51038,
+            "logic_head_neighbor_attn_pct": 2.08675,
+            "elapsed_sec": 2.84
+          },
+          {
+            "configuration": "2. Post-Softmax Richardson (beta=1.5)",
+            "mode": "post_softmax_richardson",
+            "beta": 1.5,
+            "fluency_ppl": 10.7283,
+            "target_prob_pct": 99.9952,
+            "recency_trap_prob_pct": 0.0001,
+            "neighbor_confusion_prob_pct": 0.0004,
+            "logic_head_needle_attn_pct": 28.216,
+            "logic_head_neighbor_attn_pct": 3.01752,
+            "elapsed_sec": 2.9
+          },
+          {
+            "configuration": "3. Post-Softmax Richardson (beta=3.0)",
+            "mode": "post_softmax_richardson",
+            "beta": 3.0,
+            "fluency_ppl": 10.6418,
+            "target_prob_pct": 99.9955,
+            "recency_trap_prob_pct": 0.0001,
+            "neighbor_confusion_prob_pct": 0.0004,
+            "logic_head_needle_attn_pct": 27.36388,
+            "logic_head_neighbor_attn_pct": 2.91091,
+            "elapsed_sec": 2.91
+          },
+          {
+            "configuration": "4. Pre-Softmax Linear (beta=1.5)",
+            "mode": "pre_softmax_linear",
+            "beta": 1.5,
+            "fluency_ppl": 10.6964,
+            "target_prob_pct": 99.9952,
+            "recency_trap_prob_pct": 0.0001,
+            "neighbor_confusion_prob_pct": 0.0004,
+            "logic_head_needle_attn_pct": 32.17579,
+            "logic_head_neighbor_attn_pct": 3.60268,
+            "elapsed_sec": 2.92
+          },
+          {
+            "configuration": "5. Pre-Softmax Linear (beta=3.0)",
+            "mode": "pre_softmax_linear",
+            "beta": 3.0,
+            "fluency_ppl": 10.6471,
+            "target_prob_pct": 99.9952,
+            "recency_trap_prob_pct": 0.0001,
+            "neighbor_confusion_prob_pct": 0.0004,
+            "logic_head_needle_attn_pct": 34.97483,
+            "logic_head_neighbor_attn_pct": 4.06126,
+            "elapsed_sec": 2.91
+          },
+          {
+            "configuration": "6. Pre-Softmax Log-Dist (beta=2.5)",
+            "mode": "pre_softmax_log",
+            "beta": 2.5,
+            "fluency_ppl": 11.0713,
+            "target_prob_pct": 99.9951,
+            "recency_trap_prob_pct": 0.0001,
+            "neighbor_confusion_prob_pct": 0.0004,
+            "logic_head_needle_attn_pct": 28.59958,
+            "logic_head_neighbor_attn_pct": 3.09417,
+            "elapsed_sec": 2.93
+          }
+        ],
+        "11975": [
+          {
+            "configuration": "1. Baseline (Unmodified)",
+            "mode": "baseline",
+            "beta": 0.0,
+            "fluency_ppl": 10.6041,
+            "target_prob_pct": 99.9957,
+            "recency_trap_prob_pct": 0.0001,
+            "neighbor_confusion_prob_pct": 0.0004,
+            "logic_head_needle_attn_pct": 23.66476,
+            "logic_head_neighbor_attn_pct": 1.94504,
+            "elapsed_sec": 4.6
+          },
+          {
+            "configuration": "2. Post-Softmax Richardson (beta=1.5)",
+            "mode": "post_softmax_richardson",
+            "beta": 1.5,
+            "fluency_ppl": 10.7283,
+            "target_prob_pct": 99.9965,
+            "recency_trap_prob_pct": 0.0001,
+            "neighbor_confusion_prob_pct": 0.0003,
+            "logic_head_needle_attn_pct": 28.03284,
+            "logic_head_neighbor_attn_pct": 2.78534,
+            "elapsed_sec": 4.71
+          },
+          {
+            "configuration": "3. Post-Softmax Richardson (beta=3.0)",
+            "mode": "post_softmax_richardson",
+            "beta": 3.0,
+            "fluency_ppl": 10.6418,
+            "target_prob_pct": 99.9966,
+            "recency_trap_prob_pct": 0.0001,
+            "neighbor_confusion_prob_pct": 0.0003,
+            "logic_head_needle_attn_pct": 27.28326,
+            "logic_head_neighbor_attn_pct": 2.67692,
+            "elapsed_sec": 4.68
+          },
+          {
+            "configuration": "4. Pre-Softmax Linear (beta=1.5)",
+            "mode": "pre_softmax_linear",
+            "beta": 1.5,
+            "fluency_ppl": 10.6964,
+            "target_prob_pct": 99.9964,
+            "recency_trap_prob_pct": 0.0001,
+            "neighbor_confusion_prob_pct": 0.0003,
+            "logic_head_needle_attn_pct": 31.9523,
+            "logic_head_neighbor_attn_pct": 3.30614,
+            "elapsed_sec": 4.59
+          },
+          {
+            "configuration": "5. Pre-Softmax Linear (beta=3.0)",
+            "mode": "pre_softmax_linear",
+            "beta": 3.0,
+            "fluency_ppl": 10.6471,
+            "target_prob_pct": 99.996,
+            "recency_trap_prob_pct": 0.0001,
+            "neighbor_confusion_prob_pct": 0.0003,
+            "logic_head_needle_attn_pct": 35.01819,
+            "logic_head_neighbor_attn_pct": 3.69811,
+            "elapsed_sec": 4.56
+          },
+          {
+            "configuration": "6. Pre-Softmax Log-Dist (beta=2.5)",
+            "mode": "pre_softmax_log",
+            "beta": 2.5,
+            "fluency_ppl": 11.0713,
+            "target_prob_pct": 99.9965,
+            "recency_trap_prob_pct": 0.0001,
+            "neighbor_confusion_prob_pct": 0.0003,
+            "logic_head_needle_attn_pct": 28.32862,
+            "logic_head_neighbor_attn_pct": 2.83518,
+            "elapsed_sec": 4.55
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,25 +1,33 @@
-Apache License
-Version 2.0, January 2004
-http://www.apache.org/licenses/
-
 Copyright (c) 2026 James F. Walters. All rights reserved.
 
-PATENT NOTICE:
-The algorithms, architectures, and mathematical methods implemented in this
-repository—including Surgical Spectral Attention Scaling, Precision-Matrix
-Homunculus Head Classification, Write/Read Thermodynamic Asymmetry Gating,
-Iso-Potential Cubic Superconducting Plateaus, Dual-State Symmetric Boltzmann
-Extrapolation, and Depth-Progressive Renormalization Group (RG) Relays—are
-the subject of pending U.S. Patent Application(s) by Inventor James F. Walters.
+NON-COMMERCIAL RESEARCH AND EVALUATION LICENSE & PATENT RESERVATION
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
+1. COPYRIGHT GRANT (NON-COMMERCIAL RESEARCH & EVALUATION ONLY)
+Permission is hereby granted, free of charge, to any person or academic institution
+obtaining a copy of this software and associated documentation files (the "Software"),
+to use, copy, execute, and modify the Software solely for non-commercial academic
+research, personal experimentation, and technical evaluation purposes, subject to the
+following conditions:
 
-    http://www.apache.org/licenses/LICENSE-2.0
+The above copyright notice, this permission notice, and the Patent Notice below shall
+be included in all copies or substantial portions of the Software. Any commercial use,
+production deployment, paid hosting, or incorporation of the Software or its algorithms
+into a commercial product or service requires a separate written commercial license
+from the copyright and patent holder.
 
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
+2. EXPLICIT RESERVATION OF PATENT RIGHTS (NO PATENT LICENSE GRANTED)
+Aspects of the algorithms, architectures, and methods implemented in this Software
+(including Surgical Spectral Attention Scaling, Precision-Matrix Head Profiling,
+Write/Read Query-Slice Gating, Iso-Potential Cubic Plateaus, Dual-State Symmetric
+Boltzmann Extrapolation, and Depth-Progressive Renormalization Relays) are the subject
+of pending United States Patent Applications owned by James F. Walters (U.S. Patent
+Pending).
+
+No license, express or implied, by estoppel or otherwise, to any patent or patent
+application of the author is granted by this License or by the public availability of
+this Software. Commercial licensing and patent inquiries may be directed to the author.
+
+3. DISCLAIMER OF WARRANTY
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+PARTICULAR PURPOSE AND NONINFRINGEMENT.

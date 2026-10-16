@@ -13,6 +13,7 @@
 \usetikzlibrary{shapes.geometric, arrows.meta, positioning, calc, backgrounds, fit}
 \usepackage{listings}
 
+\graphicspath{{docs/}{./}}
 \emergencystretch=1.5em
 
 \definecolor{codebg}{rgb}{0.96,0.97,0.98}
@@ -127,7 +128,7 @@ Why? Because an LLM's attention heads are divided into two functionally distinct
 
 \begin{figure}[t!]
     \centering
-    \includegraphics[width=\textwidth]{fig1_homunculus_spectrum.pdf}
+    \includegraphics[width=\textwidth]{figures/fig1_homunculus_spectrum.pdf}
     \caption{\textbf{The Neural Homunculus of \texttt{google/gemma-4-E4B-it}.} \textbf{(A)} Only 7 of the 42 layers are Global \texttt{full\_attention} layers capable of seeing past the 512-token SWA horizon. \textbf{(B)} Our zero-shot Stage 1 Brain Scanner maps every head by its Effective Mass ($\hat{\alpha}_{l,h} = 1/\bar{d}_{l,h}$) and Precision-Matrix Causal Agency ($P_{k,k} = \operatorname{diag}(\mathbf{R}^+)$), isolating the superconducting logic heads clustered at the universal mass constant $\hat{\alpha} \approx 0.00165$.}
     \label{fig:homunculus}
 \end{figure}
@@ -160,13 +161,13 @@ However, solving \textbf{3-Hop Pointer Chasing} without breaking \textbf{2-Hop} 
 
 \begin{figure}[t!]
     \centering
-    \includegraphics[width=\textwidth]{fig2_potentials_and_dual_state.pdf}
+    \includegraphics[width=\textwidth]{figures/fig2_potentials_and_dual_state.pdf}
     \caption{\textbf{Overcoming Inter-Hop Cannibalization and Mid-Context Decoys.} \textbf{(A)} A linear tilt ($\Phi = d/T$) causes Zone A ($d=8,170$) to exponentially cannibalize Zone B ($d=6,530$) and Zone C ($d=4,930$), while a concave logarithmic tilt ($\ln(1+d)$) unintentionally gives an $80\%\text{--}93\%$ boost to mid-context Barrier-3 decoys. The \textbf{Cubic Superconducting Plateau} ($\Phi_l = \min(1, d_{\text{long}}/(c_l T))^3$) places Zones A, B, and C on a flat $\Phi = 1.000$ equipotential roof while cubically crushing decoys. \textbf{(B)} Dual-State Symmetric extrapolation subtracts the heavy-gravity decoy distribution $-\eta \mathbf{S}_{\text{heavy}}$ as an active notch filter.}
     \label{fig:potentials}
 \end{figure}
 
 \subsection{Law 1: The Write/Read Thermodynamic Asymmetry (Why All-Rows Bias Breaks 2-Hop)}
-In Phase 4, when we expanded our surgical intervention to a 28-head Global Quorum (4 heads in each of the 7 Global layers) and applied backward distance biasing to \emph{every row $i$ of the $T \times T$ attention matrix}, 3-Hop probability jumped $95\times$, \textbf{but 2-Hop accuracy unexpectedly dropped from 99.82\% down to 0.87\%!}
+In Phase 4, when we expanded our surgical intervention to a 28-head Global Quorum (4 heads in each of the 7 Global layers) and applied backward distance biasing to \emph{every row $i$ of the $T \times T$ attention matrix}, 3-Hop probability jumped $95\times$, \textbf{but 2-Hop accuracy unexpectedly dropped from 99.8178\% down to 0.8672\%!}
 
 Why? Consider what happens at token $i = 1,748$ during \textbf{prefill} when the model is reading Zone B:
 \[
@@ -175,11 +176,11 @@ Why? Consider what happens at token $i = 1,748$ during \textbf{prefill} when the
 For the token \texttt{VAULT-LAZARUS} ($i = 1,748$) to bind \texttt{SECTOR-KRONOS} ($j = 1,733$) into its Key/Value cache representation, the attention heads at row $i = 1,748$ must attend \textbf{15 tokens to the left} ($d_{i,j} = 15$). When we applied a $+6$ logit boost to all $1,700$ preceding background telemetry tokens ($d > 32$) during prefill, those $1,700$ background tokens hijacked row $1,748$'s softmax denominator ($\Delta \mathcal{Z} \sim 1700 \, e^{+6}$) and prevented \texttt{VAULT-LAZARUS} from binding to \texttt{SECTOR-KRONOS} in the KV cache!
 
 \begin{proposition}[Query-Slice Gating Rule]
-Transformer inference consists of a \textbf{KV-Write Phase} ($1 \le i \le T - W_q$, document prefill) that requires local gravitational confinement ($d \le 32$) to bind intra-sentence entities into composite KV vectors, and a \textbf{KV-Read Phase} ($T - W_q < i \le T$, the active 64-token query/generation tail) that requires long-range superconductivity. Gating Richardson Attention strictly to the active query slice $W_q = 64$ leaves prefill KV construction $100\%$ intact, immediately restoring 2-Hop accuracy from $0.87\%$ to \textbf{99.57\% (\#1 WIN)} while jumping 3-Hop Heavy accuracy from $9.81\%$ to \textbf{76.43\% (\#1 WIN)} (Figure~\ref{fig:rg_relay}A).
+Transformer inference consists of a \textbf{KV-Write Phase} ($1 \le i \le T - W_q$, document prefill) that requires local gravitational confinement ($d \le 32$) to bind intra-sentence entities into composite KV vectors, and a \textbf{KV-Read Phase} ($T - W_q < i \le T$, the active 64-token query/generation tail) that requires long-range superconductivity. Gating Richardson Attention strictly to the active query slice $W_q = 64$ leaves prefill KV construction $100\%$ intact, immediately restoring 2-Hop accuracy from $0.8672\%$ to \textbf{99.5697\% (\#1 WIN)} while jumping 3-Hop Clean accuracy from $1.3596\%$ to \textbf{79.4999\% (\#1 WIN)} and 3-Hop Heavy accuracy from $9.8069\%$ to \textbf{76.4274\% (\#1 WIN)} (Figure~\ref{fig:rg_relay}A).
 \end{proposition}
 
 \subsection{Law 2: The Iso-Potential Cubic Superconducting Plateau}
-Why did logarithmic biasing stop at $76.43\%$ on 3-Hop Heavy (leaving $17.05\%$ probability on the decoy \texttt{VAULT-OMEGA})? Look at Figure~\ref{fig:potentials}A:
+Why did logarithmic biasing stop at $76.4274\%$ on 3-Hop Heavy (leaving $17.0533\%$ probability on the decoy \texttt{VAULT-OMEGA})? Look at Figure~\ref{fig:potentials}A:
 \begin{enumerate}
     \item If you use a \textbf{Linear Ramp} ($\Phi = d/T$), Zone A ($d = 8,170$) gets $1.66\times$ the logit boost of Zone C ($d = 4,930$). Inside the softmax exponential, Zone A \textbf{cannibalizes} Zone C (causing Zone C attention to drop $12\times$).
     \item If you use a \textbf{Concave Logarithm} ($\Phi = \ln(1+d)/\ln(1+T)$), mid-context decoys in Barrier 3 ($d \in [1500, 4500]$) receive $80\%$ to $93\%$ of the full logit boost, allowing 16 repeated decoys to compete with Zone C.
@@ -207,7 +208,7 @@ Because $-\Delta \mathbf{L}$ increases artificial gravity, $\mathbf{S}_{\text{he
 
 \begin{figure}[t!]
     \centering
-    \includegraphics[width=\textwidth]{fig3_write_read_and_rg_relay.pdf}
+    \includegraphics[width=\textwidth]{figures/fig3_write_read_and_rg_relay.pdf}
     \caption{\textbf{Query-Slice Gating and the 7-Layer Renormalization Group (RG) Relay.} \textbf{(A)} Restricting extrapolation to the active 64-token query window prevents prefill KV corruption, restoring 2-Hop to $99.5\%$+ and unlocking $95.9\%$ 3-Hop accuracy. \textbf{(B)} Stepping the plateau cutoff $c_l = [0.52 \to 0.68 \to 0.85]$ across the 7 Global layers progressively filters out earlier hops once their output has been written into the residual stream.}
     \label{fig:rg_relay}
 \end{figure}
@@ -255,7 +256,7 @@ By scheduling the plateau horizon $c_l$ across the 7 Global layers as a discrete
 
 \begin{figure}[t!]
     \centering
-    \includegraphics[width=\textwidth]{fig4_phase5_benchmark.pdf}
+    \includegraphics[width=\textwidth]{figures/fig4_phase5_benchmark.pdf}
     \caption{\textbf{Phase 5 Benchmark Results on \texttt{google/gemma-4-E4B-it} (8,270 Tokens).} \textbf{(A)} Query-Slice Cubic-Plateau (\texttt{Q14}) and Deep-Quorum RG Relay (\texttt{Q42}) flip 3-Hop target probability from $0.04\%\text{--}0.10\%$ FAIL to \textbf{95.87\%--98.59\% (\#1 WIN)}, while crushing adversarial decoy errors from $99.83\%$ down to $0.21\%$. \textbf{(B)} Fluency perplexity remains locked to the $10.60$ baseline.}
     \label{fig:benchmark}
 \end{figure}

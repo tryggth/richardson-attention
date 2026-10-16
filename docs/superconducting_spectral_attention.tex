@@ -331,7 +331,7 @@ In Phases 3--5 ($8,270$ tokens on \texttt{google/gemma-4-E4B-it}), three 8-way r
 \end{itemize}
 
 %[cite: 13]
-\begin{table}[H]
+\begin{table}[!htbp]
 \centering
 \caption{Phase 5 Ablation Summary on \texttt{google/gemma-4-E4B-it} ($8,270$ Tokens): Unmodified Baseline vs.\ All-Row Extrapolation, Query-Slice Extrapolation, Cubic Plateau, and Depth-Progressive RG Relay.}
 \label{tab:phase5}
@@ -364,6 +364,18 @@ In Phases 3--5 ($8,270$ tokens on \texttt{google/gemma-4-E4B-it}), three 8-way r
  & 2-Hop             & $10.6557$ & $\mathbf{99.4902\%}$ & $0.0229\%$ & \textbf{\#1 (WIN)} & $18.66\%$ & $1.60\% / 0.24\%$ \\
  & 3-Hop (Clean-6d)  & $10.6557$ & $\mathbf{98.5919\%}$ & $\mathbf{0.0700\%}$ & \textbf{\#1 (WIN)} & $15.70\%$ & $1.71\% / 0.58\%$ \\
  & 3-Hop (Heavy-16d) & $10.6557$ & $\mathbf{95.8651\%}$ & $1.2068\%$ & \textbf{\#1 (WIN)} & $12.73\%$ & $1.46\% / 0.52\%$\\
+\midrule
+\multirow{4}{*}{\shortstack[l]{\textbf{5.\ Query-Slice}\\\textbf{Cubic-Plateau}\\(\texttt{Q28}, $c=0.54$, $\beta=3.5$)}}
+ & 1-Hop             & $10.6426$ & $99.9850\%$ & $0.0004\%$ & \textbf{\#1 (WIN)} & $17.91\%$ & $1.22\% / 0.28\%$ \\
+ & 2-Hop             & $10.6426$ & $99.4431\%$ & $0.0179\%$ & \textbf{\#1 (WIN)} & $12.67\%$ & $1.87\% / 0.35\%$ \\
+ & 3-Hop (Clean-6d)  & $10.6426$ & $\mathbf{98.0610\%}$ & $\mathbf{0.0542\%}$ & \textbf{\#1 (WIN)} & $11.19\%$ & $1.49\% / 0.62\%$ \\
+ & 3-Hop (Heavy-16d) & $10.6426$ & $\mathbf{91.1731\%}$ & $1.4737\%$ & \textbf{\#1 (WIN)} & $8.85\%$  & $1.17\% / 0.70\%$\\
+\midrule
+\multirow{4}{*}{\shortstack[l]{\textbf{6.\ Depth-Prog RG}\\$c=[.52,.68,.85]$\\(\texttt{Q28}, $\beta=3.5$)}}
+ & 1-Hop             & $10.6727$ & $99.9845\%$ & $0.0004\%$ & \textbf{\#1 (WIN)} & $19.40\%$ & $0.63\% / 0.05\%$ \\
+ & 2-Hop             & $10.6727$ & $\mathbf{99.6359\%}$ & $0.0123\%$ & \textbf{\#1 (WIN)} & $14.05\%$ & $1.48\% / 0.09\%$ \\
+ & 3-Hop (Clean-6d)  & $10.6727$ & $\mathbf{97.5579\%}$ & $0.0693\%$ & \textbf{\#1 (WIN)} & $11.55\%$ & $1.35\% / 0.12\%$ \\
+ & 3-Hop (Heavy-16d) & $10.6727$ & $\mathbf{83.5363\%}$ & $12.8107\%$ & \textbf{\#1 (WIN)} & $8.14\%$  & $1.12\% / 0.17\%$\\
 \midrule
 \multirow{4}{*}{\shortstack[l]{\textbf{7.\ High-Gain RG}\\$c=[.52,.68,.85]$\\(\texttt{Q28}, $\beta=4.5$)}}
  & 1-Hop             & $10.6179$ & $99.9871\%$ & $0.0004\%$ & \textbf{\#1 (WIN)} & $19.63\%$ & $0.54\% / 0.05\%$ \\

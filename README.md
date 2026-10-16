@@ -18,7 +18,7 @@ Modern hybrid-attention Transformers (such as **`google/gemma-4-E2B-it`** and **
 At **8,270 tokens** on `google/gemma-4-E4B-it`, unmodified baseline inference achieves:
 - **1-Hop Retrieval (`VAULT-LAZARUS -> 79421`):** `99.9965%`
 - **2-Hop Retrieval (`SECTOR-KRONOS -> VAULT-LAZARUS -> 79421`):** `99.8178%`
-- **3-Hop Retrieval (`DIRECTOR-VANCE -> SECTOR-KRONOS -> VAULT-LAZARUS -> 79421`):** **`0.0380%` (Catastrophic Collapse)** — `99.8260%` of probability mass is hijacked by late-context adversarial decoys (`VAULT-OMEGA = 91824`).
+- **3-Hop Retrieval (`DIRECTOR-VANCE -> SECTOR-KRONOS -> VAULT-LAZARUS -> 79421`):** **`0.0380%` (Catastrophic Collapse)** on Clean-6d and **`0.1032%` (Catastrophic Collapse)** on Heavy-16d — `99.9221%` (Clean-6d) and `99.8260%` (Heavy-16d) of probability mass is hijacked by late-context adversarial decoys (`VAULT-OMEGA = 63819`).
 
 **Richardson Attention (Superconducting Attention)** is a **zero-shot, training-free, weight-preserving runtime inference intervention** that restores **3-Hop compositional reasoning from `0.0380%` to `98.5919%` (`2,594.5x` probability gain)** and **Heavy-16-Decoy 3-Hop accuracy from `0.1032%` to `95.8651%` (`928.9x` gain)** while suppressing adversarial decoy capture by up to **`485.1x`** (`99.8260% -> 0.2058%`) and preserving baseline language modeling perplexity (`10.6041 -> 10.6142`).
 
@@ -30,18 +30,20 @@ Spatially separated 3-zone registry topology (`>1,350` tokens between zones so 5
 - **Zone A (`tokens 88..111`, $d \approx 8,170$):** `VAULT-LAZARUS | TIER-0 GENESIS CODE: 79421` (+ 7 competing vaults)
 - **Zone B (`tokens 1728..1749`, $d \approx 6,530$):** `SECTOR-KRONOS | ASSIGNED PRIMARY VAULT: VAULT-LAZARUS` (+ 7 competing sectors)
 - **Zone C (`tokens 3327..3345`, $d \approx 4,930$):** `DIRECTOR-VANCE | AUTHORIZED COMMAND SECTOR: SECTOR-KRONOS` (+ 7 competing directors)
-- **Barrier 3 (`tokens 3400..8200`):** 6 (`Clean-6d`) or 16 (`Heavy-16d`) adversarial `VAULT-OMEGA -> 91824` audit blocks + recency overrides (`11111`).
+- **Barrier 3 (`tokens 3400..8200`):** 6 (`Clean-6d`) or 16 (`Heavy-16d`) adversarial `VAULT-OMEGA -> 63819` audit blocks + recency overrides (`11111`).
 
-| Configuration (`google/gemma-4-E4B-it`, `bfloat16`) | 1-Hop (`79421`) | 2-Hop (`79421`) | 3-Hop Clean-6d (`79421`) | 3-Hop Heavy-16d (`79421`) | Decoy Error (`91824`) | Fluency PPL |
+| Configuration (`google/gemma-4-E4B-it`, `bfloat16`) | 1-Hop (`79421`) | 2-Hop (`79421`) | 3-Hop Clean-6d (`79421`) | 3-Hop Heavy-16d (`79421`) | Decoy Error (`63819`) | Fluency PPL |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
-| **1. Unmodified Baseline** | `99.9965%` | `99.8178%` | `0.0380%` (FAIL) | `0.1032%` (FAIL) | `99.8260%` | `10.6041` |
-| **2. All-Rows Dual-Log (Phase 4 Control)** | `99.7824%` | `0.8691%` | `1.3607%` | `9.8065%` | `72.4609%` | `10.8693` |
-| **3. Query-Slice Dual-Log ($W_q=64$)** | `99.9896%` | `99.5665%` | `79.5008%` (**#1 WIN**) | `76.4301%` (**#1 WIN**) | `17.0510%` | `10.8693` |
-| **4. Query-Slice Cubic-Plateau (Q14, $c=0.54, \beta=3.5$)** | **`99.9922%`** | **`99.4902%`** | **`98.5919%` (#1 WIN, `2,594.5x`)** | **`95.8651%` (#1 WIN, `928.9x`)** | `1.2068%` | `10.6557` |
-| **5. Query-Slice Cubic-Plateau (Q28, $c=0.54, \beta=3.0$)** | `99.9896%` | `99.3831%` | `98.0626%` (**#1 WIN**) | `91.1695%` (**#1 WIN**) | `1.4722%` | `10.6426` |
-| **6. Deep-Quorum RG Relay (Q42, $c=[0.52, 0.68, 0.85], \beta=4.0$)** | `99.9004%` | `98.6646%` | `89.9004%` (**#1 WIN**) | **`94.0833%` (#1 WIN)** | **`0.2058%` (`485.1x` down)** | **`10.6142`** |
+| **1. Unmodified Baseline** | `99.9965%` | `99.8178%` | `0.0380%` (#2 FAIL) | `0.1032%` (#2 FAIL) | `99.8260%` (Clean `99.9221%`) | `10.6041` |
+| **2. Phase-4 Ref (`All-Rows Dual-Log, Q=28, β=3.0`)** | `99.7809%` | `0.8672%` (#7 FAIL) | `1.3596%` (#3 FAIL) | `9.8069%` (#3 FAIL) | `72.4637%` | `10.8693` |
+| **3. Query-Slice Dual-Log (`Q=28, W_q=64, β=3.0`)** | `99.9861%` | `99.5697%` (**#1 WIN**) | `79.4999%` (**#1 WIN**) | `76.4274%` (**#1 WIN**) | `17.0533%` | `10.8693` |
+| **4. Query-Slice Cubic-Plateau (`Q=14, c=0.54, β=3.5`)** | **`99.9922%`** | **`99.4902%` (#1 WIN)** | **`98.5919%` (#1 WIN, `2,594.5x`)** | **`95.8651%` (#1 WIN, `928.9x`)** | `1.2068%` | `10.6557` |
+| **5. Query-Slice Cubic-Plateau (`Q=28, c=0.54, β=3.5`)** | `99.9850%` | `99.4431%` (**#1 WIN**) | `98.0610%` (**#1 WIN**) | `91.1731%` (**#1 WIN**) | `1.4737%` | `10.6426` |
+| **6. Depth-Prog RG Relay (`Q=28, c=[0.52, 0.68, 0.85], β=3.5`)** | `99.9845%` | `99.6359%` (**#1 WIN**) | `97.5579%` (**#1 WIN**) | `83.5363%` (**#1 WIN**) | `12.8107%` | `10.6727` |
+| **7. High-Gain RG Relay (`Q=28, c=[0.52, 0.68, 0.85], β=4.5`)** | `99.9871%` | `99.5808%` (**#1 WIN**) | `98.0584%` (**#1 WIN**) | `88.4445%` (**#1 WIN**) | `7.2600%` | `10.6179` |
+| **8. Deep-Quorum RG Relay (`Q=42, c=[0.52, 0.68, 0.85], β=4.0`)** | `99.9004%` | `98.6646%` (**#1 WIN**) | `89.9004%` (**#1 WIN**) | **`94.0833%` (#1 WIN)** | **`0.2058%` (`485.1x` down)** | **`10.6142`** |
 
-Full empirical JSON telemetry across Phases 1–5 is available in [`results/`](results/).
+Full empirical JSON telemetry across Phases 1–5 is available in [`results/richardson_results.json`](results/richardson_results.json), [`results/richardson_horizon_results.json`](results/richardson_horizon_results.json), [`results/richardson_multihop_results.json`](results/richardson_multihop_results.json), [`results/richardson_phase4_results.json`](results/richardson_phase4_results.json), and [`results/richardson_phase5_results.json`](results/richardson_phase5_results.json).
 
 ---
 
@@ -61,11 +63,12 @@ Across both `gemma-4-E2B-it` (280 heads) and `gemma-4-E4B-it` (336 heads), prima
 
 ### 2. The Write/Read Thermodynamic Asymmetry Theorem (Query-Slice Gating $W_q = 64$)
 
-Why did Phase 4's all-rows extrapolation collapse on 2-Hop (`0.8691%`) and 3-Hop (`1.3607%`)? Because a single Transformer forward pass performs two thermodynamically opposite operations:
+Why did Phase 4's all-rows extrapolation collapse on 2-Hop (`0.8672%`) and 3-Hop Clean (`1.3596%`)? Because a single Transformer forward pass performs two thermodynamically opposite operations:
+
 1. **Prefill Key-Value Memory Writing ($i < T - W_q$):** When the model processes Zone B (`SECTOR-KRONOS | ASSIGNED PRIMARY VAULT: VAULT-LAZARUS` at token $1,748$), it must attend *locally* ($d \in [1, 20]$) to bind the key and value into the residual stream. Applying long-range antigravity to prefill rows hijacks Zone B into attending to Zone A (`tokens 0..100`) *instead of its own sentence*, corrupting the KV cache!
 2. **Active Query Multi-Hop Reading ($i \ge T - W_q$):** Only the final query/reasoning window ($W_q = 64$ tokens) needs long-range superconducting transport to read the cleanly bound KV pairs from Zones C, B, and A.
 
-By gating extrapolation strictly to the terminal query window $i \in [\max(0, T - W_q), T)$, 2-Hop accuracy jumps from **`0.8691%` to `99.5665%`** and 3-Hop jumps from **`1.3607%` to `79.5008%`** in a single toggle.
+By gating extrapolation strictly to the terminal query window $i \in [\max(0, T - W_q), T)$, 2-Hop accuracy jumps from **`0.8672%` to `99.5697%` (#1 WIN)**, 3-Hop Clean-6d jumps from **`1.3596%` to `79.4999%` (#1 WIN)**, and 3-Hop Heavy-16d jumps from **`9.8069%` to `76.4274%` (#1 WIN)** in a single toggle.
 
 ---
 
@@ -81,13 +84,13 @@ $$d^{\text{eff}}_{i,j} = \begin{cases} 0, & \text{if } j = 0 \text{ and } T > 32
 
 Linear tilts ($\Phi \propto d/T$) starve mid-context hops (Zone C gets only $60\%$ of Zone A's boost), while concave logarithmic tilts ($\Phi \propto \ln(1+d)$) amplify late-context decoys at $d \in [1000, 4500]$ by $80\%\text{–}93\%$ of full strength. We replace both with the **Iso-Potential Cubic Superconducting Plateau**:
 
-$$\Phi_l(i, j) = \min\!\left(1.0,\; \frac{d^{\text{eff}}_{i,j}}{c_l \cdot \max(T, H_{\text{cal}})}\right)^{\!3}$$
+$$\Phi_l(i, j) = \left[\min\left(1.0,\; \frac{d^{\text{eff}}_{i,j}}{c_l \cdot \max(T, H_{\text{cal}})}\right)\right]^{3}$$
 
 - **Iso-Potential Roof ($\Phi_l = 1.000$ for $d \ge c_l T$):** With $c_l = 0.54$, Zone C ($0.60T$), Zone B ($0.79T$), and Zone A ($0.99T$) all sit on a flat $\Phi = 1.000$ roof—eliminating inter-zone cannibalization.
 - **Cubic Decoy Rejection ($p = 3$ for $d < c_l T$):** Adversarial decoys in Barrier 3 are cubically attenuated ($0.4^3 = 0.064$).
 - **Dual-State Symmetric Boltzmann Filter:** For each target head with calibrated gain $\kappa_{l,h} = \text{clip}(\hat{\alpha}_{l,h} H_{\text{cal}}, 1.8, 2.6)$, we evaluate both the **Gravity-Free** state ($\mathbf{S}_{\text{free}} = \text{softmax}(\mathbf{L} + \beta\kappa\Phi)$) and the **Heavy-Gravity** decoy-matched filter ($\mathbf{S}_{\text{heavy}} = \text{softmax}(\mathbf{L} - \beta\kappa\Phi)$), then subtract the decoy mode:
 
-$$\mathbf{S}_{\text{Super}} = \text{normalize}\!\left(\max\!\Big(\mathbf{0},\; (1 + \eta)\,\mathbf{S}_{\text{free}} - \eta\,\mathbf{S}_{\text{heavy}}\Big)\right), \qquad \eta = 0.75$$
+$$\mathbf{S}_{\text{Super}} = \text{normalize}\left(\max\Big(\mathbf{0},\; (1 + \eta)\,\mathbf{S}_{\text{free}} - \eta\,\mathbf{S}_{\text{heavy}}\Big)\right), \qquad \eta = 0.75$$
 
 ![Cubic Plateau Potential & Dual-State Filter](docs/figures/fig2_potentials_and_dual_state.png)
 
@@ -129,7 +132,7 @@ To enable the **42-Head Deep-Quorum Stepped RG Relay** (`c_l = [0.52, 0.68, 0.85
 
 ```python
 controller = attach_richardson_attention(
-    model, tokenizer, heads_per_layer=6, beta=4.0, eta=0.75, rg_schedule=True
+    model, tokenizer, heads_per_layer=6, beta=4.0, eta=0.80, rg_schedule=True
 )
 ```
 
@@ -145,15 +148,17 @@ python3 benchmarks/gemma4_phase5_rg.py --self_test
 ```
 
 ### Full Experimental Suite (`benchmarks/` & `results/`)
-- **Phase 1 (2K Single-Needle Discovery):** [`benchmarks/gemma4_richardson_test.py`](benchmarks/gemma4_richardson_test.py) $\to$ [`results/richardson_results.json`](results/richardson_results.json)
-- **Phase 2 (4K–12K Horizon-Breaker & RoPE Phase Selectivity):** [`benchmarks/gemma4_horizon_breaker.py`](benchmarks/gemma4_horizon_breaker.py) $\to$ [`results/richardson_horizon_results.json`](results/richardson_horizon_results.json)
-- **Phase 3 (8K Multi-Hop Pointer Chasing):** [`benchmarks/gemma4_multihop_simple.py`](benchmarks/gemma4_multihop_simple.py) $\to$ [`results/richardson_multihop_results.json`](results/richardson_multihop_results.json)
-- **Phase 4 (Row-Wise Horizon & Dual-State Log Filter):** [`benchmarks/gemma4_phase4_todo.py`](benchmarks/gemma4_phase4_todo.py) $\to$ [`results/richardson_phase4_results.json`](results/richardson_phase4_results.json)
-- **Phase 5 (Query-Slice Gating, Cubic Plateau & RG Relay):** [`benchmarks/gemma4_phase5_rg.py`](benchmarks/gemma4_phase5_rg.py) $\to$ [`results/richardson_phase5_results.json`](results/richardson_phase5_results.json)
+- **Phase 1 (2K Single-Needle Discovery):** [`benchmarks/gemma4_richardson_test.py`](benchmarks/gemma4_richardson_test.py) -> [`results/richardson_results.json`](results/richardson_results.json)
+- **Phase 2 (4K–12K Horizon-Breaker & RoPE Phase Selectivity):** [`benchmarks/gemma4_horizon_breaker.py`](benchmarks/gemma4_horizon_breaker.py) -> [`results/richardson_horizon_results.json`](results/richardson_horizon_results.json)
+- **Phase 3 (8K Multi-Hop Pointer Chasing):** [`benchmarks/gemma4_multihop_simple.py`](benchmarks/gemma4_multihop_simple.py) -> [`results/richardson_multihop_results.json`](results/richardson_multihop_results.json)
+- **Phase 4 (Row-Wise Horizon & Dual-State Log Filter):** [`benchmarks/gemma4_phase4_todo.py`](benchmarks/gemma4_phase4_todo.py) -> [`results/richardson_phase4_results.json`](results/richardson_phase4_results.json)
+- **Phase 5 (Query-Slice Gating, Cubic Plateau & RG Relay):** [`benchmarks/gemma4_phase5_rg.py`](benchmarks/gemma4_phase5_rg.py) -> [`results/richardson_phase5_results.json`](results/richardson_phase5_results.json)
 
 ---
 
-## Citation & Authorship
+## License & Patent Reservation
 
 **Author & Inventor:** James F. Walters  
-*U.S. Provisional Patent Application Filed (October 2026).*
+**License:** [**Non-Commercial Research and Evaluation License & Patent Reservation (`LICENSE`)**](LICENSE)
+
+This software and its associated documentation are provided for **non-commercial academic research, personal experimentation, and technical evaluation only**. Aspects of the algorithms, architectures, and methods implemented in this repository are the subject of **pending United States Patent Applications owned by James F. Walters (U.S. Patent Pending)**. No patent license (express or implied) or commercial usage right is granted without a separate written commercial license from the author. See [`LICENSE`](LICENSE) for full terms.

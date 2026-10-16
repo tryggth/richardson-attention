@@ -303,9 +303,9 @@ def make_fig5_phase6_5hop_and_telemetry():
 
     y_base   = [99.9980, 99.9500, 98.5963, 98.5469, 2.2398]
     y_cubic  = [99.9959, 99.7493, 94.2017, 94.2199, 61.0232]
-    y_swa    = [99.9957, 99.7219, 88.2036, 88.6373, 76.6630]
+    y_swa    = [99.9969, 99.7198, 88.1970, 88.6384, 76.6634]
     y_rg     = [99.9903, 99.8223, 94.7053, 91.1823, 93.8942]
-    y_vert   = [0.7038,  1.6448,  5.5270,  3.1286,  1.6177]
+    y_vert   = [0.7014,  1.6357,  5.5317,  3.1314,  1.6197]
 
     ax1.plot(hops, y_rg, "-o", color="#1f77b4", linewidth=2.6, markersize=7, zorder=6,
              label="Stepped RG (Q28, c=[.38..90]) — 93.89% at 5-Hop (41.9x)")
@@ -321,7 +321,7 @@ def make_fig5_phase6_5hop_and_telemetry():
     ax1.annotate("93.89%\n(#1 WIN)", (5, 93.8942), xytext=(4.15, 81.5),
                  fontsize=8.0, fontweight="bold", color="#0b3c61",
                  arrowprops=dict(arrowstyle="->", color="#0b3c61", lw=0.9))
-    ax1.annotate("76.66%\n(+15.6% SWA)", (5, 76.6630), xytext=(4.12, 65.5),
+    ax1.annotate("76.66%\n(+15.6% SWA)", (5, 76.6634), xytext=(4.12, 65.5),
                  fontsize=7.8, fontweight="bold", color="#1b611b",
                  arrowprops=dict(arrowstyle="->", color="#1b611b", lw=0.9))
     ax1.annotate("2.24% (#2 FAIL)\nDecoy=95.24%", (5, 2.2398), xytext=(3.60, 14.0),
@@ -342,16 +342,16 @@ def make_fig5_phase6_5hop_and_telemetry():
     gx = np.arange(len(g_layers))
     w = 0.34
 
-    zone_a_base = [1.06, 1.32, 2.13, 3.19, 2.75, 2.52, 0.77]
-    zone_a_rg   = [1.15, 2.06, 3.97, 8.23, 4.87, 45.33, 17.86]
+    zone_a_base = [0.2913, 0.6621, 4.7782, 7.6041, 3.0540, 16.5772, 19.9809]
+    zone_a_rg   = [1.1479, 2.0596, 3.9739, 8.2321, 4.8689, 45.3304, 17.8606]
 
     bars_base = ax2.bar(gx - w/2, zone_a_base, w, color="#adb5bd", edgecolor="black", linewidth=0.6,
                         label="Baseline 5-Hop Zone A Attention (%)")
     bars_rg   = ax2.bar(gx + w/2, zone_a_rg, w, color="#1f77b4", edgecolor="black", linewidth=0.6,
                         label="Stepped RG (Q28) 5-Hop Zone A Attention (%)")
 
-    ax2.text(gx[5] + w/2, 45.33 + 1.5, "45.33%\n(18x Boost)", ha="center", fontsize=7.8, fontweight="bold", color="#0b3c61")
-    ax2.text(gx[6] + w/2, 17.86 + 1.5, "17.86%\n(23x Boost)", ha="center", fontsize=7.6, fontweight="bold", color="#0b3c61")
+    ax2.text(gx[5] + w/2, 45.33 + 1.5, "45.33%\n(2.73x Boost)", ha="center", fontsize=7.8, fontweight="bold", color="#0b3c61")
+    ax2.text(gx[6] + w/2, 20.8, "17.86%\n(100% Lens)", ha="center", fontsize=7.5, fontweight="bold", color="#0b3c61")
 
     # Highlight L23 -> L29 Basis-Rotation Phase Boundary
     ax2.axvspan(2.65, 3.65, color="#ff7f0e", alpha=0.14, label="L23→L29 Basis-Rotation Phase Boundary (||u_L23||=292.2)")
@@ -375,7 +375,7 @@ def make_fig5_phase6_5hop_and_telemetry():
     ax2.set_xticklabels(g_layers)
     ax2.set_ylim(0, 56)
     ax2.set_xlabel("Global Attention Layer Index in Gemma-4-E4B-it")
-    ax2.set_ylabel("5-Hop Zone A (VAULT-LAZARUS) Attention (%)")
+    ax2.set_ylabel("5-Hop Zone A (SUBVAULT-PRIME) Attention (%)")
     ax2.set_title("B. 5-Hop Zone A Cascade & SWA Fiber-Bundle Rotation")
 
     # Combine legends from ax2 and ax2_twin

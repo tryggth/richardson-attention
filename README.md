@@ -2,7 +2,10 @@
 
 **Eliminating the Multi-Hop Context Horizon in Pre-Trained Transformers via Dual-State Boltzmann Extrapolation and Renormalization Relays**
 
-> **Technical Papers:**
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/tryggth/richardson-attention/blob/main/notebooks/Richardson_Attention_Gemma4_Demo.ipynb)
+
+> **Technical Papers & Interactive Demo:**
+> - [**Interactive Google Colab Notebook (`notebooks/Richardson_Attention_Gemma4_Demo.ipynb`)**](https://colab.research.google.com/github/tryggth/richardson-attention/blob/main/notebooks/Richardson_Attention_Gemma4_Demo.ipynb)
 > - [**Engineering & Mathematical Explainer (`docs/richardson_attention_explainer.pdf`)**](docs/richardson_attention_explainer.pdf)
 > - [**Formal Theoretical Specification (`docs/superconducting_spectral_attention.pdf`)**](docs/superconducting_spectral_attention.pdf)
 
@@ -180,6 +183,8 @@ In a multi-hop pointer chain (`Envoy -> Director -> Sector -> Vault -> Subvault 
 ---
 
 ## 3-Line Quickstart Usage
+
+> **1-Click Interactive Browser Demo:** Launch [`notebooks/Richardson_Attention_Gemma4_Demo.ipynb`](notebooks/Richardson_Attention_Gemma4_Demo.ipynb) directly in [**Google Colab**](https://colab.research.google.com/github/tryggth/richardson-attention/blob/main/notebooks/Richardson_Attention_Gemma4_Demo.ipynb) to explore the Phase 5–6 potential landscapes and fiber-bundle telemetry in 3 seconds (no GPU required) or run live Before-and-After multi-hop evaluations on `google/gemma-4-E4B-it` (L4/A100) and `google/gemma-4-E2B-it` (Free T4).
 
 Install the package locally:
 

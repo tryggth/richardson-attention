@@ -2,9 +2,10 @@
 
 **Eliminating the Multi-Hop Context Horizon in Pre-Trained Transformers via Dual-State Boltzmann Extrapolation and Renormalization Relays**
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/tryggth/richardson-attention/blob/main/notebooks/Richardson_Attention_Gemma4_Demo.ipynb)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23445174.svg)](https://doi.org/10.5281/zenodo.23445174) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/tryggth/richardson-attention/blob/main/notebooks/Richardson_Attention_Gemma4_Demo.ipynb)
 
 > **Technical Papers & Interactive Demo:**
+> - [**CERN Zenodo Archival Preprint (DOI: 10.5281/zenodo.23445174)**](https://doi.org/10.5281/zenodo.23445174)
 > - [**Interactive Google Colab Notebook (`notebooks/Richardson_Attention_Gemma4_Demo.ipynb`)**](https://colab.research.google.com/github/tryggth/richardson-attention/blob/main/notebooks/Richardson_Attention_Gemma4_Demo.ipynb)
 > - [**Engineering & Mathematical Explainer (`docs/richardson_attention_explainer.pdf`)**](docs/richardson_attention_explainer.pdf)
 > - [**Formal Theoretical Specification (`docs/superconducting_spectral_attention.pdf`)**](docs/superconducting_spectral_attention.pdf)
@@ -283,6 +284,22 @@ python3 benchmarks/gemma4_phase7_standard_benchmarks.py --self_test
 - **Phase 5 (Query-Slice Gating, Cubic Plateau & 3-Hop RG Relay):** [`benchmarks/gemma4_phase5_rg.py`](benchmarks/gemma4_phase5_rg.py) -> [`results/richardson_phase5_results.json`](results/richardson_phase5_results.json)
 - **Phase 6 (1-to-5 Hop Scaling, SWA Decoy Shielding & Vertical Fiber-Bundle Telemetry):** [`benchmarks/gemma4_phase6_vertical.py`](benchmarks/gemma4_phase6_vertical.py) -> [`results/richardson_phase6_vertical_results.json`](results/richardson_phase6_vertical_results.json)
 - **Phase 7 (Multi-Seed NVIDIA RULER `VT`, BABILong `qa3` & Lost in the Middle):** [`benchmarks/gemma4_phase7_standard_benchmarks.py`](benchmarks/gemma4_phase7_standard_benchmarks.py) -> [`results/richardson_phase7_standard_benchmarks.json`](results/richardson_phase7_standard_benchmarks.json)
+
+---
+
+## Citation (BibTeX)
+
+```bibtex
+@misc{walters2026richardson,
+  author       = {Walters, James F.},
+  title        = {{Superconducting Attention: Eliminating the Multi-Hop Context Horizon in Pre-Trained Transformers via Dual-State Richardson Extrapolation and Renormalization Relays}},
+  year         = {2026},
+  month        = oct,
+  publisher    = {Zenodo},
+  doi          = {10.5281/zenodo.23445174},
+  url          = {https://doi.org/10.5281/zenodo.23445174}
+}
+```
 
 ---
 

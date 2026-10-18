@@ -470,6 +470,95 @@ def make_fig6_phase7_standard_benchmarks():
     plt.close()
 
 
+# ==============================================================================
+# FIGURE 7: Phase 8 Gauge-Covariant Procrustes vs Vocabulary-Fiber Pullback
+# ==============================================================================
+def make_fig7_phase8_fiber_bundle():
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(13.6, 5.0), gridspec_kw={"width_ratios": [1.05, 1.30]})
+
+    # Panel A: Low-Rank Orthogonal Fiber-Bundle Connection Across the 6 SWA Gaps
+    gaps = ["L5→L11", "L11→L17", "L17→L23", "L23→L29\n(Phase Bnd)", "L29→L35", "L35→L41"]
+    x1 = np.arange(len(gaps))
+    w1 = 0.34
+
+    raw_cos  = [0.0320, 0.3433, 0.0069, 0.0249, 0.4231, 0.4642]
+    proc_cos = [0.9149, 0.9486, 0.7912, 0.9527, 0.7491, 0.9008]
+    top16_e  = [0.9428, 0.9519, 0.8110, 0.9563, 0.9219, 0.9390]
+    top128_e = [0.9995, 0.9962, 0.9727, 0.9949, 0.9972, 0.9988]
+
+    b_raw  = ax1.bar(x1 - w1 / 2, raw_cos, w1, color="#d62728", alpha=0.82, edgecolor="black", linewidth=0.6,
+                     label="Raw Unrotated Cosine (Near-90° Basis Twist at L5/L17/L23)")
+    b_proc = ax1.bar(x1 + w1 / 2, proc_cos, w1, color="#1f77b4", alpha=0.88, edgecolor="black", linewidth=0.6,
+                     label=r"Rank-128 Procrustes Transport Cosine ($\mathbf{\Omega}_{k\to k+1}^{(128)}$)")
+
+    ax1.plot(x1, top128_e, "-o", color="#2ca02c", linewidth=2.1, markersize=5.5, zorder=6,
+             label="Top-128 SVD Energy Fraction (97.27%–99.95% of d=2,560)")
+    ax1.plot(x1, top16_e, "--^", color="#9467bd", linewidth=1.8, markersize=5.0, zorder=5,
+             label="Top-16 SVD Energy Fraction (81.10%–95.63% of d=2,560)")
+
+    for i, v in enumerate(raw_cos):
+        ax1.text(x1[i] - w1 / 2, v + 0.018, f"{v:.3f}", ha="center", va="bottom", fontsize=6.8, color="#8b0000", fontweight="bold")
+    for i, v in enumerate(proc_cos):
+        ax1.text(x1[i] + w1 / 2, v - 0.080, f"{v:.3f}", ha="center", va="bottom", fontsize=6.8, color="white", fontweight="bold")
+
+    ax1.set_xticks(x1)
+    ax1.set_xticklabels(gaps, fontsize=8.0)
+    ax1.set_ylim(0.0, 1.24)
+    ax1.set_ylabel("Cosine Alignment / SVD Energy Fraction")
+    ax1.set_title("A. Low-Rank Orthogonal Fiber Connection Across 6 SWA Gaps")
+    ax1.legend(loc="upper left", fontsize=6.9, frameon=True)
+    ax1.grid(axis="y", linestyle="--", alpha=0.35)
+
+    # Panel B: Vocabulary-Fiber Gauge Pullback vs. Internal Procrustes Skip Highway
+    metrics = [
+        "5-Hop Target\nProb (9.9K tok)",
+        "5-Hop Decoy\nErr (63819)",
+        "BABILong qa3\nMean Target",
+        "BABILong qa3\nMean Decoy Err",
+    ]
+    x2 = np.arange(len(metrics))
+    w2 = 0.155
+
+    c1_base = [2.2398,  95.2373, 44.2188, 52.0598]
+    c2_q14  = [76.6634,  5.5535, 68.1805, 17.0473]
+    c4_proc = [28.5143, 60.3647, 54.0991, 31.6476]
+    c5_unsc = [87.1174,  0.0045, 69.7890, 14.7929]
+    c6_dual = [85.4214,  0.0045, 69.7563, 14.4656]
+
+    ax2.bar(x2 - 2.0 * w2, c1_base, w2, color="#d62728", alpha=0.84, edgecolor="black", linewidth=0.55,
+            label="1. Unmodified Baseline (2.24% 5-Hop, 95.24% Decoy)")
+    ax2.bar(x2 - 1.0 * w2, c4_proc, w2, color="#ff7f0e", alpha=0.86, edgecolor="black", linewidth=0.55,
+            label="4. Internal Procrustes Highway (Q14, gv=0.12) — Perturbs MLP Hops")
+    ax2.bar(x2 + 0.0 * w2, c2_q14,  w2, color="#7f7f7f", alpha=0.85, edgecolor="black", linewidth=0.55,
+            label="2. Horiz Cubic Q14 + SWA Shield (Phase 6/7 Ref)")
+    ax2.bar(x2 + 1.0 * w2, c5_unsc, w2, color="#2ca02c", alpha=0.90, edgecolor="black", linewidth=0.55,
+            label="5. Vocab-Fiber Pullback (Q14, Unsoftcapped 0.70·L41+0.30·L35)")
+    ax2.bar(x2 + 2.0 * w2, c6_dual, w2, color="#1f77b4", alpha=0.92, edgecolor="black", linewidth=0.55,
+            label="6. Dual-State Vocab-Fiber Richardson (Q14, L35/41 − L23/29)")
+
+    # Key annotations in Panel B
+    ax2.text(x2[0] + 1.0 * w2, 88.5, "87.12%\n(+10.5%)", ha="center", va="bottom", fontsize=6.7, fontweight="bold", color="#1b611b")
+    ax2.text(x2[0] - 1.0 * w2, 30.0, "28.51%", ha="center", va="bottom", fontsize=6.6, fontweight="bold", color="#b25000")
+    ax2.annotate("0.0045% Decoy\n(21,163.8x Err↓)", (x2[1] + 1.5 * w2, 0.8), xytext=(x2[1] + 0.02, 71.0),
+                 fontsize=7.0, fontweight="bold", color="#0b3c68",
+                 arrowprops=dict(arrowstyle="->", color="#0b3c68", lw=0.9))
+    ax2.text(x2[2] + 1.0 * w2, 71.2, "69.79%\n(+25.6%)", ha="center", va="bottom", fontsize=6.7, fontweight="bold", color="#1b611b")
+    ax2.text(x2[3] + 2.0 * w2, 16.0, "14.47%\n(3.60x↓)", ha="center", va="bottom", fontsize=6.7, fontweight="bold", color="#0b3c68")
+
+    ax2.set_xticks(x2)
+    ax2.set_xticklabels(metrics, fontsize=8.0)
+    ax2.set_ylim(0, 122)
+    ax2.set_ylabel("Probability (%)")
+    ax2.set_title("B. Vocabulary-Fiber Gauge Pullback vs. Internal Procrustes Skip")
+    ax2.legend(loc="upper right", fontsize=6.7, frameon=True)
+    ax2.grid(axis="y", linestyle="--", alpha=0.35)
+
+    plt.tight_layout()
+    plt.savefig(f"{OUT_DIR}/fig7_phase8_fiber_bundle.pdf", bbox_inches="tight")
+    plt.savefig(f"{OUT_DIR}/fig7_phase8_fiber_bundle.png", dpi=300, bbox_inches="tight")
+    plt.close()
+
+
 if __name__ == "__main__":
     make_fig1_homunculus()
     make_fig2_potentials_and_dual_state()
@@ -477,6 +566,5 @@ if __name__ == "__main__":
     make_fig4_phase5_benchmark()
     make_fig5_phase6_5hop_and_telemetry()
     make_fig6_phase7_standard_benchmarks()
-    print(f"Successfully generated all 6 vector PDF and 300-DPI PNG figures in {OUT_DIR}!")
-
-
+    make_fig7_phase8_fiber_bundle()
+    print(f"Successfully generated all 7 vector PDF and 300-DPI PNG figures in {OUT_DIR}!")

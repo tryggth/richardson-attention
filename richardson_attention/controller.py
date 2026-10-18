@@ -54,9 +54,12 @@ class Phase5RGRichardsonController:
     """
     Runtime inference controller implementing Surgical Dual-State Symmetric
     Boltzmann Extrapolation, Query-Slice Gating, Iso-Potential Cubic Plateaus,
-    SWA Tail Decoy Shielding, and Depth-Progressive Renormalization Group (RG) Relays.
+    SWA Tail Decoy Shielding, Depth-Progressive Renormalization Group (RG) Relays,
+    and Optional Vocabulary-Fiber Gauge Pullback across Global Layers {L23, L29, L35, L41}.
     """
-    def __init__(self, text_cfg, layers, calib_horizon: float = 1400.0, q_chunk_size: int = 2048):
+    def __init__(self, text_cfg, layers, calib_horizon: float = 1400.0, q_chunk_size: int = 2048, model=None):
+        self.model = model
+        self.layers = layers
         self.mode = "dual_cubic_plateau"
         self.beta = 3.5
         self.eta = 0.75
@@ -64,6 +67,9 @@ class Phase5RGRichardsonController:
         self.query_window_len = 64
         self.plateau_power = 3.0
         self.swa_shield_beta = 0.0
+        self.vocab_pullback_mode = "none"  # "none", "unsoftcapped_l41", or "dual_35_41_minus_23"
+        self.vocab_gamma = 0.35
+        self.layer_lens_probs = {}
         self.calib_horizon = calib_horizon
         self.q_chunk_size = q_chunk_size
         self.target_heads = {}      # Dict[(layer_idx, head_idx) -> calibrated_kappa]
@@ -71,6 +77,8 @@ class Phase5RGRichardsonController:
         self.capture_stats = False
         self.head_masses = {}
         self.head_entropies = {}
+        self.global_layer_indices = []
+        self._hooks = []
 
         layer_types = getattr(text_cfg, "layer_types", None)
         for idx, layer in enumerate(layers):
@@ -81,6 +89,82 @@ class Phase5RGRichardsonController:
             else:
                 is_sliding = getattr(attn_mod, "is_sliding", False)
                 attn_mod.layer_type_str = "sliding_attention" if is_sliding else "full_attention"
+            if attn_mod.layer_type_str == "full_attention":
+                self.global_layer_indices.append(idx)
+
+        if self.model is not None:
+            self._register_vocab_fiber_hooks()
+
+    def _get_final_norm_and_lm_head(self):
+        if self.model is None:
+            return None, None
+        if hasattr(self.model, "model") and hasattr(self.model.model, "language_model"):
+            norm = self.model.model.language_model.norm
+        elif hasattr(self.model, "model") and hasattr(self.model.model, "norm"):
+            norm = self.model.model.norm
+        else:
+            norm = None
+        lm_head = getattr(self.model, "lm_head", None)
+        return norm, lm_head
+
+    def _register_vocab_fiber_hooks(self):
+        pullback_layers = set(self.global_layer_indices[-4:]) if len(self.global_layer_indices) >= 4 else set(self.global_layer_indices)
+        for idx in pullback_layers:
+            layer = self.layers[idx]
+
+            def make_post_hook(l_idx):
+                def post_hook(mod, args, output):
+                    if self.capture_stats or self.vocab_pullback_mode == "none":
+                        return None
+                    hidden_states = output[0] if isinstance(output, tuple) else output
+                    if hidden_states.shape[1] <= 1:
+                        return None
+                    norm_mod, lm_head = self._get_final_norm_and_lm_head()
+                    if norm_mod is not None and lm_head is not None:
+                        with torch.no_grad():
+                            last_h = hidden_states[:, -1:, :]
+                            norm_dev = next(norm_mod.parameters()).device
+                            lm_dev = next(lm_head.parameters()).device
+                            normed_h = norm_mod(last_h.to(norm_dev))
+                            raw_logits = lm_head(normed_h.to(lm_dev))[0, -1, :].float()
+                            self.layer_lens_probs[l_idx] = torch.softmax(raw_logits, dim=-1).detach()
+                    return None
+                return post_hook
+
+            self._hooks.append(layer.register_forward_hook(make_post_hook(idx)))
+
+    def evaluate_output_probabilities(self, final_model_logits: torch.Tensor) -> torch.Tensor:
+        """
+        Computes the output probability distribution over the vocabulary, optionally applying
+        Vocabulary-Fiber Gauge Pullback across the final 4 Global layers (e.g. {L23, L29, L35, L41}).
+        """
+        p_final = torch.softmax(final_model_logits.float(), dim=-1)
+        if self.vocab_pullback_mode == "none" or len(self.global_layer_indices) < 4:
+            return p_final
+
+        l23, l29, l35, l41 = self.global_layer_indices[-4:]
+        p_l41 = self.layer_lens_probs.get(l41, p_final)
+        p_l35 = self.layer_lens_probs.get(l35, p_final)
+        p_l29 = self.layer_lens_probs.get(l29, p_final)
+        p_l23 = self.layer_lens_probs.get(l23, p_final)
+
+        if self.vocab_pullback_mode == "unsoftcapped_l41":
+            p_blend = 0.70 * p_l41 + 0.30 * p_l35
+            return p_blend / (p_blend.sum() + 1e-9)
+        elif self.vocab_pullback_mode == "dual_35_41_minus_23":
+            p_late = 0.65 * p_l41 + 0.35 * p_l35
+            p_early = 0.50 * p_l23 + 0.50 * p_l29
+            p_vert = ((1.0 + self.vocab_gamma) * p_late - self.vocab_gamma * p_early).clamp(min=0.0)
+            return p_vert / (p_vert.sum() + 1e-9)
+        return p_final
+
+    def clear_step_state(self):
+        self.layer_lens_probs.clear()
+
+    def remove_hooks(self):
+        for h in self._hooks:
+            h.remove()
+        self._hooks.clear()
 
     def attention_forward(
         self,
@@ -246,6 +330,8 @@ def attach_richardson_attention(
     rg_schedule: bool | str = False,
     uniform_c: float = 0.54,
     swa_shield_beta: float = 0.0,
+    vocab_pullback_mode: str = "none",
+    vocab_gamma: float = 0.35,
 ):
     """
     One-line attachment helper: runs the zero-shot Stage 1 Precision-Matrix Brain Scan,
@@ -255,6 +341,9 @@ def attach_richardson_attention(
         rg_schedule: False for uniform_c, "3hop" for [0.52, 0.68, 0.85], or "5hop" / True
             for the 7-step 5-Hop RG schedule [0.38, 0.44, 0.52, 0.64, 0.74, 0.85, 0.90].
         swa_shield_beta: Optional damping (e.g. 2.5) for 48 < d <= 512 inside SWA layers.
+        vocab_pullback_mode: Optional Vocabulary-Fiber Gauge Pullback mode ("none",
+            "unsoftcapped_l41", or "dual_35_41_minus_23") evaluated via
+            controller.evaluate_output_probabilities(logits).
     """
     device = next(model.parameters()).device
     text_cfg, layers = get_text_config_and_layers(model)
@@ -269,7 +358,7 @@ def attach_richardson_attention(
     calib_inputs = tokenizer(calib_text, return_tensors="pt").to(device)
     calib_horizon = float(calib_inputs.input_ids.shape[1])
 
-    controller = Phase5RGRichardsonController(text_cfg, layers, calib_horizon=calib_horizon)
+    controller = Phase5RGRichardsonController(text_cfg, layers, calib_horizon=calib_horizon, model=model)
     ALL_ATTENTION_FUNCTIONS["eager"] = controller.attention_forward
 
     controller.capture_stats = True
@@ -319,4 +408,6 @@ def attach_richardson_attention(
     controller.query_window_len = query_window_len
     controller.query_slice_only = True
     controller.swa_shield_beta = swa_shield_beta
+    controller.vocab_pullback_mode = vocab_pullback_mode
+    controller.vocab_gamma = vocab_gamma
     return controller

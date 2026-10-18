@@ -129,7 +129,44 @@ To verify that Richardson Attention generalizes beyond structured vault registri
 | **3. Cubic Q14 + SWA Decoy Shield (`sw=2.5`)** | `99.8451%` | `99.8292%` | `99.8829%` | **`99.5729%`** | **`99.2014%` (`+6.95%` / `9.7x` Error Down)** |
 | **4. Stepped 7-Layer RG Relay (`Q=28, β=3.5, sw=2.0`)** | `99.8303%` | `99.7859%` | `99.8205%` | `99.4664%` | `98.8321%` |
 
-Full empirical JSON telemetry across Phases 1–7 is available in [`results/richardson_results.json`](results/richardson_results.json), [`results/richardson_horizon_results.json`](results/richardson_horizon_results.json), [`results/richardson_multihop_results.json`](results/richardson_multihop_results.json), [`results/richardson_phase4_results.json`](results/richardson_phase4_results.json), [`results/richardson_phase5_results.json`](results/richardson_phase5_results.json), [`results/richardson_phase6_vertical_results.json`](results/richardson_phase6_vertical_results.json), and [`results/richardson_phase7_standard_benchmarks.json`](results/richardson_phase7_standard_benchmarks.json).
+---
+
+## Phase 8: Gauge-Covariant Vertical Extrapolation — Procrustes Parallel Transport vs. Vocabulary-Fiber Pullback
+
+Why did Phase 6's unrotated vertical skip-highway (`Config 5: Horiz Q14 + Vertical Highway`) collapse 5-Hop accuracy to `1.6152%`? To test whether the residual stream across the 6 five-layer SWA+MLP blocks behaves as a **curved discrete fiber bundle** whose local coordinate charts rotate across depth, Phase 8 ([`benchmarks/gemma4_phase8_fiber_bundle.py`](benchmarks/gemma4_phase8_fiber_bundle.py)) performs two rigorous experiments:
+1. **Stage 1B Orthogonal Procrustes Parallel Transport ($\mathbf{\Omega}_{k \to k+1}^{(r)}$):** During Stage 1 calibration, we capture the post-attention update vectors $\mathbf{U}_{l_k} \in \mathbb{R}^{T_{\text{cal}} \times d}$ ($d=2,560$) and the subsequent Global layer's pre-layer input states $\mathbf{X}_{l_{k+1}} \in \mathbb{R}^{T_{\text{cal}} \times d}$, solving the rank-$r$ Orthogonal Procrustes problem via SVD of $\hat{\mathbf{U}}_{l_k}^\top \hat{\mathbf{X}}_{l_{k+1}} = \mathbf{A}\mathbf{\Sigma}\mathbf{B}^\top$ to obtain $\mathbf{\Omega}_{k \to k+1}^{(r)} = \mathbf{A}_{:,:r}\mathbf{B}_{:r,:}$.
+2. **Stage 2 Vocabulary-Fiber Gauge Pullback ($\mathcal{F}_{\text{vocab}} = \mathbf{W}_{\text{lm\_head}} \circ \text{RMSNorm}_{\text{final}}$):** Instead of injecting skip vectors into the internal hidden state (which risks bypassing intermediate MLP hop transitions), we pull the late Global layers `{L23, L29, L35, L41}` back into the canonical, gauge-invariant **Vocabulary Fiber** *prior* to Gemma 4's final `30.0 * tanh(logits / 30.0)` softcapping ceiling.
+
+![Phase 8 Gauge-Covariant Procrustes vs Vocabulary-Fiber Pullback](docs/figures/fig7_phase8_fiber_bundle.png)
+
+### 1. Stage 1B: Low-Rank Orthogonal Fiber-Bundle Connection Diagnostics Across the 6 SWA Gaps
+
+| 5-Layer SWA Gap | Raw Unrotated Cosine | Procrustes ($r=128$) Cosine | Full SVD Cosine ($r=2560$) | Top-16 SVD Energy (`%`) | Top-128 SVD Energy (`%`) | Mean Calib $\lVert\mathbf{u}_l\rVert_2$ |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: |
+| **`L5 -> L11`** | `+0.0320` | **`+0.9149`** | `+0.9150` | `94.28%` | **`99.95%`** | `58.28` |
+| **`L11 -> L17`** | `+0.3433` | **`+0.9486`** | `+0.9513` | `95.19%` | **`99.62%`** | `54.38` |
+| **`L17 -> L23`** | `+0.0069` | **`+0.7912`** | `+0.8033` | `81.10%` | **`97.27%`** | `64.22` |
+| **`L23 -> L29` (Phase Boundary)** | `+0.0249` | **`+0.9527`** | `+0.9535` | `95.63%` | **`99.49%`** | **`214.69` (`3.7x` Spike)** |
+| **`L29 -> L35`** | `+0.4231` | **`+0.7491`** | `+0.7491` | `92.19%` | **`99.72%`** | `54.25` |
+| **`L35 -> L41`** | `+0.4642` | **`+0.9008`** | `+0.9013` | `93.90%` | **`99.88%`** | `31.84` |
+
+### 2. Stage 2: Phase 8 Gauge-Covariant Vertical Extrapolation (`5-Hop @ 9,912 Tokens` & `10-Seed BABILong qa3`)
+
+| Configuration (`google/gemma-4-E4B-it`) | 5-Hop Target Prob (`79421`) | 5-Hop Decoy Err (`63819`) | BABILong `qa3` Top-1 Acc | BABILong `qa3` Mean Target Prob | BABILong `qa3` Mean Decoy Err |
+| :--- | :---: | :---: | :---: | :---: | :---: |
+| **1. Unmodified Baseline** | `2.2398%` (#2) | `95.2373%` | `50.0%` (`5/10`) | `44.2188% ± 44.5990%` | `52.0598%` |
+| **2. Horiz Cubic Q14 + SWA Shield (`Phase 6/7 Ref`)** | `76.6634%` (#1) | `5.5535%` | **`70.0%` (`7/10`)** | `68.1805% ± 42.5986%` | `17.0473%` |
+| **3. Horiz Stepped RG Q28 (`Phase 6/7 Ref`)** | **`93.8942%` (#1)** | `0.9205%` | `50.0%` (`5/10`) | `53.2468% ± 42.0183%` | `22.7146%` |
+| **4. Covariant Procrustes Highway (`Q=14, gv=0.12`)** | `28.5143%` (#2) | `60.3647%` | `60.0%` (`6/10`) | `54.0991% ± 41.4939%` | `31.6476%` |
+| **5. Vocab-Fiber Pullback (`Q=14, Unsoftcapped 0.70·L41+0.30·L35`)** | **`87.1174%` (#1)** | **`0.0045%` (`21,163.8x` Err Down)** | **`70.0%` (`7/10`)** | **`69.7890% ± 45.6708%` (`+25.57%`)** | `14.7929%` |
+| **6. Dual-State Vocab-Fiber Richardson (`Q=14, L35/41 − L23/29`)** | **`85.4214%` (#1)** | **`0.0045%` (`21,163.8x` Err Down)** | **`70.0%` (`7/10`)** | **`69.7563% ± 45.6520%` (`+25.54%`)** | **`14.4656%` (`3.60x` Err Down)** |
+| **7. Full 2D Covariant (`Procrustes + Dual Vocab Pullback, Q=14`)** | `32.3060%` (#2) | `67.5376%` | `60.0%` (`6/10`) | `53.6282% ± 44.3955%` | `25.8106%` |
+| **8. Full 2D Stepped RG (`Q=28 + Procrustes + Dual Vocab Pullback`)** | `35.5307%` (#2) | `64.3315%` | `60.0%` (`6/10`) | `45.6742% ± 38.8617%` | `26.9218%` |
+
+1. **Discovery 4 (Low-Rank Orthogonal Basis Twist Across SWA Gaps):** Stage 1B proves that while raw consecutive Global-layer vectors are nearly orthogonal at `L5->L11` (`+0.0320`), `L17->L23` (`+0.0069`), and `L23->L29` (`+0.0249`), **`97.27%–99.95%`** of the cross-layer transition energy in $d=2,560$ space is concentrated in a low-rank **$r=128$ principal subspace** (and **`81.10%–95.63%`** in just the top $16$ singular vectors), restoring cosine alignment to **`+0.7491–+0.9527`**.
+2. **Discovery 5 (Why Internal Skip-Highways Perturb Multi-Hop MLP Transitions vs. Why Vocabulary-Fiber Pullback Succeeds):** While Procrustes alignment + unit-norm matching (`Config 4`) improves 5-Hop accuracy by **`17.6x`** over Phase 6's unrotated skip highway (`1.6152% -> 28.5143%`), any internal skip connection that injects Layer $l_k$'s hop-$m$ entity vector directly into Layer $l_{k+1}$ partially bypasses the intervening nonlinear SWA+MLP blocks that advance the compositional state from hop $m \to m+1$. By contrast, **Vocabulary-Fiber Gauge Pullback (`Configs 5 & 6`)** leaves internal MLP hop transitions $100\%$ intact and operates strictly in the canonical readout fiber $\mathcal{F}_{\text{vocab}}$, bypassing Gemma 4's `30 * tanh(logits / 30)` softcapping ceiling to boost 14-head 5-Hop accuracy from `76.6634%` to **`87.1174%`** (`+10.45%`), collapse 5-Hop decoy error by **`21,163.8x`** (`95.2373% -> 0.0045%`, a **`1,234.1x`** improvement over Config 2's `5.5535%`), raise 10-seed BABILong `qa3` mean target probability to **`69.7890%`** (`+25.57%` over Baseline), and reduce BABILong decoy error to **`14.4656%`** (`3.60x` reduction).
+
+Full empirical JSON telemetry across Phases 1–8 is available in [`results/richardson_results.json`](results/richardson_results.json), [`results/richardson_horizon_results.json`](results/richardson_horizon_results.json), [`results/richardson_multihop_results.json`](results/richardson_multihop_results.json), [`results/richardson_phase4_results.json`](results/richardson_phase4_results.json), [`results/richardson_phase5_results.json`](results/richardson_phase5_results.json), [`results/richardson_phase6_vertical_results.json`](results/richardson_phase6_vertical_results.json), [`results/richardson_phase7_standard_benchmarks.json`](results/richardson_phase7_standard_benchmarks.json), and [`results/richardson_phase8_fiber_bundle_results.json`](results/richardson_phase8_fiber_bundle_results.json).
 
 ---
 
@@ -263,17 +300,30 @@ controller = attach_richardson_attention(
 )
 ```
 
+To enable **Phase 8 Vocabulary-Fiber Gauge Pullback** (`vocab_pullback_mode="unsoftcapped_l41"` or `"dual_35_41_minus_23"`):
+
+```python
+controller = attach_richardson_attention(
+    model, tokenizer, heads_per_layer=2, beta=3.5, eta=0.75, swa_shield_beta=2.5,
+    vocab_pullback_mode="unsoftcapped_l41"
+)
+with torch.no_grad():
+    out = model(**inputs, use_cache=False, logits_to_keep=1)
+    probs = controller.evaluate_output_probabilities(out.logits[0, -1, :])
+```
+
 ---
 
 ## Running Unit Tests & Reproducing Benchmarks
 
 ### Zero-Cost Local CPU Self-Tests (< 1 second)
-Verify `<bos>` sink pinning, the 32-token syntax guardband, Query-Slice gating ($W_q=64$), the Iso-Potential Cubic Plateau ($\Phi=1.0$ across Zones A..E), Dual-State Symmetric Boltzmann subtraction, SWA Decoy Shielding, and both 3-Hop and 5-Hop Depth-Progressive RG schedules on CPU:
+Verify `<bos>` sink pinning, the 32-token syntax guardband, Query-Slice gating ($W_q=64$), the Iso-Potential Cubic Plateau ($\Phi=1.0$ across Zones A..E), Dual-State Symmetric Boltzmann subtraction, SWA Decoy Shielding, Orthogonal Procrustes parallel transport SVD, and both 3-Hop and 5-Hop Depth-Progressive RG schedules on CPU:
 
 ```bash
 python3 benchmarks/gemma4_phase5_rg.py --self_test
 python3 benchmarks/gemma4_phase6_vertical.py --self_test
 python3 benchmarks/gemma4_phase7_standard_benchmarks.py --self_test
+python3 benchmarks/gemma4_phase8_fiber_bundle.py --self_test
 ```
 
 ### Full Experimental Suite (`benchmarks/` & `results/`)
@@ -284,6 +334,7 @@ python3 benchmarks/gemma4_phase7_standard_benchmarks.py --self_test
 - **Phase 5 (Query-Slice Gating, Cubic Plateau & 3-Hop RG Relay):** [`benchmarks/gemma4_phase5_rg.py`](benchmarks/gemma4_phase5_rg.py) -> [`results/richardson_phase5_results.json`](results/richardson_phase5_results.json)
 - **Phase 6 (1-to-5 Hop Scaling, SWA Decoy Shielding & Vertical Fiber-Bundle Telemetry):** [`benchmarks/gemma4_phase6_vertical.py`](benchmarks/gemma4_phase6_vertical.py) -> [`results/richardson_phase6_vertical_results.json`](results/richardson_phase6_vertical_results.json)
 - **Phase 7 (Multi-Seed NVIDIA RULER `VT`, BABILong `qa3` & Lost in the Middle):** [`benchmarks/gemma4_phase7_standard_benchmarks.py`](benchmarks/gemma4_phase7_standard_benchmarks.py) -> [`results/richardson_phase7_standard_benchmarks.json`](results/richardson_phase7_standard_benchmarks.json)
+- **Phase 8 (Gauge-Covariant Vertical Extrapolation: Procrustes Parallel Transport & Vocabulary-Fiber Pullback):** [`benchmarks/gemma4_phase8_fiber_bundle.py`](benchmarks/gemma4_phase8_fiber_bundle.py) -> [`results/richardson_phase8_fiber_bundle_results.json`](results/richardson_phase8_fiber_bundle_results.json)
 
 ---
 

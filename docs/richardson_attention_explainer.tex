@@ -426,6 +426,63 @@ On NVIDIA RULER \texttt{VT}, unmodified Baseline suffers catastrophic decoy hija
 }
 \end{table}
 
+\subsection*{Phase 8: Gauge-Covariant Vertical Extrapolation --- Procrustes Parallel Transport vs.\ Vocabulary-Fiber Pullback}
+
+To determine whether the residual stream across the 6 five-layer SWA+MLP blocks behaves as a \textbf{curved discrete fiber bundle} whose local coordinate charts rotate across depth, Phase 8 (\texttt{benchmarks/gemma4\_phase8\_fiber\_bundle.py}) executes two mechanisms (Figure~\ref{fig:phase8}): (1) \textbf{Stage 1B Orthogonal Procrustes Parallel Transport ($\mathbf{\Omega}_{k \to k+1}^{(r)}$)} via SVD of the normalized cross-layer covariance $\hat{\mathbf{U}}_{l_k}^\top \hat{\mathbf{X}}_{l_{k+1}} = \mathbf{A}\mathbf{\Sigma}\mathbf{B}^\top$; and (2) \textbf{Stage 2 Vocabulary-Fiber Gauge Pullback ($\mathcal{F}_{\text{vocab}} = \mathbf{W}_{\text{lm\_head}} \circ \text{RMSNorm}_{\text{final}}$)} across $\{\texttt{L23}, \texttt{L29}, \texttt{L35}, \texttt{L41}\}$ prior to Gemma 4's final $30 \tanh(\text{logits}/30)$ softcapping ceiling.
+
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=\textwidth]{figures/fig7_phase8_fiber_bundle.pdf}
+    \caption{\textbf{Phase 8 Gauge-Covariant Procrustes Parallel Transport vs.\ Vocabulary-Fiber Pullback.} \textbf{(A)} Across all 6 SWA gaps, $97.27\%\text{--}99.95\%$ of singular energy resides in a low-rank $r=128$ subspace, restoring cosine alignment from $+0.0069\text{--}+0.0320$ to $+0.7491\text{--}+0.9527$. \textbf{(B)} Pulling $\{\texttt{L35}, \texttt{L41}\}$ into the canonical Vocabulary Fiber boosts 14-head 5-Hop accuracy to $87.1174\%$, collapses 5-Hop decoy error $21,163.8\times$ ($95.2373\% \to 0.0045\%$), and raises 10-seed BABILong \texttt{qa3} mean target probability to $69.7890\%$ ($14.4656\%$ decoy error).}
+    \label{fig:phase8}
+\end{figure}
+
+\begin{table}[!htbp]
+\centering
+\caption{Phase 8 Stage 1B Low-Rank Orthogonal Fiber-Bundle Connection Diagnostics Across the 6 SWA Gaps ($d = 2,560$).}
+\label{tab:phase8_procrustes}
+\vspace{2pt}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{@{}lcccccc@{}}
+\toprule
+\textbf{5-Layer SWA Gap} & \textbf{Raw Unrotated Cosine} & \textbf{Procrustes ($r=128$) Cosine} & \textbf{Full SVD Cosine ($r=2560$)} & \textbf{Top-16 SVD Energy} & \textbf{Top-128 SVD Energy} & \textbf{Mean Calib $\|\mathbf{u}_l\|_2$} \\
+\midrule
+\texttt{L5 $\to$ L11} & $+0.0320$ & $\mathbf{+0.9149}$ & $+0.9150$ & $94.28\%$ & $\mathbf{99.95\%}$ & $58.28$ \\
+\texttt{L11 $\to$ L17} & $+0.3433$ & $\mathbf{+0.9486}$ & $+0.9513$ & $95.19\%$ & $\mathbf{99.62\%}$ & $54.38$ \\
+\texttt{L17 $\to$ L23} & $+0.0069$ & $\mathbf{+0.7912}$ & $+0.8033$ & $81.10\%$ & $\mathbf{97.27\%}$ & $64.22$ \\
+\textbf{\texttt{L23 $\to$ L29} (Phase Boundary)} & $+0.0249$ & $\mathbf{+0.9527}$ & $+0.9535$ & $95.63\%$ & $\mathbf{99.49\%}$ & $\mathbf{214.69}$ ($3.7\times$ Spike) \\
+\texttt{L29 $\to$ L35} & $+0.4231$ & $\mathbf{+0.7491}$ & $+0.7491$ & $92.19\%$ & $\mathbf{99.72\%}$ & $54.25$ \\
+\texttt{L35 $\to$ L41} & $+0.4642$ & $\mathbf{+0.9008}$ & $+0.9013$ & $93.90\%$ & $\mathbf{99.88\%}$ & $31.84$ \\
+\bottomrule
+\end{tabular}%
+}
+\end{table}
+
+\begin{table}[!htbp]
+\centering
+\caption{Phase 8 Stage 2 Evaluation: Internal Procrustes Skip-Highway vs.\ Vocabulary-Fiber Pullback (\texttt{gemma-4-E4B-it}).}
+\label{tab:phase8_eval}
+\vspace{2pt}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{@{}lccccc@{}}
+\toprule
+\textbf{Configuration (\texttt{google/gemma-4-E4B-it})} & \textbf{5-Hop Target (\texttt{79421})} & \textbf{5-Hop Decoy (\texttt{63819})} & \textbf{BABILong \texttt{qa3} Top-1} & \textbf{BABILong \texttt{qa3} Mean Target} & \textbf{BABILong \texttt{qa3} Decoy} \\
+\midrule
+1. Unmodified Baseline & $2.2398\%$ (\#2) & $95.2373\%$ & $50.0\%$ ($5/10$) & $44.2188\% \pm 44.5990\%$ & $52.0598\%$ \\
+2. Horiz Cubic Q14 + SWA Shield (Phase 6/7 Ref) & $76.6634\%$ (\#1) & $5.5535\%$ & $\mathbf{70.0\%}$ ($\mathbf{7/10}$) & $68.1805\% \pm 42.5986\%$ & $17.0473\%$ \\
+3. Horiz Stepped RG Q28 (Phase 6/7 Ref) & $\mathbf{93.8942\%}$ (\textbf{\#1}) & $0.9205\%$ & $50.0\%$ ($5/10$) & $53.2468\% \pm 42.0183\%$ & $22.7146\%$ \\
+4. Covariant Procrustes Highway ($Q=14, \gamma_v=0.12$) & $28.5143\%$ (\#2) & $60.3647\%$ & $60.0\%$ ($6/10$) & $54.0991\% \pm 41.4939\%$ & $31.6476\%$ \\
+\textbf{5. Vocab-Fiber Pullback ($Q=14$, Unsoftcapped $0.70\text{L41}+0.30\text{L35}$)} & $\mathbf{87.1174\%}$ (\textbf{\#1}) & $\mathbf{0.0045\%}$ ($\mathbf{21,163.8\times}$ down) & $\mathbf{70.0\%}$ ($\mathbf{7/10}$) & $\mathbf{69.7890\% \pm 45.6708\%}$ & $14.7929\%$ \\
+\textbf{6. Dual-State Vocab-Fiber Richardson ($Q=14$, L35/41 $-$ L23/29)} & $\mathbf{85.4214\%}$ (\textbf{\#1}) & $\mathbf{0.0045\%}$ ($\mathbf{21,163.8\times}$ down) & $\mathbf{70.0\%}$ ($\mathbf{7/10}$) & $\mathbf{69.7563\% \pm 45.6520\%}$ & $\mathbf{14.4656\%}$ ($\mathbf{3.60\times}$ down) \\
+7. Full 2D Covariant (Procrustes + Dual Vocab Pullback, $Q=14$) & $32.3060\%$ (\#2) & $67.5376\%$ & $60.0\%$ ($6/10$) & $53.6282\% \pm 44.3955\%$ & $25.8106\%$ \\
+8. Full 2D Stepped RG ($Q=28$ + Procrustes + Dual Vocab Pullback) & $35.5307\%$ (\#2) & $64.3315\%$ & $60.0\%$ ($6/10$) & $45.6742\% \pm 38.8617\%$ & $26.9218\%$ \\
+\bottomrule
+\end{tabular}%
+}
+\end{table}
+
+While Procrustes alignment + unit-norm matching (\texttt{Config 4}) improves 5-Hop accuracy by $17.6\times$ over Phase 6's unrotated skip highway ($1.6152\% \to 28.5143\%$), linearly transporting Layer $l_k$'s hop-$m$ entity representation directly into Layer $l_{k+1}$ partially bypasses the intervening nonlinear SWA+MLP lookup tables that advance the hop counter from $m \to m+1$. By contrast, \textbf{Vocabulary-Fiber Gauge Pullback (\texttt{Configs 5 \& 6})} leaves internal MLP hop transitions $100\%$ intact while bypassing Gemma 4's $30\tanh(\text{logits}/30)$ softcapping ceiling, boosting 14-head 5-Hop accuracy from $76.6634\%$ to $\mathbf{87.1174\%}$, collapsing 5-Hop decoy error $\mathbf{21,163.8\times}$ ($95.2373\% \to 0.0045\%$), raising 10-seed BABILong \texttt{qa3} mean target probability to $\mathbf{69.7890\%}$ ($+25.57\%$ over Baseline), and cutting BABILong decoy error to $\mathbf{14.4656\%}$.
+
 \subsection{Relation to Prior Art \& Architectural Differentiation}
 
 Richardson Attention operates in a fundamentally different regime from existing long-context and attention-denoising methods (Table~\ref{tab:prior_art}). Rather than rescaling RoPE frequencies across all heads or subtracting two learned softmax branches at every layer, it applies a zero-shot, symmetric Boltzmann-distribution Richardson extrapolation ($S_{\text{super}} = \mathcal{N}(\max(0, (1+\eta)S_{\text{free}} - \eta S_{\text{heavy}}))$) exclusively on the active query readout slice ($W_q = 64$) of a precision-matrix VIF-selected Global Logic Quorum ($Q \in \{14, 28, 42\}$) using a depth-progressive cubic plateau schedule ($c_l \in [0.38, 0.90]$).

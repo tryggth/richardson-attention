@@ -1,0 +1,159 @@
+{
+  "model_id": "google/gemma-4-E4B-it",
+  "fiber_procrustes_diagnostics": {
+    "L5->L11": {
+      "raw_unrotated_cosine": 0.032,
+      "procrustes_rank128_cosine": 0.9149,
+      "procrustes_full_cosine": 0.915,
+      "top16_singular_energy_pct": 94.28,
+      "top128_singular_energy_pct": 99.95,
+      "mean_calib_u_norm": 58.28
+    },
+    "L11->L17": {
+      "raw_unrotated_cosine": 0.3433,
+      "procrustes_rank128_cosine": 0.9486,
+      "procrustes_full_cosine": 0.9513,
+      "top16_singular_energy_pct": 95.19,
+      "top128_singular_energy_pct": 99.62,
+      "mean_calib_u_norm": 54.38
+    },
+    "L17->L23": {
+      "raw_unrotated_cosine": 0.0069,
+      "procrustes_rank128_cosine": 0.7912,
+      "procrustes_full_cosine": 0.8033,
+      "top16_singular_energy_pct": 81.1,
+      "top128_singular_energy_pct": 97.27,
+      "mean_calib_u_norm": 64.22
+    },
+    "L23->L29": {
+      "raw_unrotated_cosine": 0.0249,
+      "procrustes_rank128_cosine": 0.9527,
+      "procrustes_full_cosine": 0.9535,
+      "top16_singular_energy_pct": 95.63,
+      "top128_singular_energy_pct": 99.49,
+      "mean_calib_u_norm": 214.69
+    },
+    "L29->L35": {
+      "raw_unrotated_cosine": 0.4231,
+      "procrustes_rank128_cosine": 0.7491,
+      "procrustes_full_cosine": 0.7491,
+      "top16_singular_energy_pct": 92.19,
+      "top128_singular_energy_pct": 99.72,
+      "mean_calib_u_norm": 54.25
+    },
+    "L35->L41": {
+      "raw_unrotated_cosine": 0.4642,
+      "procrustes_rank128_cosine": 0.9008,
+      "procrustes_full_cosine": 0.9013,
+      "top16_singular_energy_pct": 93.9,
+      "top128_singular_energy_pct": 99.88,
+      "mean_calib_u_norm": 31.84
+    }
+  },
+  "evaluations": [
+    {
+      "configuration": "1. Unmodified Baseline",
+      "procrustes_gamma": 0.0,
+      "vocab_pullback_mode": "none",
+      "five_hop_target_prob_pct": 2.2398,
+      "five_hop_decoy_prob_pct": 95.2373,
+      "five_hop_rank": 2,
+      "babilong_qa3_top1_acc_pct": 50.0,
+      "babilong_qa3_mean_target_prob_pct": 44.2188,
+      "babilong_qa3_std_target_prob_pct": 44.599,
+      "babilong_qa3_mean_decoy_prob_pct": 52.0598,
+      "elapsed_sec": 49.03
+    },
+    {
+      "configuration": "2. Horiz Cubic Q14 + SWA Shield (Phase 6/7 Ref)",
+      "procrustes_gamma": 0.0,
+      "vocab_pullback_mode": "none",
+      "five_hop_target_prob_pct": 76.6634,
+      "five_hop_decoy_prob_pct": 5.5535,
+      "five_hop_rank": 1,
+      "babilong_qa3_top1_acc_pct": 70.0,
+      "babilong_qa3_mean_target_prob_pct": 68.1805,
+      "babilong_qa3_std_target_prob_pct": 42.5986,
+      "babilong_qa3_mean_decoy_prob_pct": 17.0473,
+      "elapsed_sec": 49.61
+    },
+    {
+      "configuration": "3. Horiz Stepped RG Q28 (Phase 6/7 Ref)",
+      "procrustes_gamma": 0.0,
+      "vocab_pullback_mode": "none",
+      "five_hop_target_prob_pct": 93.8942,
+      "five_hop_decoy_prob_pct": 0.9205,
+      "five_hop_rank": 1,
+      "babilong_qa3_top1_acc_pct": 50.0,
+      "babilong_qa3_mean_target_prob_pct": 53.2468,
+      "babilong_qa3_std_target_prob_pct": 42.0183,
+      "babilong_qa3_mean_decoy_prob_pct": 22.7146,
+      "elapsed_sec": 49.88
+    },
+    {
+      "configuration": "4. Covariant Procrustes Highway (Q14, gv=0.12)",
+      "procrustes_gamma": 0.12,
+      "vocab_pullback_mode": "none",
+      "five_hop_target_prob_pct": 28.5143,
+      "five_hop_decoy_prob_pct": 60.3647,
+      "five_hop_rank": 2,
+      "babilong_qa3_top1_acc_pct": 60.0,
+      "babilong_qa3_mean_target_prob_pct": 54.0991,
+      "babilong_qa3_std_target_prob_pct": 41.4939,
+      "babilong_qa3_mean_decoy_prob_pct": 31.6476,
+      "elapsed_sec": 50.59
+    },
+    {
+      "configuration": "5. Vocab-Fiber Pullback (Q14, Unsoftcapped L35+L41)",
+      "procrustes_gamma": 0.0,
+      "vocab_pullback_mode": "unsoftcapped_l41",
+      "five_hop_target_prob_pct": 87.1174,
+      "five_hop_decoy_prob_pct": 0.0045,
+      "five_hop_rank": 1,
+      "babilong_qa3_top1_acc_pct": 70.0,
+      "babilong_qa3_mean_target_prob_pct": 69.789,
+      "babilong_qa3_std_target_prob_pct": 45.6708,
+      "babilong_qa3_mean_decoy_prob_pct": 14.7929,
+      "elapsed_sec": 50.3
+    },
+    {
+      "configuration": "6. Dual-State Vocab-Fiber Richardson (Q14, L35/41 - L23/29)",
+      "procrustes_gamma": 0.0,
+      "vocab_pullback_mode": "dual_35_41_minus_23",
+      "five_hop_target_prob_pct": 85.4214,
+      "five_hop_decoy_prob_pct": 0.0045,
+      "five_hop_rank": 1,
+      "babilong_qa3_top1_acc_pct": 70.0,
+      "babilong_qa3_mean_target_prob_pct": 69.7563,
+      "babilong_qa3_std_target_prob_pct": 45.652,
+      "babilong_qa3_mean_decoy_prob_pct": 14.4656,
+      "elapsed_sec": 50.27
+    },
+    {
+      "configuration": "7. Full 2D Covariant (Procrustes + Dual Vocab Pullback, Q14)",
+      "procrustes_gamma": 0.1,
+      "vocab_pullback_mode": "dual_35_41_minus_23",
+      "five_hop_target_prob_pct": 32.306,
+      "five_hop_decoy_prob_pct": 67.5376,
+      "five_hop_rank": 2,
+      "babilong_qa3_top1_acc_pct": 60.0,
+      "babilong_qa3_mean_target_prob_pct": 53.6282,
+      "babilong_qa3_std_target_prob_pct": 44.3955,
+      "babilong_qa3_mean_decoy_prob_pct": 25.8106,
+      "elapsed_sec": 50.58
+    },
+    {
+      "configuration": "8. Full 2D Stepped RG (Q28 + Dual Vocab Pullback)",
+      "procrustes_gamma": 0.08,
+      "vocab_pullback_mode": "dual_35_41_minus_23",
+      "five_hop_target_prob_pct": 35.5307,
+      "five_hop_decoy_prob_pct": 64.3315,
+      "five_hop_rank": 2,
+      "babilong_qa3_top1_acc_pct": 60.0,
+      "babilong_qa3_mean_target_prob_pct": 45.6742,
+      "babilong_qa3_std_target_prob_pct": 38.8617,
+      "babilong_qa3_mean_decoy_prob_pct": 26.9218,
+      "elapsed_sec": 50.64
+    }
+  ]
+}

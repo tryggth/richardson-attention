@@ -1,0 +1,22 @@
+{
+  "title": "Richardson Attention: Superconducting Spectral Attention and Renormalization Group Relays for Zero-Shot Multi-Hop Extrapolation in Pre-Trained Transformers",
+  "description": "Zero-training spectral attention extrapolation, Write/Read asymmetric query-slice gating, SWA decoy shielding, and depth-progressive Renormalization Group (RG) relays for 1-to-5 hop long-context pointer chasing in hybrid Transformers (Gemma-4 2B & 4B).",
+  "creators": [
+    {
+      "name": "Walters, James F."
+    }
+  ],
+  "upload_type": "software",
+  "access_right": "open",
+  "keywords": [
+    "Transformer",
+    "Attention Mechanism",
+    "Long Context",
+    "Multi-Hop Reasoning",
+    "Richardson Extrapolation",
+    "Renormalization Group",
+    "Gemma 4",
+    "Mechanistic Interpretability",
+    "PyTorch"
+  ]
+}

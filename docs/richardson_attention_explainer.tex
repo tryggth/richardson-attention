@@ -291,12 +291,12 @@ By scheduling the plateau horizon $c_l$ across the 7 Global layers as a discrete
 
 To test the ultimate compositional depth limits of a 7-Global-Layer hybrid Transformer (\texttt{L5, L11, L17, L23, L29, L35, L41}) and probe the vertical geometry of the 5-layer SWA blocks separating adjacent global layers, Phase 6 evaluates \textbf{1-Hop, 2-Hop, 3-Hop, 4-Hop, and 5-Hop pointer chains} at $T = 9,912$ tokens across five spatially isolated registries separated by $>1,250$-token SWA-blocking barriers:
 \begin{itemize}
-    \item \textbf{Zone A (\texttt{tokens 92..114}, $d/T = 0.99$):} \texttt{SUBVAULT-PRIME | TIER-0 GENESIS CODE: 79421} (+ 7 competing subvaults)
-    \item \textbf{Zone B (\texttt{tokens 1451..1472}, $d/T = 0.85$):} \texttt{VAULT-LAZARUS | ASSIGNED SUBVAULT: SUBVAULT-PRIME} (+ 7 competing vaults)
-    \item \textbf{Zone C (\texttt{tokens 2838..2859}, $d/T = 0.71$):} \texttt{SECTOR-KRONOS | ASSIGNED PRIMARY VAULT: VAULT-LAZARUS} (+ 7 competing sectors)
-    \item \textbf{Zone D (\texttt{tokens 4192..4210}, $d/T = 0.58$):} \texttt{DIRECTOR-VANCE | AUTHORIZED COMMAND SECTOR: SECTOR-KRONOS} (+ 7 competing directors)
-    \item \textbf{Zone E (\texttt{tokens 5527..5545}, $d/T = 0.44$):} \texttt{ENVOY-SOLARIS | REPORTING TO DIRECTOR: DIRECTOR-VANCE} (+ 7 competing envoys)
-    \item \textbf{Barrier 5 (\texttt{tokens 5600..9850}):} 12 adversarial \texttt{SUBVAULT-OMEGA -> 63819} audit blocks + recency overrides (\texttt{11111}).
+    \item \textbf{Zone A (\texttt{tokens 92..114}, $d/T = 0.991$):} \texttt{SUBVAULT-PRIME | TIER-0 GENESIS CODE: 79421} (+ 7 competing subvaults)
+    \item \textbf{Zone B (\texttt{tokens 1451..1472}, $d/T = 0.854$):} \texttt{VAULT-LAZARUS | ASSIGNED SUBVAULT: SUBVAULT-PRIME} (+ 7 competing vaults)
+    \item \textbf{Zone C (\texttt{tokens 2838..2859}, $d/T = 0.714$):} \texttt{SECTOR-KRONOS | ASSIGNED PRIMARY VAULT: VAULT-LAZARUS} (+ 7 competing sectors)
+    \item \textbf{Zone D (\texttt{tokens 4192..4210}, $d/T = 0.577$):} \texttt{DIRECTOR-VANCE | AUTHORIZED COMMAND SECTOR: SECTOR-KRONOS} (+ 7 competing directors)
+    \item \textbf{Zone E (\texttt{tokens 5527..5545}, $d/T = 0.442$):} \texttt{ENVOY-SOLARIS | REPORTING TO DIRECTOR: DIRECTOR-VANCE} (+ 7 competing envoys)
+    \item \textbf{Barrier 5 (\texttt{tokens 5550..9850}):} 12 adversarial \texttt{ENVOY-SOLARIS / DIRECTOR-VANCE -> SUBVAULT-OMEGA (63819)} audit decoys + recency overrides (\texttt{11111}).
 \end{itemize}
 
 \begin{figure}[!htbp]
@@ -334,7 +334,7 @@ To test the ultimate compositional depth limits of a 7-Global-Layer hybrid Trans
 
 \begin{enumerate}
     \item \textbf{5-Hop Depth-Progressive RG Breakthrough ($2.2398\% \to 93.8942\%$, $41.9\times$ Gain):}
-    By stepping the cubic plateau cutoff across all 7 global layers ($c_l = [0.38..0.90]$) so \texttt{L5} covers Zones E..A ($d/T \ge 0.38$) and \texttt{L35--L41} focus exclusively on Zone A ($d/T \ge 0.85$), \textbf{Config 4 (Stepped RG, \texttt{Q28})} achieves \textbf{93.8942\% (\#1 WIN)} on 5-Hop and suppresses decoy error \textbf{103.5$\times$} ($95.2373\% \to 0.9205\%$). At \texttt{L35}, Config 4 concentrates \textbf{45.33\%} of query attention directly onto Zone A (\texttt{SUBVAULT-PRIME}) vs.\ $16.58\%$ in Baseline ($2.73\times$ increase), driving the Logit Lens target probability at \texttt{L35} from $0.24\%$ to \textbf{99.9964\%} ($100.00\%$).
+    By stepping the cubic plateau cutoff across all 7 global layers ($c_l = [0.38..0.90]$) so \texttt{L5} covers Zones E..A ($d/T \ge 0.38$) and \texttt{L35--L41} focus exclusively on Zone A ($d/T \ge 0.85$), \textbf{Config 4 (Stepped RG, \texttt{Q28})} achieves \textbf{93.8942\% (\#1 WIN)} on 5-Hop and suppresses decoy error \textbf{103.5$\times$} ($95.2373\% \to 0.9205\%$). At \texttt{L35}, Config 4 concentrates \textbf{45.33\%} of query attention directly onto Zone A (\texttt{SUBVAULT-PRIME}) vs.\ $16.5772\%$ in Baseline ($2.73\times$ increase), driving the Logit Lens target probability at \texttt{L35} from $0.24\%$ to \textbf{99.9964\%} ($100.00\%$).
     \item \textbf{SWA Decoy Shielding ($\beta_{\text{swa}} = 2.5$, $+15.64\%$ 5-Hop Boost):}
     Comparing Config 7 (\texttt{2D Cubic Q14 + SWA Shield}) against Config 3 (\texttt{Horiz-Only Cubic Q14}) isolates the exact contribution of SWA tail damping: gently attenuating the $48 < d \le 512$ window inside the 35 \texttt{sliding\_attention} layers on the active query slice (\texttt{k\_len > 512}) prevents SWA layers from re-injecting late-context Barrier-5 decoys between global relays, boosting 5-Hop accuracy from \textbf{61.0232\% to 76.6634\% ($+15.64\%$ gain)}, cutting decoy capture \textbf{2.5$\times$} ($13.6161\% \to 5.5535\%$), and raising \texttt{L35} Logit Lens target readiness \textbf{10.4$\times$} ($5.49\% \to 57.24\%$) with \textbf{zero perplexity cost} ($10.6071$).
     \item \textbf{The Residual Stream is a Rotating Fiber Bundle (Why Naive Euclidean Residual Highways Fail):}
@@ -358,6 +358,32 @@ To test the ultimate compositional depth limits of a 7-Global-Layer hybrid Trans
 \textbf{\texttt{L23 $\to$ L29} (Phase Boundary)} & $\mathbf{292.1564}$ & $142.2655$ & $\mathbf{0.4869}$ & $\mathbf{1.2801}$ & $+0.0211$ (Basis Rotation) & $+0.0115$ \\
 \texttt{L29 $\to$ L35} & $51.6488$ & $61.6346$ & $1.1933$ & $1.0689$ & $+0.4756$ (Constructive) & $\mathbf{+0.5152}$ \\
 \texttt{L35 $\to$ L41} & $31.6983$ & $49.5410$ & $1.5629$ & $0.7898$ & $-0.2271$ (Destructive) & $\mathbf{+0.0976}$ (\textbf{Reversed!}) \\
+\bottomrule
+\end{tabular}%
+}
+\end{table}
+
+\subsection{Relation to Prior Art \& Architectural Differentiation}
+
+Richardson Attention operates in a fundamentally different regime from existing long-context and attention-denoising methods (Table~\ref{tab:prior_art}). Rather than rescaling RoPE frequencies across all heads or subtracting two learned softmax branches at every layer, it applies a zero-shot, symmetric Boltzmann-distribution Richardson extrapolation ($S_{\text{super}} = \mathcal{N}(\max(0, (1+\eta)S_{\text{free}} - \eta S_{\text{heavy}}))$) exclusively on the active query readout slice ($W_q = 64$) of a precision-matrix VIF-selected Global Logic Quorum ($Q \in \{14, 28, 42\}$) using a depth-progressive cubic plateau schedule ($c_l \in [0.38, 0.90]$).
+
+\begin{table}[!htbp]
+\centering
+\caption{Comparison of Richardson Attention against Prior Long-Context and Attention-Modification Methods.}
+\label{tab:prior_art}
+\vspace{2pt}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{@{}lcccccc@{}}
+\toprule
+\textbf{Method / Family} & \textbf{Zero-Shot} & \textbf{Head-Selective} & \textbf{Write/Read Split} & \textbf{Symmetric Dual-State} & \textbf{Depth-Stepped} & \textbf{5-Hop Decoy} \\
+ & \textbf{(No Training)} & \textbf{(VIF / $\kappa_{l,h}$)} & \textbf{(KV Write Safe)} & \textbf{($S_{\text{free}} \text{ vs } S_{\text{heavy}}$)} & \textbf{RG Schedule} & \textbf{Suppression} \\
+\midrule
+ALiBi / Log-Length Scaling & Partially & No (Uniform) & No (All rows) & No (Single state) & No & Fails (Write Corruption) \\
+YaRN / NTK-Aware RoPE & Often Finetuned & No (All heads) & No (All rows) & No (Single state) & No & Fails (1/L Dilution) \\
+StreamingLLM / Attention Sinks & Yes & No (All heads) & No & No & No & Drops Mid-Context \\
+Differential Transformer (DiffAttn) & \textbf{No} (From scratch) & Learned $W_Q, W_K$ & No (All rows) & Learned $\lambda$ (2 projections) & No & Requires Retraining \\
+Retrieval Head Steering / Calibration & Yes & Yes (Recall score) & No (All rows) & No (Scalar head gain) & No & Collapses on 3--5 Hops \\
+\textbf{Richardson Attention (Ours)} & \textbf{Yes (100\% Frozen)} & \textbf{Yes (VIF + $\kappa_{l,h}$)} & \textbf{Yes ($W_q=64$)} & \textbf{Yes ($\pm\Delta L$ Boltzmann)} & \textbf{Yes ($c_l \in [.38..90]$)} & \textbf{Yes ($93.89\%$ 5-Hop WIN)} \\
 \bottomrule
 \end{tabular}%
 }

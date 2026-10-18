@@ -1,0 +1,34 @@
+cff-version: 1.2.0
+message: "If you use Richardson Attention (Superconducting Spectral Attention) in your research, please cite it using the metadata below."
+type: software
+title: "Richardson Attention: Superconducting Spectral Attention and Renormalization Group Relays for Zero-Shot Multi-Hop Extrapolation in Pre-Trained Transformers"
+authors:
+  - family-names: "Walters"
+    given-names: "James F."
+version: "0.1.0"
+date-released: "2026-04-17"
+url: "https://github.com/tryggth/richardson-attention"
+repository-code: "https://github.com/tryggth/richardson-attention"
+keywords:
+  - "transformers"
+  - "attention-mechanism"
+  - "long-context"
+  - "multi-hop-reasoning"
+  - "gemma-4"
+  - "richardson-extrapolation"
+  - "renormalization-group"
+  - "sliding-window-attention"
+  - "mechanistic-interpretability"
+  - "pytorch"
+abstract: >-
+  Richardson Attention (Superconducting Spectral Attention) is a zero-training,
+  calibration-guided runtime inference architecture that restores 1-Hop through
+  5-Hop compositional reasoning across 8K-12K contexts in pre-trained hybrid
+  Sliding-Window/Global-Attention Transformers (validated on google/gemma-4-E2B-it
+  and google/gemma-4-E4B-it). By isolating a sparse Global Logic Quorum via
+  precision-matrix Variance Inflation Factor (VIF) pruning and applying
+  Query-Slice Dual-State Symmetric Boltzmann Extrapolation over a depth-progressive
+  Renormalization Group (RG) cubic plateau schedule, Richardson Attention flips
+  3-Hop pointer chasing from 0.10% FAIL to 95.87% WIN and 5-Hop pointer chasing
+  from 2.24% FAIL to 93.89% WIN (41.9x gain, 103.5x decoy error reduction) with
+  zero fine-tuning and zero perplexity degradation.

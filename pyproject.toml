@@ -15,6 +15,23 @@ dependencies = [
     "accelerate>=0.30.0",
     "numpy>=1.24.0",
 ]
+keywords = [
+    "transformers",
+    "attention",
+    "long-context",
+    "multi-hop-reasoning",
+    "gemma-4",
+    "richardson-extrapolation",
+    "renormalization-group",
+    "mechanistic-interpretability",
+    "pytorch",
+]
+
+[project.urls]
+Homepage = "https://github.com/tryggth/richardson-attention"
+Repository = "https://github.com/tryggth/richardson-attention"
+Documentation = "https://github.com/tryggth/richardson-attention/tree/main/docs"
+Issues = "https://github.com/tryggth/richardson-attention/issues"
 
 [tool.setuptools.packages.find]
 where = ["."]

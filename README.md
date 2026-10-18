@@ -2,7 +2,6 @@
 
 **Eliminating the Multi-Hop Context Horizon in Pre-Trained Transformers via Dual-State Boltzmann Extrapolation and Renormalization Relays**
 
-> **Patent Status Notice:** *U.S. Patent Pending — Inventor: James F. Walters.*  
 > **Technical Papers:**
 > - [**Engineering & Mathematical Explainer (`docs/richardson_attention_explainer.pdf`)**](docs/richardson_attention_explainer.pdf)
 > - [**Formal Theoretical Specification (`docs/superconducting_spectral_attention.pdf`)**](docs/superconducting_spectral_attention.pdf)
@@ -48,12 +47,12 @@ Spatially separated 3-zone registry topology (`>1,350` tokens between zones so 5
 ## Phase 6: 5-Hop Scaling, SWA Decoy Shielding, and Residual Fiber-Bundle Geometry (`google/gemma-4-E4B-it`, 9,912 Tokens)
 
 To test the ultimate depth limits of 7-Global-Layer hybrid architectures (`L5, L11, L17, L23, L29, L35, L41`) and probe the vertical geometry of the 5-layer SWA blocks between global layers, Phase 6 evaluates **1-Hop, 2-Hop, 3-Hop, 4-Hop, and 5-Hop pointer chains** at **9,912 tokens** across five spatially isolated registries separated by $>1,250$-token SWA-blocking barriers:
-- **Zone A (`tokens 92..114`, $d/T = 0.99$):** `SUBVAULT-PRIME | TIER-0 GENESIS CODE: 79421` (+ 7 competing subvaults)
-- **Zone B (`tokens 1451..1472`, $d/T = 0.85$):** `VAULT-LAZARUS | ASSIGNED SUBVAULT: SUBVAULT-PRIME` (+ 7 competing vaults)
-- **Zone C (`tokens 2838..2859`, $d/T = 0.71$):** `SECTOR-KRONOS | ASSIGNED PRIMARY VAULT: VAULT-LAZARUS` (+ 7 competing sectors)
-- **Zone D (`tokens 4192..4210`, $d/T = 0.58$):** `DIRECTOR-VANCE | AUTHORIZED COMMAND SECTOR: SECTOR-KRONOS` (+ 7 competing directors)
-- **Zone E (`tokens 5527..5545`, $d/T = 0.44$):** `ENVOY-SOLARIS | REPORTING TO DIRECTOR: DIRECTOR-VANCE` (+ 7 competing envoys)
-- **Barrier 5 (`tokens 5600..9850`):** 12 adversarial `SUBVAULT-OMEGA -> 63819` audit blocks + recency overrides (`11111`).
+- **Zone A (`tokens 92..114`, $d/T = 0.991$):** `SUBVAULT-PRIME | TIER-0 GENESIS CODE: 79421` (+ 7 competing subvaults)
+- **Zone B (`tokens 1451..1472`, $d/T = 0.854$):** `VAULT-LAZARUS | ASSIGNED SUBVAULT: SUBVAULT-PRIME` (+ 7 competing master vaults)
+- **Zone C (`tokens 2838..2859`, $d/T = 0.714$):** `SECTOR-KRONOS | ASSIGNED PRIMARY VAULT: VAULT-LAZARUS` (+ 7 competing sectors)
+- **Zone D (`tokens 4192..4210`, $d/T = 0.577$):** `DIRECTOR-VANCE | AUTHORIZED COMMAND SECTOR: SECTOR-KRONOS` (+ 7 competing directors)
+- **Zone E (`tokens 5527..5545`, $d/T = 0.442$):** `ENVOY-SOLARIS | REPORTING TO DIRECTOR: DIRECTOR-VANCE` (+ 7 competing envoys)
+- **Barrier 5 (`tokens 5550..9850`):** 12 adversarial `ENVOY-SOLARIS / DIRECTOR-VANCE -> SUBVAULT-OMEGA (63819)` audit decoys + recency overrides (`11111`).
 
 ![Phase 6 1-to-5 Hop Scaling & Vertical Fiber-Bundle Telemetry](docs/figures/fig5_phase6_5hop_and_telemetry.png)
 
@@ -73,7 +72,7 @@ To test the ultimate depth limits of 7-Global-Layer hybrid architectures (`L5, L
 ### Three New Mechanistic Discoveries from Phase 6 Deep Telemetry
 
 1. **5-Hop Depth-Progressive RG Breakthrough (`2.2398% -> 93.8942%`, `41.9x` Gain):**
-   Unmodified `gemma-4-E4B-it` collapses to `2.2398%` (#2 FAIL) on 5-Hop retrieval (`95.2373%` decoy capture by `SUBVAULT-OMEGA = 63819`). By marching the cubic plateau cutoff across all 7 global layers (`c_l = [0.38, 0.44, 0.52, 0.64, 0.74, 0.85, 0.90]`) so `L5` covers Zones E..A ($d/T \ge 0.38$) and `L35–L41` focus exclusively on Zone A ($d/T \ge 0.85$), **Config 4 (`Horiz-Only Stepped RG, Q28`) achieves `93.8942%` (#1 WIN) on 5-Hop (`41.9x` gain)** and suppresses decoy error **`103.5x`** (`95.2373% -> 0.9205%`). Per-layer attention telemetry confirms that at `L35`, Config 4 concentrates **`45.33%`** of query attention directly onto Zone A (`SUBVAULT-PRIME`) vs. `16.58%` in Baseline (`2.73x` increase), driving the Logit Lens target probability at `L35` from `0.24%` (Baseline) to **`99.9964%`** (`100.00%`).
+   Unmodified `gemma-4-E4B-it` collapses to `2.2398%` (#2 FAIL) on 5-Hop retrieval (`95.2373%` decoy capture by `SUBVAULT-OMEGA = 63819`). By marching the cubic plateau cutoff across all 7 global layers (`c_l = [0.38, 0.44, 0.52, 0.64, 0.74, 0.85, 0.90]`) so `L5` covers Zones E..A ($d/T \ge 0.38$) and `L35–L41` focus exclusively on Zone A ($d/T \ge 0.85$), **Config 4 (`Horiz-Only Stepped RG, Q28`) achieves `93.8942%` (#1 WIN) on 5-Hop (`41.9x` gain)** and suppresses decoy error **`103.5x`** (`95.2373% -> 0.9205%`). Per-layer attention telemetry confirms that at `L35`, Config 4 concentrates **`45.33%`** of query attention directly onto Zone A (`SUBVAULT-PRIME`) vs. `16.5772%` in Baseline (`2.73x` increase), driving the Logit Lens target probability at `L35` from `0.24%` (Baseline) to **`99.9964%`** (`100.00%`).
 2. **SWA Decoy Shielding (`swa_shield_beta = 2.5`, `+15.64%` 5-Hop Boost):**
    Comparing Config 7 (`2D Cubic Q14 + SWA Decoy Shield`, `sw = 2.5`) against Config 3 (`Horiz-Only Cubic Q14`) isolates the exact contribution of SWA tail damping: gently attenuating the $48 < d \le 512$ window inside the 35 `sliding_attention` layers on the active query slice (`k_len > 512`) prevents SWA layers from re-injecting late-context Barrier-5 decoys between global relays, boosting 5-Hop accuracy from **`61.0232%` to `76.6634%` (`+15.64%` gain)**, cutting decoy capture **`2.5x`** (`13.6161% -> 5.5535%`), and raising `L35` Logit Lens target readiness **`10.4x`** (`5.49% -> 57.24%`) with **zero perplexity cost** (`10.6071` vs. `10.6071`).
 3. **The Residual Stream is a Rotating Fiber Bundle (Why Naive Euclidean Residual Highways Fail):**
@@ -91,6 +90,34 @@ To test the ultimate depth limits of 7-Global-Layer hybrid architectures (`L5, L
    At **`L23 -> L29`**, $\|\mathbf{u}_{L23}\|_2$ surges $4.2\times$ to **`292.16`** as the model transitions from early/mid syntactic pointer extraction to late semantic readout, and in **`L11 -> L17`** (`cos = +0.4414`) and **`L29 -> L35`** (`cos = +0.4756 -> +0.5152`), the SWA+MLP blocks *constructively amplify* the global update (`+44%` to `+52%` positive alignment). Transporting an unrotated vector $\mathbf{u}_{l_k}$ from the `L23` coordinate basis directly into `L29` injects an out-of-basis vector of magnitude $0.25 \times 292.16 \approx 73.0$, scrambling the `L29` query projection! Remarkably, horizontal **Stepped RG (`Config 4`)** automatically flips the final **`L35 -> L41`** vertical cosine from **destructive (`-0.2271`) to constructive (`+0.0976`)** because once `L35` locks onto the true `SUBVAULT-PRIME` representation (`45.33%` Zone A attention), the `L36–L40` MLP layers recognize it as a coherent entity rather than fighting a decoy state.
 
 Full empirical JSON telemetry across Phases 1–6 is available in [`results/richardson_results.json`](results/richardson_results.json), [`results/richardson_horizon_results.json`](results/richardson_horizon_results.json), [`results/richardson_multihop_results.json`](results/richardson_multihop_results.json), [`results/richardson_phase4_results.json`](results/richardson_phase4_results.json), [`results/richardson_phase5_results.json`](results/richardson_phase5_results.json), and [`results/richardson_phase6_vertical_results.json`](results/richardson_phase6_vertical_results.json).
+
+---
+
+## Relation to Prior Art & Architectural Differentiation
+
+Existing long-context and positional-encoding methods address out-of-distribution sequence length or memory compression, but fail when a pre-trained hybrid Transformer faces **in-window multi-hop relational composition under adversarial recency decoys**:
+
+| Method / Family | Mechanism | Training-Free? | Preserves Interior Multi-Hop Premises? | Cancels Partition Dilution ($\mathcal{Z}_i \propto i$)? | Suppresses Late-Context Decoys? | Single-Pass (Zero Extra Tokens)? |
+| :--- | :--- | :---: | :---: | :---: | :---: | :---: |
+| **Standard / Proportional RoPE** *(Su et al.; Gemma 4)* | Rotational phase encoding ($e^{i\omega_m d}$) | Yes | Yes (1-Hop `99.99%` at 12K) | **No** (3-Hop `0.04%`, 5-Hop `2.24%`) | **No** (`95.2%–99.8%` decoy capture) | Yes |
+| **Frequency Scaling** *(YaRN, NTK-Aware, LongRoPE)* | Rescales RoPE wavelengths $\theta_m$ for OOD lengths | Usually requires fine-tuning | Yes | **No** (Does not cancel real mass $\alpha_{l,h}$) | **No** | Yes |
+| **Linear Distance Biases** *(ALiBi, Press et al.; Naive $+\gamma d$)* | Static linear logit slope ($\mp m \cdot d$) | No (or causes aphasia if $+\gamma d$) | **No** (Linear slope starves mid-zones B–E) | Partial (Corrupts prefill KV writes) | **No** | Yes |
+| **Attention Sinks / KV Eviction** *(StreamingLLM, Xiao et al.)* | Keeps `<bos>` + local window; evicts middle KV | Yes | **No** (Evicts interior zones A–E) | **No** | **No** | Yes |
+| **Chain-of-Thought (CoT) Scratchpads** | Autoregressively copies hops into local window | Yes | Yes | Via verbal re-copying | Partial | **No** ($10\times\text{–}50\times$ decode latency tax) |
+| **Richardson Attention** *(This Work)* | Surgical Dual-State Boltzmann Filter + Cubic RG Relay | **Yes** (`0` weight changes) | **Yes** (`98.59%` 3-Hop, `93.89%` 5-Hop) | **Yes** (Iso-Potential $\Phi_l = 1.0$ roof) | **Yes** (`103.5x–485.1x` decoy reduction) | **Yes** (1 forward pass) |
+
+1. **Standard RoPE / Proportional RoPE (Su et al., Gemma 4):** Preserves rotational phase ($i\omega$) for 1-hop lookups (`99.99%` at 12K tokens), but suffers Boltzmann partition-function dilution ($\mathcal{Z}_i \propto i$) across multi-hop chains (`0.04%` on 3-Hop and `2.24%` on 5-Hop under late-context decoys).
+2. **Frequency Scaling (YaRN / NTK-Aware RoPE / LongRoPE):** Compresses rotational wavelengths to prevent out-of-distribution phase wrap beyond the training window, but does *not* cancel real Boltzmann partition decay ($\alpha_{l,h}$) or suppress in-window adversarial recency decoys, and typically requires fine-tuning.
+3. **Linear Distance Biases (ALiBi, Press et al.):** Applies static negative linear penalties ($-m \cdot d$) that enforce local recency. Naive positive linear tilts ($+\gamma \cdot d$) applied globally induce syntactic aphasia on grammar heads, corrupt prefill KV binding when applied to all rows, and cause Zone A to exponentially cannibalize intermediate hops (Zones B–E).
+4. **Attention Sinks / StreamingLLM (Xiao et al.):** Retains token-0 (`<bos>`) + a local sliding window while evicting middle tokens—preserving fluency for infinite streaming, but permanently discarding the deep interior premises required for multi-hop retrieval.
+5. **Chain-of-Thought (CoT) Verbal Scratchpads:** Forces the model to autoregressively generate hundreds of intermediate tokens to copy distant facts into the local window—incurring a $10\times\text{–}50\times$ decoding latency and compute tax, whereas Richardson Attention resolves 3-to-5 hop chains inside a **single forward pass** with zero extra generated tokens.
+
+**Summary of the 5 Novel Mechanisms Distinguishing Richardson Attention:**
+1. **Zero-Shot Precision-Matrix (`pinv(R)`) + Mass Isolation** of the sparse Global Logic Quorum (`14–42` heads out of `336`), leaving all `280` SWA grammar heads untouched.
+2. **Write/Read Thermodynamic Gating ($W_q = 64$)** that protects local prefill KV entity binding during context ingestion while activating superconducting transport strictly on the query readout slice.
+3. **Token-0 `<bos>` Sink Pinning ($d_{i,0} = 0$) + 32-Token Local Syntax Guardband** preventing `<bos>` sink blowup and preserving baseline perplexity ($\Delta\text{PPL} = +0.01$).
+4. **Iso-Potential Cubic Plateau + Dual-State Symmetric Boltzmann Subtraction (`(1+η)S_free - ηS_heavy`)** placing all deep registries on a flat $\Phi=1.0$ roof while actively subtracting the heavy-gravity decoy mode.
+5. **Stepped Wilsonian RG Horizon Scheduling across Global Layers + SWA Tail Decoy Shielding** marching the plateau cutoff $c_l$ across depth (`[0.38..0.90]`) to resolve up to 5-hop chains in a single forward pass.
 
 ---
 
@@ -216,7 +243,7 @@ python3 benchmarks/gemma4_phase6_vertical.py --self_test
 
 ---
 
-## License & Patent Reservation
+## License & Commercial Inquiries
 
 **Author & Inventor:** James F. Walters  
 **License:** [**Non-Commercial Research and Evaluation License & Patent Reservation (`LICENSE`)**](LICENSE)

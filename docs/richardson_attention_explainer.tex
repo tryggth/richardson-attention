@@ -363,6 +363,69 @@ To test the ultimate compositional depth limits of a 7-Global-Layer hybrid Trans
 }
 \end{table}
 
+% ============================================================================
+\section{Phase 7: Standard External Benchmark Validation (NVIDIA RULER \texttt{VT}, BABILong \texttt{qa3}, \& Lost in the Middle)}
+% ============================================================================
+
+To verify that Richardson Attention generalizes beyond structured registries to standard external community benchmarks with natural prose haystacks and randomized variable/entity bindings, Phase 7 evaluates \texttt{google/gemma-4-E4B-it} across:
+\begin{enumerate}
+    \item \textbf{NVIDIA RULER \texttt{VT} (Multi-Hop Variable Tracking, Hsieh et al., COLM 2024):} $N = 10$ randomized seeds ($\approx 6,425$ tokens each), tracking 8 concurrent 3-hop variable assignment chains (\texttt{HANDLE\_GAMMA\_i} $\to$ \texttt{PTR\_BETA\_i} $\to$ \texttt{REG\_ALPHA\_i} $\to$ 5-digit integer) embedded in natural essay prose with non-binding debug trace distractors.
+    \item \textbf{BABILong \texttt{qa3} (3-Supporting-Facts Narrative World-State Tracking, Kuratov et al., NeurIPS 2024):} $N = 10$ randomized seeds ($\approx 6,560$ tokens each), tracking 3-hop relational world states (\texttt{Commander} $\to$ \texttt{Courier} $\to$ \texttt{Artifact} $\to$ \texttt{Locker}) in prose with non-custodial inspection notes.
+    \item \textbf{``Lost in the Middle'' Multi-Document Depth Sweep (Liu et al., TACL 2024):} Sweeping the authoritative routing bridge document across exact fractional document depths ($15\%$, $30\%$, $45\%$, $60\%$, and $75\%$ depth).
+\end{enumerate}
+
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=\textwidth]{figures/fig6_phase7_standard_benchmarks.pdf}
+    \caption{\textbf{Phase 7 Standard External Benchmark Validation on \texttt{google/gemma-4-E4B-it}.} \textbf{(A)} Across $N=10$ randomized seeds each, Stepped 7-Layer RG Relay (\texttt{Q28}) lifts NVIDIA RULER \texttt{VT} Top-1 accuracy from $80.0\%$ ($8/10$) to \textbf{100.0\% (10/10)} while cutting mean decoy error $4.0\times$ ($19.86\% \to 4.96\%$). On BABILong \texttt{qa3}, Cubic Q14 + SWA Decoy Shield ($\beta_{\text{swa}}=2.5$) lifts Top-1 accuracy from $50.0\%$ ($5/10$) to \textbf{70.0\% (7/10)} and boosts mean target probability by $+23.96\%$ ($44.22\% \to 68.18\%$), while Stepped RG cuts decoy error $4.10\times$ ($52.06\% \to 12.69\%$). \textbf{(B)} On the ``Lost in the Middle'' depth sweep, Cubic Q14 + SWA Shield holds $75\%$-depth target probability at \textbf{99.2014\%} vs.\ $92.2524\%$ Baseline ($9.7\times$ reduction in residual error).}
+    \label{fig:phase7}
+\end{figure}
+
+\begin{table}[!htbp]
+\centering
+\caption{Phase 7A Multi-Seed Summary on NVIDIA RULER \texttt{VT} and BABILong \texttt{qa3} ($N = 10$ Randomized Seeds Each).}
+\label{tab:phase7a}
+\vspace{2pt}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{@{}llcccc@{}}
+\toprule
+\textbf{Benchmark Suite} & \textbf{Configuration (\texttt{google/gemma-4-E4B-it})} & \textbf{Top-1 Accuracy} & \textbf{Mean Target Prob ($\pm$ Std)} & \textbf{Mean Decoy Error} & \textbf{Elapsed} \\
+\midrule
+NVIDIA RULER \texttt{VT} (3-Hop) & 1. Unmodified Baseline & $80.0\%$ ($8/10$) & $79.7580\% \pm 39.2561\%$ & $19.8579\%$ & $43.21\text{s}$ \\
+NVIDIA RULER \texttt{VT} (3-Hop) & 2. Query-Slice Cubic Plateau ($Q=14, \beta=3.5$) & $90.0\%$ ($9/10$) & $91.5149\% \pm 16.2193\%$ & $8.0287\%$ & $43.89\text{s}$ \\
+NVIDIA RULER \texttt{VT} (3-Hop) & 3. Cubic Q14 + SWA Decoy Shield ($\beta_{\text{swa}}=2.5$) & $90.0\%$ ($9/10$) & $87.7695\% \pm 26.3196\%$ & $11.1173\%$ & $43.86\text{s}$ \\
+NVIDIA RULER \texttt{VT} (3-Hop) & \textbf{4. Stepped 7-Layer RG Relay ($Q=28, \beta=3.5, \text{sw}=2.0$)} & $\mathbf{100.0\%}$ ($\mathbf{10/10}$) & $\mathbf{92.0196\% \pm 9.8585\%}$ & $\mathbf{4.9577\%}$ ($\mathbf{4.0\times}$ down) & $43.83\text{s}$ \\
+\midrule
+BABILong \texttt{qa3} (3-Hop) & 1. Unmodified Baseline & $50.0\%$ ($5/10$) & $44.2188\% \pm 44.5990\%$ & $52.0598\%$ & $41.91\text{s}$ \\
+BABILong \texttt{qa3} (3-Hop) & 2. Query-Slice Cubic Plateau ($Q=14, \beta=3.5$) & $\mathbf{70.0\%}$ ($\mathbf{7/10}$) & $65.6070\% \pm 42.8266\%$ & $20.0648\%$ & $41.95\text{s}$ \\
+BABILong \texttt{qa3} (3-Hop) & \textbf{3. Cubic Q14 + SWA Decoy Shield ($\beta_{\text{swa}}=2.5$)} & $\mathbf{70.0\%}$ ($\mathbf{7/10}$) & $\mathbf{68.1805\% \pm 42.5986\%}$ ($\mathbf{+23.96\%}$) & $17.0473\%$ ($3.05\times$ down) & $42.00\text{s}$ \\
+BABILong \texttt{qa3} (3-Hop) & \textbf{4. Stepped 7-Layer RG Relay ($Q=28, \beta=3.5, \text{sw}=2.0$)} & $\mathbf{70.0\%}$ ($\mathbf{7/10}$) & $59.8487\% \pm 41.3012\%$ & $\mathbf{12.6935\%}$ ($\mathbf{4.10\times}$ down) & $42.02\text{s}$ \\
+\bottomrule
+\end{tabular}%
+}
+\end{table}
+
+On NVIDIA RULER \texttt{VT}, unmodified Baseline suffers catastrophic decoy hijacks on Seed 2 ($0.2181\%$ target vs.\ $99.7025\%$ decoy) and Seed 7 ($2.2950\%$ target vs.\ $97.5860\%$ decoy); \textbf{Stepped 7-Layer RG Relay (Config 4)} rescues Seed 2 to $\mathbf{97.6392\%}$ (\textbf{\#1 WIN}) and Seed 7 to $\mathbf{72.9652\%}$ (\textbf{\#1 WIN}). On BABILong \texttt{qa3}, \textbf{Cubic Q14 + SWA Decoy Shield (Config 3)} flips Seed 2 from $0.1026\%$ (\#3 FAIL) to $\mathbf{94.0308\%}$ (\textbf{\#1 WIN}) and Seed 3 from $0.0200\%$ (\#6 FAIL) to $\mathbf{96.9835\%}$ (\textbf{\#1 WIN}).
+
+\begin{table}[!htbp]
+\centering
+\caption{Phase 7B ``Lost in the Middle'' Multi-Document Depth Sweep ($15\%$ to $75\%$ Document Depth).}
+\label{tab:phase7b}
+\vspace{2pt}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{@{}lccccc@{}}
+\toprule
+\textbf{Configuration (\texttt{google/gemma-4-E4B-it})} & \textbf{$15\%$ Depth} & \textbf{$30\%$ Depth} & \textbf{$45\%$ Depth} & \textbf{$60\%$ Depth} & \textbf{$75\%$ Depth (Late Trough)} \\
+\midrule
+1. Unmodified Baseline & $99.9258\%$ & $99.8851\%$ & $99.8961\%$ & $97.8917\%$ & $92.2524\%$ ($7.75\%$ Error) \\
+2. Query-Slice Cubic Plateau ($Q=14, \beta=3.5$) & $99.8547\%$ & $99.8256\%$ & $99.8822\%$ & $99.4210\%$ & $97.6529\%$ \\
+\textbf{3. Cubic Q14 + SWA Decoy Shield ($\beta_{\text{swa}}=2.5$)} & $99.8451\%$ & $99.8292\%$ & $99.8829\%$ & $\mathbf{99.5729\%}$ & $\mathbf{99.2014\%}$ ($\mathbf{9.7\times}$ Error Down) \\
+4. Stepped 7-Layer RG Relay ($Q=28, \beta=3.5, \text{sw}=2.0$) & $99.8303\%$ & $99.7859\%$ & $99.8205\%$ & $99.4664\%$ & $98.8321\%$ \\
+\bottomrule
+\end{tabular}%
+}
+\end{table}
+
 \subsection{Relation to Prior Art \& Architectural Differentiation}
 
 Richardson Attention operates in a fundamentally different regime from existing long-context and attention-denoising methods (Table~\ref{tab:prior_art}). Rather than rescaling RoPE frequencies across all heads or subtracting two learned softmax branches at every layer, it applies a zero-shot, symmetric Boltzmann-distribution Richardson extrapolation ($S_{\text{super}} = \mathcal{N}(\max(0, (1+\eta)S_{\text{free}} - \eta S_{\text{heavy}}))$) exclusively on the active query readout slice ($W_q = 64$) of a precision-matrix VIF-selected Global Logic Quorum ($Q \in \{14, 28, 42\}$) using a depth-progressive cubic plateau schedule ($c_l \in [0.38, 0.90]$).

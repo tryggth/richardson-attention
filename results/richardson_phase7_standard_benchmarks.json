@@ -1,0 +1,760 @@
+{
+  "model_id": "google/gemma-4-E4B-it",
+  "num_seeds": 10,
+  "ruler_vt_summary": [
+    {
+      "configuration": "1. Unmodified Baseline",
+      "top1_accuracy_pct": 80.0,
+      "mean_target_prob_pct": 79.758,
+      "std_target_prob_pct": 39.2561,
+      "mean_decoy_prob_pct": 19.8579,
+      "elapsed_sec": 43.21
+    },
+    {
+      "configuration": "2. Query-Slice Cubic Plateau (Q14, b=3.5)",
+      "top1_accuracy_pct": 90.0,
+      "mean_target_prob_pct": 91.5149,
+      "std_target_prob_pct": 16.2193,
+      "mean_decoy_prob_pct": 8.0287,
+      "elapsed_sec": 43.89
+    },
+    {
+      "configuration": "3. Cubic Q14 + SWA Decoy Shield (sw=2.5)",
+      "top1_accuracy_pct": 90.0,
+      "mean_target_prob_pct": 87.7695,
+      "std_target_prob_pct": 26.3196,
+      "mean_decoy_prob_pct": 11.1173,
+      "elapsed_sec": 43.86
+    },
+    {
+      "configuration": "4. Stepped 7-Layer RG Relay (Q28, b=3.5)",
+      "top1_accuracy_pct": 100.0,
+      "mean_target_prob_pct": 92.0196,
+      "std_target_prob_pct": 9.8585,
+      "mean_decoy_prob_pct": 4.9577,
+      "elapsed_sec": 43.83
+    }
+  ],
+  "babilong_qa3_summary": [
+    {
+      "configuration": "1. Unmodified Baseline",
+      "top1_accuracy_pct": 50.0,
+      "mean_target_prob_pct": 44.2188,
+      "std_target_prob_pct": 44.599,
+      "mean_decoy_prob_pct": 52.0598,
+      "elapsed_sec": 41.91
+    },
+    {
+      "configuration": "2. Query-Slice Cubic Plateau (Q14, b=3.5)",
+      "top1_accuracy_pct": 70.0,
+      "mean_target_prob_pct": 65.607,
+      "std_target_prob_pct": 42.8266,
+      "mean_decoy_prob_pct": 20.0648,
+      "elapsed_sec": 41.95
+    },
+    {
+      "configuration": "3. Cubic Q14 + SWA Decoy Shield (sw=2.5)",
+      "top1_accuracy_pct": 70.0,
+      "mean_target_prob_pct": 68.1805,
+      "std_target_prob_pct": 42.5986,
+      "mean_decoy_prob_pct": 17.0473,
+      "elapsed_sec": 42.0
+    },
+    {
+      "configuration": "4. Stepped 7-Layer RG Relay (Q28, b=3.5)",
+      "top1_accuracy_pct": 70.0,
+      "mean_target_prob_pct": 59.8487,
+      "std_target_prob_pct": 41.3012,
+      "mean_decoy_prob_pct": 12.6935,
+      "elapsed_sec": 42.02
+    }
+  ],
+  "lost_in_the_middle_sweep": [
+    {
+      "configuration": "1. Unmodified Baseline",
+      "depth_target_prob_pct": {
+        "15%": 99.9258,
+        "30%": 99.8851,
+        "45%": 99.8961,
+        "60%": 97.8917,
+        "75%": 92.2524
+      }
+    },
+    {
+      "configuration": "2. Query-Slice Cubic Plateau (Q14, b=3.5)",
+      "depth_target_prob_pct": {
+        "15%": 99.8547,
+        "30%": 99.8256,
+        "45%": 99.8822,
+        "60%": 99.421,
+        "75%": 97.6529
+      }
+    },
+    {
+      "configuration": "3. Cubic Q14 + SWA Decoy Shield (sw=2.5)",
+      "depth_target_prob_pct": {
+        "15%": 99.8451,
+        "30%": 99.8292,
+        "45%": 99.8829,
+        "60%": 99.5729,
+        "75%": 99.2014
+      }
+    },
+    {
+      "configuration": "4. Stepped 7-Layer RG Relay (Q28, b=3.5)",
+      "depth_target_prob_pct": {
+        "15%": 99.8303,
+        "30%": 99.7859,
+        "45%": 99.8205,
+        "60%": 99.4664,
+        "75%": 98.8321
+      }
+    }
+  ],
+  "per_seed_trials": {
+    "ruler_vt": [
+      {
+        "seed": 0,
+        "configuration": "1. Unmodified Baseline",
+        "context_tokens": 6421,
+        "target_prob_pct": 99.5662,
+        "decoy_prob_pct": 0.0624,
+        "rank": 1
+      },
+      {
+        "seed": 1,
+        "configuration": "1. Unmodified Baseline",
+        "context_tokens": 6427,
+        "target_prob_pct": 99.841,
+        "decoy_prob_pct": 0.004,
+        "rank": 1
+      },
+      {
+        "seed": 2,
+        "configuration": "1. Unmodified Baseline",
+        "context_tokens": 6443,
+        "target_prob_pct": 0.2181,
+        "decoy_prob_pct": 99.7025,
+        "rank": 2
+      },
+      {
+        "seed": 3,
+        "configuration": "1. Unmodified Baseline",
+        "context_tokens": 6427,
+        "target_prob_pct": 98.2476,
+        "decoy_prob_pct": 0.0791,
+        "rank": 1
+      },
+      {
+        "seed": 4,
+        "configuration": "1. Unmodified Baseline",
+        "context_tokens": 6425,
+        "target_prob_pct": 99.4733,
+        "decoy_prob_pct": 0.0139,
+        "rank": 1
+      },
+      {
+        "seed": 5,
+        "configuration": "1. Unmodified Baseline",
+        "context_tokens": 6405,
+        "target_prob_pct": 98.9465,
+        "decoy_prob_pct": 0.5192,
+        "rank": 1
+      },
+      {
+        "seed": 6,
+        "configuration": "1. Unmodified Baseline",
+        "context_tokens": 6421,
+        "target_prob_pct": 99.5716,
+        "decoy_prob_pct": 0.2797,
+        "rank": 1
+      },
+      {
+        "seed": 7,
+        "configuration": "1. Unmodified Baseline",
+        "context_tokens": 6427,
+        "target_prob_pct": 2.295,
+        "decoy_prob_pct": 97.586,
+        "rank": 2
+      },
+      {
+        "seed": 8,
+        "configuration": "1. Unmodified Baseline",
+        "context_tokens": 6443,
+        "target_prob_pct": 99.4785,
+        "decoy_prob_pct": 0.3166,
+        "rank": 1
+      },
+      {
+        "seed": 9,
+        "configuration": "1. Unmodified Baseline",
+        "context_tokens": 6427,
+        "target_prob_pct": 99.9417,
+        "decoy_prob_pct": 0.0158,
+        "rank": 1
+      },
+      {
+        "seed": 0,
+        "configuration": "2. Query-Slice Cubic Plateau (Q14, b=3.5)",
+        "context_tokens": 6421,
+        "target_prob_pct": 99.4423,
+        "decoy_prob_pct": 0.055,
+        "rank": 1
+      },
+      {
+        "seed": 1,
+        "configuration": "2. Query-Slice Cubic Plateau (Q14, b=3.5)",
+        "context_tokens": 6427,
+        "target_prob_pct": 99.8595,
+        "decoy_prob_pct": 0.0085,
+        "rank": 1
+      },
+      {
+        "seed": 2,
+        "configuration": "2. Query-Slice Cubic Plateau (Q14, b=3.5)",
+        "context_tokens": 6443,
+        "target_prob_pct": 77.6128,
+        "decoy_prob_pct": 22.2364,
+        "rank": 1
+      },
+      {
+        "seed": 3,
+        "configuration": "2. Query-Slice Cubic Plateau (Q14, b=3.5)",
+        "context_tokens": 6427,
+        "target_prob_pct": 98.9552,
+        "decoy_prob_pct": 0.1488,
+        "rank": 1
+      },
+      {
+        "seed": 4,
+        "configuration": "2. Query-Slice Cubic Plateau (Q14, b=3.5)",
+        "context_tokens": 6425,
+        "target_prob_pct": 99.2095,
+        "decoy_prob_pct": 0.1025,
+        "rank": 1
+      },
+      {
+        "seed": 5,
+        "configuration": "2. Query-Slice Cubic Plateau (Q14, b=3.5)",
+        "context_tokens": 6405,
+        "target_prob_pct": 96.3337,
+        "decoy_prob_pct": 2.909,
+        "rank": 1
+      },
+      {
+        "seed": 6,
+        "configuration": "2. Query-Slice Cubic Plateau (Q14, b=3.5)",
+        "context_tokens": 6421,
+        "target_prob_pct": 97.9658,
+        "decoy_prob_pct": 1.3974,
+        "rank": 1
+      },
+      {
+        "seed": 7,
+        "configuration": "2. Query-Slice Cubic Plateau (Q14, b=3.5)",
+        "context_tokens": 6427,
+        "target_prob_pct": 46.8125,
+        "decoy_prob_pct": 53.0456,
+        "rank": 2
+      },
+      {
+        "seed": 8,
+        "configuration": "2. Query-Slice Cubic Plateau (Q14, b=3.5)",
+        "context_tokens": 6443,
+        "target_prob_pct": 99.0486,
+        "decoy_prob_pct": 0.3572,
+        "rank": 1
+      },
+      {
+        "seed": 9,
+        "configuration": "2. Query-Slice Cubic Plateau (Q14, b=3.5)",
+        "context_tokens": 6427,
+        "target_prob_pct": 99.9094,
+        "decoy_prob_pct": 0.0261,
+        "rank": 1
+      },
+      {
+        "seed": 0,
+        "configuration": "3. Cubic Q14 + SWA Decoy Shield (sw=2.5)",
+        "context_tokens": 6421,
+        "target_prob_pct": 99.0621,
+        "decoy_prob_pct": 0.0427,
+        "rank": 1
+      },
+      {
+        "seed": 1,
+        "configuration": "3. Cubic Q14 + SWA Decoy Shield (sw=2.5)",
+        "context_tokens": 6427,
+        "target_prob_pct": 99.6994,
+        "decoy_prob_pct": 0.026,
+        "rank": 1
+      },
+      {
+        "seed": 2,
+        "configuration": "3. Cubic Q14 + SWA Decoy Shield (sw=2.5)",
+        "context_tokens": 6443,
+        "target_prob_pct": 87.8355,
+        "decoy_prob_pct": 11.8872,
+        "rank": 1
+      },
+      {
+        "seed": 3,
+        "configuration": "3. Cubic Q14 + SWA Decoy Shield (sw=2.5)",
+        "context_tokens": 6427,
+        "target_prob_pct": 95.1671,
+        "decoy_prob_pct": 0.2359,
+        "rank": 1
+      },
+      {
+        "seed": 4,
+        "configuration": "3. Cubic Q14 + SWA Decoy Shield (sw=2.5)",
+        "context_tokens": 6425,
+        "target_prob_pct": 99.0603,
+        "decoy_prob_pct": 0.116,
+        "rank": 1
+      },
+      {
+        "seed": 5,
+        "configuration": "3. Cubic Q14 + SWA Decoy Shield (sw=2.5)",
+        "context_tokens": 6405,
+        "target_prob_pct": 93.4843,
+        "decoy_prob_pct": 5.274,
+        "rank": 1
+      },
+      {
+        "seed": 6,
+        "configuration": "3. Cubic Q14 + SWA Decoy Shield (sw=2.5)",
+        "context_tokens": 6421,
+        "target_prob_pct": 96.1819,
+        "decoy_prob_pct": 2.5632,
+        "rank": 1
+      },
+      {
+        "seed": 7,
+        "configuration": "3. Cubic Q14 + SWA Decoy Shield (sw=2.5)",
+        "context_tokens": 6427,
+        "target_prob_pct": 9.5096,
+        "decoy_prob_pct": 90.2247,
+        "rank": 2
+      },
+      {
+        "seed": 8,
+        "configuration": "3. Cubic Q14 + SWA Decoy Shield (sw=2.5)",
+        "context_tokens": 6443,
+        "target_prob_pct": 97.9405,
+        "decoy_prob_pct": 0.7478,
+        "rank": 1
+      },
+      {
+        "seed": 9,
+        "configuration": "3. Cubic Q14 + SWA Decoy Shield (sw=2.5)",
+        "context_tokens": 6427,
+        "target_prob_pct": 99.7548,
+        "decoy_prob_pct": 0.0552,
+        "rank": 1
+      },
+      {
+        "seed": 0,
+        "configuration": "4. Stepped 7-Layer RG Relay (Q28, b=3.5)",
+        "context_tokens": 6421,
+        "target_prob_pct": 99.162,
+        "decoy_prob_pct": 0.1161,
+        "rank": 1
+      },
+      {
+        "seed": 1,
+        "configuration": "4. Stepped 7-Layer RG Relay (Q28, b=3.5)",
+        "context_tokens": 6427,
+        "target_prob_pct": 99.644,
+        "decoy_prob_pct": 0.0158,
+        "rank": 1
+      },
+      {
+        "seed": 2,
+        "configuration": "4. Stepped 7-Layer RG Relay (Q28, b=3.5)",
+        "context_tokens": 6443,
+        "target_prob_pct": 97.6392,
+        "decoy_prob_pct": 2.0264,
+        "rank": 1
+      },
+      {
+        "seed": 3,
+        "configuration": "4. Stepped 7-Layer RG Relay (Q28, b=3.5)",
+        "context_tokens": 6427,
+        "target_prob_pct": 76.434,
+        "decoy_prob_pct": 0.9622,
+        "rank": 1
+      },
+      {
+        "seed": 4,
+        "configuration": "4. Stepped 7-Layer RG Relay (Q28, b=3.5)",
+        "context_tokens": 6425,
+        "target_prob_pct": 97.8137,
+        "decoy_prob_pct": 0.9589,
+        "rank": 1
+      },
+      {
+        "seed": 5,
+        "configuration": "4. Stepped 7-Layer RG Relay (Q28, b=3.5)",
+        "context_tokens": 6405,
+        "target_prob_pct": 82.8777,
+        "decoy_prob_pct": 16.3196,
+        "rank": 1
+      },
+      {
+        "seed": 6,
+        "configuration": "4. Stepped 7-Layer RG Relay (Q28, b=3.5)",
+        "context_tokens": 6421,
+        "target_prob_pct": 97.3346,
+        "decoy_prob_pct": 0.6558,
+        "rank": 1
+      },
+      {
+        "seed": 7,
+        "configuration": "4. Stepped 7-Layer RG Relay (Q28, b=3.5)",
+        "context_tokens": 6427,
+        "target_prob_pct": 72.9652,
+        "decoy_prob_pct": 26.8424,
+        "rank": 1
+      },
+      {
+        "seed": 8,
+        "configuration": "4. Stepped 7-Layer RG Relay (Q28, b=3.5)",
+        "context_tokens": 6443,
+        "target_prob_pct": 96.6947,
+        "decoy_prob_pct": 1.5629,
+        "rank": 1
+      },
+      {
+        "seed": 9,
+        "configuration": "4. Stepped 7-Layer RG Relay (Q28, b=3.5)",
+        "context_tokens": 6427,
+        "target_prob_pct": 99.6312,
+        "decoy_prob_pct": 0.1167,
+        "rank": 1
+      }
+    ],
+    "babilong_qa3": [
+      {
+        "seed": 0,
+        "configuration": "1. Unmodified Baseline",
+        "context_tokens": 6554,
+        "target_prob_pct": 80.8965,
+        "decoy_prob_pct": 14.0577,
+        "rank": 1
+      },
+      {
+        "seed": 1,
+        "configuration": "1. Unmodified Baseline",
+        "context_tokens": 6571,
+        "target_prob_pct": 99.2408,
+        "decoy_prob_pct": 0.246,
+        "rank": 1
+      },
+      {
+        "seed": 2,
+        "configuration": "1. Unmodified Baseline",
+        "context_tokens": 6570,
+        "target_prob_pct": 0.1026,
+        "decoy_prob_pct": 99.3174,
+        "rank": 3
+      },
+      {
+        "seed": 3,
+        "configuration": "1. Unmodified Baseline",
+        "context_tokens": 6568,
+        "target_prob_pct": 0.02,
+        "decoy_prob_pct": 98.3769,
+        "rank": 6
+      },
+      {
+        "seed": 4,
+        "configuration": "1. Unmodified Baseline",
+        "context_tokens": 6565,
+        "target_prob_pct": 79.6484,
+        "decoy_prob_pct": 9.5126,
+        "rank": 1
+      },
+      {
+        "seed": 5,
+        "configuration": "1. Unmodified Baseline",
+        "context_tokens": 6550,
+        "target_prob_pct": 83.0761,
+        "decoy_prob_pct": 0.9229,
+        "rank": 1
+      },
+      {
+        "seed": 6,
+        "configuration": "1. Unmodified Baseline",
+        "context_tokens": 6523,
+        "target_prob_pct": 0.0006,
+        "decoy_prob_pct": 99.9613,
+        "rank": 7
+      },
+      {
+        "seed": 7,
+        "configuration": "1. Unmodified Baseline",
+        "context_tokens": 6560,
+        "target_prob_pct": 0.1023,
+        "decoy_prob_pct": 98.9985,
+        "rank": 3
+      },
+      {
+        "seed": 8,
+        "configuration": "1. Unmodified Baseline",
+        "context_tokens": 6560,
+        "target_prob_pct": 0.0793,
+        "decoy_prob_pct": 98.5372,
+        "rank": 5
+      },
+      {
+        "seed": 9,
+        "configuration": "1. Unmodified Baseline",
+        "context_tokens": 6589,
+        "target_prob_pct": 99.021,
+        "decoy_prob_pct": 0.6672,
+        "rank": 1
+      },
+      {
+        "seed": 0,
+        "configuration": "2. Query-Slice Cubic Plateau (Q14, b=3.5)",
+        "context_tokens": 6554,
+        "target_prob_pct": 98.2352,
+        "decoy_prob_pct": 0.1674,
+        "rank": 1
+      },
+      {
+        "seed": 1,
+        "configuration": "2. Query-Slice Cubic Plateau (Q14, b=3.5)",
+        "context_tokens": 6571,
+        "target_prob_pct": 99.2388,
+        "decoy_prob_pct": 0.0157,
+        "rank": 1
+      },
+      {
+        "seed": 2,
+        "configuration": "2. Query-Slice Cubic Plateau (Q14, b=3.5)",
+        "context_tokens": 6570,
+        "target_prob_pct": 90.6041,
+        "decoy_prob_pct": 6.5633,
+        "rank": 1
+      },
+      {
+        "seed": 3,
+        "configuration": "2. Query-Slice Cubic Plateau (Q14, b=3.5)",
+        "context_tokens": 6568,
+        "target_prob_pct": 93.438,
+        "decoy_prob_pct": 0.916,
+        "rank": 1
+      },
+      {
+        "seed": 4,
+        "configuration": "2. Query-Slice Cubic Plateau (Q14, b=3.5)",
+        "context_tokens": 6565,
+        "target_prob_pct": 97.35,
+        "decoy_prob_pct": 0.0691,
+        "rank": 1
+      },
+      {
+        "seed": 5,
+        "configuration": "2. Query-Slice Cubic Plateau (Q14, b=3.5)",
+        "context_tokens": 6550,
+        "target_prob_pct": 74.5099,
+        "decoy_prob_pct": 1.5464,
+        "rank": 1
+      },
+      {
+        "seed": 6,
+        "configuration": "2. Query-Slice Cubic Plateau (Q14, b=3.5)",
+        "context_tokens": 6523,
+        "target_prob_pct": 0.0158,
+        "decoy_prob_pct": 99.6492,
+        "rank": 6
+      },
+      {
+        "seed": 7,
+        "configuration": "2. Query-Slice Cubic Plateau (Q14, b=3.5)",
+        "context_tokens": 6560,
+        "target_prob_pct": 2.8326,
+        "decoy_prob_pct": 82.7821,
+        "rank": 3
+      },
+      {
+        "seed": 8,
+        "configuration": "2. Query-Slice Cubic Plateau (Q14, b=3.5)",
+        "context_tokens": 6560,
+        "target_prob_pct": 0.3023,
+        "decoy_prob_pct": 8.8357,
+        "rank": 5
+      },
+      {
+        "seed": 9,
+        "configuration": "2. Query-Slice Cubic Plateau (Q14, b=3.5)",
+        "context_tokens": 6589,
+        "target_prob_pct": 99.5434,
+        "decoy_prob_pct": 0.1029,
+        "rank": 1
+      },
+      {
+        "seed": 0,
+        "configuration": "3. Cubic Q14 + SWA Decoy Shield (sw=2.5)",
+        "context_tokens": 6554,
+        "target_prob_pct": 98.2553,
+        "decoy_prob_pct": 0.1674,
+        "rank": 1
+      },
+      {
+        "seed": 1,
+        "configuration": "3. Cubic Q14 + SWA Decoy Shield (sw=2.5)",
+        "context_tokens": 6571,
+        "target_prob_pct": 99.1419,
+        "decoy_prob_pct": 0.0259,
+        "rank": 1
+      },
+      {
+        "seed": 2,
+        "configuration": "3. Cubic Q14 + SWA Decoy Shield (sw=2.5)",
+        "context_tokens": 6570,
+        "target_prob_pct": 94.0308,
+        "decoy_prob_pct": 3.2176,
+        "rank": 1
+      },
+      {
+        "seed": 3,
+        "configuration": "3. Cubic Q14 + SWA Decoy Shield (sw=2.5)",
+        "context_tokens": 6568,
+        "target_prob_pct": 96.9835,
+        "decoy_prob_pct": 0.5089,
+        "rank": 1
+      },
+      {
+        "seed": 4,
+        "configuration": "3. Cubic Q14 + SWA Decoy Shield (sw=2.5)",
+        "context_tokens": 6565,
+        "target_prob_pct": 97.0953,
+        "decoy_prob_pct": 0.0781,
+        "rank": 1
+      },
+      {
+        "seed": 5,
+        "configuration": "3. Cubic Q14 + SWA Decoy Shield (sw=2.5)",
+        "context_tokens": 6550,
+        "target_prob_pct": 86.4346,
+        "decoy_prob_pct": 0.9602,
+        "rank": 1
+      },
+      {
+        "seed": 6,
+        "configuration": "3. Cubic Q14 + SWA Decoy Shield (sw=2.5)",
+        "context_tokens": 6523,
+        "target_prob_pct": 0.0704,
+        "decoy_prob_pct": 99.1222,
+        "rank": 5
+      },
+      {
+        "seed": 7,
+        "configuration": "3. Cubic Q14 + SWA Decoy Shield (sw=2.5)",
+        "context_tokens": 6560,
+        "target_prob_pct": 10.0111,
+        "decoy_prob_pct": 44.8665,
+        "rank": 3
+      },
+      {
+        "seed": 8,
+        "configuration": "3. Cubic Q14 + SWA Decoy Shield (sw=2.5)",
+        "context_tokens": 6560,
+        "target_prob_pct": 0.2698,
+        "decoy_prob_pct": 21.4351,
+        "rank": 5
+      },
+      {
+        "seed": 9,
+        "configuration": "3. Cubic Q14 + SWA Decoy Shield (sw=2.5)",
+        "context_tokens": 6589,
+        "target_prob_pct": 99.5122,
+        "decoy_prob_pct": 0.0907,
+        "rank": 1
+      },
+      {
+        "seed": 0,
+        "configuration": "4. Stepped 7-Layer RG Relay (Q28, b=3.5)",
+        "context_tokens": 6554,
+        "target_prob_pct": 97.9751,
+        "decoy_prob_pct": 0.1473,
+        "rank": 1
+      },
+      {
+        "seed": 1,
+        "configuration": "4. Stepped 7-Layer RG Relay (Q28, b=3.5)",
+        "context_tokens": 6571,
+        "target_prob_pct": 99.2501,
+        "decoy_prob_pct": 0.0108,
+        "rank": 1
+      },
+      {
+        "seed": 2,
+        "configuration": "4. Stepped 7-Layer RG Relay (Q28, b=3.5)",
+        "context_tokens": 6570,
+        "target_prob_pct": 92.4987,
+        "decoy_prob_pct": 1.9198,
+        "rank": 1
+      },
+      {
+        "seed": 3,
+        "configuration": "4. Stepped 7-Layer RG Relay (Q28, b=3.5)",
+        "context_tokens": 6568,
+        "target_prob_pct": 64.9531,
+        "decoy_prob_pct": 3.2338,
+        "rank": 1
+      },
+      {
+        "seed": 4,
+        "configuration": "4. Stepped 7-Layer RG Relay (Q28, b=3.5)",
+        "context_tokens": 6565,
+        "target_prob_pct": 97.3062,
+        "decoy_prob_pct": 0.0475,
+        "rank": 1
+      },
+      {
+        "seed": 5,
+        "configuration": "4. Stepped 7-Layer RG Relay (Q28, b=3.5)",
+        "context_tokens": 6550,
+        "target_prob_pct": 39.0445,
+        "decoy_prob_pct": 1.179,
+        "rank": 1
+      },
+      {
+        "seed": 6,
+        "configuration": "4. Stepped 7-Layer RG Relay (Q28, b=3.5)",
+        "context_tokens": 6523,
+        "target_prob_pct": 0.5739,
+        "decoy_prob_pct": 96.5106,
+        "rank": 3
+      },
+      {
+        "seed": 7,
+        "configuration": "4. Stepped 7-Layer RG Relay (Q28, b=3.5)",
+        "context_tokens": 6560,
+        "target_prob_pct": 6.701,
+        "decoy_prob_pct": 0.5501,
+        "rank": 3
+      },
+      {
+        "seed": 8,
+        "configuration": "4. Stepped 7-Layer RG Relay (Q28, b=3.5)",
+        "context_tokens": 6560,
+        "target_prob_pct": 2.1585,
+        "decoy_prob_pct": 23.2063,
+        "rank": 3
+      },
+      {
+        "seed": 9,
+        "configuration": "4. Stepped 7-Layer RG Relay (Q28, b=3.5)",
+        "context_tokens": 6589,
+        "target_prob_pct": 98.0263,
+        "decoy_prob_pct": 0.1301,
+        "rank": 1
+      }
+    ]
+  }
+}

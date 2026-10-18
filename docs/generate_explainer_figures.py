@@ -390,11 +390,93 @@ def make_fig5_phase6_5hop_and_telemetry():
     plt.close()
 
 
+def make_fig6_phase7_standard_benchmarks():
+    """Fig 6: Phase 7 Multi-Seed RULER VT, BABILong qa3, & Lost-in-the-Middle Depth Trough Sweep."""
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(11.8, 4.5), gridspec_kw={"width_ratios": [1.22, 1.08]})
+
+    # Panel A: Multi-Seed RULER VT & BABILong qa3 (N=10 Randomized Seeds Each)
+    configs = [
+        "1. Baseline\n(Unmodified)",
+        "2. Cubic Plateau\n(Q14, b=3.5)",
+        "3. Cubic Q14 +\nSWA Shield (sw=2.5)",
+        "4. Stepped 7-Layer\nRG Relay (Q28)",
+    ]
+    x = np.arange(len(configs))
+    w = 0.21
+
+    ruler_acc   = [80.0,    90.0,    90.0,    100.0]
+    ruler_prob  = [79.7580, 91.5149, 87.7695, 92.0196]
+    babi_prob   = [44.2188, 65.6070, 68.1805, 59.8487]
+    babi_decoy  = [52.0598, 20.0648, 17.0473, 12.6935]
+
+    b1 = ax1.bar(x - 1.5*w, ruler_acc,  w, color="#1f77b4", edgecolor="black", linewidth=0.6,
+                 label="NVIDIA RULER VT Top-1 Acc (10 Seeds: 80% → 100%)")
+    b2 = ax1.bar(x - 0.5*w, ruler_prob, w, color="#2ca02c", edgecolor="black", linewidth=0.6,
+                 label="NVIDIA RULER VT Mean Target Prob (79.76% → 92.02%)")
+    b3 = ax1.bar(x + 0.5*w, babi_prob,  w, color="#ff7f0e", edgecolor="black", linewidth=0.6,
+                 label="BABILong qa3 Mean Target Prob (44.22% → 68.18%, +23.96%)")
+    b4 = ax1.bar(x + 1.5*w, babi_decoy, w, color="#d62728", alpha=0.82, edgecolor="black", linewidth=0.6,
+                 label="BABILong qa3 Mean Decoy Error (52.06% → 12.69%, 4.1x Down)")
+
+    ax1.text(x[3] - 1.5*w, 101.8, "100%\n(10/10)", ha="center", fontsize=7.4, fontweight="bold", color="#0b3c61")
+    ax1.text(x[2] + 0.5*w, 70.0, "68.18%\n(70% Win)", ha="center", fontsize=7.2, fontweight="bold", color="#8c3b00")
+    ax1.text(x[3] + 1.5*w, 14.5, "12.69%\n(4.1x↓)", ha="center", fontsize=7.2, fontweight="bold", color="#8b0000")
+
+    ax1.set_xticks(x)
+    ax1.set_xticklabels(configs, fontsize=8.0)
+    ax1.set_ylim(0, 115)
+    ax1.set_ylabel("Accuracy / Probability (%)")
+    ax1.set_title("A. Multi-Seed RULER VT & BABILong qa3 (N=10 Seeds Each)")
+    ax1.legend(loc="upper left", fontsize=7.2, frameon=True)
+    ax1.grid(axis="y", linestyle="--", alpha=0.35)
+
+    # Panel B: Lost in the Middle Depth Trough Sweep (15% to 75% Document Depth)
+    depths = np.array([15, 30, 45, 60, 75])
+    depth_labels = ["15% Depth", "30% Depth", "45% Depth", "60% Depth", "75% Depth\n(Late Trough)"]
+
+    litm_base  = [99.9258, 99.8851, 99.8961, 97.8917, 92.2524]
+    litm_cubic = [99.8547, 99.8256, 99.8822, 99.4210, 97.6529]
+    litm_swa   = [99.8451, 99.8292, 99.8829, 99.5729, 99.2014]
+    litm_rg    = [99.8303, 99.7859, 99.8205, 99.4664, 98.8321]
+
+    ax2.plot(depths, litm_swa, "-s", color="#2ca02c", linewidth=2.5, markersize=6.5, zorder=6,
+             label="3. Cubic Q14 + SWA Shield (sw=2.5) — 99.20% at 75% (9.7x Err↓)")
+    ax2.plot(depths, litm_rg, "-o", color="#1f77b4", linewidth=2.2, markersize=6.0, zorder=5,
+             label="4. Stepped 7-Layer RG Relay (Q28) — 98.83% at 75%")
+    ax2.plot(depths, litm_cubic, "--^", color="#ff7f0e", linewidth=2.0, markersize=6.0, zorder=4,
+             label="2. Cubic Plateau (Q14, b=3.5) — 97.65% at 75%")
+    ax2.plot(depths, litm_base, "-.d", color="#d62728", linewidth=2.2, markersize=6.5, zorder=3,
+             label="1. Unmodified Baseline — Drops to 92.25% at 75% Depth")
+
+    ax2.annotate("99.20% Target Prob\n(9.7x Error Reduction)", (75, 99.2014), xytext=(34, 97.0),
+                 fontsize=7.8, fontweight="bold", color="#1b611b",
+                 arrowprops=dict(arrowstyle="->", color="#1b611b", lw=0.9))
+    ax2.annotate("92.25% Baseline\n(7.75% Error Trough)", (75, 92.2524), xytext=(44, 94.2),
+                 fontsize=7.8, fontweight="bold", color="#8b0000",
+                 arrowprops=dict(arrowstyle="->", color="#8b0000", lw=0.9))
+
+    ax2.set_xticks(depths)
+    ax2.set_xticklabels(depth_labels, fontsize=8.0)
+    ax2.set_ylim(91.0, 100.6)
+    ax2.set_xlim(11, 79)
+    ax2.set_ylabel("Target Vault (79421) Probability (%)")
+    ax2.set_title("B. 'Lost in the Middle' Bridge Document Depth Sweep")
+    ax2.legend(loc="lower left", fontsize=7.0, frameon=True)
+    ax2.grid(True, linestyle="--", alpha=0.35)
+
+    plt.tight_layout()
+    plt.savefig(f"{OUT_DIR}/fig6_phase7_standard_benchmarks.pdf", bbox_inches="tight")
+    plt.savefig(f"{OUT_DIR}/fig6_phase7_standard_benchmarks.png", dpi=300, bbox_inches="tight")
+    plt.close()
+
+
 if __name__ == "__main__":
     make_fig1_homunculus()
     make_fig2_potentials_and_dual_state()
     make_fig3_write_read_and_rg()
     make_fig4_phase5_benchmark()
     make_fig5_phase6_5hop_and_telemetry()
-    print(f"Successfully generated all 5 vector PDF and 300-DPI PNG figures in {OUT_DIR}!")
+    make_fig6_phase7_standard_benchmarks()
+    print(f"Successfully generated all 6 vector PDF and 300-DPI PNG figures in {OUT_DIR}!")
+
 

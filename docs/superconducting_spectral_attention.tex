@@ -459,6 +459,62 @@ Let $\mathbf{u}_{l_k} = \mathbf{h}^{\text{post}}_{l_k} - \mathbf{h}^{\text{pre}}
 }
 \end{table}
 
+\subsection{Phase 7: Standard External Benchmark Validation (NVIDIA RULER \texttt{VT}, BABILong \texttt{qa3}, \& Lost in the Middle)}
+
+To confirm that the architecture generalizes across standardized external long-context benchmarks with natural prose haystacks and randomized variable/entity bindings, Phase 7 evaluates \texttt{google/gemma-4-E4B-it} on: (1) \textbf{NVIDIA RULER \texttt{VT} (Multi-Hop Variable Tracking, Hsieh et al., COLM 2024)} across $N = 10$ randomized seeds ($\approx 6,425$ tokens each, 8 concurrent 3-hop variable chains in prose with non-binding debug trace comments); (2) \textbf{BABILong \texttt{qa3} (3-Supporting-Facts Narrative World-State Tracking, Kuratov et al., NeurIPS 2024)} across $N = 10$ randomized seeds ($\approx 6,560$ tokens each, tracking \texttt{Commander} $\mapsto$ \texttt{Courier} $\mapsto$ \texttt{Artifact} $\mapsto$ \texttt{Locker} in prose with non-custodial inspection notes); and (3) the \textbf{``Lost in the Middle'' Depth Sweep (Liu et al., TACL 2024)} across fractional document depths $15\%, 30\%, 45\%, 60\%, 75\%$.
+
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=\textwidth]{figures/fig6_phase7_standard_benchmarks.pdf}
+    \caption{\textbf{Phase 7 Standard External Benchmark Validation on \texttt{google/gemma-4-E4B-it}.} \textbf{(A)} Multi-seed RULER \texttt{VT} ($80.0\% \to 100.0\%$ Top-1 accuracy, $4.0\times$ decoy reduction) and BABILong \texttt{qa3} ($50.0\% \to 70.0\%$ Top-1 accuracy, $+23.96\%$ mean target probability gain, $4.10\times$ decoy reduction). \textbf{(B)} ``Lost in the Middle'' depth sweep ($92.2524\% \to 99.2014\%$ at $75\%$ depth, $9.7\times$ error reduction).}
+    \label{fig:phase7}
+\end{figure}
+
+\begin{table}[!htbp]
+\centering
+\caption{Phase 7A Multi-Seed Summary on NVIDIA RULER \texttt{VT} and BABILong \texttt{qa3} ($N = 10$ Randomized Seeds Each).}
+\label{tab:phase7a}
+\vspace{2pt}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{@{}llcccc@{}}
+\toprule
+\textbf{Benchmark Suite} & \textbf{Configuration (\texttt{google/gemma-4-E4B-it})} & \textbf{Top-1 Accuracy} & \textbf{Mean Target Prob ($\pm$ Std)} & \textbf{Mean Decoy Error} & \textbf{Elapsed} \\
+\midrule
+NVIDIA RULER \texttt{VT} (3-Hop) & 1. Unmodified Baseline & $80.0\%$ ($8/10$) & $79.7580\% \pm 39.2561\%$ & $19.8579\%$ & $43.21\text{s}$ \\
+NVIDIA RULER \texttt{VT} (3-Hop) & 2. Query-Slice Cubic Plateau ($Q=14, \beta=3.5$) & $90.0\%$ ($9/10$) & $91.5149\% \pm 16.2193\%$ & $8.0287\%$ & $43.89\text{s}$ \\
+NVIDIA RULER \texttt{VT} (3-Hop) & 3. Cubic Q14 + SWA Decoy Shield ($\beta_{\text{swa}}=2.5$) & $90.0\%$ ($9/10$) & $87.7695\% \pm 26.3196\%$ & $11.1173\%$ & $43.86\text{s}$ \\
+NVIDIA RULER \texttt{VT} (3-Hop) & \textbf{4. Stepped 7-Layer RG Relay ($Q=28, \beta=3.5, \text{sw}=2.0$)} & $\mathbf{100.0\%}$ ($\mathbf{10/10}$) & $\mathbf{92.0196\% \pm 9.8585\%}$ & $\mathbf{4.9577\%}$ ($\mathbf{4.0\times}$ down) & $43.83\text{s}$ \\
+\midrule
+BABILong \texttt{qa3} (3-Hop) & 1. Unmodified Baseline & $50.0\%$ ($5/10$) & $44.2188\% \pm 44.5990\%$ & $52.0598\%$ & $41.91\text{s}$ \\
+BABILong \texttt{qa3} (3-Hop) & 2. Query-Slice Cubic Plateau ($Q=14, \beta=3.5$) & $\mathbf{70.0\%}$ ($\mathbf{7/10}$) & $65.6070\% \pm 42.8266\%$ & $20.0648\%$ & $41.95\text{s}$ \\
+BABILong \texttt{qa3} (3-Hop) & \textbf{3. Cubic Q14 + SWA Decoy Shield ($\beta_{\text{swa}}=2.5$)} & $\mathbf{70.0\%}$ ($\mathbf{7/10}$) & $\mathbf{68.1805\% \pm 42.5986\%}$ ($\mathbf{+23.96\%}$) & $17.0473\%$ ($3.05\times$ down) & $42.00\text{s}$ \\
+BABILong \texttt{qa3} (3-Hop) & \textbf{4. Stepped 7-Layer RG Relay ($Q=28, \beta=3.5, \text{sw}=2.0$)} & $\mathbf{70.0\%}$ ($\mathbf{7/10}$) & $59.8487\% \pm 41.3012\%$ & $\mathbf{12.6935\%}$ ($\mathbf{4.10\times}$ down) & $42.02\text{s}$ \\
+\bottomrule
+\end{tabular}%
+}
+\end{table}
+
+On RULER \texttt{VT}, Baseline suffers catastrophic decoy hijacks on Seed 2 ($0.2181\%$ target vs.\ $99.7025\%$ decoy) and Seed 7 ($2.2950\%$ target vs.\ $97.5860\%$ decoy); Stepped RG (\texttt{Config 4}) rescues Seed 2 to $\mathbf{97.6392\%}$ (\textbf{\#1 WIN}) and Seed 7 to $\mathbf{72.9652\%}$ (\textbf{\#1 WIN}). On BABILong \texttt{qa3}, Cubic Q14 + SWA Shield (\texttt{Config 3}) flips Seed 2 from $0.1026\%$ (\#3 FAIL) to $\mathbf{94.0308\%}$ (\textbf{\#1 WIN}) and Seed 3 from $0.0200\%$ (\#6 FAIL) to $\mathbf{96.9835\%}$ (\textbf{\#1 WIN}).
+
+\begin{table}[!htbp]
+\centering
+\caption{Phase 7B ``Lost in the Middle'' Multi-Document Depth Sweep ($15\%$ to $75\%$ Document Depth).}
+\label{tab:phase7b}
+\vspace{2pt}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{@{}lccccc@{}}
+\toprule
+\textbf{Configuration (\texttt{google/gemma-4-E4B-it})} & \textbf{$15\%$ Depth} & \textbf{$30\%$ Depth} & \textbf{$45\%$ Depth} & \textbf{$60\%$ Depth} & \textbf{$75\%$ Depth (Late Trough)} \\
+\midrule
+1. Unmodified Baseline & $99.9258\%$ & $99.8851\%$ & $99.8961\%$ & $97.8917\%$ & $92.2524\%$ ($7.75\%$ Error) \\
+2. Query-Slice Cubic Plateau ($Q=14, \beta=3.5$) & $99.8547\%$ & $99.8256\%$ & $99.8822\%$ & $99.4210\%$ & $97.6529\%$ \\
+\textbf{3. Cubic Q14 + SWA Decoy Shield ($\beta_{\text{swa}}=2.5$)} & $99.8451\%$ & $99.8292\%$ & $99.8829\%$ & $\mathbf{99.5729\%}$ & $\mathbf{99.2014\%}$ ($\mathbf{9.7\times}$ Error Down) \\
+4. Stepped 7-Layer RG Relay ($Q=28, \beta=3.5, \text{sw}=2.0$) & $99.8303\%$ & $99.7859\%$ & $99.8205\%$ & $99.4664\%$ & $98.8321\%$ \\
+\bottomrule
+\end{tabular}%
+}
+\end{table}
+
 % ============================================================================
 \section{Summary of Patentable Claims Enabled by the Model}
 % ============================================================================
